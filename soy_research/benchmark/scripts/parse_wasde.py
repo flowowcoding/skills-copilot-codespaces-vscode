@@ -16,7 +16,7 @@ Release time: WASDE is published 12:00 ET (during the CBOT day session).
 
 Usage:
     python parse_wasde.py --csv-dir DIR --txt-dir DIR --out OUT_DIR
-Writes OUT_DIR/wasde_brazil_soy.csv with columns
+Writes OUT_DIR/wasde_soy_vintages.csv with columns
     release_date, release_time_et, report, region, market_year, attribute, value_mt, proj_flag, src
 """
 import argparse
@@ -106,7 +106,7 @@ def main():
     # drop special/corrected same-month duplicates with identical Brazil numbers
     x = pd.concat([t, c]).sort_values(["release_date", "region", "market_year", "attribute"])
     os.makedirs(a.out, exist_ok=True)
-    x.to_csv(os.path.join(a.out, "wasde_brazil_soy.csv"), index=False)
+    x.to_csv(os.path.join(a.out, "wasde_soy_vintages.csv"), index=False)
     p = x[(x.attribute == "Production") & (x.region == "Brazil")]
     print(p.release_date.nunique(), "reports", p.release_date.min(), p.release_date.max())
 

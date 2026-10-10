@@ -39,3 +39,4 @@ Thumbs.db
 soy_research/satellite/data/pixels.csv
 *.npz
 satellite_poc/mine_inventory/mine_inventory.gpkg
+__pycache__/
