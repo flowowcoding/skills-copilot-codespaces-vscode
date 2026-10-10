@@ -235,3 +235,11 @@ For mines, 10 m is not the bottleneck: pits and dumps span kilometres. Telling e
 apart from production is the hard part.
 
 The image stacks aren't committed because of their size. `results/` holds the derived time series.
+
+## Mine inventory (named mines with footprint polygons)
+
+`mine_inventory/` joins the ICMM Global Mining Dataset (names, commodities) to the Maus et al.
+v2 mining polygons and the Zenodo ML-ready polygons. Of 8,017 ICMM mines, 55% match a
+footprint. The output is a GeoPackage and CSV, plus lists of Chile/Peru open-pit copper mines
+and lithium sites. See `mine_inventory/README.md` for sources, licences (CC BY-SA from Maus),
+method, match rates and caveats. A polygon does not prove a mine is active or surface-worked.

@@ -1,0 +1,179 @@
+icmm_id,mine_name,country,primary_commodity,all_commodities,mine_type,mine_type_source,icmm_confidence,match_method,match_dist_m,footprint_km2,own_footprint_km2,n_icmm_on_cluster,cluster_id,icmm_lon,icmm_lat
+ICMM13301,Antucoya,Chile,copper,copper,open_pit,manual,High,inside,0.0,858.2444,79.5744,2,M02544,-69.864645,-22.61901
+ICMM01395,Gregoria,Chile,gold,gold;silver;copper,surface,zenodo_tile_label,Moderate,inside,0.0,286.3319,56.1043,3,M44072,-69.384087,-22.80513
+ICMM01397,Sierra Gorda,Chile,copper,copper;molybdenum;lead;gold;silver,open_pit,manual,High,inside,0.0,286.3319,99.7925,3,M44072,-69.341182,-22.851564
+ICMM08633,Spence,Chile,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,286.3319,130.4351,3,M44072,-69.267538,-22.791215
+ICMM01433,Escondida,Chile,copper,copper;gold;silver,open_pit,manual,High,inside,0.0,230.9661,137.2471,2,M02257,-69.078969,-24.261039
+ICMM08962,Zaldivar,Chile,copper,copper;gold;silver,open_pit,manual,High,inside,0.0,230.9661,93.719,2,M02257,-69.062812,-24.216738
+ICMM01369,Radomiro Tomic,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,178.1186,52.6784,3,M02717,-68.888389,-22.225825
+ICMM01372,Chuquicamata,Chile,copper,copper;gold;lead;molybdenum;rhenium;silver,underground,manual,High,inside,0.0,178.1186,78.5949,3,M02717,-68.903071,-22.296808
+ICMM08537,Ministro Hales,Chile,copper,copper;gold;silver;molybdenum;calcine,open_pit,manual,High,inside,0.0,178.1186,46.8452,3,M02717,-68.915991,-22.382497
+ICMM01403,Centinela,Chile,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,88.7217,88.7217,1,M02628,-69.067518,-22.958744
+ICMM08232,Gabriela Mistral,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,50.6199,50.6199,1,M02346,-68.810337,-23.414607
+ICMM01705,Los Bronces,Chile,copper,copper;molybdenum;gold;silver,open_pit,manual,High,inside,0.0,42.814,40.8185,2,M01908,-70.275266,-33.150786
+ICMM07932,Andina,Chile,copper,copper;molybdenum;silver,open_pit+underground,manual,Moderate,inside,0.0,42.814,1.9955,2,M01908,-70.254899,-33.09202
+ICMM01478,Mantoverde,Chile,copper,copper;cobalt;gold,open_pit,manual,High,inside,0.0,35.2431,35.2431,1,M02085,-70.320067,-26.556084
+ICMM01296,Collahausi,Chile,copper,copper;molybdenum;silver;gold,open_pit,manual,High,inside,0.0,32.4499,32.4499,1,M03037,-68.712604,-20.980094
+ICMM01420,Mantos Blancos,Chile,copper,copper;silver,open_pit,manual,High,inside,0.0,30.506,30.506,1,M02352,-70.065801,-23.434027
+ICMM01469,Salvador,Chile,copper,copper;gold;molybdenum;silver,open_pit+underground,manual,High,inside,0.0,29.1617,29.1617,1,M02099,-69.569319,-26.249213
+ICMM01264,Cerro Colorado,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,25.1786,25.1786,1,M03050,-69.260074,-20.047673
+ICMM01541,Punta del Cobre,Chile,copper,copper;gold;iron ore;silver,open_pit+underground,manual,High,nearest,190.0,24.6757,24.6757,1,M02065,-70.270886,-27.494015
+ICMM14622,El Indio/Tambo,Chile,gold,gold;silver;copper;lead;arsenic,surface,zenodo_tile_label,Moderate,inside,0.0,24.1155,24.1155,1,M02008,-69.9669,-29.7403
+ICMM01419,Lomas Bayas,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,24.0014,24.0014,1,M02354,-69.518534,-23.43273
+ICMM01656,Carmen de Andacollo,Chile,copper,copper;gold;silver,open_pit,manual,High,inside,0.0,22.3593,22.3593,1,M01986,-71.093456,-30.244295
+ICMM13880,Valle Central (El Teniente Tailings),Chile,copper,copper;molybdenum,tailings,manual,High,nearest,65.0,22.2798,22.2798,1,M01819,-70.679512,-34.242225
+ICMM01683,Los Pelambres,Chile,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,20.1716,20.1716,1,M01979,-70.492445,-31.715802
+ICMM01301,Quebrada Blanca,Chile,copper,copper;molybdenum;rhenium;silver,open_pit,manual,High,inside,0.0,18.035,18.035,1,M03024,-68.800164,-21.002082
+ICMM13368,Caserones,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,17.1734,17.1734,1,M02042,-69.539392,-28.1758
+ICMM01695,Soldado,Chile,copper,copper;silver,open_pit,manual,High,inside,0.0,15.6977,15.6977,1,M01920,-71.111557,-32.647915
+ICMM01385,Michilla,Chile,copper,copper,open_pit+underground,manual,High,inside,0.0,14.4311,14.4311,1,M02499,-70.172487,-22.677887
+ICMM08182,El Abra,Chile,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,11.9387,11.9387,1,M02772,-68.832609,-21.92029
+ICMM01452,Guanaco Amancaya,Chile,gold,gold;silver;copper,surface,zenodo_tile_label,High,inside,0.0,10.2521,10.2521,1,M02154,-69.534256,-25.104666
+ICMM01268,La Cascadas,Chile,copper,copper,surface,zenodo_tile_label,Moderate,inside,0.0,10.0522,10.0522,1,M25694,-69.335323,-20.183063
+ICMM08183,El Algarrobo,Chile,copper,copper;iron ore,surface,zenodo_tile_label,High,inside,0.0,9.976,9.976,1,M02029,-70.989316,-28.81231
+ICMM01465,Franke,Chile,copper,copper;silver,open_pit,manual,High,inside,0.0,9.7942,9.7942,1,M02111,-69.865346,-25.833726
+ICMM08497,Maricunga,Chile,gold,gold;silver;copper,surface,zenodo_tile_label,High,inside,0.0,9.4847,9.4847,1,M02090,-69.297631,-27.55174
+ICMM01484,Tucumana,Chile,copper,copper;silver,unknown,,Moderate,inside,0.0,8.2074,8.2074,1,M24884,-69.82865,-26.73691
+ICMM01709,El Teniente,Chile,copper,copper;molybdenum;gold;silver,underground,manual,High,inside,0.0,7.2312,7.2312,1,M01861,-70.363541,-34.087194
+ICMM13867,Tres Valles,Chile,copper,copper,unknown,,High,nearest,40.0,6.6759,6.6759,1,M44044,-70.9167,-31.7
+ICMM01448,Montecristo,Chile,copper,copper;gold;iron ore,unknown,,Moderate,inside,0.0,6.6243,6.6243,1,M02153,-70.393577,-24.96389
+ICMM01453,Inesperada,Chile,gold,gold;copper,surface,zenodo_tile_label,Very Low,zenodo_nearest,2994.0,5.116,5.116,1,Z00805,-69.6128,-25.1358
+ICMM01476,El Hueso,Chile,gold,gold;copper;silver,unknown,,Moderate,inside,0.0,3.6971,3.6971,1,M02210,-69.393925,-26.497245
+ICMM08611,NuevaUnion,Chile,copper,copper;gold;molybdenum,project,manual,Moderate,inside,0.0,3.4636,3.4636,1,M26804,-70.312192,-28.515426
+ICMM01384,Tuina,Chile,copper,copper;silver,unknown,,Moderate,nearest,264.0,3.2996,3.2996,1,M25707,-68.42428,-22.53828
+ICMM01707,Lo Aguirre Mine,Chile,copper,copper,unknown,,Moderate,inside,0.0,3.2853,3.2853,1,M25647,-70.930133,-33.444807
+ICMM01483,Berta Iii,Chile,copper,copper;gold,unknown,,Very Low,inside,0.0,2.8316,2.8316,1,M25783,-70.0523,-26.7128
+ICMM01667,Punitaqui,Chile,copper,copper;silver;gold;mercury,unknown,,Moderate,nearest,725.0,2.4348,2.4348,1,M01977,-71.224363,-30.844171
+ICMM01461,Lolita,Chile,silver,silver;gold;copper,unknown,,Very Low,nearest,549.0,2.3507,2.3507,1,M26027,-69.4545,-25.6675
+ICMM01510,Marte,Chile,copper,copper;gold,unknown,,Very Low,inside,0.0,2.2442,2.2442,1,M26850,-69.0268,-27.17032
+ICMM01554,Patricia,Chile,copper,copper;gold,unknown,,Very Low,nearest,610.0,1.9484,1.9484,2,M25972,-70.37105,-27.578725
+ICMM01557,Las Tortolas,Chile,copper,copper,unknown,,Very Low,nearest,2694.0,1.9484,0.0,2,M25972,-70.3898,-27.6003
+ICMM14021,El Toqui,Chile,copper,copper;gold;lead;silver;zinc,underground,manual,Moderate,inside,0.0,1.8872,1.8872,1,M01436,-71.94305,-45.0364
+ICMM01497,Paraguaya Rosa Helena,Chile,copper,copper;gold;silver,unknown,,Moderate,nearest,584.0,1.7988,1.7988,1,M25715,-70.549874,-27.036766
+ICMM01652,Santa Isabel,Chile,copper,copper;gold,unknown,,Very Low,nearest,701.0,1.7129,1.7129,1,M01991,-71.0887,-30.19415
+ICMM01542,Santo Tomas,Chile,copper,copper,surface,zenodo_tile_label,Very Low,nearest,98.0,1.6896,1.6896,1,M02062,-70.3356,-27.455
+ICMM18877,Potrerillos Refinery,Chile,copper,copper;gold,smelter,manual,High,inside,0.0,1.6394,1.6394,1,M26752,-69.4798,-26.43798
+ICMM08761,Santo Domingo,Chile,copper,copper;gold,project,manual,High,inside,0.0,1.6391,1.6391,1,M26728,-70.007462,-26.467385
+ICMM01538,Andacollito,Chile,copper,copper,surface,zenodo_tile_label,Very Low,nearest,1963.0,1.5131,1.5131,1,M02060,-70.3412,-27.4142
+ICMM13631,Los Helados,Chile,copper,copper,project,manual,High,inside,0.0,1.2302,1.2302,1,M19775,-69.5857,-28.3408
+ICMM01640,San Luis,Chile,copper,copper,unknown,,Moderate,nearest,132.0,1.0741,1.0741,1,M26696,-71.09435,-29.841515
+ICMM01464,"Candelaria Iii, Sara Ii, Vieja Sara, Peggy Ii",Chile,gold,gold;copper,unknown,,Very Low,nearest,539.0,0.9442,0.9442,1,M02112,-69.9295,-25.7958
+ICMM01417,Baguedano Cu Mine,Chile,copper,copper,unknown,,Very Low,nearest,2716.0,0.8917,0.8917,1,M26837,-69.8329,-23.3309
+ICMM01463,San Miguel Uribe Huri,Chile,gold,gold;copper,unknown,,Very Low,nearest,662.0,0.6174,0.6174,1,M02119,-69.9062,-25.7858
+ICMM01364,Tocopilla Cu Mine,Chile,copper,copper;cobalt,unknown,,Very Low,nearest,198.0,0.6026,0.6026,1,M26013,-70.1829,-22.0776
+ICMM08471,Lomas Bayas,Chile,copper,copper;silver,unknown,,Moderate,nearest,328.0,0.5789,0.5789,1,M25773,-70.013893,-27.780023
+ICMM01708,La Africana Cu Mine,Chile,copper,copper;gold,unknown,,Very Low,nearest,394.0,0.5539,0.5539,1,M25652,-70.8229,-33.4591
+ICMM14288,Las Luces,Chile,copper,copper;molybdenum;silver,unknown,,Moderate,inside,0.0,0.5195,0.5195,1,M02113,-70.49892,-25.69735
+ICMM01688,El Bronce Mine,Chile,gold,gold;silver;copper;zinc,unknown,,Moderate,nearest,99.0,0.4413,0.4413,1,M01939,-70.94028,-32.184995
+ICMM01639,Perlitas,Chile,copper,copper,surface,zenodo_tile_label,Very Low,zenodo_nearest,451.0,0.1719,0.1719,1,Z03937,-71.1501,-29.8308
+ICMM01495,Candelaria,Chile,copper,copper,unknown,,Very Low,inside,0.0,0.1701,0.1701,1,M26638,-69.6829,-26.9808
+ICMM01367,Buena Esperanza,Chile,copper,copper,unknown,,Very Low,nearest,2850.0,0.1524,0.1524,1,M26016,-70.2095,-22.1826
+ICMM01456,Rosario,Chile,copper,copper,unknown,,Very Low,nearest,2420.0,0.0008,0.0008,1,M26777,-70.2045,-25.3975
+ICMM01393,Julia Maria,Chile,copper,copper;gold;silver,unknown,,Moderate,unmatched,,,,0,,-69.499515,-22.74752
+ICMM01396,Altar,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.2312,-22.8159
+ICMM01458,Union,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.3629,-25.5892
+ICMM01459,Progreso,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.4662,-25.6308
+ICMM01466,Reserva Telegrafo Trinidad Nue,Chile,gold,gold;copper,unknown,,Very Low,unmatched,,,,0,,-70.5195,-25.8642
+ICMM01467,El Rincon,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.2454,-26.1683
+ICMM01470,Todos Los Santos,Chile,copper,copper;silver,unknown,,Very Low,unmatched,,,,0,,-70.1454,-26.2767
+ICMM01485,Santa Rosa San Pedro Colorada Recoveco,Chile,gold,gold;copper,unknown,,Very Low,unmatched,,,,0,,-69.956957,-26.814371
+ICMM01488,Margarita,Chile,gold,gold;copper,unknown,,Very Low,unmatched,,,,0,,-70.1995,-26.8169
+ICMM01492,Hilda,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-69.944,-26.8975
+ICMM01503,Carrera Pinto,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-69.9329,-27.1044
+ICMM01508,San Jose Nueva,Chile,copper,copper;gold;silver,unknown,,Moderate,unmatched,,,,0,,-70.49316,-27.154135
+ICMM01519,Venado Sur,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-69.9926,-27.2697
+ICMM01527,Honorina,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.0342,-27.3489
+ICMM01536,La Union,Chile,copper,copper;cobalt,unknown,,Very Low,unmatched,,,,0,,-70.21205,-27.4065
+ICMM01553,Ano Nuevo,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.4329,-27.5516
+ICMM01566,Sonia,Chile,copper,copper;gold;silver,unknown,,Very Low,unmatched,,,,0,,-70.0981,-27.6614
+ICMM01589,Veta Del Agua,Chile,copper,copper;cobalt;gold,unknown,,Moderate,unmatched,,,,0,,-70.90094,-28.085183
+ICMM01599,Estrella,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.0662,-28.4336
+ICMM01602,Vallenar Cu Mine,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.7829,-28.5641
+ICMM01606,Santa Rosa,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-71.169,-28.6711
+ICMM01608,San Antonio,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.6106,-28.7391
+ICMM01611,Esperanza,Chile,copper,copper,unknown,,Moderate,unmatched,,,,0,,-70.8316,-28.84864
+ICMM01649,San Agustin,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-71.1954,-30.09065
+ICMM01657,Las Lauchas,Chile,copper,copper;silver,unknown,,Very Low,unmatched,,,,0,,-71.149,-30.2775
+ICMM01685,Ojo De Oro Oregano,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.9912,-32.0058
+ICMM01686,Campanario,Chile,copper,copper,unknown,,Very Low,unmatched,,,,0,,-71.1079,-32.0141
+ICMM08476,Los Bronces,Chile,copper,copper,unknown,,High,unmatched,,,,0,,-70.701108,-33.145828
+ICMM14402,Santo Domingo,Chile,copper,copper;silver,unknown,,Moderate,unmatched,,,,0,,-70.36287,-25.07417
+ICMM01765,Yanacocha,Peru,gold,gold;silver;copper,open_pit,manual,High,inside,0.0,61.0516,61.0516,1,M04184,-78.511181,-6.976986
+ICMM01075,Toquepala Mine,Peru,copper,copper;molybdenum;silver;rhenium;gold;zinc,open_pit,manual,High,inside,0.0,47.1618,47.1618,1,M03380,-70.612523,-17.254089
+ICMM01048,Cuajone Mine,Peru,copper,copper;molybdenum;gold;silver;zinc,open_pit,manual,High,inside,0.0,40.7704,40.7704,1,M03374,-70.706618,-17.04097
+ICMM00998,Cerro Verde,Peru,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,40.4448,40.4448,1,M03421,-71.591197,-16.531444
+ICMM00538,Antamina,Peru,copper,copper;zinc;silver;molybdenum;lead,open_pit,manual,High,inside,0.0,39.0686,39.0686,1,M03977,-77.055103,-9.54843
+ICMM13619,Las Bambas,Peru,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,38.5178,38.5178,1,M03701,-72.283245,-14.09415
+ICMM13130,Shougang Marcona Mine,Peru,iron ore,iron ore;copper;gold,surface,zenodo_tile_label,High,inside,0.0,35.0462,35.0462,1,M03502,-75.115681,-15.205931
+ICMM00681,Morococha,Peru,silver,silver;lead;tungsten;copper;zinc,underground,manual,High,nearest,2321.0,29.3976,0.0,2,M03834,-76.177567,-11.5819
+ICMM00686,Toromocho,Peru,copper,copper;molybdenum;lead;gold;silver;zinc,open_pit,manual,High,inside,0.0,29.3976,29.3976,2,M03834,-76.142086,-11.60394
+ICMM01798,Tintaya,Peru,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,29.0141,29.0141,1,M03660,-71.315728,-14.877722
+ICMM00848,Constancia,Peru,copper,copper;molybdenum;silver;gold,open_pit,manual,High,nearest,220.0,23.2569,23.2569,1,M03690,-71.758418,-14.454841
+ICMM00638,El Brocal (Colquijirca),Peru,zinc,zinc;lead;silver;copper;gold,open_pit+underground,manual,High,inside,0.0,17.2076,5.4826,2,M03865,-76.267047,-10.753282
+ICMM08495,Marcapunta,Peru,copper,copper;gold;silver,underground,manual,Moderate,inside,0.0,17.2076,11.7251,2,M03865,-76.294377,-10.794217
+ICMM13370,Caylloma,Peru,silver,silver;gold;lead;zinc;copper,surface,zenodo_tile_label,High,inside,0.0,16.8757,16.8757,1,M03548,-71.861789,-15.204368
+ICMM13299,Antapaccay,Peru,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,16.0454,16.0454,1,M03662,-71.383065,-14.961631
+ICMM00406,Carolina Gubbins,Peru,copper,copper;gold;arsenic;lead;silver,surface,zenodo_tile_label,Moderate,inside,0.0,13.3045,6.8607,2,M04399,-78.66681,-6.721665
+ICMM01776,La Virgen,Peru,silver,silver;copper;gold,surface,zenodo_tile_label,Moderate,inside,0.0,12.7697,12.7697,1,M04176,-78.075774,-7.978173
+ICMM00632,Cerro de Pasco,Peru,silver,silver;zinc;lead;copper;gold;tin,open_pit+underground,manual,High,inside,0.0,11.8513,11.8513,1,M04006,-76.257362,-10.672525
+ICMM00524,Pierina,Peru,gold,gold;silver;lead;copper,unknown,,High,inside,0.0,9.4952,9.4952,1,M03978,-77.584711,-9.463057
+ICMM08438,La Arena,Peru,gold,gold;copper;molybdenum;silver,surface,zenodo_tile_label,High,inside,0.0,8.3503,8.3503,1,M04156,-78.133178,-7.892867
+ICMM01055,"Quellaveco, Yacimiento",Peru,copper,copper;molybdenum;silver,open_pit,manual,High,inside,0.0,7.4754,7.4754,1,M33546,-70.616457,-17.101027
+ICMM00410,Cerro Corona,Peru,gold,gold;copper;lead;silver;zinc,open_pit,manual,High,inside,0.0,6.9903,6.9903,1,M04202,-78.616788,-6.757831
+ICMM00649,Huaron Mines,Peru,silver,silver;zinc;lead;copper;antimony,unknown,,Very Low,nearest,1927.0,6.1063,0.0,3,M03856,-76.4497,-11.0146
+ICMM00652,Chungar,Peru,zinc,zinc;lead;copper;silver;gold,unknown,,High,inside,0.0,6.1063,2.6307,3,M03856,-76.417284,-11.036576
+ICMM01771,Huaron,Peru,silver,silver;zinc;lead;copper;gold,unknown,,High,inside,0.0,6.1063,3.4756,3,M03856,-76.408384,-11.00502
+ICMM01774,Justa,Peru,copper,copper;gold,open_pit,manual,High,inside,0.0,5.911,5.911,1,M03508,-75.066491,-15.153929
+ICMM08442,La Zanja,Peru,copper,copper;gold;molybdenum;silver,unknown,,High,inside,0.0,5.9068,5.9068,1,M04193,-78.891377,-6.832427
+ICMM14613,Chapi,Peru,copper,copper;gold;silver,open_pit,manual,Moderate,inside,0.0,5.5877,5.5877,1,M03367,-71.35529,-16.7773
+ICMM01790,San Genaro,Peru,silver,silver;lead;copper;gold;zinc,unknown,,Moderate,inside,0.0,5.1964,5.1964,2,M03741,-75.149473,-13.193869
+ICMM00698,Carahuacra,Peru,copper,copper;cobalt;gold;lead;nickel;silver;zinc,surface,zenodo_tile_label,Moderate,inside,0.0,4.6819,4.6819,1,M03826,-76.067633,-11.72738
+ICMM01772,Iscaycruz,Peru,zinc,zinc;lead;silver;copper,unknown,,Moderate,nearest,197.0,4.4149,4.4149,1,M03861,-76.728587,-10.779948
+ICMM07917,Alpamarca,Peru,silver,silver;lead;gold;antimony;zinc;copper,unknown,,High,inside,0.0,4.2395,4.2395,1,M03838,-76.45552,-11.223462
+ICMM00740,Raul Mine,Peru,copper,copper;gold;lead;silver;zinc,underground,manual,Moderate,nearest,9.0,4.0929,4.0929,1,M03767,-76.58779,-12.696181
+ICMM00695,Carahuacra Mine,Peru,zinc,zinc;lead;silver;copper,surface,zenodo_tile_label,High,inside,0.0,3.694,3.694,1,M03829,-76.088568,-11.680963
+ICMM01787,Quicay,Peru,gold,gold;silver;copper,unknown,,Moderate,inside,0.0,2.9898,2.9898,1,M03875,-76.387017,-10.695841
+ICMM01766,Cobriza,Peru,copper,copper;antimony;zinc;silver,underground,manual,Moderate,inside,0.0,2.945,2.945,1,M03813,-74.372409,-12.58955
+ICMM08300,Haquira,Peru,copper,copper;gold;molybdenum;silver,project,manual,Moderate,nearest,81.0,2.8104,2.8104,1,M38278,-72.357954,-14.165359
+ICMM13294,Andaychagua,Peru,zinc,zinc;lead;silver;copper,surface,zenodo_tile_label,High,inside,0.0,2.6772,2.6772,1,M03822,-76.013998,-11.743036
+ICMM00832,Quenamari Copper 88,Peru,copper,copper;lead;silver;tin;zinc,unknown,,Moderate,nearest,113.0,2.6687,2.6687,1,M03719,-70.330925,-14.229878
+ICMM00628,El Porvenir,Peru,zinc,zinc;lead;copper;silver;gold,unknown,,High,nearest,92.0,2.5387,2.5387,1,M03904,-76.209622,-10.599901
+ICMM08961,Zafranal,Peru,copper,copper;gold,project,manual,Moderate,inside,0.0,2.3471,2.3471,1,M38204,-72.246918,-16.045942
+ICMM01764,Cerro Lindo,Peru,lead,lead;zinc;copper;silver;gold,underground,manual,High,inside,0.0,2.3276,2.3276,1,M03749,-75.989439,-13.078132
+ICMM00453,Luz Angelica Coco Mine,Peru,gold,gold;copper;lead;silver;zinc,unknown,,High,nearest,273.0,2.0676,2.0676,1,M04146,-78.318633,-8.006874
+ICMM01759,Arcata,Peru,silver,silver;zinc;lead;gold;antimony;copper,unknown,,High,inside,0.0,1.938,1.938,1,M03649,-72.310539,-14.979417
+ICMM00720,Yauricocha,Peru,silver,silver;copper;lead;zinc;gold;arsenic;iron ore,unknown,,High,inside,0.0,1.8342,1.8342,1,M03783,-75.720668,-12.313514
+ICMM00713,Gran Bretana Mine,Peru,copper,copper;gold;lead;manganese;silver;zinc,unknown,,Moderate,nearest,198.0,1.8014,1.8014,1,M03798,-75.666144,-12.062405
+ICMM00662,Santander,Peru,zinc,zinc;lead;copper,unknown,,High,nearest,536.0,1.7416,1.7416,1,M03837,-76.51065,-11.19465
+ICMM08875,Tia Maria,Peru,copper,copper,project,manual,Moderate,inside,0.0,1.3247,1.3247,1,M03353,-71.768504,-17.013459
+ICMM00637,Isquez Lead Zinc Mine 9,Peru,lead,lead;zinc;silver;copper,unknown,,High,nearest,25.0,1.3212,1.3212,1,M03867,-76.863239,-10.685235
+ICMM00568,Huanzala,Peru,zinc,zinc;lead;copper;silver;gold,unknown,,High,nearest,490.0,1.3002,1.3002,2,M03959,-76.994701,-9.873557
+ICMM00683,Ticlio,Peru,zinc,zinc;lead;copper;silver,unknown,,High,nearest,2067.0,1.0738,1.0738,1,M03827,-76.210172,-11.598385
+ICMM00557,Huancapeti,Peru,lead,lead;silver;gold;copper;antimony;zinc,unknown,,High,nearest,849.0,1.0547,1.0547,1,M33584,-77.537526,-9.764975
+ICMM00756,Julcani,Peru,silver,silver;lead;copper;gold;antimony;zinc,unknown,,High,inside,0.0,1.0433,1.0433,1,M03774,-74.805694,-12.949677
+ICMM08720,Recuperada,Peru,silver,silver;gold;lead;copper;zinc,unknown,,High,inside,0.0,1.0131,1.0131,1,M03744,-74.949799,-13.094582
+ICMM01780,Orcopampa,Peru,gold,gold;silver;copper,unknown,,High,inside,0.0,0.9763,0.9763,1,M03540,-72.334133,-15.276449
+ICMM00676,Maria Teresa,Peru,silver,silver;lead;zinc;barium;copper,unknown,,Moderate,nearest,189.0,0.9377,0.9377,1,M33847,-77.269404,-11.492213
+ICMM00623,Milpo Mine,Peru,zinc,zinc;lead;silver;copper,unknown,,Very Low,nearest,388.0,0.6931,0.6931,1,M03899,-76.187482,-10.568852
+ICMM00823,Catalina Huanca Mina,Peru,zinc,zinc;lead;silver;copper,unknown,,High,nearest,81.0,0.6175,0.6175,1,M03699,-73.935942,-13.981447
+ICMM17388,Pasto Bueno,Peru,copper,copper;lead;silver;tungsten;zinc,unknown,,Moderate,inside,0.0,0.583,0.583,1,M04096,-77.85451,-8.141
+ICMM00604,Unidad Minera Caudalosa,Peru,silver,silver;lead;copper;zinc,unknown,,Moderate,nearest,274.0,0.5405,0.5405,1,M03912,-76.278453,-10.442953
+ICMM01768,Contonga,Peru,lead,lead;silver;copper;zinc,surface,zenodo_tile_label,Moderate,nearest,368.0,0.5259,0.5259,1,M03971,-77.075621,-9.499409
+ICMM00692,Yauliyacu,Peru,zinc,zinc;lead;silver;copper;tungsten;arsenic,unknown,,High,nearest,1323.0,0.3914,0.3914,1,M03828,-76.231368,-11.666926
+ICMM01773,Ishihuinca,Peru,gold,gold;copper;silver;lead;zinc,unknown,,Moderate,nearest,721.0,0.3569,0.3569,1,M03468,-73.331361,-15.79049
+ICMM00445,Pataz Gold 54,Peru,gold,gold;copper,unknown,,Very Low,nearest,911.0,0.1816,0.1816,1,M04161,-77.5998,-7.77582
+ICMM00442,Sayapullo,Peru,copper,copper;silver;gold;lead;antimony;zinc,unknown,,Moderate,nearest,352.0,0.1365,0.1365,1,M33726,-78.472373,-7.599297
+ICMM01791,San Juan de Arequipa,Peru,gold,gold;copper;molybdenum;silver,unknown,,Moderate,inside,0.0,0.1255,0.1255,1,M03454,-73.049959,-15.900222
+ICMM08115,Conga,Peru,copper,copper;gold;silver,project,manual,High,nearest,330.0,0.0699,0.0699,1,M38237,-78.378886,-6.92143
+ICMM00705,Pacococha,Peru,lead,lead;silver;gold;copper;cadmium,unknown,,Very Low,nearest,895.0,0.0034,0.0034,1,M38288,-76.244133,-11.842333
+ICMM00459,"Tamboras Y Mundo Nuevo, Minas",Peru,copper,copper;gold;lead;molybdenum;silver;tungsten;zinc,unknown,,Moderate,unmatched,,,,0,,-77.969845,-8.05067
+ICMM00527,"La Esperanza De Huaraz, Mina",Peru,silver,silver;copper,unknown,,Very Low,unmatched,,,,0,,-77.8831,-9.49797
+ICMM00631,Raura,Peru,zinc,zinc;lead;silver;copper,unknown,,High,unmatched,,,,0,,-76.733,-10.6479
+ICMM00633,Condorsenga Lead Zinc Mine 4,Peru,lead,lead;zinc;silver;copper,unknown,,Moderate,unmatched,,,,0,,-77.00053,-10.66043
+ICMM00656,Santander,Peru,zinc,zinc;lead;copper;silver;gold,unknown,,Moderate,unmatched,,,,0,,-76.532382,-11.122386
+ICMM00780,Chavin Lead Zinc Mine 34,Peru,zinc,zinc;copper,unknown,,Very Low,unmatched,,,,0,,-75.6497,-13.1895
+ICMM00896,Condoroma Lead Zinc Mine 23,Peru,zinc,zinc;copper,unknown,,Very Low,unmatched,,,,0,,-71.1663,-15.2477
+ICMM00934,Madrigal,Peru,copper,copper;silver,unknown,,Very Low,unmatched,,,,0,,-71.3663,-15.5811
+ICMM00938,Tacaza,Peru,copper,copper;lead;zinc,unknown,,Moderate,unmatched,,,,0,,-70.728965,-15.611385
+ICMM00949,San Rafael,Peru,copper,copper,unknown,,Very Low,unmatched,,,,0,,-70.2163,-15.7144
+ICMM01754,Acari,Peru,copper,copper;gold,unknown,,Moderate,unmatched,,,,0,,-74.581338,-15.307193

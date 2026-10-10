@@ -1,0 +1,384 @@
+primary_commodity,country,n_matched
+antimony,Australia,1
+barium,United States,4
+barium,Canada,2
+barium,Chile,1
+barium,Italy,1
+barium,Mexico,1
+bauxite,Australia,4
+bauxite,Guinea,4
+bauxite,Brazil,3
+bauxite,Jamaica,3
+bauxite,China,2
+bauxite,India,2
+bauxite,Russia,2
+bauxite,France,1
+bauxite,Ghana,1
+bauxite,Guyana,1
+bauxite,Indonesia,1
+bauxite,Saudi Arabia,1
+bauxite,Suriname,1
+boron,Turkey,2
+boron,United States,1
+chromium,South Africa,16
+chromium,Albania,6
+chromium,India,6
+chromium,Turkey,4
+chromium,Zimbabwe,4
+chromium,Brazil,3
+chromium,China,2
+chromium,Australia,1
+chromium,Chile,1
+chromium,Finland,1
+chromium,Kazakhstan,1
+chromium,New Caledonia,1
+chromium,Philippines,1
+coal,China,646
+coal,United States,619
+coal,Indonesia,230
+coal,India,152
+coal,Russia,145
+coal,Australia,123
+coal,South Africa,94
+coal,Ukraine,49
+coal,Poland,31
+coal,Canada,28
+coal,Kazakhstan,17
+coal,United Kingdom,17
+coal,New Zealand,16
+coal,Germany,15
+coal,Turkey,13
+coal,Mongolia,11
+coal,Romania,10
+coal,Serbia,10
+coal,Vietnam,10
+coal,Colombia,9
+coal,Czechia,9
+coal,Greece,5
+coal,Spain,5
+coal,Brazil,4
+coal,Bulgaria,4
+coal,Hungary,4
+coal,Mozambique,4
+coal,Zimbabwe,4
+coal,Bosnia and Herzegovina,3
+coal,Iran,3
+coal,North Macedonia,3
+coal,Slovakia,3
+coal,Tajikistan,3
+coal,Mexico,2
+coal,Philippines,2
+coal,South Korea,2
+coal,Uzbekistan,2
+coal,Zambia,2
+coal,Argentina,1
+coal,Bangladesh,1
+coal,Botswana,1
+coal,Georgia,1
+coal,Kosovo,1
+coal,Kyrgyzstan,1
+coal,Laos,1
+coal,Montenegro,1
+coal,Nigeria,1
+coal,Slovenia,1
+coal,Thailand,1
+coal,Venezuela,1
+cobalt,Democratic Republic of the Congo,1
+cobalt,Finland,1
+cobalt,Morocco,1
+cobalt,New Caledonia,1
+cobalt,United States,1
+copper,United States,64
+copper,Australia,59
+copper,Chile,57
+copper,Canada,30
+copper,China,30
+copper,Democratic Republic of the Congo,24
+copper,Peru,23
+copper,Kazakhstan,21
+copper,Mexico,20
+copper,Russia,19
+copper,Zambia,15
+copper,South Africa,11
+copper,Philippines,8
+copper,Brazil,6
+copper,Finland,6
+copper,Spain,5
+copper,Sweden,5
+copper,Armenia,4
+copper,Indonesia,4
+copper,India,3
+copper,Iran,3
+copper,Portugal,3
+copper,Serbia,3
+copper,Turkey,3
+copper,Albania,2
+copper,Bulgaria,2
+copper,Laos,2
+copper,Mongolia,2
+copper,Morocco,2
+copper,Namibia,2
+copper,Panama,2
+copper,Poland,2
+copper,Romania,2
+copper,Saudi Arabia,2
+copper,Tajikistan,2
+copper,Uzbekistan,2
+copper,Zimbabwe,2
+copper,Argentina,1
+copper,Bolivia,1
+copper,Botswana,1
+copper,Cuba,1
+copper,Ecuador,1
+copper,Eritrea,1
+copper,Japan,1
+copper,Malaysia,1
+copper,Mauritania,1
+copper,Myanmar,1
+copper,North Macedonia,1
+copper,Norway,1
+copper,Pakistan,1
+copper,Papua New Guinea,1
+copper,Slovakia,1
+copper,Ukraine,1
+diamond,Australia,2
+diamond,Canada,2
+diamond,Zimbabwe,1
+gold,Australia,161
+gold,United States,117
+gold,South Africa,55
+gold,Canada,39
+gold,Brazil,32
+gold,Peru,30
+gold,Mexico,27
+gold,Russia,24
+gold,Chile,17
+gold,China,17
+gold,Ghana,13
+gold,Zimbabwe,11
+gold,Argentina,10
+gold,Mali,10
+gold,Colombia,8
+gold,Indonesia,8
+gold,Venezuela,7
+gold,Burkina Faso,6
+gold,Tanzania,6
+gold,Turkey,5
+gold,Côte d'Ivoire,4
+gold,Kazakhstan,4
+gold,Kyrgyzstan,4
+gold,Nicaragua,4
+gold,Suriname,4
+gold,Guyana,3
+gold,Honduras,3
+gold,New Zealand,3
+gold,Papua New Guinea,3
+gold,Philippines,3
+gold,Bulgaria,2
+gold,Ecuador,2
+gold,French Guiana,2
+gold,Greece,2
+gold,Guatemala,2
+gold,Guinea,2
+gold,Japan,2
+gold,Mongolia,2
+gold,Namibia,2
+gold,Uzbekistan,2
+gold,Armenia,1
+gold,Bolivia,1
+gold,Cambodia,1
+gold,Democratic Republic of the Congo,1
+gold,Dominican Republic,1
+gold,Egypt,1
+gold,Fiji,1
+gold,Finland,1
+gold,France,1
+gold,Laos,1
+gold,Liberia,1
+gold,Malaysia,1
+gold,Mauritania,1
+gold,Saudi Arabia,1
+gold,Senegal,1
+gold,Spain,1
+gold,Sweden,1
+iron ore,China,71
+iron ore,India,62
+iron ore,Australia,51
+iron ore,Brazil,42
+iron ore,Russia,22
+iron ore,Ukraine,15
+iron ore,South Africa,10
+iron ore,United States,9
+iron ore,Iran,8
+iron ore,Turkey,8
+iron ore,Mexico,6
+iron ore,Mongolia,6
+iron ore,Kazakhstan,5
+iron ore,Sweden,5
+iron ore,Venezuela,5
+iron ore,Canada,4
+iron ore,Chile,4
+iron ore,Mauritania,4
+iron ore,Norway,3
+iron ore,Liberia,2
+iron ore,New Zealand,2
+iron ore,Peru,2
+iron ore,Sierra Leone,2
+iron ore,Vietnam,2
+iron ore,Zimbabwe,2
+iron ore,Algeria,1
+iron ore,Austria,1
+iron ore,Azerbaijan,1
+iron ore,Bosnia and Herzegovina,1
+iron ore,Cambodia,1
+iron ore,Colombia,1
+iron ore,Indonesia,1
+iron ore,Malaysia,1
+iron ore,Myanmar,1
+iron ore,North Korea,1
+iron ore,Philippines,1
+iron ore,Spain,1
+iron ore,Thailand,1
+iron ore,Tunisia,1
+lead,United States,10
+lead,Australia,8
+lead,Peru,5
+lead,China,3
+lead,Mexico,3
+lead,Germany,2
+lead,Iran,2
+lead,Russia,2
+lead,Bolivia,1
+lead,Bosnia and Herzegovina,1
+lead,Bulgaria,1
+lead,Canada,1
+lead,India,1
+lead,Kazakhstan,1
+lead,Kosovo,1
+lead,Morocco,1
+lead,Philippines,1
+lead,Republic of the Congo,1
+lead,Serbia,1
+lead,Sweden,1
+lithium,Australia,8
+lithium,Argentina,4
+lithium,China,3
+lithium,United States,3
+lithium,Brazil,2
+lithium,Canada,2
+lithium,Chile,1
+lithium,Ghana,1
+lithium,Namibia,1
+lithium,Portugal,1
+lithium,Zimbabwe,1
+manganese,Brazil,3
+manganese,South Africa,2
+manganese,Australia,1
+mineral sands,Australia,1
+mineral sands,Sierra Leone,1
+mineral sands,South Africa,1
+molybdenum,United States,2
+molybdenum,Uzbekistan,1
+nickel,Australia,18
+nickel,Canada,14
+nickel,Brazil,7
+nickel,Indonesia,6
+nickel,New Caledonia,5
+nickel,Philippines,5
+nickel,Zimbabwe,4
+nickel,Cuba,3
+nickel,Botswana,2
+nickel,Finland,2
+nickel,Russia,2
+nickel,South Africa,2
+nickel,United States,2
+nickel,Zambia,2
+nickel,Albania,1
+nickel,Colombia,1
+nickel,Dominican Republic,1
+nickel,Greece,1
+nickel,Guatemala,1
+nickel,Madagascar,1
+nickel,Spain,1
+nickel,Venezuela,1
+niobium,Brazil,1
+palladium,Canada,1
+phosphate,Brazil,4
+phosphate,Morocco,1
+phosphate,Peru,1
+phosphate,United States,1
+platinum,South Africa,20
+platinum,Zimbabwe,4
+platinum,New Zealand,2
+platinum,United States,2
+platinum,Russia,1
+potash,Brazil,1
+rare earths,United States,1
+silver,Mexico,22
+silver,Peru,19
+silver,United States,17
+silver,Bolivia,6
+silver,Canada,4
+silver,Argentina,3
+silver,Morocco,2
+silver,Australia,1
+silver,Chile,1
+silver,Russia,1
+silver,Turkey,1
+tin,Bolivia,14
+tin,Brazil,10
+tin,Australia,4
+tin,South Africa,3
+tin,Indonesia,2
+tin,Malaysia,2
+tin,Thailand,2
+tin,Egypt,1
+tin,Myanmar,1
+tin,Namibia,1
+tin,Peru,1
+tin,Russia,1
+tin,United Kingdom,1
+tin,United States,1
+titanium,Australia,1
+titanium,South Africa,1
+tungsten,Australia,5
+tungsten,China,4
+tungsten,Brazil,2
+tungsten,Russia,2
+tungsten,Austria,1
+tungsten,Spain,1
+uranium,United States,3
+uranium,Australia,1
+vanadium,Russia,1
+zinc,China,22
+zinc,Australia,14
+zinc,Peru,14
+zinc,Mexico,9
+zinc,United States,9
+zinc,Canada,7
+zinc,Italy,5
+zinc,Bolivia,4
+zinc,India,4
+zinc,Ireland,3
+zinc,Kazakhstan,3
+zinc,Sweden,3
+zinc,Brazil,2
+zinc,Germany,2
+zinc,South Africa,2
+zinc,Argentina,1
+zinc,Burkina Faso,1
+zinc,Cuba,1
+zinc,Democratic Republic of the Congo,1
+zinc,France,1
+zinc,Greece,1
+zinc,Honduras,1
+zinc,Iran,1
+zinc,Japan,1
+zinc,Mongolia,1
+zinc,Namibia,1
+zinc,North Macedonia,1
+zinc,Spain,1
+zinc,Turkey,1
+zinc,Zambia,1
+zinc,Zimbabwe,1
+zircon,Australia,1

@@ -1,0 +1,43 @@
+icmm_id,mine_name,country,primary_commodity,all_commodities,mine_type,mine_type_source,icmm_confidence,match_method,match_dist_m,footprint_km2,own_footprint_km2,n_icmm_on_cluster,cluster_id,icmm_lon,icmm_lat,facility_status
+ICMM01433,Escondida,Chile,copper,copper;gold;silver,open_pit,manual,High,inside,0.0,230.9661,137.2471,2,M02257,-69.078969,-24.261039,
+ICMM08633,Spence,Chile,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,286.3319,130.4351,3,M44072,-69.267538,-22.791215,
+ICMM01397,Sierra Gorda,Chile,copper,copper;molybdenum;lead;gold;silver,open_pit,manual,High,inside,0.0,286.3319,99.7925,3,M44072,-69.341182,-22.851564,
+ICMM08962,Zaldivar,Chile,copper,copper;gold;silver,open_pit,manual,High,inside,0.0,230.9661,93.719,2,M02257,-69.062812,-24.216738,
+ICMM01403,Centinela,Chile,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,88.7217,88.7217,1,M02628,-69.067518,-22.958744,
+ICMM13301,Antucoya,Chile,copper,copper,open_pit,manual,High,inside,0.0,858.2444,79.5744,2,M02544,-69.864645,-22.61901,
+ICMM01369,Radomiro Tomic,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,178.1186,52.6784,3,M02717,-68.888389,-22.225825,
+ICMM08232,Gabriela Mistral,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,50.6199,50.6199,1,M02346,-68.810337,-23.414607,
+ICMM08537,Ministro Hales,Chile,copper,copper;gold;silver;molybdenum;calcine,open_pit,manual,High,inside,0.0,178.1186,46.8452,3,M02717,-68.915991,-22.382497,
+ICMM01705,Los Bronces,Chile,copper,copper;molybdenum;gold;silver,open_pit,manual,High,inside,0.0,42.814,40.8185,2,M01908,-70.275266,-33.150786,
+ICMM01478,Mantoverde,Chile,copper,copper;cobalt;gold,open_pit,manual,High,inside,0.0,35.2431,35.2431,1,M02085,-70.320067,-26.556084,
+ICMM01296,Collahausi,Chile,copper,copper;molybdenum;silver;gold,open_pit,manual,High,inside,0.0,32.4499,32.4499,1,M03037,-68.712604,-20.980094,
+ICMM01420,Mantos Blancos,Chile,copper,copper;silver,open_pit,manual,High,inside,0.0,30.506,30.506,1,M02352,-70.065801,-23.434027,
+ICMM01469,Salvador,Chile,copper,copper;gold;molybdenum;silver,open_pit+underground,manual,High,inside,0.0,29.1617,29.1617,1,M02099,-69.569319,-26.249213,Rajo Inca open pit from 2023
+ICMM01264,Cerro Colorado,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,25.1786,25.1786,1,M03050,-69.260074,-20.047673,operations wound down 2023-24 (care and maintenance)
+ICMM01541,Punta del Cobre,Chile,copper,copper;gold;iron ore;silver,open_pit+underground,manual,High,nearest,190.0,24.6757,24.6757,1,M02065,-70.270886,-27.494015,cluster includes Candelaria open pit
+ICMM01419,Lomas Bayas,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,24.0014,24.0014,1,M02354,-69.518534,-23.43273,
+ICMM01656,Carmen de Andacollo,Chile,copper,copper;gold;silver,open_pit,manual,High,inside,0.0,22.3593,22.3593,1,M01986,-71.093456,-30.244295,
+ICMM01683,Los Pelambres,Chile,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,20.1716,20.1716,1,M01979,-70.492445,-31.715802,
+ICMM01301,Quebrada Blanca,Chile,copper,copper;molybdenum;rhenium;silver,open_pit,manual,High,inside,0.0,18.035,18.035,1,M03024,-68.800164,-21.002082,QB2 expansion from 2023
+ICMM13368,Caserones,Chile,copper,copper;molybdenum,open_pit,manual,High,inside,0.0,17.1734,17.1734,1,M02042,-69.539392,-28.1758,
+ICMM01695,Soldado,Chile,copper,copper;silver,open_pit,manual,High,inside,0.0,15.6977,15.6977,1,M01920,-71.111557,-32.647915,
+ICMM01385,Michilla,Chile,copper,copper,open_pit+underground,manual,High,inside,0.0,14.4311,14.4311,1,M02499,-70.172487,-22.677887,closed 2015
+ICMM08182,El Abra,Chile,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,11.9387,11.9387,1,M02772,-68.832609,-21.92029,
+ICMM01465,Franke,Chile,copper,copper;silver,open_pit,manual,High,inside,0.0,9.7942,9.7942,1,M02111,-69.865346,-25.833726,
+ICMM07932,Andina,Chile,copper,copper;molybdenum;silver,open_pit+underground,manual,Moderate,inside,0.0,42.814,1.9955,2,M01908,-70.254899,-33.09202,
+ICMM01765,Yanacocha,Peru,gold,gold;silver;copper,open_pit,manual,High,inside,0.0,61.0516,61.0516,1,M04184,-78.511181,-6.976986,
+ICMM01075,Toquepala Mine,Peru,copper,copper;molybdenum;silver;rhenium;gold;zinc,open_pit,manual,High,inside,0.0,47.1618,47.1618,1,M03380,-70.612523,-17.254089,
+ICMM01048,Cuajone Mine,Peru,copper,copper;molybdenum;gold;silver;zinc,open_pit,manual,High,inside,0.0,40.7704,40.7704,1,M03374,-70.706618,-17.04097,
+ICMM00998,Cerro Verde,Peru,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,40.4448,40.4448,1,M03421,-71.591197,-16.531444,
+ICMM00538,Antamina,Peru,copper,copper;zinc;silver;molybdenum;lead,open_pit,manual,High,inside,0.0,39.0686,39.0686,1,M03977,-77.055103,-9.54843,
+ICMM13619,Las Bambas,Peru,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,38.5178,38.5178,1,M03701,-72.283245,-14.09415,
+ICMM00686,Toromocho,Peru,copper,copper;molybdenum;lead;gold;silver;zinc,open_pit,manual,High,inside,0.0,29.3976,29.3976,2,M03834,-76.142086,-11.60394,
+ICMM01798,Tintaya,Peru,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,29.0141,29.0141,1,M03660,-71.315728,-14.877722,pit largely exhausted; Antapaccay replaced it (2012)
+ICMM00848,Constancia,Peru,copper,copper;molybdenum;silver;gold,open_pit,manual,High,nearest,220.0,23.2569,23.2569,1,M03690,-71.758418,-14.454841,
+ICMM13299,Antapaccay,Peru,copper,copper;gold;molybdenum;silver,open_pit,manual,High,inside,0.0,16.0454,16.0454,1,M03662,-71.383065,-14.961631,
+ICMM00632,Cerro de Pasco,Peru,silver,silver;zinc;lead;copper;gold;tin,open_pit+underground,manual,High,inside,0.0,11.8513,11.8513,1,M04006,-76.257362,-10.672525,
+ICMM01055,"Quellaveco, Yacimiento",Peru,copper,copper;molybdenum;silver,open_pit,manual,High,inside,0.0,7.4754,7.4754,1,M33546,-70.616457,-17.101027,production from 2022; 2019 polygon is pre-production
+ICMM00410,Cerro Corona,Peru,gold,gold;copper;lead;silver;zinc,open_pit,manual,High,inside,0.0,6.9903,6.9903,1,M04202,-78.616788,-6.757831,
+ICMM01774,Justa,Peru,copper,copper;gold,open_pit,manual,High,inside,0.0,5.911,5.911,1,M03508,-75.066491,-15.153929,production from 2021; 2019 polygon is construction-stage
+ICMM14613,Chapi,Peru,copper,copper;gold;silver,open_pit,manual,Moderate,inside,0.0,5.5877,5.5877,1,M03367,-71.35529,-16.7773,
+ICMM00638,El Brocal (Colquijirca),Peru,zinc,zinc;lead;silver;copper;gold,open_pit+underground,manual,High,inside,0.0,17.2076,5.4826,2,M03865,-76.267047,-10.753282,

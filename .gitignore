@@ -38,3 +38,4 @@ Thumbs.db
 # large intermediate data written by research agents
 soy_research/satellite/data/pixels.csv
 *.npz
+satellite_poc/mine_inventory/mine_inventory.gpkg

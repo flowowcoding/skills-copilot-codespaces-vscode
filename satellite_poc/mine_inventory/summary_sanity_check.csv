@@ -1,0 +1,16 @@
+reference,ref_lon,ref_lat,nearest_icmm,icmm_id,icmm_dist_km,match_method,footprint_km2,n_icmm_on_cluster,ref_point_inside_footprint,primary_commodity
+Escondida,-69.07,-24.27,Escondida,ICMM01433,1.35,inside,230.9661,2,True,copper
+Chuquicamata,-68.9,-22.29,Chuquicamata,ICMM01372,0.82,inside,178.1186,3,True,copper
+Bingham Canyon,-112.15,40.52,Bingham Canyon,ICMM04268,0.36,inside,44.2675,2,True,copper
+Grasberg,137.11,-4.05,Grasberg,ICMM08280,0.83,inside,22.187,1,True,copper
+Greenbushes,116.06,-33.86,Greenbushes Mine,ICMM06436,0.42,inside,16.3404,1,True,lithium
+Cobre Panama,-80.65,8.84,Cobre Panama,ICMM08107,0.71,inside,7.7834,2,True,copper
+Collahuasi,-68.71,-20.97,Collahausi,ICMM01296,1.15,inside,32.4499,1,True,copper
+Cerro Verde,-71.59,-16.53,Cerro Verde,ICMM00998,0.2,inside,40.4448,1,True,copper
+Antamina,-77.05,-9.54,Antamina,ICMM00538,1.09,inside,39.0686,1,True,copper
+Los Pelambres,-70.49,-31.72,Los Pelambres,ICMM01683,0.52,inside,20.1716,1,True,copper
+Toquepala,-70.61,-17.25,Toquepala Mine,ICMM01075,0.53,inside,47.1618,1,True,copper
+Las Bambas,-72.33,-14.07,Las Bambas,ICMM13619,5.72,inside,38.5178,1,True,copper
+Pilgangoora,118.89,-21.03,Altura,ICMM06706,2.8,nearest,0.1789,1,False,lithium
+Salar de Atacama (SQM),-68.4,-23.55,Salar de Atacama,ICMM15667,0.84,inside,1353.8468,1,True,lithium
+Oyu Tolgoi,106.86,43.0,Oyu Tolgoi,ICMM13722,3.25,inside,28.6447,1,True,copper

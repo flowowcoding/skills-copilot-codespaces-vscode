@@ -1,0 +1,79 @@
+icmm_id,mine_name,country,primary_commodity,all_commodities,mine_type,mine_type_source,icmm_confidence,match_method,match_dist_m,footprint_km2,own_footprint_km2,n_icmm_on_cluster,cluster_id,icmm_lon,icmm_lat,lithium_deposit_type,facility_status,country_mismatch
+ICMM15709,Cauchari Olaroz,Argentina,lithium,lithium;potash,brine,manual,High,inside,0.0,386.0824,168.4671,2,M02389,-66.64726,-23.42685,brine,,False
+ICMM13680,Muerto North,Argentina,lithium,lithium;potash,brine,manual,High,nearest,210.0,10.0787,10.0787,1,M02156,-67.101989,-25.442025,brine,,False
+ICMM13730,Pastos Grandes,Argentina,lithium,lithium,brine,manual,High,nearest,1170.0,0.0701,0.0701,1,M20805,-66.700783,-24.572551,brine,project,False
+ICMM13789,Sal de Vida,Argentina,lithium,lithium;potash,brine,manual,High,unmatched,,,,0,,-66.99102,-25.413716,brine,project/construction,False
+ICMM01454,Salar Ratones,Argentina,lithium,lithium,brine,manual,Very Low,unmatched,,,,0,,-66.7495,-25.1642,brine,production from 2024,False
+ICMM13791,Salar de Olaroz,Argentina,lithium,lithium;potash,brine,manual,High,inside,0.0,386.0824,217.6154,2,M02389,-66.684512,-23.469006,brine,,False
+ICMM01224,Salar De Coipasa,Bolivia,lithium,lithium,brine,manual,Very Low,unmatched,,,,0,,-68.1328,-19.3643,brine,project,False
+ICMM01262,Salar De Uyuni,Bolivia,lithium,lithium,brine,manual,Very Low,unmatched,,,,0,,-67.9995,-19.9976,brine,,False
+ICMM13644,Maricunga,Chile,lithium,lithium,brine,manual,High,unmatched,,,,0,,-69.075204,-26.747525,brine,project,False
+ICMM15667,Salar de Atacama,Chile,lithium,lithium;potassium sulfate;potash;magnesium,brine,manual,High,inside,0.0,1353.8468,1353.8468,1,M02437,-68.392085,-23.548055,brine,,False
+ICMM13419,Dongtai Jinaier,China,lithium,lithium,brine,manual,High,inside,0.0,327.5668,327.5668,1,M28987,94.079692,37.442342,brine,,False
+ICMM13765,Qinghai Misc Brines,China,lithium,lithium,brine,manual,High,nearest,411.0,145.1198,145.1198,1,M07934,83.978,31.38,brine,coordinates fall at Zabuye salt lake (Tibet),False
+ICMM13910,Xitai Jinaier,China,lithium,lithium,brine,manual,High,inside,0.0,316.3443,316.3443,1,M44747,93.527363,37.689055,brine,,False
+ICMM02543,Cadiz Dry Lake,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-115.388,34.2872,brine,,False
+ICMM03197,Foote Lithium Brine Operation.,United States,lithium,lithium,brine,manual,Moderate,inside,0.0,35.7725,35.7725,2,M16142,-117.58477,37.767013,brine,,False
+ICMM02878,Searles Lake,United States,lithium,lithium,brine,manual,Very Low,unmatched,,,,0,,-117.401,35.7667,brine,,False
+ICMM03191,Silver Peak,United States,lithium,lithium,brine,manual,High,nearest,210.0,35.7725,0.0,2,M16142,-117.637507,37.750541,brine,,False
+ICMM13855,Thacker Pass,United States,lithium,lithium;potash,clay_open_pit,manual,High,unmatched,,,,0,,-118.06984,41.702585,clay,under construction,False
+ICMM01600,Reflejos Del Mar Mine,Argentina,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-65.4341,-28.4347,hard_rock,,False
+ICMM06706,Altura,Australia,lithium,lithium;tantalum;iron ore;copper;silver;gold;tin,open_pit,manual,Moderate,nearest,2593.0,0.1789,0.1789,1,M01907,118.913031,-21.01696,hard_rock,now part of Pilgangoora,False
+ICMM06694,Bald Hill Central (South),Australia,lithium,lithium;tantalum;niobium;tin,open_pit,manual,Moderate,inside,0.0,5.4632,5.4632,1,M00814,122.177588,-31.520787,hard_rock,,False
+ICMM13452,Finniss,Australia,lithium,lithium;tantalum;niobium;tin,open_pit,manual,High,unmatched,,,,0,,130.7722,-12.6616,hard_rock,suspended 2024,False
+ICMM06720,Geko,Australia,gold,gold;lithium;nickel,unknown,,Moderate,inside,0.0,1.7448,1.7448,1,M20446,120.900328,-30.863308,hard_rock,,False
+ICMM06436,Greenbushes Mine,Australia,lithium,lithium;tantalum;kaolin;tin,open_pit,manual,High,inside,0.0,16.3404,16.3404,1,M00929,116.064557,-33.86006,hard_rock,,False
+ICMM13585,Kathleen Valley,Australia,lithium,lithium;tantalum;gold,open_pit+underground,manual,High,unmatched,,,,0,,120.555444,-27.472354,hard_rock,production from 2024,False
+ICMM06668,Mt Cattlin,Australia,lithium,lithium;tantalum;lead;copper;manganese;niobium;silica;gold;zinc,open_pit,manual,High,inside,0.0,3.1089,3.1089,1,M00781,120.027132,-33.562556,hard_rock,,False
+ICMM13679,Mt Holland (Earl Grey),Australia,lithium,lithium;spodumene;tantalum,open_pit,manual,High,nearest,643.0,1.3857,1.3857,1,M00913,119.74156,-32.092906,hard_rock,production from 2024,False
+ICMM06374,Mt Marion,Australia,lithium,lithium;iron ore;magnesium;nickel;tantalum,open_pit,manual,High,nearest,22.0,5.893,5.893,1,M00973,121.447758,-31.078892,hard_rock,,False
+ICMM06235,Pilgangoora,Australia,lithium,lithium;tantalum;tin,open_pit,manual,High,nearest,279.0,1.209,1.209,1,M22444,118.904705,-21.063899,hard_rock,ICMM country wrongly 'New Caledonia' (it is in Western Australia),True
+ICMM06667,Wodgina,Australia,lithium,lithium;tantalum;iron ore;tin,open_pit,manual,High,inside,0.0,6.629,6.629,1,M01848,118.677258,-21.181585,hard_rock,,False
+ICMM13356,Cachoeira,Brazil,lithium,lithium,unknown,,High,nearest,247.0,0.2837,0.2837,1,M23902,-41.908399,-16.776592,hard_rock,,False
+ICMM13488,Grota do Cirilo,Brazil,lithium,lithium,open_pit,manual,High,unmatched,,,,0,,-41.905142,-16.735665,hard_rock,production from 2023,False
+ICMM01308,Mibra,Brazil,lithium,lithium;tantalum;niobium;tin,open_pit,manual,High,nearest,434.0,2.7948,2.7948,1,M03107,-44.600198,-21.086327,hard_rock,,False
+ICMM00340,Quixeramobim,Brazil,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-39.1489,-5.38141,hard_rock,,False
+ICMM13552,James Bay,Canada,lithium,lithium,unknown,,High,unmatched,,,,0,,-77.1,52.29,hard_rock,,False
+ICMM05469,North American Lithium,Canada,lithium,lithium,open_pit,manual,High,nearest,121.0,5.679,5.679,1,M37353,-77.818613,48.407532,hard_rock,,False
+ICMM13897,Whabouchi,Canada,lithium,lithium,project,manual,High,nearest,281.0,0.5031,0.5031,1,M14750,-75.84286,51.688396,hard_rock,,False
+ICMM07535,Kitotolo,Democratic Republic of the Congo,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,27.3846,-7.3228,hard_rock,,False
+ICMM07534,Manono,Democratic Republic of the Congo,lithium,lithium,project,manual,Very Low,unmatched,,,,0,,27.4513,-7.27701,hard_rock,,False
+ICMM13587,Keliber,Finland,lithium,lithium;niobium;tantalum,open_pit,manual,High,unmatched,,,,0,,23.788827,63.56312,hard_rock,under construction,False
+ICMM05758,Massif Central (Echassieres),France,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,2.70208,46.2323,hard_rock,,False
+ICMM13447,Ewoyaa,Ghana,lithium,lithium,project,manual,High,nearest,1205.0,0.2287,0.2287,1,M30263,-1.05274,5.240277,hard_rock,,False
+ICMM07269,Govindpal Area,India,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,81.9003,18.6998,hard_rock,,False
+ICMM13481,Goulamina,Mali,lithium,lithium;iron ore,open_pit,manual,High,unmatched,,,,0,,-7.959966,11.345524,hard_rock,production from 2024,False
+ICMM13582,Karibib,Namibia,lithium,lithium,unknown,,High,inside,0.0,0.8742,0.8742,1,M03134,15.99818,-22.10213,hard_rock,,False
+ICMM07699,Uis Tin Mine,Namibia,tin,tin;lithium;niobium;rubidium;spodumene;tantalum;copper;tungsten,unknown,,Moderate,inside,0.0,6.5545,6.5545,1,M37835,14.87419,-21.21547,hard_rock,,False
+ICMM13658,Mina do Barroso,Portugal,lithium,lithium,project,manual,High,inside,0.0,0.2379,0.2379,1,M34041,-7.804,41.627,hard_rock,,False
+ICMM07524,Hombolo Li Area,Tanzania,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,35.8912,-5.9179,hard_rock,,False
+ICMM07505,Gamba Hill Nampeyo,Uganda,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,32.9179,0.58484,hard_rock,,False
+ICMM07507,Mutaka,Uganda,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,30.1013,-0.66505,hard_rock,,False
+ICMM07508,Rwemeriro,Uganda,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,30.268,-0.96502,hard_rock,,False
+ICMM04285,Buckhorn Mica Mine,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-105.377,40.5369,hard_rock,,False
+ICMM02754,Carolina,United States,lithium,lithium,unknown,,High,unmatched,,,,0,,-81.29761,35.390311,hard_rock,,False
+ICMM04234,Cojade Mine,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-105.293,40.355,hard_rock,,False
+ICMM02685,Foote Mineral Reclamation Mill,United States,lithium,lithium,unknown,,Moderate,nearest,354.0,0.5231,0.5231,1,M40613,-81.352507,35.217267,hard_rock,,False
+ICMM02737,Hallman Beam Mine,United States,lithium,lithium,unknown,,Moderate,unmatched,,,,0,,-81.018795,35.356735,hard_rock,,False
+ICMM02727,Huffman Bean Mine,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-81.315567,35.3389,hard_rock,,False
+ICMM02474,North Morning Star Mine,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-112.572,33.95585,hard_rock,,False
+ICMM04682,Norwich Lithia Mine,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-72.8615,42.3186,hard_rock,,False
+ICMM03529,Preston Hanford Sand and Gravel,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-121.342,38.4305,hard_rock,,False
+ICMM02416,Stewart and Other Mines,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-117.068,33.3667,hard_rock,,False
+ICMM04712,Taylor Ledge Lithia Mine,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-72.8259,42.4694,hard_rock,,False
+ICMM04700,West Chesterfield Lithia Mine,United States,lithium,lithium,unknown,,Very Low,unmatched,,,,0,,-72.8724,42.41275,hard_rock,,False
+ICMM13305,Arcadia Lithium,Zimbabwe,lithium,lithium;tantalum;spodumene;caesium,open_pit,manual,High,unmatched,,,,0,,31.408957,-17.775738,hard_rock,,False
+ICMM07679,Bikita,Zimbabwe,lithium,lithium;tantalum;petalite,open_pit,manual,Moderate,unmatched,,,,0,,31.430585,-19.95476,hard_rock,,False
+ICMM07637,Kamativi Mine,Zimbabwe,lithium,lithium;tin,unknown,,Moderate,nearest,163.0,0.6428,0.6428,1,M36964,27.06308,-18.32877,hard_rock,,False
+ICMM06303,Bellevue,Australia,gold,gold;silver;nickel;lithium,unknown,,Moderate,inside,0.0,3.2609,3.2609,1,M01490,120.554743,-27.6407,minor_listed,,False
+ICMM06755,British King,Australia,gold,gold;silver;lithium,unknown,,Moderate,unmatched,,,,0,,121.242847,-27.939836,minor_listed,,False
+ICMM06410,Central Norseman Mine,Australia,gold,gold;copper;cobalt;lithium;nickel;silver;tantalum,surface,zenodo_tile_label,Moderate,inside,0.0,4.5996,4.5996,1,M00800,121.79565,-32.196085,minor_listed,,False
+ICMM06702,Comet Vale,Australia,gold,gold;tantalum;cobalt;copper;bismuth;rare earths;lead;lithium;nickel;silver;caesium;tungsten;zinc,unknown,,Moderate,nearest,210.0,0.2364,0.2364,1,M01221,121.130349,-29.959758,minor_listed,,False
+ICMM13456,Forrestania Nickel,Australia,nickel,nickel;copper;lithium;cobalt,unknown,,High,inside,0.0,4.9716,4.9716,1,M00840,119.73691,-32.580767,minor_listed,,False
+ICMM06728,Golden Eagle,Australia,gold,gold;silver;lithium,unknown,,Moderate,inside,0.0,1.5279,1.5279,1,M01262,120.659334,-30.044443,minor_listed,,False
+ICMM06259,Golden Eagle Nullagine,Australia,gold,gold;silver;lithium;tantalum,unknown,,Moderate,unmatched,,,,0,,120.123575,-21.9646,minor_listed,,False
+ICMM06403,Higginsville,Australia,gold,gold;silver;cobalt;copper;lithium;nickel;palladium;platinum,surface,zenodo_tile_label,High,inside,0.0,4.0195,4.0195,1,M00812,121.726483,-31.73732,minor_listed,,False
+ICMM06751,Kalgoorlie Gold Ops,Australia,gold,gold;caesium;lithium;nickel;niobium;rubidium;silver;tantalum;tin,unknown,,High,inside,0.0,14.553,14.553,1,M01071,121.57516,-30.607829,minor_listed,,False
+ICMM06673,The Mount,Australia,gold,gold;silver;lithium;caesium;tantalum,unknown,,Moderate,nearest,288.0,1.4938,1.4938,1,M00866,121.565108,-31.504663,minor_listed,,False
+ICMM06408,White Dam Olary,Australia,copper,copper;gold;cobalt;iron ore;rare earths;lithium;nickel;niobium;palladium;platinum;silver;tantalum;tin;uranium,unknown,,Moderate,inside,0.0,1.7139,1.7139,1,M00635,140.578015,-32.094855,minor_listed,,False
+ICMM06661,Wiluna S,Australia,gold,gold;cobalt;copper;antimony;lithium;nickel;palladium;platinum;silver,unknown,,Moderate,inside,0.0,7.0484,7.0484,1,M01635,120.216624,-26.755874,minor_listed,,False
