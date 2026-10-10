@@ -75,6 +75,7 @@ def main():
     outdir = f"{a.work}/modis"; os.makedirs(outdir, exist_ok=True)
     lf = f"{a.work}/modis_items.csv"
     items = pd.read_csv(lf) if os.path.exists(lf) else list_items(set(px.tile), a.first_year, a.last_year)
+    items = items.sort_values("item").drop_duplicates(["key", "tile"], keep="last")  # reprocessed duplicates
     items = items[~((items.key.astype(str).str[:4] == "2000") & (items.key.astype(str).str[4:].astype(int) <= 145))]
     items.to_csv(lf, index=False)
     print("items", len(items), flush=True)

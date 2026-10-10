@@ -73,6 +73,7 @@ def main():
     ap.add_argument("--work", required=True)
     ap.add_argument("--data", default=os.path.join(HERE, "data"))
     ap.add_argument("--out", default=os.path.join(HERE, "features"))
+    ap.add_argument("--skip-lst", action="store_true")
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
     px = pd.read_csv(f"{a.data}/pixels.csv").sort_values("pixel_id").reset_index(drop=True)
     npix = len(px)
@@ -162,7 +163,7 @@ def main():
         return np.where(m, amuni / np.maximum(nm, 1), 0.0)
 
     # ---------------- LST ----------------
-    lfiles = sorted(glob.glob(f"{a.work}/lst/*.npz"))
+    lfiles = [] if a.skip_lst else sorted(glob.glob(f"{a.work}/lst/*.npz"))
     rows = []
     if lfiles:
         # LST files are stored per tile in pixels.csv tile order; attach pixel ids
