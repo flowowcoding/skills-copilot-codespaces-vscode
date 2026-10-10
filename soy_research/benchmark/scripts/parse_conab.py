@@ -11,10 +11,14 @@ Also extracts the "Soja (serie)" sheet when present (Conab's long history of
 final estimates, as published at that release), used only for the final
 outturn table of pre-2019/20 crops.
 
+Release dates: gov.br page dates for crop 2022/23 are placeholders written at
+migration (all on the 10th, incl. Saturdays); --overrides replaces them with
+dates verified from press coverage (data/reference/conab_release_date_overrides.csv).
+
 Units: planted_area kha, yield kg/ha, production kt.
 
 Usage:
-    python parse_conab.py --manifest conab_manifest.csv --raw RAW_DIR --out OUT_DIR
+    python parse_conab.py --manifest conab_manifest.csv --raw RAW_DIR --out OUT_DIR [--overrides CSV]
 """
 import argparse
 import os
@@ -32,8 +36,16 @@ def crop_from_label(lbl):
     return f"20{m.group(1)}/{m.group(2)}" if m else None
 
 
+def open_book(path):
+    """openpyxl/xlrd first; fall back to calamine for files with broken stylesheets."""
+    try:
+        return pd.ExcelFile(path)
+    except Exception:
+        return pd.ExcelFile(path, engine="calamine")
+
+
 def parse_soja(path):
-    x = pd.ExcelFile(path)
+    x = open_book(path)
     sh = [s for s in x.sheet_names if s.strip().lower() == "soja"]
     if not sh:
         raise ValueError(f"no Soja sheet in {path}: {x.sheet_names}")
@@ -60,7 +72,7 @@ def parse_soja(path):
 
 
 def parse_serie(path):
-    x = pd.ExcelFile(path)
+    x = open_book(path)
     sh = [s for s in x.sheet_names if s.strip().lower().startswith("soja (s")]
     if not sh:
         return None
@@ -73,8 +85,16 @@ def main():
     ap.add_argument("--manifest", required=True)
     ap.add_argument("--raw", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--overrides", help="CSV crop_year,levantamento,release_datetime_brt,evidence")
     a = ap.parse_args()
     man = pd.read_csv(a.manifest)
+    if a.overrides:
+        ov = pd.read_csv(a.overrides)
+        man = man.merge(ov, on=["crop_year", "levantamento"], how="left", suffixes=("", "_ov"))
+        hit = man.release_datetime_brt_ov.notna()
+        man.loc[hit, "release_datetime_brt"] = man.loc[hit, "release_datetime_brt_ov"]
+        man.loc[hit, "date_quality"] = "secondary_source"
+        print("release dates overridden:", int(hit.sum()))
     out = []
     last_serie = None
     for _, m in man.iterrows():

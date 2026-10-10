@@ -1,0 +1,6 @@
+n,r2,b_const,t_const,b_rev,t_rev,model,b_us_es_chg_mt,t_us_es_chg_mt,b_us_prod_chg_mt,t_us_prod_chg_mt
+67,0.029,0.2601,1.35,0.1129,2.4,"Conab: 2-day [t,t+1] return ~ rev",,,,
+219,0.036,0.0905,0.63,-0.0663,-0.78,"USDA WASDE: 2-day [t,t+1] return ~ rev + us_es_chg_mt + us_prod_chg_mt",-0.2347,-1.33,-0.0707,-0.54
+209,0.012,0.0464,0.3,-0.2158,-1.82,"IBGE LSPA: 2-day [t,t+1] return ~ rev",,,,
+77,0.014,0.2667,2.12,0.0585,1.46,Conab: incl. roll days,,,,
+229,0.001,0.2078,1.42,-0.0697,-0.89,USDA WASDE: incl. roll days,,,,

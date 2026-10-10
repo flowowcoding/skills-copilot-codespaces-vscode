@@ -1428,173 +1428,89 @@ release_date,release_time_et,report,region,market_year,attribute,value_mt,proj_f
 2006-05-12,12:00,May 2006,World,2005/06,Imports,65.36,Projected,wasde-05-12-2006.txt
 2006-05-12,12:00,May 2006,World,2005/06,Production,221.8,Projected,wasde-05-12-2006.txt
 2006-06-09,12:00,June 2006,Argentina,2004/05,Beginning Stocks,14.7,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2004/05,Beginning Stocks,14.7,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2004/05,Domestic Crush,27.31,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2004/05,Domestic Crush,27.31,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2004/05,Domestic Total,28.84,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2004/05,Domestic Total,28.84,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2004/05,Ending Stocks,16.24,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2004/05,Ending Stocks,16.24,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2004/05,Exports,9.31,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2004/05,Exports,9.31,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2004/05,Imports,0.69,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2004/05,Imports,0.69,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2004/05,Production,39.0,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2004/05,Production,39.0,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2005/06,Beginning Stocks,16.24,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2005/06,Beginning Stocks,16.24,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2005/06,Domestic Crush,29.2,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2005/06,Domestic Crush,29.2,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2005/06,Domestic Total,30.82,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2005/06,Domestic Total,30.82,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2005/06,Ending Stocks,16.22,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2005/06,Ending Stocks,16.22,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2005/06,Exports,10.5,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2005/06,Exports,10.5,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2005/06,Imports,0.8,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2005/06,Imports,0.8,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2005/06,Production,40.5,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2005/06,Production,40.5,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2006/07,Beginning Stocks,16.22,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2006/07,Beginning Stocks,16.22,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2006/07,Domestic Crush,30.5,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2006/07,Domestic Crush,30.5,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2006/07,Domestic Total,32.14,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2006/07,Domestic Total,32.14,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2006/07,Ending Stocks,16.47,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2006/07,Ending Stocks,16.47,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2006/07,Exports,9.75,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2006/07,Exports,9.75,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2006/07,Imports,0.84,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2006/07,Imports,0.84,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Argentina,2006/07,Production,41.3,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Argentina,2006/07,Production,41.3,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2004/05,Beginning Stocks,15.51,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2004/05,Beginning Stocks,15.51,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2004/05,Domestic Crush,28.97,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2004/05,Domestic Crush,28.97,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2004/05,Domestic Total,31.82,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2004/05,Domestic Total,31.82,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2004/05,Ending Stocks,17.09,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2004/05,Ending Stocks,17.09,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2004/05,Exports,20.14,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2004/05,Exports,20.14,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2004/05,Imports,0.53,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2004/05,Imports,0.53,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2004/05,Production,53.0,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2004/05,Production,53.0,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2005/06,Beginning Stocks,17.09,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2005/06,Beginning Stocks,17.09,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2005/06,Domestic Crush,27.82,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2005/06,Domestic Crush,27.82,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2005/06,Domestic Total,30.55,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2005/06,Domestic Total,30.55,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2005/06,Ending Stocks,16.68,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2005/06,Ending Stocks,16.68,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2005/06,Exports,25.99,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2005/06,Exports,25.99,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2005/06,Imports,0.43,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2005/06,Imports,0.43,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2005/06,Production,55.7,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2005/06,Production,55.7,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2006/07,Beginning Stocks,16.68,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2006/07,Beginning Stocks,16.68,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2006/07,Domestic Crush,28.3,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2006/07,Domestic Crush,28.3,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2006/07,Domestic Total,30.92,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2006/07,Domestic Total,30.92,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2006/07,Ending Stocks,16.81,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2006/07,Ending Stocks,16.81,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2006/07,Exports,25.4,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2006/07,Exports,25.4,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2006/07,Imports,0.45,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2006/07,Imports,0.45,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,Brazil,2006/07,Production,56.0,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,Brazil,2006/07,Production,56.0,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2004/05,Beginning Stocks,3.06,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2004/05,Beginning Stocks,3.06,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2004/05,Domestic Crush,46.16,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2004/05,Domestic Crush,46.16,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2004/05,Domestic Total,51.25,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2004/05,Domestic Total,51.25,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2004/05,Ending Stocks,6.96,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2004/05,Ending Stocks,6.96,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2004/05,Exports,30.01,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2004/05,Exports,30.01,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2004/05,Imports,0.15,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2004/05,Imports,0.15,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2004/05,Production,85.01,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2004/05,Production,85.01,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2005/06,Beginning Stocks,6.96,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2005/06,Beginning Stocks,6.96,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2005/06,Domestic Crush,46.68,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2005/06,Domestic Crush,46.68,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2005/06,Domestic Total,51.07,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2005/06,Domestic Total,51.07,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2005/06,Ending Stocks,15.5,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2005/06,Ending Stocks,15.5,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2005/06,Exports,24.49,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2005/06,Exports,24.49,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2005/06,Imports,0.11,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2005/06,Imports,0.11,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2005/06,Production,84.0,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2005/06,Production,84.0,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2006/07,Beginning Stocks,15.5,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2006/07,Beginning Stocks,15.5,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2006/07,Domestic Crush,47.63,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2006/07,Domestic Crush,47.63,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2006/07,Domestic Total,51.95,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2006/07,Domestic Total,51.95,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2006/07,Ending Stocks,17.82,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2006/07,Ending Stocks,17.82,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2006/07,Exports,29.67,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2006/07,Exports,29.67,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2006/07,Imports,0.11,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2006/07,Imports,0.11,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,United States,2006/07,Production,83.82,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,United States,2006/07,Production,83.82,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2004/05,Beginning Stocks,37.7,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2004/05,Beginning Stocks,37.7,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2004/05,Domestic Crush,175.58,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2004/05,Domestic Crush,175.58,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2004/05,Domestic Total,205.56,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2004/05,Domestic Total,205.56,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2004/05,Ending Stocks,47.92,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2004/05,Ending Stocks,47.92,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2004/05,Exports,64.79,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2004/05,Exports,64.79,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2004/05,Imports,64.61,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2004/05,Imports,64.61,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2004/05,Production,215.95,,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2004/05,Production,215.95,,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2005/06,Beginning Stocks,47.92,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2005/06,Beginning Stocks,47.92,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2005/06,Domestic Crush,181.75,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2005/06,Domestic Crush,181.75,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2005/06,Domestic Total,211.89,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2005/06,Domestic Total,211.89,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2005/06,Ending Stocks,55.5,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2005/06,Ending Stocks,55.5,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2005/06,Exports,66.43,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2005/06,Exports,66.43,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2005/06,Imports,65.71,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2005/06,Imports,65.71,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2005/06,Production,220.19,Estimated,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2005/06,Production,220.19,Estimated,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2006/07,Beginning Stocks,55.5,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2006/07,Beginning Stocks,55.5,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2006/07,Domestic Crush,188.71,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2006/07,Domestic Crush,188.71,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2006/07,Domestic Total,219.43,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2006/07,Domestic Total,219.43,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2006/07,Ending Stocks,57.52,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2006/07,Ending Stocks,57.52,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2006/07,Exports,71.14,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2006/07,Exports,71.14,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2006/07,Imports,70.55,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2006/07,Imports,70.55,Projected,wasde-06-09-2006_revision.txt
 2006-06-09,12:00,June 2006,World,2006/07,Production,222.04,Projected,wasde-06-09-2006.txt
-2006-06-09,12:00,June 2006,World,2006/07,Production,222.04,Projected,wasde-06-09-2006_revision.txt
 2006-07-12,12:00,July 2006,Argentina,2004/05,Beginning Stocks,14.7,,wasde-07-12-2006.txt
 2006-07-12,12:00,July 2006,Argentina,2004/05,Domestic Crush,27.31,,wasde-07-12-2006.txt
 2006-07-12,12:00,July 2006,Argentina,2004/05,Domestic Total,28.84,,wasde-07-12-2006.txt

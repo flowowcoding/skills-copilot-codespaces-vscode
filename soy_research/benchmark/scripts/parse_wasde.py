@@ -97,6 +97,11 @@ def main():
     for f in sorted(glob.glob(os.path.join(a.txt_dir, "wasde-*.txt"))):
         t += parse_txt_file(f)
     t = pd.DataFrame(t)
+    # same-day reissues (e.g. wasde-06-09-2006_revision.txt): keep the ORIGINAL
+    # release as the point-in-time vintage
+    t["_rev"] = t.src.str.contains("revision|correct", case=False).astype(int)
+    t = t.sort_values("_rev").drop_duplicates(["release_date", "region", "market_year", "attribute"], keep="first")
+    t = t.drop(columns="_rev")
     # validation on overlap (Apr-2010)
     ov = t.merge(c, on=["release_date", "region", "market_year", "attribute"], suffixes=("_txt", "_csv"))
     if len(ov):

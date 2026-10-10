@@ -1,0 +1,21 @@
+test,n,r2,b_const,t_const,b_rev_lag,t_rev_lag,corr,spearman,p_same_sign_given_both_nonzero,n_both_nonzero,p_cut_after_cut,p_cut_unconditional,b_rev,t_rev,b_A_rev_since_prev_B,t_A_rev_since_prev_B,b_gap,t_gap
+"Conab: rev_k ~ rev_k-1 (BR production, Mt)",70,0.129,-0.1437,-0.61,0.3676,2.25,0.359,0.208,0.588,68.0,0.5,0.414,,,,,,
+Conab: (final - est_k) ~ rev_k  [efficiency],70,0.01,0.4997,0.86,,,,,,,,,0.2196,0.98,,,,
+"IBGE LSPA: rev_k ~ rev_k-1 (BR production, Mt)",198,0.113,0.0703,1.16,0.2572,1.38,0.336,0.289,0.609,197.0,0.461,0.364,,,,,,
+IBGE LSPA: (final - est_k) ~ rev_k  [efficiency],198,0.072,0.4874,4.44,,,,,,,,,0.3621,2.04,,,,
+"USDA WASDE: rev_k ~ rev_k-1 (BR production, Mt)",208,0.256,0.0155,0.2,0.4971,4.91,0.506,0.465,0.885,52.0,0.571,0.163,,,,,,
+USDA WASDE: (final - est_k) ~ rev_k  [efficiency],208,0.117,0.2839,1.1,,,,,,,,,1.057,4.54,,,,
+"IBGE LSPA: state rev_k ~ rev_k-1 (pooled MT, PR, RS, GO, MS, BA, MG, MA, PI, TO)",1980,0.06,0.0041,0.6,0.1985,2.51,0.244,,0.601,541.0,,,,,,,,
+"Conab: state rev_k ~ rev_k-1 (pooled MT, PR, RS, GO, MS, BA, MG, MA, PI, TO)",700,0.171,-0.0159,-0.82,0.4248,6.35,0.413,,0.747,257.0,,,,,,,,
+USDA WASDE next rev ~ Conab revisions since previous USDA WASDE,62,0.496,-0.0047,-0.04,,,0.704,,,,,,,,0.4139,7.33,,
+USDA WASDE next rev ~ (Conab latest - USDA WASDE previous) level gap,62,0.305,0.4387,2.97,,,0.552,,,,,,,,,,0.3217,2.97
+Conab next rev ~ USDA WASDE revisions since previous Conab,60,0.565,-0.167,-0.87,,,0.751,,,,,,,,0.9699,3.35,,
+Conab next rev ~ (USDA WASDE latest - Conab previous) level gap,60,0.23,-1.1355,-1.75,,,0.479,,,,,,,,,,0.527,1.73
+USDA WASDE next rev ~ IBGE LSPA revisions since previous USDA WASDE,119,0.241,0.2028,2.65,,,0.491,,,,,,,,0.2507,3.4,,
+USDA WASDE next rev ~ (IBGE LSPA latest - USDA WASDE previous) level gap,119,0.121,0.4163,3.59,,,0.348,,,,,,,,,,0.1129,3.4
+IBGE LSPA next rev ~ USDA WASDE revisions since previous IBGE LSPA,137,0.339,-0.0714,-0.74,,,0.582,,,,,,,,0.6031,3.33,,
+IBGE LSPA next rev ~ (USDA WASDE latest - IBGE LSPA previous) level gap,137,0.048,-0.1902,-0.98,,,0.22,,,,,,,,,,0.0959,1.61
+Conab next rev ~ IBGE LSPA revisions since previous Conab,42,0.001,0.3529,2.24,,,0.032,,,,,,,,0.015,0.19,,
+Conab next rev ~ (IBGE LSPA latest - Conab previous) level gap,42,0.044,0.0637,0.2,,,-0.21,,,,,,,,,,-0.082,-1.17
+IBGE LSPA next rev ~ Conab revisions since previous IBGE LSPA,49,0.319,-0.4878,-1.71,,,0.565,,,,,,,,0.9901,2.85,,
+IBGE LSPA next rev ~ (Conab latest - IBGE LSPA previous) level gap,49,0.517,-1.6461,-3.59,,,0.719,,,,,,,,,,0.4171,4.56
