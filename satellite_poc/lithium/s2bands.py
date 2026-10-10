@@ -6,8 +6,9 @@ or snow are set to 0 in every band. Reflectances are corrected for the +1000 off
 processing baseline >= 04.00, so values are surface reflectance x 10000.
 
 Usage:
-    python s2bands.py LON0,LAT0,LON1,LAT1 DATES OUT.npz [--res 20] [--bands B02,B03,B04,B08,B11,B12]
-                      [--maxcloud 40] [--maxbad 0.3]
+    python s2bands.py [--res 20] [--bands B02,B03,B04,B08,B11,B12] [--maxcloud 40] [--maxbad 0.3] \
+                      -- LON0,LAT0,LON1,LAT1 DATES OUT.npz
+(options first; the `--` stops a negative longitude being read as an option)
 
 DATES is a STAC interval like 2019-01-01/2026-10-01. Output npz: dates (YYYY-MM-DD),
 refl (T, B, H, W) uint16, bands, bbox, badfrac (T,), tile.

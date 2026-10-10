@@ -6,7 +6,7 @@ Usage:
 
 Picks the least-cloudy L2A scene in DATES that fully covers the box. Grid lines every STEP
 degrees are labelled with their longitude (top) and latitude (left). With --zones, the pit
-polygon(s) of NAME from mines.json are drawn in orange so the zone can be checked by eye.
+polygon(s) of NAME (comma-separated list allowed) from mines.json are drawn in orange so the zone can be checked by eye.
 """
 import argparse
 import json
@@ -52,8 +52,9 @@ for lat in np.arange(np.ceil(bbox[1] / a.step) * a.step, bbox[3], a.step):
     d.line([(0, Y(lat)), (W * s, Y(lat))], fill=(255, 255, 0), width=1)
     d.text((2, Y(lat) + 2), f"{lat:.2f}", fill=(255, 255, 0))
 if a.zones:
-    z = json.load(open(a.zones))[a.mine]
-    for poly in z["pit"]:
-        d.line([(X(x), Y(y)) for x, y in poly + [poly[0]]], fill=(255, 110, 0), width=3)
+    mines = json.load(open(a.zones))["mines"]
+    for name in a.mine.split(","):
+        for poly in mines[name]["pit"]:
+            d.line([(X(x), Y(y)) for x, y in poly + [poly[0]]], fill=(255, 110, 0), width=2)
 img.save(out := a.out)
 print("saved", out, W, H)

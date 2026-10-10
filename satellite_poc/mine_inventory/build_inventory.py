@@ -138,7 +138,7 @@ def cluster_polygons(polys: gpd.GeoDataFrame, cluster_m: float) -> np.ndarray:
     for code in np.unique(epsg):
         idx = np.where(epsg == code)[0]
         g = polys.geometry.iloc[idx].to_crs(code).reset_index(drop=True)
-        buf = g.buffer(cluster_m / 2.0, resolution=4)
+        buf = g.buffer(cluster_m / 2.0, quad_segs=4)
         bdf = gpd.GeoDataFrame(geometry=buf, crs=code)
         pairs = gpd.sjoin(bdf, bdf, predicate="intersects", how="inner")
         for a, b in zip(pairs.index.values, pairs["index_right"].values):
@@ -182,7 +182,8 @@ def build_clusters(polys: gpd.GeoDataFrame, labels: np.ndarray, id_col: str, pre
             "cluster_id": f"{prefix}{int(lab):05d}",
             "n_polygons": len(grp),
             "member_ids": ";".join(str(v) for v in grp[id_col].values),
-            "iso3": grp["ISO3_CODE"].mode().iloc[0] if "ISO3_CODE" in grp else None,
+            "iso3": grp["ISO3_CODE"].mode().iloc[0] if grp["ISO3_CODE"].notna().any() else None,
+            "maus_country": grp["COUNTRY_NAME"].mode().iloc[0] if grp["COUNTRY_NAME"].notna().any() else None,
             "utm_epsg": code,
             "footprint_km2": area_km2(geom, code),
             "geometry": geom,
@@ -218,6 +219,90 @@ def match_points(pts: gpd.GeoDataFrame, cl: gpd.GeoDataFrame, max_dist_m: float)
         if d.values[j] <= max_dist_m:
             out.loc[i, ["cluster_id", "method", "dist_m"]] = [sub["cluster_id"].iloc[j], "nearest", float(d.values[j])]
     return out
+
+
+COUNTRY_ALIASES = {
+    "russian federation": "russia", "united republic of tanzania": "tanzania",
+    "myanmar/burma": "myanmar", "côte d’ivoire": "côte d'ivoire", "congo": "republic of the congo",
+    "united states of america": "united states",
+    # Maus v2 codes these territories under the parent state
+    "french guiana": "france", "kosovo": "serbia",
+}
+
+
+def canon_country(s) -> str:
+    s = str(s).strip().lower()
+    return COUNTRY_ALIASES.get(s, s)
+
+
+def _norm_name(s) -> str:
+    s = str(s).lower()
+    s = re.sub(r"\b(coal|mine|mines|mina|minas|mining|complex|project|operations?|open ?pit|cu|pb|zn|au|ag)\b", " ", s)
+    s = re.sub(r"[^a-z0-9]+", " ", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def flag_duplicates(icmm: pd.DataFrame) -> pd.Series:
+    """True where another ICMM mine on the same footprint has a (near-)identical name."""
+    from difflib import SequenceMatcher
+    out = pd.Series(False, index=icmm.index)
+    for _, grp in icmm[icmm.cluster_id.notna()].groupby("cluster_id"):
+        if len(grp) < 2:
+            continue
+        names = {i: _norm_name(n) for i, n in grp["Mine Name"].items()}
+        ids = list(names)
+        for a in range(len(ids)):
+            for b in range(a + 1, len(ids)):
+                na, nb = names[ids[a]], names[ids[b]]
+                if na and nb and (na == nb or na in nb or nb in na or SequenceMatcher(None, na, nb).ratio() > 0.85):
+                    out[ids[a]] = out[ids[b]] = True
+    return out
+
+
+BRINE_RE = re.compile(r"salar|salt lake|brine|dry lake|searles|jinaier|uyuni|coipasa", re.I)
+
+
+def lithium_type(r) -> str | None:
+    if not r["is_lithium"]:
+        return None
+    if r["mine_type"] == "brine" or BRINE_RE.search(str(r["Mine Name"])):
+        return "brine"
+    if r["mine_type"] == "clay_open_pit":
+        return "clay"
+    if r["primary_commodity"] == "lithium" or r["secondary_commodity"] == "lithium":
+        return "hard_rock"
+    return "minor_listed"  # lithium only in 'Other Commodities' (often a gold/nickel mine)
+
+
+def partition_footprint(polys, pts):
+    """Split a shared footprint between several mine points (all inputs in metres).
+
+    Each member polygon containing at most one point goes whole to its nearest point;
+    a member polygon containing several points is split by the Voronoi cells of those points.
+    Returns one geometry (or None) per point. Crude: pit boundaries are not bisectors.
+    """
+    from shapely import voronoi_polygons
+    from shapely.geometry import MultiPoint
+    pieces = [[] for _ in pts]
+    for g in polys:
+        inside = [k for k, p in enumerate(pts) if g.contains(p)]
+        if len(inside) <= 1:
+            k = inside[0] if inside else int(np.argmin([g.distance(p) for p in pts]))
+            pieces[k].append(g)
+            continue
+        uniq = {}
+        for k in inside:  # identical coordinates share a cell; first one gets it
+            uniq.setdefault((round(pts[k].x, 1), round(pts[k].y, 1)), k)
+        if len(uniq) == 1:
+            pieces[next(iter(uniq.values()))].append(g)
+            continue
+        cells = voronoi_polygons(MultiPoint([pts[k] for k in uniq.values()]), extend_to=g.envelope.buffer(1000))
+        for cell in cells.geoms:
+            for k in uniq.values():
+                if cell.contains(pts[k]):
+                    pieces[k].append(cell.intersection(g))
+                    break
+    return [unary_union(p) if p else None for p in pieces]
 
 
 # ---------------------------------------------------------------- main build
@@ -280,7 +365,7 @@ def build(args):
     zp = zenodo_layers(Path(args.zenodo))
     zp["zfid"] = np.arange(len(zp))
     zl = cluster_polygons(zp, args.cluster_m)
-    zcl, zp = build_clusters(zp.assign(ISO3_CODE=None), zl, "zfid", "Z")
+    zcl, zp = build_clusters(zp.assign(ISO3_CODE=None, COUNTRY_NAME=None), zl, "zfid", "Z")
     ztiles = zp.groupby("cluster_id").agg(
         tile_ids=("tile_id", lambda s: ";".join(sorted({str(int(v)) for v in s}))),
         minetype1=("minetype1", lambda s: s.mode().iloc[0]),
@@ -329,21 +414,17 @@ def build(args):
     for cid, grp in icmm[icmm.cluster_id.notna()].groupby("cluster_id"):
         if len(grp) == 1:
             continue
-        mem = members[members.cluster_id == cid]
         code = clusters.loc[clusters.cluster_id == cid, "utm_epsg"].iloc[0]
-        mp = mem.to_crs(code)
-        pp = grp.to_crs(code)
-        d = np.array([[g.distance(p) for p in pp.geometry] for g in mp.geometry])
-        owner = d.argmin(axis=1)
+        mp = members[members.cluster_id == cid].to_crs(code).geometry.values
+        pp = grp.to_crs(code).geometry.values
+        parts = partition_footprint(mp, pp)
         for k, ii in enumerate(grp.index):
-            sel = mem.geometry.values[owner == k]
-            if len(sel):
-                gg = unary_union(sel)
-                own_geom[ii] = gg
-                own_area[ii] = area_km2(gg, code)
+            gg = parts[k]
+            if gg is None or gg.is_empty:
+                own_geom[ii], own_area[ii] = None, 0.0
             else:
-                own_geom[ii] = None
-                own_area[ii] = 0.0
+                own_geom[ii] = gpd.GeoSeries([gg], crs=code).to_crs(4326).iloc[0]
+                own_area[ii] = float(gg.area / 1e6)
 
     # ---- mine type
     cmeta = clusters.set_index("cluster_id")
@@ -368,8 +449,27 @@ def build(args):
         hitm = icmm["ICMMID"].isin(man.index)
         icmm.loc[hitm, "mine_type"] = icmm.loc[hitm, "ICMMID"].map(man["mine_type"])
         icmm.loc[hitm, "mine_type_source"] = "manual"
+        icmm["facility_status"] = icmm["ICMMID"].map(man["status_note"])
         log.info("Manual mine-type labels applied: %d", hitm.sum())
+    if "facility_status" not in icmm:
+        icmm["facility_status"] = None
     icmm["is_lithium"] = icmm["all_commodities"].str.split(";").apply(lambda l: "lithium" in l)
+    icmm["lithium_deposit_type"] = [lithium_type(r) for _, r in icmm.iterrows()]
+    icmm["maus_country"] = icmm["cluster_id"].map(cmeta["maus_country"])
+    icmm["country_mismatch"] = [
+        bool(isinstance(b, str) and canon_country(a) != canon_country(b))
+        for a, b in zip(icmm["Country or Region"], icmm["maus_country"])]
+    icmm["possible_duplicate"] = flag_duplicates(icmm)
+    # country: ICMM value unless the matched Maus polygon (country-coded by Maus) disagrees;
+    # ICMM also labels ~23 Australian mines "New Caledonia" -- fix those by longitude when unmatched.
+    icmm["country"] = icmm["Country or Region"].astype(object)
+    mm = icmm["country_mismatch"]
+    display = {canon_country(n): n for n in icmm["Country or Region"].dropna().unique()}
+    icmm.loc[mm, "country"] = icmm.loc[mm, "maus_country"].map(lambda n: display.get(canon_country(n), n))
+    nc = (icmm["Country or Region"] == "New Caledonia") & ~icmm.geometry.x.between(163, 169) & \
+        icmm.geometry.y.between(-45, -10) & icmm.geometry.x.between(112, 155)
+    icmm.loc[nc, "country"] = "Australia"
+    icmm["country_fixed"] = mm | nc
 
     # ---- assemble output
     out = pd.DataFrame({
@@ -377,8 +477,12 @@ def build(args):
         "mine_name": icmm["Mine Name"],
         "alt_names": icmm["Group Names"],
         "company": None,  # not in public ICMM release
-        "country": icmm["Country or Region"],
+        "country": icmm["country"],
+        "country_icmm": icmm["Country or Region"],
+        "country_fixed": icmm["country_fixed"],
         "iso3": icmm["iso3"],
+        "maus_country": icmm["maus_country"],
+        "country_mismatch": icmm["country_mismatch"],
         "asset_type": icmm["Asset Type"],
         "icmm_confidence": icmm["Confidence Factor"],
         "primary_commodity": icmm["primary_commodity"],
@@ -386,7 +490,7 @@ def build(args):
         "secondary_commodity": icmm["secondary_commodity"],
         "all_commodities": icmm["all_commodities"],
         "coal_type": icmm["coal_type"],
-        "facility_status": None,  # not in public ICMM release
+        "facility_status": icmm["facility_status"],  # manual notes only; not in public ICMM
         "mine_type": icmm["mine_type"],
         "mine_type_source": icmm["mine_type_source"],
         "icmm_lon": icmm.geometry.x.round(6),
@@ -404,6 +508,8 @@ def build(args):
         "zenodo_tile_ids": icmm["zenodo_tile_ids"],
         "zenodo_minetype": icmm["zenodo_minetype"],
         "is_lithium": icmm["is_lithium"],
+        "lithium_deposit_type": icmm["lithium_deposit_type"],
+        "possible_duplicate": icmm["possible_duplicate"],
     })
     out.loc[~out["shared_footprint"] & out["cluster_id"].notna(), "own_footprint_km2"] = out["footprint_km2"]
     geom = icmm["cluster_id"].map(cmeta["geometry"])
@@ -434,6 +540,15 @@ def build(args):
     log.info("Wrote %s (%.1f MB)", out_dir / "mine_inventory.csv", (out_dir / "mine_inventory.csv").stat().st_size / 1e6)
 
     write_summaries(mines, out_dir, args)
+
+    # Zenodo brine/evaporation-pond footprints with no ICMM name (candidate lithium/potash sites)
+    matched_cl = clusters[clusters["cluster_id"].isin(icmm["cluster_id"])]
+    zb = zcl[zcl["minetype1"] == "Brine & Evaporation Pond"]
+    hitz = gpd.sjoin(zb[["cluster_id", "geometry"]], matched_cl[["geometry"]], predicate="intersects")
+    zb = zb[~zb["cluster_id"].isin(hitz["cluster_id"])]
+    zb = zb.assign(lon=zb.geometry.representative_point().x.round(4), lat=zb.geometry.representative_point().y.round(4))
+    zb[["cluster_id", "tile_ids", "footprint_km2", "lon", "lat"]].sort_values("footprint_km2", ascending=False) \
+        .to_csv(out_dir / "summary_zenodo_brine_unnamed.csv", index=False)
     return mines
 
 
@@ -465,6 +580,9 @@ def write_summaries(m: gpd.GeoDataFrame, out_dir: Path, args):
         "matched_zenodo": [m.match_method.str.startswith("zenodo").sum()],
         "unmatched": [(m.match_method == "unmatched").sum()],
         "shared_footprint": [m.shared_footprint.sum()],
+        "possible_duplicate": [m.possible_duplicate.sum()],
+        "country_mismatch": [m.country_mismatch.sum()],
+        "large_complex_gt_100km2": [m.large_complex.sum()],
         "unique_footprints": [mt.cluster_id.nunique()],
     })
     rates["match_rate"] = 1 - rates.unmatched / rates.n_icmm_mines
@@ -486,8 +604,13 @@ def write_summaries(m: gpd.GeoDataFrame, out_dir: Path, args):
     cu = m[m.country.isin(["Chile", "Peru"]) & m.all_commodities.str.split(";").apply(lambda l: "copper" in l)]
     cu.sort_values(["country", "footprint_km2"], ascending=[True, False])[cols].to_csv(
         out_dir / "summary_chile_peru_copper.csv", index=False)
+    op = cu[cu.cluster_id.notna() & cu.mine_type.isin(["open_pit", "open_pit+underground"])]
+    op.sort_values(["country", "own_footprint_km2"], ascending=[True, False])[cols + ["facility_status"]].to_csv(
+        out_dir / "summary_chile_peru_copper_openpit.csv", index=False)
     li = m[m.is_lithium]
-    li.sort_values(["country", "mine_name"])[cols].to_csv(out_dir / "summary_lithium.csv", index=False)
+    li.sort_values(["lithium_deposit_type", "country", "mine_name"])[
+        cols + ["lithium_deposit_type", "facility_status", "country_mismatch"]].to_csv(
+        out_dir / "summary_lithium.csv", index=False)
 
     # sanity check against known mines
     rows = []

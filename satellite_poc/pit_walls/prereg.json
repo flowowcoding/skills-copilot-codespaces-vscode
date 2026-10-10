@@ -1,0 +1,47 @@
+{
+  "_written": "2026-10-10, before any radar time series for these sites was computed or plotted. Segments drawn from Sentinel-2 imagery, published zone boxes from ../zones.py and compass geometry only.",
+  "rules": {
+    "baseline": "12 months ending 12 months before the reference date D (i.e. D-24mo .. D-12mo)",
+    "search_window": "D-12mo .. D-4 weeks (a detection must start at least 4 weeks before D)",
+    "insar_velocity": {
+      "statistic": "segment LOS displacement change over the trailing 60 days (median over points/pixels, minus the control median), mm",
+      "threshold": "outside baseline mean +/- 3 SD AND |change| >= 15 mm",
+      "persistence": "3 consecutive epochs",
+      "sign": "either sign counts"
+    },
+    "amplitude": {
+      "statistic": "share of segment pixels whose VV dB (3x3 boxcar) differs from the median of the previous 5 passes by > 2 dB, minus the same share over control pixels",
+      "threshold": "baseline mean + 3 SD",
+      "persistence": "2 consecutive passes"
+    },
+    "false_alarms": "Apply the identical rule with D moved to every 1 July / 1 January in the archive and to every segment; report how often it fires where no geotechnical event is documented.",
+    "lead": "D minus the first epoch of the detecting run. Lead over disclosure is reported against the public disclosure date, which can differ from D."
+  },
+  "sites": {
+    "bingham": {
+      "pit_bottom": [-112.151, 40.523],
+      "ring_m": [350, 2400],
+      "sectors_deg_from_north": {"N": [330, 30], "NE": [30, 90], "SE": [90, 140], "S": [140, 200], "SW": [200, 250], "W": [250, 330]},
+      "control": "points 3.0-4.5 km from pit bottom (natural ground and mine surroundings outside the pit)",
+      "events": [
+        {"name": "2024 south-wall highwall movement", "D": "2024-07-16", "segment": "S", "also_check": ["SW", "SE"],
+         "disclosure": "2024-07-16 Rio Tinto Q2 2024 operations review: mine plan changed to manage geotechnical risk; 2024-10-16 Q3 review: highwall movement monitored along two major faults during Q2, limits access to the south-wall primary ore face (~50 kt Cu in 2024, impact into 2025-26)"},
+        {"name": "Leo SE-wall failure (19 Mt)", "D": "2021-05-31", "segment": "SE", "also_check": ["S", "NE"],
+         "disclosure": "2021-06-02 local press (Salt Lake Tribune), slide anticipated by Kennecott monitoring; mining halted 2021-05-30"}
+      ]
+    },
+    "copler": {
+      "segments": {"heap leach pad": [[38.5308, 39.4175], [38.5469, 39.4175], [38.5469, 39.4316], [38.5308, 39.4316]]},
+      "control": "pixels in 38.46-38.62 E, 39.37-39.49 N outside the mine box 38.495-38.580 E, 39.400-39.460 N",
+      "events": [{"name": "heap leach pad slip", "D": "2024-02-13", "segment": "heap leach pad",
+                  "disclosure": "2024-02-13 SSR Mining announced same day"}]
+    },
+    "eagle": {
+      "segments": {"heap leach pad": [[-135.8409, 64.0385], [-135.8109, 64.0385], [-135.8109, 64.0482], [-135.8409, 64.0482]]},
+      "control": "pixels in -135.92..-135.74 E, 63.98..64.08 N outside the mine box -135.86..-135.79, 64.005..64.055",
+      "events": [{"name": "heap leach pad failure", "D": "2024-06-24", "segment": "heap leach pad",
+                  "disclosure": "2024-06-24 Victoria Gold announced same day"}]
+    }
+  },
+  "expectations": "Amplitude: expected NOT to show precursors (cm-scale creep is invisible to backscatter); may show the failure itself. InSAR: precursors plausible only where coherence survives; active benches and fresh heap lifts decorrelate."
+}

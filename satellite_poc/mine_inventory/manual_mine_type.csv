@@ -1,0 +1,106 @@
+# Manual mining-method / status labels for well-known mines, keyed on ICMM ID.
+# Source: author knowledge of public company reporting (as of ~2025). NOT exhaustive and not
+# independently verified per row -- check before relying on any single label.
+# mine_type: open_pit | underground | open_pit+underground | brine | clay_open_pit | tailings | project | smelter
+icmm_id,mine_name,mine_type,status_note
+ICMM13301,Antucoya,open_pit,
+ICMM01397,Sierra Gorda,open_pit,
+ICMM08633,Spence,open_pit,
+ICMM01433,Escondida,open_pit,
+ICMM08962,Zaldivar,open_pit,
+ICMM01369,Radomiro Tomic,open_pit,
+ICMM01372,Chuquicamata,underground,open pit ended 2019; block-cave underground since; dumps/leach still visible
+ICMM08537,Ministro Hales,open_pit,
+ICMM01403,Centinela,open_pit,
+ICMM08232,Gabriela Mistral,open_pit,
+ICMM01705,Los Bronces,open_pit,
+ICMM07932,Andina,open_pit+underground,
+ICMM01478,Mantoverde,open_pit,
+ICMM01296,Collahuasi,open_pit,
+ICMM01420,Mantos Blancos,open_pit,
+ICMM01469,Salvador,open_pit+underground,Rajo Inca open pit from 2023
+ICMM01264,Cerro Colorado,open_pit,operations wound down 2023-24 (care and maintenance)
+ICMM01541,Punta del Cobre (incl. Candelaria),open_pit+underground,cluster includes Candelaria open pit
+ICMM01419,Lomas Bayas,open_pit,
+ICMM01656,Carmen de Andacollo,open_pit,
+ICMM13880,Valle Central,tailings,retreats El Teniente tailings; not a mine
+ICMM01683,Los Pelambres,open_pit,
+ICMM01301,Quebrada Blanca,open_pit,QB2 expansion from 2023
+ICMM13368,Caserones,open_pit,
+ICMM01695,El Soldado,open_pit,
+ICMM01385,Michilla,open_pit+underground,closed 2015
+ICMM08182,El Abra,open_pit,
+ICMM01709,El Teniente,underground,
+ICMM01465,Franke,open_pit,
+ICMM08611,NuevaUnion,project,
+ICMM13631,Los Helados,project,
+ICMM08761,Santo Domingo,project,
+ICMM18877,Potrerillos Refinery,smelter,smelter/refinery; not a mine
+ICMM14021,El Toqui,underground,
+ICMM01075,Toquepala,open_pit,
+ICMM01048,Cuajone,open_pit,
+ICMM00998,Cerro Verde,open_pit,
+ICMM00538,Antamina,open_pit,
+ICMM13619,Las Bambas,open_pit,
+ICMM00686,Toromocho,open_pit,
+ICMM01798,Tintaya,open_pit,pit largely exhausted; Antapaccay replaced it (2012)
+ICMM00848,Constancia,open_pit,
+ICMM13299,Antapaccay,open_pit,
+ICMM01055,Quellaveco,open_pit,production from 2022; 2019 polygon is pre-production
+ICMM01774,Mina Justa,open_pit,production from 2021; 2019 polygon is construction-stage
+ICMM08495,Marcapunta,underground,
+ICMM00638,El Brocal (Colquijirca),open_pit+underground,
+ICMM14613,Chapi,open_pit,
+ICMM00410,Cerro Corona,open_pit,
+ICMM01766,Cobriza,underground,
+ICMM00740,Raul (Condestable),underground,
+ICMM08875,Tia Maria,project,under construction
+ICMM08961,Zafranal,project,
+ICMM08300,Haquira,project,
+ICMM08115,Conga,project,suspended
+ICMM00681,Morococha,underground,
+ICMM01764,Cerro Lindo,underground,
+ICMM00632,Cerro de Pasco,open_pit+underground,
+ICMM01765,Yanacocha,open_pit,
+ICMM04268,Bingham Canyon,open_pit,
+ICMM08280,Grasberg,underground,open pit ended 2019; block caves since
+ICMM08107,Cobre Panama,open_pit,halted Nov 2023 (preservation and safe management)
+ICMM13722,Oyu Tolgoi,open_pit+underground,
+ICMM15709,Cauchari Olaroz,brine,
+ICMM13791,Salar de Olaroz,brine,
+ICMM13680,Hombre Muerto North,brine,
+ICMM13730,Pastos Grandes,brine,project
+ICMM13789,Sal de Vida,brine,project/construction
+ICMM01454,Salar Ratones (Centenario-Ratones),brine,production from 2024
+ICMM15667,Salar de Atacama,brine,
+ICMM13644,Maricunga,brine,project
+ICMM13419,Dongtai Jinaier,brine,
+ICMM13910,Xitai Jinaier,brine,
+ICMM13765,Qinghai Misc Brines,brine,coordinates fall at Zabuye salt lake (Tibet)
+ICMM01224,Salar de Coipasa,brine,project
+ICMM01262,Salar de Uyuni,brine,
+ICMM03197,Foote Lithium Brine (Silver Peak),brine,
+ICMM03191,Silver Peak,brine,
+ICMM02878,Searles Lake,brine,
+ICMM13855,Thacker Pass,clay_open_pit,under construction
+ICMM06436,Greenbushes,open_pit,
+ICMM06706,Altura,open_pit,now part of Pilgangoora
+ICMM06235,Pilgangoora,open_pit,ICMM country wrongly 'New Caledonia' (it is in Western Australia)
+ICMM06694,Bald Hill,open_pit,
+ICMM06668,Mt Cattlin,open_pit,
+ICMM13679,Mt Holland,open_pit,production from 2024
+ICMM06374,Mt Marion,open_pit,
+ICMM06667,Wodgina,open_pit,
+ICMM13585,Kathleen Valley,open_pit+underground,production from 2024
+ICMM13452,Finniss,open_pit,suspended 2024
+ICMM13488,Grota do Cirilo,open_pit,production from 2023
+ICMM01308,Mibra,open_pit,
+ICMM05469,North American Lithium,open_pit,
+ICMM13897,Whabouchi,project,
+ICMM13481,Goulamina,open_pit,production from 2024
+ICMM07534,Manono,project,
+ICMM07679,Bikita,open_pit,
+ICMM13305,Arcadia,open_pit,
+ICMM13658,Mina do Barroso,project,
+ICMM13587,Keliber,open_pit,under construction
+ICMM13447,Ewoyaa,project,
