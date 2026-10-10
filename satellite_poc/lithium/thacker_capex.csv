@@ -1,0 +1,14 @@
+quarter,capex_musd,basis,report_date,source_url
+2023Q2,48.0,cash spent on Thacker Pass (old LAC MD&A),2023-08-09,https://www.sec.gov/Archives/edgar/data/1440972/000095017023041926/lac-ex99_1.htm
+2023Q3,51.1,cash spent on Thacker Pass,2023-11-09,https://www.sec.gov/Archives/edgar/data/1966983/000119312523275189/d305673dex991.htm
+2023Q4,83.0,derived: FY2023 $193.7M spent minus Q2 and Q3 minus Q1 PP&E additions ($11.6M),2024-03-15,https://www.sec.gov/Archives/edgar/data/1966983/000095017024031867/lac-ex99_1.htm
+2024Q1,62.5,construction and project costs capitalised,2024-05-13,https://www.sec.gov/Archives/edgar/data/1966983/000095017024058199/lac-ex99_1.htm
+2024Q2,27.7,capitalised,2024-08-14,https://www.sec.gov/Archives/edgar/data/1966983/000095017024097224/lac-ex99_1.htm
+2024Q3,34.4,capitalised,2024-11-07,https://www.sec.gov/Archives/edgar/data/1966983/000095017024123519/lac-ex99_1.htm
+2024Q4,55.3,derived: FY2024 $179.9M minus 9M $124.6M,2025-03-28,https://www.sec.gov/Archives/edgar/data/1966983/000095017025046410/lac-ex99_1.htm
+2025Q1,78.2,capitalised,2025-05-15,https://www.sec.gov/Archives/edgar/data/1966983/000095017025071970/lac-ex99_1.htm
+2025Q2,124.8,capitalised,2025-08-14,https://www.sec.gov/Archives/edgar/data/1966983/000095017025108402/lac-ex99_1.htm
+2025Q3,145.9,capitalised,2025-11-13,https://www.sec.gov/Archives/edgar/data/1966983/000119312525278745/lac-ex99_1.htm
+2025Q4,262.8,derived: $982.8M cumulative at Dec-25 minus $720.0M at Sep-25,2026-03-19,https://www.sec.gov/Archives/edgar/data/1966983/000119312526115091/lac-ex99_1.htm
+2026Q1,339.9,derived: change in Thacker Pass construction in progress + PP&E (10-Q balance sheet),2026-05-14,https://www.sec.gov/Archives/edgar/data/1966983/000119312526222727/lac-20260331.htm
+2026Q2,448.8,derived: change in Thacker Pass construction in progress + PP&E (10-Q balance sheet),2026-08-13,https://www.sec.gov/Archives/edgar/data/1966983/000119312526347826/lac-20260630.htm

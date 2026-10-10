@@ -1,0 +1,30 @@
+date,type,event,satellite_visible,source_url
+2021-01-15,permit,BLM Record of Decision for Thacker Pass,no,https://www.sec.gov/Archives/edgar/data/1440972/000117625621000015/exhibit99-1.htm
+2022-02-25,permit,Final key Nevada state permits received,no,https://www.sec.gov/Archives/edgar/data/1440972/000117625622000075/exhibit99-2.htm
+2023-01-31,financing,GM $650M equity investment agreed; feasibility study and construction plan released,no,https://www.sec.gov/Archives/edgar/data/1440972/000117625623000015/exhibit99-1.htm
+2023-02-07,legal,US District Court ruling on ROD appeal favourable (construction can proceed),no,https://www.sec.gov/Archives/edgar/data/1440972/000117625623000019/exhibit99-2.htm
+2023-02-16,financing,GM tranche 1 ($320M) closes,no,https://www.sec.gov/Archives/edgar/data/1440972/000117625623000031/exhibit99-1.htm
+2023-03-02,construction,Construction commences (early works: water pipeline; ponds; fencing; access roads); major earthworks expected H2 2023,yes,https://www.sec.gov/Archives/edgar/data/1440972/000117625623000043/exhibit99-1.htm
+2023-08-09,construction,Q2 2023 results: major earthworks commenced mid-June 2023; $48M spent in Q2,yes,https://www.sec.gov/Archives/edgar/data/1440972/000095017023041926/lac-ex99_1.htm
+2023-10-03,corporate,Separation into Lithium Americas (Thacker Pass) and Lithium Argentina closes; new LAC starts trading,no,https://www.sec.gov/Archives/edgar/data/1966983/000119312523251404/d499267dex991.htm
+2023-11-09,construction,Q3 2023 update: earthworks and engineering continue; major construction to start 2024; $51.1M spent in Q3,yes,https://www.sec.gov/Archives/edgar/data/1966983/000119312523275189/d305673dex991.htm
+2024-03-14,financing,DOE conditional commitment for $2.26B ATVM loan,no,https://www.sec.gov/Archives/edgar/data/1966983/000095017024031125/lac-ex99_1.htm
+2024-03-15,schedule,FY2023 results: site preparation complete; capex cut to minimal until DOE loan close; capex estimate raised to $2.93B; mechanical completion 2027,yes (plateau),https://www.sec.gov/Archives/edgar/data/1966983/000095017024031867/lac-ex99_1.htm
+2024-05-13,construction,Q1 2024 results: site prep complete; ready for major construction in H2 2024,yes (plateau),https://www.sec.gov/Archives/edgar/data/1966983/000095017024058199/lac-ex99_1.htm
+2024-08-14,construction,Q2 2024 results: awaiting DOE close and FNTP,yes (plateau),https://www.sec.gov/Archives/edgar/data/1966983/000095017024097224/lac-ex99_1.htm
+2024-10-16,financing,GM to contribute $625M (cash + LCs) for 38% of new Thacker Pass JV,no,https://www.sec.gov/Archives/edgar/data/1966983/000119312524238314/d796850dex991.htm
+2024-10-28,financing,DOE $2.26B loan closes,no,https://www.sec.gov/Archives/edgar/data/1966983/000119312524251271/d853911dex991.htm
+2024-11-07,construction,Q3 2024 results: engineering ~40%; long-lead packages awarded,no,https://www.sec.gov/Archives/edgar/data/1966983/000095017024123519/lac-ex99_1.htm
+2024-12-23,financing,GM JV closes ($330M cash from GM),no,https://www.sec.gov/Archives/edgar/data/1966983/000119312524283702/d875462dex991.htm
+2025-03-05,financing,$250M Orion strategic investment announced,no,https://www.sec.gov/Archives/edgar/data/1966983/000119312525047737/d940383dex991.htm
+2025-04-01,construction,Final investment decision for Phase 1; Orion closes,partly (earthworks restart visible Mar 2025),https://www.sec.gov/Archives/edgar/data/1966983/000119312525074679/d939615dex991.htm
+2025-05-15,construction,Q1 2025 results: earthworks almost complete; permanent concrete started early May 2025; first steel targeted Sep 2025,yes,https://www.sec.gov/Archives/edgar/data/1966983/000095017025071970/lac-ex99_1.htm
+2025-08-14,construction,Q2 2025 results: ~300 craft workers; foundations; first steel targeted Sep 2025,partly,https://www.sec.gov/Archives/edgar/data/1966983/000095017025108402/lac-ex99_1.htm
+2025-09-23,media,Reuters reports administration seeks up to 10% equity stake in LAC during DOE loan renegotiation (LAC +96% on 2025-09-24),no,https://www.ajot.com/news/exclusive-trump-administration-seeks-equity-stake-in-lithium-americas-amid-loan-talks
+2025-09-30,financing,Agreement in principle with DOE and GM for $435M first draw; DOE to receive 5% equity in LAC and 5% of JV,no,https://www.sec.gov/Archives/edgar/data/1966983/000119312525225972/d98794dex991.htm
+2025-10-07,financing,DOE loan amendments finalised,no,https://www.sec.gov/Archives/edgar/data/1966983/000119312525233937/d10878dex991.htm
+2025-11-13,construction,Q3 2025 results: first steel columns installed; ~700 personnel on site; workforce hub occupied,yes (radar structures start Q4 2025),https://www.sec.gov/Archives/edgar/data/1966983/000119312525278745/lac-ex99_1.htm
+2026-03-19,construction,FY2025 results: ~950 personnel; >60% of steel in transit or on site; 2026 capex guidance $1.3-1.6B,yes,https://www.sec.gov/Archives/edgar/data/1966983/000119312526115091/lac-ex99_1.htm
+2026-05-14,construction,Q1 2026 results: $1.3B capitalised; engineering >95%,yes,https://www.sec.gov/Archives/edgar/data/1966983/000119312526222734/lac-ex99_1.htm
+2026-08-06,financing,$175M Yorkville convertible financing 'as Thacker Pass approaches peak construction',no,https://www.sec.gov/Archives/edgar/data/1966983/000119312526336637/d60367dex991.htm
+2026-08-13,construction,Q2 2026 results: >1600 personnel; >85% of steel in transit or arrived; $1.8B capitalised,yes,https://www.sec.gov/Archives/edgar/data/1966983/000119312526347834/lac-ex99_1.htm

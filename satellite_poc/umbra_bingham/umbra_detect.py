@@ -65,7 +65,6 @@ MAX_LINE = 0.30        # share of bright pixels along the best line through the 
 BIG_PX, BIG_PEAK, BIG_MAX_LINE, BIG_MAX_RING_MEAN = 25, 0.9999, 0.45, 0.70
 MAX_ELONG = 4.0        # major/minor axis ratio (rejects thin crest segments)
 MERGE_M = 10           # detections closer than this are one object
-MIN_INCIDENCE = 20.0   # steeper collects are dropped (layover; see README)
 MIN_COVER = 0.9
 
 GDAL_ENV = dict(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR", GDAL_HTTP_MULTIPLEX="YES",

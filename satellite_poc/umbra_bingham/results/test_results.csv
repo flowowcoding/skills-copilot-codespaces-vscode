@@ -1,0 +1,8 @@
+test,n_pre,n_post,mean_pre,mean_post,diff,pct,welch_t,welch_p,perm_p,mannwhitney_p
+"PRE-REGISTERED: geometry-corrected count, Apr-Dec 2024 vs Jul 2023-Mar 2024",57,42,34.38,36.87,2.492,7.249,0.8356,0.7973,0.7899,0.919
+raw mobile count (no geometry correction),57,42,42.82,24.48,-18.35,-42.85,-4.923,1.997e-06,0,6.856e-06
+"2025 vs Jul 2023-Mar 2024 (corrected, hypothesis lower)",57,45,34.38,48.32,13.94,40.56,4.102,1,0.9999,1
+"ANCOVA: post (Apr-Dec 2024) effect vs pre, geometry in same model",57,42,,,2.952,6.893,0.7403,0.7698,,
+"ANCOVA: 2025 effect vs pre, geometry in same model",57,45,,,14.3,33.39,4.318,1,,
+"incidence-matched 20-30 deg, raw mobile count",17,42,24.24,24.48,0.2409,0.994,0.0586,0.5231,0.5235,0.5797
+"no incidence filter (all collects), corrected",62,47,33.08,33.71,0.6357,1.922,0.2316,0.5913,0.587,0.762

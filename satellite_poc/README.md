@@ -434,3 +434,16 @@ cd event_study
 python fetch_prices.py events.csv PRICE_DIR            # Yahoo daily bars, ~20 MB, not committed
 python event_study.py events.csv PRICE_DIR results figures
 ```
+
+## Lithium: Thacker Pass construction and Greenbushes mining
+
+Full write-up in [`lithium/README.md`](lithium/README.md). In short:
+
+- **Thacker Pass (Lithium Americas):** Sentinel-2 disturbed area and Sentinel-1 steel-structure
+  area track construction well (≈0 km² before 2023, 4.7 km² by summer 2026; plant steel from
+  Oct 2025). The satellite was about a month ahead only on milestones the company had already
+  guided, and it gave no stock signal: LAC's big moves came from financing and policy news.
+- **Greenbushes (IGO/Tianqi/Albemarle):** the pre-registered pit activity index did not track
+  quarterly material mined (r = +0.34 over 20 quarters; tuned version r = −0.13 on 8 holdout
+  quarters), and it rose during the 2025 truck-fleet cut. A post-hoc "pit minus plant" variant
+  is logged as a forward test against IGO's Jul–Sep 2026 report, not as a result.
