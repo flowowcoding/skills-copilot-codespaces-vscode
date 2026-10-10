@@ -5,9 +5,9 @@ movement that a sector median would dilute can be seen.
 Usage:
   python opera_map.py LONG.csv BASEMAP.png BBOX OUT.png DIRECTION MMDD_START MMDD_END YEAR [YEAR ...]
   e.g. python opera_map.py long.csv bingham_s2.png -112.19,40.49,-112.11,40.56 out.png DESCENDING 0401 0710 2022 2023 2024
-Also writes OUT.csv with the per-point change (mm, control-ring median removed) per year.
+Also writes OUT.csv (in results/ when OUT is in figures/) with the per-point change (mm, control-ring median removed) per year.
 """
-import sys
+import sys, os
 import numpy as np, pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -58,7 +58,11 @@ def main():
     fig.suptitle(f"OPERA DISP-S1 {direction.lower()}, Bingham Canyon: same window, different years (blank = masked / no data)",
                  color=style.INK, fontsize=9.5, x=0.01, ha="left")
     fig.savefig(out, dpi=150, bbox_inches="tight"); plt.close(fig)
-    pd.DataFrame(rows).to_csv(out.rsplit(".", 1)[0] + ".csv", index=False)
+    csv = out.rsplit(".", 1)[0] + ".csv"
+    alt = csv.replace("figures/", "results/")
+    if alt != csv and os.path.isdir(os.path.dirname(alt) or "."):
+        csv = alt                     # keep tables in results/ next to figures/
+    pd.DataFrame(rows).to_csv(csv, index=False)
     r = pd.DataFrame(rows)
     print(r[r.sector != "control"].groupby(["year", "sector"]).los_change_mm.agg(["median", lambda s: (s < -20).mean(), "count"]).round(2).unstack(0))
 

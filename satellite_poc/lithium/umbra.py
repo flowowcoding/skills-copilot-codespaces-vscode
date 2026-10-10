@@ -119,8 +119,8 @@ def cmd_stack(index_csv, bbox, res, out):
         amps = list(ex.map(read, idx["url"]))
     keep = [i for i, a in enumerate(amps) if a is not None and (a > 0).mean() > 0.05]
     idx = idx.iloc[keep].reset_index(drop=True)
-    np.savez_compressed(out, amp=np.stack([amps[i] for i in keep]), dates=idx["time"].astype(str).values,
-                        orbit=idx["orbit"].astype(str).values, look=idx["look"].astype(str).values,
+    np.savez_compressed(out, amp=np.stack([amps[i] for i in keep]), dates=idx["time"].astype(str).values.astype("U"),
+                        orbit=idx["orbit"].astype(str).values.astype("U"), look=idx["look"].astype(str).values.astype("U"),
                         incidence=idx["incidence"].values, squint=idx["squint"].values,
                         bbox=np.array([lon0, lat0, lon1, lat1]), res=res)
     print(len(keep), "collects", (H, W))

@@ -166,6 +166,35 @@ is public before the next satellite pass.
 - These need many sites and a different kind of backtest. The single-mine stock-picking
   idea doesn't survive at 10-20 m.
 
+## Pit-wall and heap instability: a lead over geotechnical disclosures? (`pit_walls/`)
+
+**Idea.** Halts are announced the same day. Geotechnical problems are not. Rio Tinto's first
+word on the Bingham Canyon south wall came in the Q2 2024 review (16 Jul 2024), and it hit output
+into 2026. Can free radar see the wall move first?
+
+**Data actually reachable without a login:**
+- Sentinel-1 amplitude (Planetary Computer).
+- **NASA OPERA DISP-S1 InSAR displacement, per point, through ASF's open displacement-portal API.** The granules themselves need Earthdata. Coverage is North America only, the archive skips winters, and the Apr-Jun 2024 data were only produced in Sep 2025.
+- COMET LiCSAR interferograms at 100 m, worldwide.
+- Umbra sub-metre SAR of Bingham.
+- Not reachable: HyP3, SLCs, EGMS (all need a login).
+
+**Test.** Pre-registered in `pit_walls/prereg.json` before any series was computed:
+- 60-day LOS change outside baseline ±3 SD and ≥ 15 mm, for 3 epochs;
+- the run must start between D-12 months and D-4 weeks.
+
+Four events: Bingham 2024 south wall, Bingham "Leo" SE-wall failure 31 May 2021, Çöpler heap
+13 Feb 2024, Eagle heap 24 Jun 2024.
+
+**Result: 0 of 20 tests detected anything ahead of time; Eagle couldn't be tested.**
+- OPERA shows Bingham walls creeping steadily: SE wall −26 to −42 mm/yr since 2016; S wall slowly speeding up, −3 → −8 → −12 mm/yr. Nothing anomalous before July 2024 or before the Leo failure.
+- LiCSAR does not reproduce the ~80 mm pre-failure heap motion a vendor reported at Çöpler; the heap is mostly incoherent at 100 m.
+- Amplitude sees nothing before any event, as expected.
+
+Details, caveats and figures are in `pit_walls/README.md`. Free, anonymous products give no usable
+lead. A lead would need your own near-real-time InSAR, point-scale anomaly detection and many
+more events.
+
 ## Takeaways
 
 - Tests 1 and 2: both free sensors resolve the sites, but neither picks out the business
