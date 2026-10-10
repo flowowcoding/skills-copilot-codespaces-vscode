@@ -447,3 +447,12 @@ Full write-up in [`lithium/README.md`](lithium/README.md). In short:
   quarterly material mined (r = +0.34 over 20 quarters; tuned version r = −0.13 on 8 holdout
   quarters), and it rose during the 2025 truck-fleet cut. A post-hoc "pit minus plant" variant
   is logged as a forward test against IGO's Jul–Sep 2026 report, not as a result.
+
+## Sub-metre radar at Bingham Canyon (Umbra open data)
+
+Full write-up in [`umbra_bingham/README.md`](umbra_bingham/README.md). Umbra's 33-50 cm SAR shows
+individual shovels and haul trucks, and a rank-based detector now reads all 157 collects
+(Jul 2023 – Nov 2025). The pre-registered test failed: geometry-corrected mobile-equipment counts
+in the pit were not lower after Rio Tinto's Q2 2024 geotechnical disclosure (36.9 vs 34.4 per
+image, one-sided p ≈ 0.8). The raw 43% drop was an artefact of Umbra switching to steeper look
+angles in 2024. Counts rose clearly in 2025 (+41%), cause unverified.
