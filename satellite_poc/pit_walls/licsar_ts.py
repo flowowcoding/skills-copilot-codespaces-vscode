@@ -28,7 +28,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 def parse_box(txt):
     """'pixels in A..B E, C..D N outside the mine box E0..E1, N0..N1' -> outer, inner boxes."""
-    nums = [float(v) for v in re.findall(r"-?\d+\.\d+", txt)]
+    nums = [float(v) for v in re.findall(r"(?<![\d])-?\d+\.\d+", txt)]
     outer = (nums[0], nums[2], nums[1], nums[3]); inner = (nums[4], nums[6], nums[5], nums[7])
     return outer, inner
 

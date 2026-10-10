@@ -1,0 +1,10 @@
+D,n_base,base_mean,base_sd,first_alarm,lead_days,alarm_sign,alarm_value,late_alarm,event,direction,segment,primary,valid_frac_window
+2024-07-16,17,-1.59,6.47,,,,,,2024 south-wall highwall movement,DESCENDING,S,True,0.6
+2024-07-16,17,1.05,3.56,,,,,,2024 south-wall highwall movement,DESCENDING,SW,False,0.65
+2024-07-16,17,-12.85,6.85,,,,,,2024 south-wall highwall movement,DESCENDING,SE,False,0.52
+2021-05-31,14,-0.8,5.99,,,,,,Leo SE-wall failure (19 Mt),ASCENDING,SE,True,0.47
+2021-05-31,14,-5.38,8.52,,,,,,Leo SE-wall failure (19 Mt),ASCENDING,S,False,0.61
+2021-05-31,14,4.75,6.34,,,,,,Leo SE-wall failure (19 Mt),ASCENDING,NE,False,0.72
+2021-05-31,18,-7.88,5.32,,,,,,Leo SE-wall failure (19 Mt),DESCENDING,SE,True,0.74
+2021-05-31,18,0.71,5.03,,,,,,Leo SE-wall failure (19 Mt),DESCENDING,S,False,0.88
+2021-05-31,18,-5.3,7.02,,,,,,Leo SE-wall failure (19 Mt),DESCENDING,NE,False,0.95

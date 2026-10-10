@@ -1,0 +1,241 @@
+ref_month,release_datetime_brt,date_source
+200609,2006-10-10 10:00,approx
+200610,2006-11-08 10:00,"ibge_news:Em 2007, safra deverá crescer 5,34%"
+200611,2006-12-10 10:00,approx
+200612,2007-01-10 10:00,approx
+200701,2007-02-07 10:00,"ibge_news:Safra de grãos deve crescer 9,7% em 2007"
+200702,2007-03-08 10:00,"ibge_news:Previsão de safra de grãos aumenta 1,2%"
+200703,2007-04-09 10:00,"ibge_news:Safra de grãos em 2007 deverá ser de 130,7 milhões de toneladas"
+200704,2007-05-10 10:00,"ibge_news:Milho 2ª safra e trigo ampliam previsão da produção de grãos em 1,2%"
+200705,2007-06-12 10:00,"ibge_news:IBGE indica crescimento de 15,5% na safra de grãos de 2007 e mostra que estoque "
+200706,2007-07-10 10:00,approx
+200707,2007-08-10 10:00,approx
+200708,2007-09-11 10:00,"ibge_news:Em agosto, IBGE estima safra em 133,8 milhões de toneladas"
+200709,2007-10-08 10:00,"ibge_news:Em setembro, IBGE estima safra de 2007 em 133,3 milhões de toneladas"
+200710,2007-11-08 10:00,"ibge_news:Em 2008, safra de grãos poderá crescer 2,9%"
+200711,2007-12-10 10:00,"ibge_news:Em 2008, safra de grãos poderá crescer 3,1%"
+200712,2008-01-08 10:00,"ibge_news:Em 2008, safra de grãos deverá crescer 2,1%"
+200801,2008-02-12 10:00,"ibge_news:Safra de grãos deverá crescer 2,7% em 2008"
+200802,2008-03-06 10:00,"ibge_news:Segunda safra representa 23,7% da produção nacional de milho"
+200803,2008-04-08 10:00,"ibge_news:Em março, IBGE estima safra de 140,5 milhões de toneladas para 2008"
+200804,2008-05-10 10:00,approx
+200805,2008-06-09 10:00,"ibge_news:Em maio, IBGE mantém previsão de safra recorde para 2008"
+200806,2008-07-10 10:00,approx
+200807,2008-08-07 10:00,"ibge_news:Em julho, IBGE espera crescimento de 9% para safra de grãos de 2008"
+200808,2008-09-08 10:00,"ibge_news:Em agosto, IBGE estima crescimento de 9% para safra de grãos de 2008"
+200809,2008-10-08 10:00,"ibge_news:Em setembro, IBGE estima crescimento de 9,1% para safra de grãos de 2008"
+200810,2008-11-06 10:00,"ibge_news:Em 2009, safra de grãos poderá cair 3,3%"
+200811,2008-12-08 10:00,"ibge_news:Em novembro, IBGE estima aumento de 9,4% na safra de grãos de 2008"
+200812,2009-01-08 10:00,"ibge_news:Em 2009, safra deve atingir 137,3 milhões de toneladas"
+200901,2009-02-10 10:00,approx
+200902,2009-03-10 10:00,approx
+200903,2009-04-07 10:00,"ibge_news:Em 2009, safra de grãos deve atingir 136,4 milhões de toneladas"
+200904,2009-05-07 10:00,"ibge_news:Safra de grãos deve atingir 136,0 milhões de toneladas em 2009"
+200905,2009-06-08 10:00,"ibge_news:Safra de grãos deve ser 7,5% menor que a de 2008"
+200906,2009-07-07 10:00,"ibge_news:Safra de grãos deve ser 8,7% menor que a de 2008"
+200907,2009-08-06 10:00,"ibge_news:Em julho, IBGE estima queda de 7,9% na safra de grãos 2009"
+200908,2009-09-08 10:00,"ibge_news:Em agosto, IBGE estima queda de 8,6% na safra de grãos"
+200909,2009-10-07 10:00,"ibge_news:Em setembro, IBGE estima queda de 8,1% na safra de grãos"
+200910,2009-11-05 10:00,"ibge_news:Em 2010, safra de grãos deverá subir 3,8%"
+200911,2009-12-08 10:00,"ibge_news:IBGE estima safra de grãos 8,1% inferior à safra recorde de 2008"
+200912,2010-01-07 10:00,"ibge_news:IBGE estima safra 5,2% maior em 2010"
+201001,2010-02-09 10:00,"ibge_news:Em janeiro, IBGE estima safra de grãos 7,2% maior que a de 2009"
+201002,2010-03-09 10:00,"ibge_news:Em fevereiro, IBGE estima safra de grãos 8,5% maior que a de 2009"
+201003,2010-04-07 10:00,"ibge_news:Em março, IBGE estima safra de grãos 8,5% maior que em 2009"
+201004,2010-05-10 10:00,approx
+201005,2010-06-08 10:00,"ibge_news:Em maio, IBGE prevê safra 8,8% maior que a de 2009"
+201006,2010-07-08 10:00,"ibge_news:Em junho, IBGE prevê safra de grãos 8,9% maior que a de 2009"
+201007,2010-08-05 10:00,"ibge_news:Em julho, IBGE prevê safra de grãos 9,2% maior que a de 2009"
+201008,2010-09-09 10:00,"ibge_news:Em agosto, IBGE prevê safra de grãos 10,5% maior que a de 2009"
+201009,2010-10-07 10:00,"ibge_news:Em setembro, IBGE prevê safra de grãos 11,1% maior que a de 2009"
+201010,2010-11-10 10:00,"ibge_news:Em 2011, IBGE prevê safra de grãos 2,8% menor que a de 2010"
+201011,2010-12-09 10:00,"ibge_news:Em 2011, IBGE prevê safra de grãos 2,5% menor que a de 2010"
+201012,2011-01-06 10:00,"ibge_news:Em 2010, safra nacional cresceu 11,6%; para 2011, a estimativa é de queda de 2,5"
+201101,2011-02-09 10:00,"ibge_news:Em janeiro, IBGE prevê safra de grãos 1,8% menor que a de 2010"
+201102,2011-03-10 10:00,"ibge_news:Em fevereiro, IBGE prevê safra de grãos 1,2% maior que a de 2010"
+201103,2011-04-06 10:00,"ibge_news:Em março, IBGE prevê safra de grãos 4,0% maior que safra recorde de 2010"
+201104,2011-05-10 10:00,"ibge_news:Em abril, IBGE prevê safra de grãos 6,0% maior que safra recorde de 2010"
+201105,2011-06-08 10:00,"ibge_news:Em maio, IBGE prevê safra 7,8% maior que safra recorde de 2010"
+201106,2011-07-06 10:00,"ibge_news:Em junho, IBGE prevê safra de grãos 8,0% maior que safra recorde de 2010"
+201107,2011-08-09 10:00,"ibge_news:Em julho, IBGE prevê safra de grãos 6,2% maior que a safra recorde de 2010"
+201108,2011-09-09 10:00,"ibge_news:Em agosto, IBGE prevê safra 6,3% maior que em 2010"
+201109,2011-10-06 10:00,"ibge_news:Em setembro, IBGE prevê safra de grãos 6,6% maior que safra recorde de 2010"
+201110,2011-11-09 10:00,"ibge_news:Em outubro, IBGE prevê safra 6,8% maior que em 2010"
+201111,2011-12-08 10:00,"ibge_news:Em 2012, IBGE prevê safra de grãos 0,6% maior"
+201112,2012-01-10 10:00,"ibge_news:Em 2012, IBGE prevê safra 0,3% maior que em 2011"
+201201,2012-02-09 10:00,"ibge_news:Em janeiro, IBGE prevê safra de grãos 0,7% menor que em 2011"
+201202,2012-03-08 10:00,"ibge_news:Em fevereiro, IBGE prevê safra de grãos 1,5% menor que em 2011"
+201203,2012-04-10 10:00,"ibge_news:Em março, IBGE prevê safra de grãos 0,9% menor que em 2011"
+201204,2012-05-10 10:00,"ibge_news:Em abril, IBGE prevê safra de grãos 0,5% menor que a de 2011"
+201205,2012-06-05 10:00,"ibge_news:Em maio, IBGE prevê safra de grãos 0,1% maior que a safra recorde de 2011"
+201206,2012-07-10 10:00,approx
+201207,2012-08-09 10:00,"ibge_news:Em julho, IBGE prevê safra de grãos 2,0% maior que a safra recorde de 2011"
+201208,2012-09-06 10:00,"ibge_news:Em agosto, IBGE prevê safra de grãos 2,8% maior que a safra obtida em 2011"
+201209,2012-10-10 10:00,approx
+201210,2012-11-08 10:00,"ibge_news:O IBGE prevê safra de grãos 5,1% maior no 1º Prognóstico de 2013"
+201211,2012-12-06 10:00,"ibge_news:Em 2013, IBGE prevê safra de grãos 6,9% maior"
+201212,2013-01-09 10:00,"ibge_news:Safra de 2012 bate recorde e chega a 162,1 milhões de toneladas"
+201301,2013-02-07 10:00,"ibge_news:Em janeiro, IBGE prevê safra de grãos 13,1% maior que a safra obtida em 2012"
+201302,2013-03-10 10:00,approx
+201303,2013-04-09 10:00,"ibge_news:Em março, IBGE prevê safra de grãos 12,0% maior que a safra de 2012"
+201304,2013-05-09 10:00,"ibge_news:Safra mantém estimativa crescente em abril, 14,2% maior que a safra de 2012"
+201305,2013-06-05 10:00,"ibge_news:Em maio, IBGE prevê safra 14,8% maior que a de 2012"
+201306,2013-07-09 10:00,"ibge_news:Em junho, IBGE prevê safra 14,7% maior que a de 2012"
+201307,2013-08-08 10:00,"ibge_news:Em julho, IBGE prevê safra 16,1% maior que a de 2012"
+201308,2013-09-10 10:00,"ibge_news:Em agosto, IBGE prevê safra 15,7% maior que a de 2012"
+201309,2013-10-09 10:00,"ibge_news:Em setembro, IBGE prevê safra de grãos 15,5% maior que a safra de 2012"
+201310,2013-11-08 10:00,"ibge_news:O IBGE prevê safra de grãos 1,4% menor no 1º prognóstico de 2014"
+201311,2013-12-10 10:00,"ibge_news:Em novembro, IBGE prevê safra 15,4% maior que a de 2012"
+201312,2014-01-09 10:00,ibge_news:IBGE confirma safra recorde em 2013 e prevê produção ainda maior em 2014
+201401,2014-02-11 10:00,"ibge_news:Em janeiro, IBGE prevê safra 3,0% maior que a de 2013"
+201402,2014-03-12 10:00,"ibge_news:Em fevereiro, IBGE prevê safra 1,1% maior que a de 2013"
+201403,2014-04-10 10:00,"ibge_news:Em março, IBGE prevê safra 0,7% maior que a de 2013"
+201404,2014-05-08 10:00,"ibge_news:Em abril, IBGE prevê safra 1,5% maior que a de 2013"
+201405,2014-06-10 10:00,"ibge_news:Em maio, IBGE prevê safra 2,2% maior que a de 2013"
+201406,2014-07-09 10:00,"ibge_news:Em junho, IBGE prevê safra 2,3% maior que a de 2013"
+201407,2014-08-07 10:00,"ibge_news:Em julho, IBGE prevê safra 2,6% maior que a de 2013"
+201408,2014-09-09 10:00,"ibge_news:Em agosto, IBGE prevê safra 2,8% maior que a de 2013"
+201409,2014-10-09 10:00,"ibge_news:Em setembro, IBGE prevê safra 2,8% maior que a de 2013"
+201410,2014-11-11 10:00,"ibge_news:IBGE prevê safra de grãos 2,5% maior no 1º prognóstico de 2015"
+201411,2014-12-10 10:00,"ibge_news:Em novembro, IBGE prevê safra 3,3% maior que a de 2013"
+201412,2015-01-09 10:00,"ibge_news:Em dezembro, IBGE confirma safra recorde para 2014"
+201501,2015-02-12 10:00,"ibge_news:Em janeiro, IBGE prevê safra 4,4% maior que a de 2014"
+201502,2015-03-10 10:00,"ibge_news:Em fevereiro, IBGE prevê safra 3,5% maior que a de 2014"
+201503,2015-04-10 10:00,"ibge_news:Em março, IBGE prevê safra 3,6% maior que a de 2014"
+201504,2015-05-12 10:00,"ibge_news:Em abril, IBGE prevê safra 4,2% maior que a de 2014"
+201505,2015-06-11 10:00,"ibge_news:Em maio, IBGE prevê crescimento de 5,9% na safra de grãos de 2015"
+201506,2015-07-09 10:00,"ibge_news:Em junho, IBGE prevê safra 6,7% maior que a de 2014"
+201507,2015-08-11 10:00,"ibge_news:Em julho, IBGE prevê crescimento de 8,1% na safra de grãos de 2015"
+201508,2015-09-11 10:00,"ibge_news:Em agosto, IBGE prevê crescimento de 8,6% na safra de grãos de 2015"
+201509,2015-10-09 10:00,"ibge_news:Em setembro, IBGE prevê safra 8,8% maior que a de 2014"
+201510,2015-11-10 10:00,"ibge_news:IBGE prevê safra de grãos 1,9% menor no 1º prognóstico de 2016"
+201511,2015-12-11 10:00,"ibge_news:IBGE prevê safra de grãos 0,5% menor em 2016"
+201512,2016-01-12 10:00,"ibge_news:Safra 2015 é recorde e IBGE espera alta de 0,5% para 2016"
+201601,2016-02-04 10:00,"ibge_news:Em janeiro, IBGE prevê safra de grãos 0,6% maior que a de 2015"
+201602,2016-03-10 10:00,"ibge_news:Em fevereiro, IBGE prevê safra de grãos 0,9% maior que a de 2015"
+201603,2016-04-07 10:00,"ibge_news:Em março, IBGE prevê safra de grãos 0,2% maior que a de 2015"
+201604,2016-05-10 10:00,"ibge_news:Em abril, IBGE prevê safra de grãos 1,9% menor que a de 2015"
+201605,2016-06-09 10:00,"ibge_news:Em maio, IBGE prevê safra de grãos 6,5% menor que a de 2015"
+201606,2016-07-07 10:00,"ibge_news:Em junho, IBGE prevê safra de grãos 8,4% menor que a de 2015"
+201607,2016-08-09 10:00,"ibge_news:Em julho, IBGE prevê safra de grãos 9,8% menor que a de 2015"
+201608,2016-09-06 10:00,"ibge_news:Em agosto, IBGE prevê safra de grãos 11,1% menor que em 2015"
+201609,2016-10-06 10:00,"ibge_news:Em setembro, IBGE prevê safra de grãos 12,3% menor que a de 2015"
+201610,2016-11-10 10:00,"ibge_news:Em outubro, IBGE prevê safra 13,9% maior para 2017"
+201611,2016-12-08 10:00,"ibge_news:Em novembro, IBGE prevê safra 14,2% maior para 2017"
+201612,2017-01-10 11:00,ibge_calendar
+201701,2017-02-09 11:00,ibge_calendar
+201702,2017-03-09 12:00,ibge_calendar
+201703,2017-04-11 12:00,ibge_calendar
+201704,2017-05-11 03:00,ibge_calendar
+201705,2017-06-08 03:00,ibge_calendar
+201706,2017-07-11 03:00,ibge_calendar
+201707,2017-08-10 03:00,ibge_calendar
+201708,2017-09-12 03:00,ibge_calendar
+201709,2017-10-10 03:00,ibge_calendar
+201710,2017-11-09 02:00,ibge_calendar
+201711,2017-12-12 02:00,ibge_calendar
+201712,2018-01-11 00:00,ibge_calendar
+201801,2018-02-08 11:00,ibge_calendar
+201802,2018-03-08 00:00,ibge_calendar
+201803,2018-04-10 00:00,ibge_calendar
+201804,2018-05-10 00:00,ibge_calendar
+201805,2018-06-12 12:00,ibge_calendar
+201806,2018-07-10 12:00,ibge_calendar
+201807,2018-08-09 12:00,ibge_calendar
+201808,2018-09-11 12:00,ibge_calendar
+201809,2018-10-11 12:00,ibge_calendar
+201810,2018-11-08 11:00,ibge_calendar
+201811,2018-12-11 11:00,ibge_calendar
+201812,2019-01-10 11:00,ibge_calendar
+201901,2019-02-12 11:00,ibge_calendar
+201902,2019-03-12 12:00,ibge_calendar
+201903,2019-04-11 12:00,ibge_calendar
+201904,2019-05-09 12:00,ibge_calendar
+201905,2019-06-11 12:00,ibge_calendar
+201906,2019-07-11 12:00,ibge_calendar
+201907,2019-08-08 12:00,ibge_calendar
+201908,2019-09-10 12:00,ibge_calendar
+201909,2019-10-10 12:00,ibge_calendar
+201910,2019-11-13 11:00,ibge_calendar
+201911,2019-12-10 11:00,ibge_calendar
+201912,2020-01-08 11:00,ibge_calendar
+202001,2020-02-11 11:00,ibge_calendar
+202002,2020-03-10 12:00,ibge_calendar
+202003,2020-04-09 12:00,ibge_calendar
+202004,2020-05-12 12:00,ibge_calendar
+202005,2020-06-09 12:00,ibge_calendar
+202006,2020-07-08 12:00,ibge_calendar
+202007,2020-08-11 12:00,ibge_calendar
+202008,2020-09-10 12:00,ibge_calendar
+202009,2020-10-08 12:00,ibge_calendar
+202010,2020-11-10 11:00,ibge_calendar
+202011,2020-12-10 11:00,ibge_calendar
+202012,2021-01-13 11:00,ibge_calendar
+202101,2021-02-11 12:00,ibge_calendar
+202102,2021-03-11 12:00,ibge_calendar
+202103,2021-04-08 12:00,ibge_calendar
+202104,2021-05-12 12:00,ibge_calendar
+202105,2021-06-10 12:00,ibge_calendar
+202106,2021-07-08 12:00,ibge_calendar
+202107,2021-08-10 12:00,ibge_calendar
+202108,2021-09-09 12:00,ibge_calendar
+202109,2021-10-07 12:00,ibge_calendar
+202110,2021-11-11 12:00,ibge_calendar
+202111,2021-12-09 12:00,ibge_calendar
+202112,2022-01-11 12:00,ibge_calendar
+202201,2022-02-10 12:00,ibge_calendar
+202202,2022-03-10 12:00,ibge_calendar
+202203,2022-04-07 12:00,ibge_calendar
+202204,2022-05-12 12:00,ibge_calendar
+202205,2022-06-08 12:00,ibge_calendar
+202206,2022-07-07 12:00,ibge_calendar
+202207,2022-08-11 12:00,ibge_calendar
+202208,2022-09-08 12:00,ibge_calendar
+202209,2022-10-06 12:00,ibge_calendar
+202210,2022-11-09 12:00,ibge_calendar
+202211,2022-12-08 12:00,ibge_calendar
+202212,2023-01-12 12:00,ibge_calendar
+202301,2023-02-08 12:00,ibge_calendar
+202302,2023-03-09 12:00,ibge_calendar
+202303,2023-04-13 12:00,ibge_calendar
+202304,2023-05-11 12:00,ibge_calendar
+202305,2023-06-13 12:00,ibge_calendar
+202306,2023-07-13 12:00,ibge_calendar
+202307,2023-08-10 12:00,ibge_calendar
+202308,2023-09-06 12:00,ibge_calendar
+202309,2023-10-10 12:00,ibge_calendar
+202310,2023-11-09 12:00,ibge_calendar
+202311,2023-12-07 12:00,ibge_calendar
+202312,2024-01-10 12:00,ibge_calendar
+202401,2024-02-08 12:00,ibge_calendar
+202402,2024-03-12 12:00,ibge_calendar
+202403,2024-04-11 12:00,ibge_calendar
+202404,2024-05-14 12:00,ibge_calendar
+202405,2024-06-13 12:00,ibge_calendar
+202406,2024-07-11 12:00,ibge_calendar
+202407,2024-08-13 12:00,ibge_calendar
+202408,2024-09-12 12:00,ibge_calendar
+202409,2024-10-15 12:00,ibge_calendar
+202410,2024-11-14 12:00,ibge_calendar
+202411,2024-12-12 12:00,ibge_calendar
+202412,2025-01-14 12:00,ibge_calendar
+202501,2025-02-13 12:00,ibge_calendar
+202502,2025-03-13 12:00,ibge_calendar
+202503,2025-04-10 12:00,ibge_calendar
+202504,2025-05-15 12:00,ibge_calendar
+202505,2025-06-12 12:00,ibge_calendar
+202506,2025-07-10 12:00,ibge_calendar
+202507,2025-08-14 12:00,ibge_calendar
+202508,2025-09-11 12:00,ibge_calendar
+202509,2025-10-14 12:00,ibge_calendar
+202510,2025-11-13 12:00,ibge_calendar
+202511,2025-12-11 12:00,ibge_calendar
+202512,2026-01-15 12:00,ibge_calendar
+202601,2026-02-12 12:00,ibge_calendar
+202602,2026-03-13 12:00,ibge_calendar
+202603,2026-04-14 12:00,ibge_calendar
+202604,2026-05-14 12:00,ibge_calendar
+202605,2026-06-11 12:00,ibge_calendar
+202606,2026-07-14 12:00,ibge_calendar
+202607,2026-08-13 12:00,ibge_calendar
+202608,2026-09-15 12:00,ibge_calendar

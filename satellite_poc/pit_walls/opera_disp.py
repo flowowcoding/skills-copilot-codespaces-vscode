@@ -93,7 +93,7 @@ def main():
         print(direction, "done", len(rows))
     df = pd.DataFrame(rows, columns=["pid", "lon", "lat", "dist_m", "sector", "direction", "frame", "x", "y",
                                      "date", "disp_mm", "masked", "ref_date"])
-    df.to_csv(a.out, index=False, float_format="%.5g")
+    df.round({"lon": 6, "lat": 6, "dist_m": 0, "disp_mm": 2}).to_csv(a.out, index=False)
     print(df.groupby(["direction", "sector"]).pid.nunique())
 
 

@@ -54,12 +54,14 @@ def main():
 
 def pam(a, yrs, inv):
     df = sidra(f"t/1612/n3/all/v/109,216,214,112/p/{yrs}/c81/2713")
+    br = sidra(f"t/1612/n1/all/v/109,216,214,112/p/{yrs}/c81/2713")
+    br["Unidade da Federação (Código)"] = "BR"
+    df = pd.concat([df, br])
     df = df.rename(columns={"Unidade da Federação (Código)": "uf_code", "Variável (Código)": "var", "Ano": "year", "Valor": "value"})
     df["value"] = num(df["value"])
     w = df.pivot_table(index=["uf_code", "year"], columns="var", values="value").reset_index()
     w.columns = ["uf_code", "year", "area_planted_ha", "yield_kg_ha", "production_t", "area_harvested_ha"]
-    w["state"] = w.uf_code.map(inv)
-    w = w.dropna(subset=["state"])
+    w["state"] = w.uf_code.map(lambda c: c if c == "BR" else inv.get(str(c), "UF" + str(c)))
     w["year"] = w.year.astype(int)
     w["yield_kg_ha"] = w.production_t / w.area_harvested_ha * 1000
     w[["state", "year", "area_planted_ha", "area_harvested_ha", "production_t", "yield_kg_ha"]].sort_values(["state", "year"]).to_csv(f"{a.out}/pam_state.csv", index=False)
