@@ -3,8 +3,11 @@ import sys, numpy as np, rasterio, planetary_computer as pc, pystac_client, coll
 from rasterio.warp import transform_bounds
 from rasterio.windows import from_bounds
 from concurrent.futures import ThreadPoolExecutor
-lon, lat, half, dates, out = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), sys.argv[4], sys.argv[5]
-bbox=[lon-half*1.25, lat-half, lon+half*1.25, lat+half]
+if sys.argv[1]=="--bbox":
+    bbox=[float(v) for v in sys.argv[2].split(",")]; dates, out = sys.argv[3], sys.argv[4]
+else:
+    lon, lat, half, dates, out = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), sys.argv[4], sys.argv[5]
+    bbox=[lon-half*1.25, lat-half, lon+half*1.25, lat+half]
 cat=pystac_client.Client.open("https://planetarycomputer.microsoft.com/api/stac/v1", modifier=pc.sign_inplace)
 items=list(cat.search(collections=["sentinel-1-rtc"], bbox=bbox, datetime=dates).items())
 orb=collections.Counter((i.properties["sat:relative_orbit"], i.properties["sat:orbit_state"]) for i in items)
@@ -19,7 +22,7 @@ def read(it):
         with rasterio.open(it.assets[pol].href) as src:
             bb=transform_bounds("EPSG:4326", src.crs, *bbox)
             w=from_bounds(*bb, src.transform)
-            res[pol]=src.read(1, window=w, boundless=True, fill_value=np.nan).astype(np.float32)
+            res[pol]=src.read(1, window=w, boundless=True, fill_value=np.nan).astype(np.float16)
             res["crs"]=str(src.crs); res["transform"]=tuple(src.window_transform(w))[:6]
     return it.datetime, res
 with ThreadPoolExecutor(8) as ex:

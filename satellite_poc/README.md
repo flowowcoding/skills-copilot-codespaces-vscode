@@ -58,10 +58,42 @@ months of scenes to see, which is useless for trading. Better candidates would b
 thermal (ECOSTRESS, VIIRS Nightfire) or a plant whose process heat is far higher than its
 roof heat (steel blast furnaces, flares).
 
+## 3. Mine activity index: Cobre Panamá (Sentinel-1 radar, 10 m) — works
+
+**Idea.** An active open-pit mine changes constantly: blasting, haul trucks, stockpiles
+growing and shrinking. A radar pass every 12 days should therefore change a lot from the
+previous one over the mine, and very little once it goes idle. Radar sees through clouds,
+which matters in the tropics. Cobre Panamá is a clean test: production halted around
+24 Nov 2023, just before Panama's Supreme Court struck down the mining contract on 28 Nov.
+
+**Data.** 156 passes from one orbit, Jan 2021 to Sep 2026.
+
+**Method.** The mine mask is bare ground from a Sentinel-2 image (NDVI < 0.25), with water
+removed (wind on the tailings pond also changes the radar). For each pass, the index is the
+share of mine pixels whose backscatter moved more than 3 dB since the last pass, minus the
+same share over forest (rain and moisture move both). `figures/cobre_activity.png`
+
+**Result: the halt is unmistakable and caught within one pass.**
+
+| | mean index | sd | passes |
+|---|---|---|---|
+| operating (to mid-Oct 2023) | +2.1 pts | 1.7 | 82 |
+| halted (mid-Dec 2023 on) | -2.9 pts | 1.9 | 69 |
+
+The step falls between the 19 Nov (+1.2) and 1 Dec (-0.8) passes. Only 9% of halted passes
+score above the operating period's 10th percentile. It isn't seasonal: dry-season quarters
+before the halt were positive (2021Q1 +3.4, 2022Q1 +1.5, 2023Q1 +1.9).
+
+**What it does not show yet.** This halt was public news the same day, so here the satellite
+gave no head start. The value would be at small single-mine companies, where a slowdown, a
+ramp-up that runs late, or a quiet restart only shows up in the next quarterly report.
+The next test is whether the index tracks *reported quarterly production* (ore mined or
+tonnes moved) at a few such miners, and whether it moves before the report does.
+
 ## Takeaways
 
-- Both free sensors resolve the sites, but neither picks out the business signal we
-  wanted above the noise. This matches the Cushing result: at 10-100 m, the hard part is
+- Tests 1 and 2: both free sensors resolve the sites, but neither picks out the business
+  signal we wanted above the noise. This matches the Cushing result: at 10-100 m, the hard part is
   never finding the object. It is measuring the small change that matters.
 - The cheapest next tests are the ones with a big, slow change:
   - pit and stockpile growth at a single-mine company (Sentinel-2, Sentinel-1)
@@ -77,6 +109,8 @@ roof heat (steel blast furnaces, flares).
 | `fremont_radar.py STACK.npz [OUT.csv]` | quarter-end test and yearly trend |
 | `lsheat.py LON LAT HALF DATES OUT.npz` | Landsat 8/9 surface temperature, clouds masked |
 | `heat_ts.py STACK.npz REF_END OUT` | hottest-pixel series and map |
+| `s2ndvi.py BBOX DATES H W OUT.npy` | Sentinel-2 NDVI on the radar grid (for the mine mask) |
+| `activity.py STACK.npz NDVI.npy OUT.csv` | mine activity index |
 
 Reproduce:
 
@@ -86,6 +120,9 @@ python s1stack.py -121.944 37.494 0.022 2022-01-01/2026-10-01 fremont_s1.npz   #
 python fremont_radar.py fremont_s1.npz results/fremont_radar.csv
 python lsheat.py -86.789 37.945 0.012 2015-01-01/2026-10-01 hawes_st.npz
 python heat_ts.py hawes_st.npz 2022-01-01 hawesville
+python s1stack.py --bbox -80.69,8.81,-80.62,8.89 2021-01-01/2026-10-01 cobre_s1.npz
+python s2ndvi.py -80.69,8.81,-80.62,8.89 2023-01-01/2023-10-31 885 771 cobre_ndvi.npy
+python activity.py cobre_s1.npz cobre_ndvi.npy results/cobre_activity.csv
 ```
 
 The image stacks aren't committed because of their size. `results/` holds the derived time series.
