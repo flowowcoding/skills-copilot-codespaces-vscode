@@ -100,6 +100,72 @@ index is scored on **2022 onward**, so picking the pixels doesn't bias the test.
 - **A refinement to try:** split the index by zone (pit, waste dumps, process plant). Cleanup
   earthworks sit on pads and in valleys, while production happens in the pit.
 
+## 4. Zones and the production test
+
+### 4a. Split by zone: pits stop, plants and tailings don't
+
+`zones.py` scores each mine zone separately (pit, dumps, heap-leach pad, plant, tailings).
+The zones are pixel boxes drawn from before/after Sentinel-2 images (`gridchip.py`), not from
+the radar results. Same rules as before: busy pixels are picked on 2021 data and scored
+from 2022 on.
+
+| mine | mining zone | same-month drop after halt | months lower |
+|---|---|---|---|
+| Cobre Panamá | Botija pit | 14.5 pts (was 9.6 for the whole mine) | 12/12 |
+| Eagle | pit, Jun-Sep only | +4.4 → -2.2 (separation 1.8) | 10/11 |
+| Çöpler | pits / north benches | 3.0 / 5.4 pts | 12/12 |
+
+The plants and tailings kept changing after every halt (water handling, cleanup). Once the
+mining zones are isolated, the halt shows at all three mines.
+
+### 4b. Does activity track reported tonnes? Karlawinda (Capricorn Metals)
+
+Karlawinda is a single open-pit gold mine in Western Australia. Capricorn reports material
+mined every quarter, and I took 19 quarters (2022Q1-2026Q3) from its ASX reports.
+
+Radar has no passes here from 2022 to early 2025 (the gap Sentinel-1B left), so this test
+uses an optical version (`s2stack.py`, `optical_zones.py`). WA is nearly cloud-free, giving
+368 clear images. For each image pair: the share of busy pixels whose red+SWIR brightness
+changed by more than 12%, after normalising for sun angle against the surrounding desert.
+Pixels in deep shadow are dropped. Zones are drawn in `figures/karlawinda_zones_grid.png`.
+
+**I looked at 11 quarters (2023Q4-2026Q2) while choosing settings.** On those, the
+waste-dump index reached r = +0.56. Then I froze the settings and scored the 8 quarters I
+hadn't looked at:
+
+| zone | tuned (11 q) | unseen (8 q) | all (19 q) |
+|---|---|---|---|
+| north pit | -0.13 | +0.39 | +0.04 |
+| south pit | +0.04 | -0.11 | +0.05 |
+| waste dumps | +0.56 | **-0.19** | +0.19 |
+| tailings | +0.85 | +0.29 | +0.62* |
+
+\*Both series trend upward with the 2025-26 expansion, so this is not a production signal.
+
+**Quarterly tonnes: no.** The dump correlation was overfit and fell apart on the unseen quarters.
+Normal quarter-to-quarter swings of about ±20% are too small for this index.
+
+**Stoppages: yes.** Mining was suspended from 13 Oct to 3 Nov 2022 after a fatal accident.
+The north-pit index sat near zero for all four image pairs in that window (1.4 against
+12.5 over Jan-Sep 2022). It stayed low through the November ramp-up before recovering
+(`figures/karlawinda_suspension.png`).
+
+**But no head start.** Capricorn announced the incident at 5:22 pm on 13 Oct and the restart
+on 3 Nov, each on the day it happened. Under ASX continuous disclosure, a stoppage like this
+is public before the next satellite pass.
+
+### Where this leaves the trading idea
+
+- Free imagery reliably answers **"is this mine operating?"** but not **"how much did it
+  produce?"**
+- Major halts at listed miners are disclosed the same day, at least on the ASX, TSX and NYSE.
+  So the on/off signal only has value where disclosure is slow or loose:
+  - private or state-owned mines that feed a listed buyer, smelter or royalty holder
+  - partial slowdowns that a company isn't required to announce
+  - commodity-level aggregates across many mines
+- These need many sites and a different kind of backtest. The single-mine stock-picking
+  idea doesn't survive at 10-20 m.
+
 ## Takeaways
 
 - Tests 1 and 2: both free sensors resolve the sites, but neither picks out the business
@@ -123,6 +189,11 @@ index is scored on **2022 onward**, so picking the pixels doesn't bias the test.
 | `activity.py STACK.npz MASK OUT.csv [CALIB_END]` | mine activity index (MASK = NDVI.npy or box:lon0,lat0,lon1,lat1) |
 | `halt_stats.py RESULTS_DIR` | before/after statistics for the three mines |
 | `plot_mines.py` | `figures/mines_activity.png` |
+| `gridchip.py BBOX DATES OUT.png` | Sentinel-2 chip with a pixel grid, for drawing zones |
+| `zones.py STACK_DIR OUT_DIR` | radar activity index per zone for the three halted mines |
+| `s2stack.py BBOX DATES OUT.npz` | Sentinel-2 red + SWIR stack at 20 m, clouds masked |
+| `optical_zones.py STACK.npz ZONES_JSON CALIB_END OUT.csv [SHADOW]` | optical activity index per zone |
+| `karlawinda_eval.py ZONES.csv` | index vs reported material mined, tuned vs unseen quarters |
 
 Reproduce:
 
@@ -140,6 +211,10 @@ python activity.py eagle_s1.npz box:-135.858,64.013,-135.80,64.048 results/eagle
 python s1stack.py --bbox 38.48,39.39,38.58,39.47 2021-01-01/2026-10-01 copler_s1.npz
 python activity.py copler_s1.npz box:38.507,39.411,38.563,39.445 results/copler_activity.csv 2022-01-01
 python halt_stats.py results && python plot_mines.py
+python zones.py . results
+python s2stack.py 120.055,-23.81,120.135,-23.735 2021-01-01/2026-10-01 karla_s2.npz
+python optical_zones.py karla_s2.npz '{"north pit":[190,240,145,197],"south pit":[222,282,197,242],"plant":[250,300,165,200],"waste dumps":[160,300,127,250],"tailings":[220,295,240,310]}' 2022-01-01 results/karlawinda_optical_zones.csv -0.3
+python karlawinda_eval.py results/karlawinda_optical_zones.csv
 ```
 
 ## Is there sharper free imagery?
