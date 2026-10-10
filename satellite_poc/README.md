@@ -58,37 +58,47 @@ months of scenes to see, which is useless for trading. Better candidates would b
 thermal (ECOSTRESS, VIIRS Nightfire) or a plant whose process heat is far higher than its
 roof heat (steel blast furnaces, flares).
 
-## 3. Mine activity index: Cobre Panamá (Sentinel-1 radar, 10 m) — works
+## 3. Mine activity index: three halted mines (Sentinel-1 radar, 10 m)
 
 **Idea.** An active open-pit mine changes constantly: blasting, haul trucks, stockpiles
-growing and shrinking. A radar pass every 12 days should therefore change a lot from the
-previous one over the mine, and very little once it goes idle. Radar sees through clouds,
-which matters in the tropics. Cobre Panamá is a clean test: production halted around
-24 Nov 2023, just before Panama's Supreme Court struck down the mining contract on 28 Nov.
+growing and shrinking. A radar pass should therefore look very different from the previous
+one over the mine, and much less so once the mine goes quiet. Radar sees through cloud and
+snow, which matters for tropical and northern mines.
 
-**Data.** 156 passes from one orbit, Jan 2021 to Sep 2026.
+**Index.** For each pass: the share of active mine pixels whose backscatter moved more than
+3 dB since the last pass, minus the same share over the surroundings (rain, snow and
+moisture move both). Water is dropped, since wind on ponds also changes the radar. Active
+pixels are picked on **2021 data only** (busier than 90% of surrounding pixels), and the
+index is scored on **2022 onward**, so picking the pixels doesn't bias the test.
 
-**Method.** The mine mask is bare ground from a Sentinel-2 image (NDVI < 0.25), with water
-removed (wind on the tailings pond also changes the radar). For each pass, the index is the
-share of mine pixels whose backscatter moved more than 3 dB since the last pass, minus the
-same share over forest (rain and moisture move both). `figures/cobre_activity.png`
+**Test cases.** Three single-mine halts with known dates:
 
-**Result: the halt is unmistakable and caught within one pass.**
+| mine | halted | operating | after halt | separation* | same-month gap |
+|---|---|---|---|---|---|
+| Cobre Panamá (First Quantum) | 24 Nov 2023, protests and court ruling | +7.1 | -2.7 | **4.2** | +9.6 pts, 12/12 months |
+| Eagle, Yukon (Victoria Gold) | 24 Jun 2024, heap-leach failure | +5.1 | +0.7 | 1.0 | +3.2 pts, 10/11 months |
+| Çöpler, Turkey (SSR Mining) | 13 Feb 2024, heap-leach failure | +0.5 | +0.1 | 0.1 | +0.7 pts, 9/12 months |
 
-| | mean index | sd | passes |
-|---|---|---|---|
-| operating (to mid-Oct 2023) | +2.1 pts | 1.7 | 82 |
-| halted (mid-Dec 2023 on) | -2.9 pts | 1.9 | 69 |
+\*difference in means divided by the pooled standard deviation of single passes.
+`figures/mines_activity.png`
 
-The step falls between the 19 Nov (+1.2) and 1 Dec (-0.8) passes. Only 9% of halted passes
-score above the operating period's 10th percentile. It isn't seasonal: dry-season quarters
-before the halt were positive (2021Q1 +3.4, 2022Q1 +1.5, 2023Q1 +1.9).
+**What this shows.**
 
-**What it does not show yet.** This halt was public news the same day, so here the satellite
-gave no head start. The value would be at small single-mine companies, where a slowdown, a
-ramp-up that runs late, or a quiet restart only shows up in the next quarterly report.
-The next test is whether the index tracks *reported quarterly production* (ore mined or
-tonnes moved) at a few such miners, and whether it moves before the report does.
+- **Cobre Panamá:** unmistakable, and caught within one pass (19 Nov +, 1 Dec -). Not
+  seasonal: every calendar month was busier before the halt than after.
+- **Eagle and Çöpler: the index measures earthmoving, not production.** Both sites stayed
+  busy after the halt.
+  - At Çöpler, the slide material was dug out and moved to storage, and containment was
+    built through 2024 ([SSR](https://ssrmining.com/2024-copler-incident/)).
+  - At Eagle, the receiver recontoured the heap with bulldozers and built ponds, berms and
+    an interception fence ([Yukon government](https://yukon.ca/en/node/28133)).
+  - Eagle's index only settles near zero in 2025.
+- **The tradeable question is still open.** These halts were all public the same day. The
+  value would be at small single-mine companies, where a slowdown or a late ramp-up only
+  shows in the next quarterly report. The next test is whether the index tracks reported
+  quarterly tonnes mined, and whether it moves before the report.
+- **A refinement to try:** split the index by zone (pit, waste dumps, process plant). Cleanup
+  earthworks sit on pads and in valleys, while production happens in the pit.
 
 ## Takeaways
 
@@ -110,7 +120,9 @@ tonnes moved) at a few such miners, and whether it moves before the report does.
 | `lsheat.py LON LAT HALF DATES OUT.npz` | Landsat 8/9 surface temperature, clouds masked |
 | `heat_ts.py STACK.npz REF_END OUT` | hottest-pixel series and map |
 | `s2ndvi.py BBOX DATES H W OUT.npy` | Sentinel-2 NDVI on the radar grid (for the mine mask) |
-| `activity.py STACK.npz NDVI.npy OUT.csv` | mine activity index |
+| `activity.py STACK.npz MASK OUT.csv [CALIB_END]` | mine activity index (MASK = NDVI.npy or box:lon0,lat0,lon1,lat1) |
+| `halt_stats.py RESULTS_DIR` | before/after statistics for the three mines |
+| `plot_mines.py` | `figures/mines_activity.png` |
 
 Reproduce:
 
@@ -122,7 +134,29 @@ python lsheat.py -86.789 37.945 0.012 2015-01-01/2026-10-01 hawes_st.npz
 python heat_ts.py hawes_st.npz 2022-01-01 hawesville
 python s1stack.py --bbox -80.69,8.81,-80.62,8.89 2021-01-01/2026-10-01 cobre_s1.npz
 python s2ndvi.py -80.69,8.81,-80.62,8.89 2023-01-01/2023-10-31 885 771 cobre_ndvi.npy
-python activity.py cobre_s1.npz cobre_ndvi.npy results/cobre_activity.csv
+python activity.py cobre_s1.npz cobre_ndvi.npy results/cobre_activity.csv 2022-01-01
+python s1stack.py --bbox -135.88,63.99,-135.78,64.07 2021-01-01/2026-10-01 eagle_s1.npz
+python activity.py eagle_s1.npz box:-135.858,64.013,-135.80,64.048 results/eagle_activity.csv 2022-01-01
+python s1stack.py --bbox 38.48,39.39,38.58,39.47 2021-01-01/2026-10-01 copler_s1.npz
+python activity.py copler_s1.npz box:38.507,39.411,38.563,39.445 results/copler_activity.csv 2022-01-01
+python halt_stats.py results && python plot_mines.py
 ```
+
+## Is there sharper free imagery?
+
+Not that is both sharp and frequent everywhere. What exists:
+
+| source | resolution | revisit | catch |
+|---|---|---|---|
+| Sentinel-2 (used here) | 10 m | 5 days | clouds |
+| Sentinel-1 radar (used here) | 10 m | 6 days again since 2026 with S1C + S1D | speckle |
+| NISAR radar (NASA/ISRO, launched Jul 2025) | a few metres (sources differ) | 12 days | L-band public since Jul 2026, archive filling in during 2026 |
+| Harmonized Landsat-Sentinel | 30 m | 2-3 days | coarser |
+| Planet tropical mosaics (ex-NICFI) | ~5 m | monthly | free access ended Jan 2025; successor is non-commercial only |
+| NAIP aerial (US) | 0.6-1 m | every 2-3 years | far too infrequent |
+| Umbra / Capella open data | under 1 m | ad hoc | only sites they chose |
+
+For mines, 10 m is not the bottleneck: pits and dumps span kilometres. Telling earthmoving
+apart from production is the hard part.
 
 The image stacks aren't committed because of their size. `results/` holds the derived time series.

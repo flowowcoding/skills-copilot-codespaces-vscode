@@ -9,7 +9,9 @@ else:
     lon, lat, half, dates, out = float(sys.argv[1]), float(sys.argv[2]), float(sys.argv[3]), sys.argv[4], sys.argv[5]
     bbox=[lon-half*1.25, lat-half, lon+half*1.25, lat+half]
 cat=pystac_client.Client.open("https://planetarycomputer.microsoft.com/api/stac/v1", modifier=pc.sign_inplace)
-items=list(cat.search(collections=["sentinel-1-rtc"], bbox=bbox, datetime=dates).items())
+from shapely.geometry import shape, box
+items=[i for i in cat.search(collections=["sentinel-1-rtc"], bbox=bbox, datetime=dates).items()
+       if shape(i.geometry).contains(box(*bbox))]
 orb=collections.Counter((i.properties["sat:relative_orbit"], i.properties["sat:orbit_state"]) for i in items)
 print(orb)
 best=orb.most_common(1)[0][0]
@@ -17,6 +19,11 @@ items=[i for i in items if (i.properties["sat:relative_orbit"], i.properties["sa
 items.sort(key=lambda i: i.datetime)
 ref=None
 def read(it):
+    try:
+        return _read(it)
+    except (rasterio.errors.WindowError, rasterio.errors.RasterioIOError):
+        return None
+def _read(it):
     res={}
     for pol in ["vv","vh"]:
         with rasterio.open(it.assets[pol].href) as src:
@@ -26,7 +33,7 @@ def read(it):
             res["crs"]=str(src.crs); res["transform"]=tuple(src.window_transform(w))[:6]
     return it.datetime, res
 with ThreadPoolExecutor(8) as ex:
-    got=list(ex.map(read, items))
+    got=[g for g in ex.map(read, items) if g]
 shape=collections.Counter(r["vv"].shape for _,r in got).most_common(1)[0][0]
 got=[(d,r) for d,r in got if r["vv"].shape==shape]
 np.savez_compressed(out, dates=np.array([d.strftime("%Y-%m-%dT%H:%M") for d,_ in got]),
