@@ -2,10 +2,11 @@
 
 For every season Y and as-of date T (1st and 16th of each month, Nov 1 .. Jun 1):
   features (state s, using only rows with available_date <= T, from season Y):
-    evi_cum     mean EVI anomaly of composites starting on/after Nov 1 (crop-condition integral to date)
-    ndvi_recent mean NDVI anomaly of the last two available composites
+    evi_cum     mean EVI anomaly of composites in the crop window to date (starting ~Nov 1 .. ~Feb 18;
+                PR shifted +16 d, RS/SC +32 d)
+    ndvi_recent mean NDVI anomaly of the last two available composites inside the crop window
     precip_cum  CHIRPS Oct..latest available month, total / climatology - 1
-    lst_cum     mean daytime LST anomaly (deg C) of 8-day composites starting on/after Dec 1
+    lst_cum     mean daytime LST anomaly (deg C) of 8-day composites starting Dec 1 .. Mar 22 (south +16/32 d)
   (a feature with no data yet is 0 = climatology)
   target      final yield / PIT trend - 1, trend = OLS line over the last 15 yields KNOWN at T
               (PAM if published by Sep 30 of the following year, else the latest released IBGE LSPA
@@ -104,15 +105,21 @@ def trend_at(yd, Y):
     return float(np.polyval(b, Y))
 
 
+# crop window per state, in MOD13 16-day slots (slot 7 = composite starting ~Nov 1, 14 = ~Feb 18):
+# centre-north crops are planted Sep-Nov and harvested Jan-Mar; PR one slot later; RS/SC two slots later.
+SHIFT = {"PR": 1, "RS": 2, "SC": 2}
+
+
 def make_features(vi, lst, pr, T, Y, state):
     f = {}; cut = {}
+    sh = SHIFT.get(state, 0)
     v = vi[(vi.season == Y) & (vi.state == state) & (vi.available_date <= T)].sort_values("slot")
     v = v[v.anom_cov > 0.2]
     if len(v):
         cut["vi"] = v.end.max()
-    e = v[v.slot >= 7]
+    e = v[(v.slot >= 7 + sh) & (v.slot <= 14 + sh)]
     f["evi_cum"] = e.evi_anom.mean() if len(e) else 0.0
-    r = v[v.slot >= 5].tail(2)
+    r = v[(v.slot >= 5 + sh) & (v.slot <= 14 + sh)].tail(2)
     f["ndvi_recent"] = r.ndvi_anom.mean() if len(r) else 0.0
     p = pr[(pr.season == Y) & (pr.state == state) & (pr.available_date <= T) & (pr.slot >= 2)]
     if len(p):
@@ -121,7 +128,7 @@ def make_features(vi, lst, pr, T, Y, state):
     l = lst[(lst.season == Y) & (lst.state == state) & (lst.available_date <= T) & (lst.anom_cov > 0.2)]
     if len(l):
         cut["lst"] = l.end.max()
-    l = l[l.slot >= 12]
+    l = l[(l.slot >= 12 + 2 * sh) & (l.slot <= 25 + 2 * sh)]
     f["lst_cum"] = l.lst_anom.mean() if len(l) else 0.0
     return f, cut
 
@@ -134,11 +141,15 @@ def ridge_fit(X, y, alpha=ALPHA):
 
 
 def main():
+    global FEATS, VERSION
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--holdout-from", type=int, default=2023)
     ap.add_argument("--evaluate-holdout", action="store_true")
     ap.add_argument("--last-season", type=int, default=2026)
+    ap.add_argument("--feats", default=",".join(FEATS), help="EXPLORATORY ONLY: feature subset (pre-registered = all four)")
+    ap.add_argument("--tag", default=VERSION, help="output tag; anything other than v1 is a non-pre-registered variant")
     a = ap.parse_args()
+    FEATS = a.feats.split(","); VERSION = a.tag
     F = f"{HERE}/features"
     vi = pd.read_csv(f"{F}/modis_vi_state.csv"); lst = pd.read_csv(f"{F}/lst_state.csv"); pr = pd.read_csv(f"{F}/precip_state.csv")
     for d in (vi, lst, pr):
@@ -148,8 +159,17 @@ def main():
     rf = f"{HERE}/../benchmark/data/interim/ibge_lspa_release_dates.csv"
     if os.path.exists(rf):
         r = pd.read_csv(rf); rel = dict(zip(r.ref_month, pd.to_datetime(r.release_datetime_brt).dt.normalize()))
+    # "OTH" = Brazil minus the 12 modelled states (PAM and LSPA), so Brazil totals close exactly
+    def add_oth(df, key, cols):
+        br = df[df.state == "BR"].set_index(key)[cols]
+        tw = df[df.state.isin(STATES)].groupby(key)[cols].sum()
+        o = (br - tw.reindex(br.index)).clip(lower=0).reset_index(); o["state"] = "OTH"
+        o["yield_kg_ha"] = o.production_t / o.area_harvested_ha * 1000
+        return pd.concat([df, o], ignore_index=True)
+    cols = ["area_harvested_ha", "production_t"]
+    pam = add_oth(pam, "year", cols); lspa = add_oth(lspa, "survey_month", cols)
     K = Known(pam, lspa, rel)
-    others = [s for s in pam.state.unique() if s not in STATES + ["BR"]]
+    others = ["OTH"]
 
     # 1. features + PIT targets for every (season, as-of, state)
     recs = []
@@ -208,27 +228,27 @@ def main():
                 out.append(dict(as_of_date=T.date().isoformat(), data_cutoff_date=rw.data_cutoff_date, crop_year=f"{Y - 1}/{str(Y)[2:]}",
                                 season=Y, asof_slot=lab, state=rw.state, predicted_yield=round(py, 1), trend_yield=round(rw.trend_yield, 1),
                                 predicted_dev_vs_trend=round(dv, 4), area_ha_used=round(ar), area_source=src,
-                                predicted_production=round(py * ar), uncertainty_yield_1sd=round(py * sig, 1),
-                                final_yield=rw.final_yield, n_train_seasons=Tr.season.nunique(),
+                                predicted_production=round(py * ar / 1000), uncertainty_yield_1sd=round(py * sig, 1),
+                                final_yield_expost=rw.final_yield, n_train_seasons=Tr.season.nunique(),
                                 **{f"coef_{k}": round(b, 5) for k, b in zip(FEATS, beta)}, **{k: round(rw[k], 5) for k in FEATS}))
-                tot_p += py * ar; tot_a += ar
+                tot_p += py * ar / 1000; tot_a += ar
             # other states: trend yield x PIT area
             for s in others:
                 ar, _ = K.area(s, Y, T); yd = K.yields(s, T, Y - 1); ty = trend_at(yd, Y)
                 if np.isfinite(ar) and np.isfinite(ty):
-                    tot_p += ar * ty; tot_a += ar
-            byl = tot_p / tot_a
+                    tot_p += ar * ty / 1000; tot_a += ar
+            byl = tot_p * 1000 / tot_a
             fin_br = pam.set_index(["state", "year"]).yield_kg_ha.get(("BR", Y), np.nan)
             if not np.isfinite(fin_br):
                 fin_br = K.lspa_latest("BR", Y, pd.Timestamp.today(), "yield_kg_ha") or np.nan
             out.append(dict(as_of_date=T.date().isoformat(), data_cutoff_date=cur.data_cutoff_date.max(), crop_year=f"{Y - 1}/{str(Y)[2:]}",
                             season=Y, asof_slot=lab, state="BR", predicted_yield=round(byl, 1), area_ha_used=round(tot_a),
                             area_source="+".join(sorted(srcs)), predicted_production=round(tot_p), uncertainty_yield_1sd=round(byl * sig_br, 1),
-                            final_yield=fin_br, n_train_seasons=Tr.season.nunique()))
+                            final_yield_expost=fin_br, n_train_seasons=Tr.season.nunique()))
         print("season", Y, flush=True)
     S = pd.DataFrame(out)
     S.insert(0, "signal_version", VERSION)
-    S["uncertainty_production_1sd"] = (S.uncertainty_yield_1sd * S.area_ha_used).round()
+    S["uncertainty_production_1sd"] = (S.uncertainty_yield_1sd * S.area_ha_used / 1000).round()
     os.makedirs(f"{HERE}/signal", exist_ok=True)
     dev = S[S.season < a.holdout_from]; hold = S[S.season >= a.holdout_from]
     if a.evaluate_holdout:

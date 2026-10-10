@@ -1,0 +1,4 @@
+__pycache__/
+work/
+data/pixels.csv
+data/munis_*.geojson

@@ -93,7 +93,6 @@ def main():
     s["lon"], s["lat"] = inv.transform(x.values, y.values)
     s = s.sort_values(["tile", "row", "col"]).reset_index(drop=True)
     s["pixel_id"] = np.arange(len(s))
-    os.makedirs(f"{a.data}/../work", exist_ok=True)
     s[["pixel_id", "state", "muni", "tile", "row", "col", "lon", "lat"]].to_csv(f"{a.data}/pixels.csv", index=False)
     print(s.groupby("state").size())
     cand.rename("peak_share").to_csv(f"{a.data}/candidate_munis.csv")
