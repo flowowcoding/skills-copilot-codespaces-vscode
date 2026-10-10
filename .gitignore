@@ -41,3 +41,4 @@ soy_research/satellite/data/pixels.csv
 satellite_poc/mine_inventory/mine_inventory.gpkg
 __pycache__/
 soy_research/benchmark/data/pit/pit_soy_brazil.csv
+satellite_poc/chile_copper/figures/pit_zones.png

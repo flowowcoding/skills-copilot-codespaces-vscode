@@ -243,3 +243,165 @@ v2 mining polygons and the Zenodo ML-ready polygons. Of 8,017 ICMM mines, 55% ma
 footprint. The output is a GeoPackage and CSV, plus lists of Chile/Peru open-pit copper mines
 and lithium sites. See `mine_inventory/README.md` for sources, licences (CC BY-SA from Maus),
 method, match rates and caveats. A polygon does not prove a mine is active or surface-worked.
+
+## 5. Market side: what is it worth to know about a mine disruption early?
+
+`event_study/` asks whether an early warning would pay before anyone spends more on imagery: how much
+do miners fall when a disruption is disclosed, does the price move before the disclosure, and does
+it keep drifting afterwards?
+
+**Events.** `event_study/events.csv` lists 78 disclosed disruptions (77 from 2015-2026, plus Mount
+Polley 2014 for reference). Each row has a source URL, the physical start date where one is known,
+the disclosure date and timing, and the mine's rough share of the company. They come from two
+places:
+
+- 50 well-known cases from news searches, including all the examples in the brief. These were
+  picked because they were big.
+- 28 from a keyword scan of 12 years of ASX headlines for 60 miners (incident, fatality, flood,
+  fire, wall, cyclone, strike, ...). These were picked by keyword, not by size.
+
+**Data and method.** Daily adjusted closes come from Yahoo. Abnormal returns use a market model
+against a sector benchmark:
+
+- GDX or SIL for US gold and silver
+- XGD.TO for TSX gold
+- COPX for copper and base metals
+- PICK for the diversified majors' ADRs
+- XME for US coal
+- ^AXGD or ^AXMJ for ASX
+- local indices for London, Hong Kong and Johannesburg
+
+Day 0 is the first session that could react to the disclosure. Trading halts, which are common on
+the ASX, are folded into day 0.
+
+**Data actually used.** 69 events have prices and 68 of those are in the 2015-2026 sample.
+Survivorship is a real problem:
+
+- Yahoo has no prices for 7 delisted companies: Trevali, SEMAFO, Turquoise Hill, Newcrest, Tahoe,
+  Mandalay and Centamin. In the press these fell roughly 19-41% on the news, so dropping them
+  understates the reaction.
+- Victoria Gold is measured through its thin US OTC line.
+- Two Russian events have no benchmark on Yahoo.
+
+### Results (n = 68)
+
+| window | all | single mine or large share (34) | small share (34) |
+|---|---|---|---|
+| physical start to day -1 (38 events with a dated start, buy-and-hold) | -0.6% (median +0.1%, t -0.45) | -0.8% (t -0.39) | -0.2% (t -0.26) |
+| days -5 to -1 | +0.2% (t 0.28) | +0.4% (t 0.36) | 0.0% (t -0.04) |
+| **reaction, days 0 to +1** | **-8.1%** (median -3.2%, t -4.09, BMP t -3.79, 75% negative) | **-14.1%** (median -7.5%, t -3.92) | -2.0% (t -2.73) |
+| drift, days +1 to +5 | -2.6% (t -2.07) | -3.5% (t -1.44) | -1.8% (t -2.32) |
+| drift, days +1 to +20 | -3.0% (t -1.23) | -5.7% (t -1.26) | -0.4% (t -0.18) |
+| drift, days +1 to +60 | -3.7% (t -1.06) | -5.9% (t -0.95) | -1.6% (t -0.47) |
+
+`event_study/figures/car_disclosure.png` plots these paths. Splits are in
+`event_study/results/summary.csv`:
+
+- Single-asset companies: -21% over days 0 to +1 (n=14).
+- Small caps: -12% (n=18).
+- Geotechnical failures: -17%.
+- Accidents and fatalities: -4%.
+- Weather: no reaction.
+- By exchange: TSX -9%, US -12%, ASX -6%.
+
+**1. The market does not know before the announcement.** Prices don't move between the physical
+event and the disclosure. That includes cases where the information was clearly private:
+
+- Mosaic's sinkhole was public 12 trading days after regulators were told: drift +2.3%, then no
+  reaction.
+- St Barbara's Simberi stoppage was disclosed 4 days late.
+- Coronado's Mammoth fatality happened during trading on a Friday and was disclosed on the Monday.
+
+The large pre-drifts are all at events where the cause was already public, for example the Panama
+protests at First Quantum (-47% before the first halt notice).
+
+**2. Disclosure is almost always immediate.** 64 events have a dated physical start. For 53 of
+them, the gap to disclosure was 0 or 1 trading day, and the 1-day cases are nearly all events after
+the close or at weekends. Only 8 had a gap of 5 days or more.
+
+### Value of a lead
+
+The trade: short at the close of day -k, cover at the close of the reaction day, hedged with
+beta times the benchmark. Costs:
+
+- the full spread (Corwin-Schultz estimate from daily highs and lows; median round trip 0.9%,
+  1.3% for small caps)
+- 0.05% commission per side
+- borrow at 0.5%, 2% or 10% a year for large, mid and small caps
+
+These assume perfect foresight. See `event_study/results/lead_value.csv`.
+
+| lead | all, net (median, t) | single or large share, net | small share, net |
+|---|---|---|---|
+| 1 day | +6.3% (median +0.9%, t 3.47) | +11.9% (median +4.6%, t 3.64) | +0.6% (t 0.79) |
+| 5 days | +5.9% (median +1.7%, t 3.02) | +11.5% (median +5.1%) | +0.3% |
+| 20 days | +6.5% (median +4.4%, t 2.73) | +12.3% (median +9.6%) | +0.7% |
+
+- Because nothing happens before disclosure, a 1-day lead is worth almost as much as a 20-day one.
+- The mean is driven by a handful of collapses (Victoria Gold, Çöpler, Kingston, Boss).
+- Only single-asset or large-share companies are worth watching. When the mine is a small share
+  of the company, the lead is worth about the trading cost.
+- Retail can rarely take the short side at the small caps where the value is:
+  - ASX and TSX-V small caps usually can't be borrowed and have no listed options.
+  - Puts exist only for the large US-listed names.
+  - The realistic use is a holder selling early, which avoids the same loss without borrowing.
+- False alarms cost roughly the round trip, because abnormal returns average zero. A signal on
+  single-asset names would break even at roughly 10-20% precision. **The binding constraint is
+  timing, not accuracy**: the signal has to arrive before a disclosure that usually comes within a
+  day. A 5-12 day revisit cannot do that.
+
+### Drift trade without a satellite
+
+Short at the close of the reaction day (`event_study/results/drift_strategy.csv`). Net returns:
+
+- 5 days: +1.5% (t 1.21)
+- 20 days: +1.3% (t 0.54)
+- 60 days: +1.0% (t 0.27)
+
+Only 53-57% of trades win. **This is not tradeable as a general rule.** Buying the drop isn't
+either.
+
+One subgroup stands out: geotechnical failures (n=16) netted +12.1% over 20 days (t 2.70). Treat
+it as a hypothesis, not a rule:
+
+- It was found after the fact among about 15 splits.
+- Much of it comes from staged bad news: Freeport's force majeure 15 days after the mud rush,
+  Ivanhoe's guidance withdrawal 4 days after the seismic halt, and Victoria Gold's receivership.
+- It shrinks to -8.3% (t -1.70) when the later "material" announcement is used as day 0.
+
+### Caveats
+
+- **Selection bias.** Events chosen from news react far more than events chosen by keyword:
+  -12.1% against -2.3% (t -1.20) over days 0 to +1. The pooled means overstate what a systematic
+  scan would find.
+- **Survivorship.** The 7 delisted companies are missing, and they include some of the worst drops.
+- **Overlap.**
+  - Samarco appears twice (BHP and Vale on the same day).
+  - Coronado (5 events), St Barbara, Barrick and Anglo repeat.
+  - Two Coronado windows overlap.
+  - Results hold when one event per company or cluster is kept, and when overlaps are dropped
+    (`results/robustness.csv`).
+- **Dates.** Several physical start dates are approximate (Kennecott, Salares Norte, 29Metals
+  2024). Release timing within the day is unknown for 18 events. The two-day reaction window
+  covers a release that came after the close.
+- **Benchmarks.** These are imperfect. FM and IVN are large weights in copper ETFs. The London
+  names use the FTSE All-Share. Yahoo's ASX indices were not checked against S&P's own series.
+  Market-adjusted returns (beta = 1) give the same answers.
+
+**Bottom line for the satellite programme:**
+
+- An early warning on a single-asset miner would be worth about 5-12% per event. That value is
+  real and doesn't depend on how many days early it comes.
+- But listed miners disclose halts within a day.
+- No free sensor revisits fast enough to get in first.
+
+Satellite work only makes sense where there is no disclosure obligation:
+
+- unlisted mines whose output moves a listed buyer, royalty holder or the commodity price
+- slow partial slowdowns that never trigger an announcement
+
+```bash
+cd event_study
+python fetch_prices.py events.csv PRICE_DIR            # Yahoo daily bars, ~20 MB, not committed
+python event_study.py events.csv PRICE_DIR results figures
+```

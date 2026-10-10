@@ -10,13 +10,18 @@ Two steps, so the slow download happens once and the detector can be re-run in s
 
   detect  Per image, convert amplitudes to RANKS (percentile within the image's covered
           pixels). Umbra changed the GEC amplitude scaling in early 2024; ranks are immune
-          to any monotonic rescaling, so one threshold works across the whole archive.
-          A detection is a connected blob of pixels in the top TOP_Q of the image whose
-          area is MIN_PX..MAX_PX m^2 and whose surroundings are dark: the mean rank in a
-          ring (RING_IN..RING_OUT m) around its centroid must be below RING_MAX. This keeps
-          isolated metal objects and rejects bright slopes, bench crests and rubble fields.
-          The ring statistic is computed only at blob centroids (fast), not as a full
-          median filter.
+          to any monotonic rescaling, so one set of thresholds works across the archive.
+          Candidates are connected blobs in the brightest 1 % of the image, 7-400 m^2,
+          at most 25 m across, with a peak in the brightest 0.1 %. A candidate is kept
+          as an object when it stands alone on darker ground:
+            - few bright pixels in a ring 8-16 m from its centre (rejects rubble, crests),
+            - a fairly dark ring on average (rejects bright textured slopes),
+            - no bright line running through it and not a thin streak (major/minor
+              axis ratio <= 4) (rejects bench crests and road edges),
+          with looser line/ring limits for large, saturated targets (shovels, whose
+          sidelobes draw a bright cross). Detections within 10 m are merged.
+          Ring and line statistics are computed only at candidate centroids, so a whole
+          image takes about a second (the old 21x21 median filter took minutes).
 
   render  PNG of one image with detection boxes, for visual checks.
 
@@ -47,11 +52,20 @@ ROI = (-112.168, 40.508, -112.132, 40.537)
 CRS = "EPSG:32612"
 GRID_M = 1.0
 
-# Detector parameters (chosen by visual inspection of boxes only)
-TOP_Q = 0.002        # blob pixels must be in the brightest 0.2 % of the image
-MIN_PX, MAX_PX = 6, 400
-RING_IN, RING_OUT = 8, 16
-RING_MAX = 0.80      # mean rank of the ring must be below this
+# Detector parameters (chosen by visual inspection of detections only, see README)
+T_BLOB = 0.99          # blob pixels: brightest 1 % of the image
+T_PEAK = 0.999         # blob peak must be in the brightest 0.1 %
+MIN_PX, MAX_PX, MAX_EXT = 7, 400, 25   # blob area (m^2) and bounding-box extent (m)
+RING_IN, RING_OUT = 8, 16              # ring around the centroid (m)
+RING_HI_T = 0.97       # "bright" ring pixel
+MAX_RING_HI = 0.06     # share of bright ring pixels (rejects bench crests, rubble)
+MAX_RING_MEAN = 0.75   # mean ring rank (rejects bright textured slopes)
+MAX_LINE = 0.30        # share of bright pixels along the best line through the blob
+# big very bright targets (shovels, with sidelobe crosses) get looser line/ring limits
+BIG_PX, BIG_PEAK, BIG_MAX_LINE, BIG_MAX_RING_MEAN = 25, 0.9999, 0.45, 0.70
+MAX_ELONG = 4.0        # major/minor axis ratio (rejects thin crest segments)
+MERGE_M = 10           # detections closer than this are one object
+MIN_INCIDENCE = 20.0   # steeper collects are dropped (layover; see README)
 MIN_COVER = 0.9
 
 GDAL_ENV = dict(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR", GDAL_HTTP_MULTIPLEX="YES",
@@ -127,39 +141,84 @@ def to_rank(a):
     return rank, covered
 
 
-def detect_array(a):
-    """Return list of (row, col, area_px) detections and the image coverage share."""
+_ANG = np.radians(np.arange(0, 180, 15))
+_RS = np.concatenate([np.arange(8, 21), -np.arange(8, 21)])
+_LINE_OFF = [(np.round(_RS * np.sin(a)).astype(int), np.round(_RS * np.cos(a)).astype(int))
+             for a in _ANG]
+_yy, _xx = np.mgrid[-RING_OUT:RING_OUT + 1, -RING_OUT:RING_OUT + 1]
+_RING = (np.hypot(_yy, _xx) >= RING_IN) & (np.hypot(_yy, _xx) <= RING_OUT)
+_RDY, _RDX = _yy[_RING], _xx[_RING]
+
+
+def _sample(rank, covered, r, c, dy, dx):
+    h, w = rank.shape
+    ys, xs = r + dy, c + dx
+    ok = (ys >= 0) & (ys < h) & (xs >= 0) & (xs < w)
+    ys, xs = ys[ok], xs[ok]
+    keep = covered[ys, xs]
+    return rank[ys[keep], xs[keep]]
+
+
+def candidate_features(a):
+    """Blobs passing the size/peak gate, with their ring and line statistics."""
     rank, covered = to_rank(a)
-    cover = covered.mean()
-    # uint8 ties: threshold on the amplitude level whose rank first exceeds 1-TOP_Q
-    lab, n = ndimage.label(rank > 1 - TOP_Q)
+    lab, n = ndimage.label(rank > T_BLOB)
     if n == 0:
-        return [], cover
+        return [], rank, covered
     idx = np.arange(1, n + 1)
     sizes = ndimage.sum_labels(np.ones_like(rank), lab, idx)
-    keep = idx[(sizes >= MIN_PX) & (sizes <= MAX_PX)]
-    if len(keep) == 0:
-        return [], cover
-    cents = ndimage.center_of_mass(np.ones_like(rank), lab, keep)
-    # ring offsets
-    yy, xx = np.mgrid[-RING_OUT:RING_OUT + 1, -RING_OUT:RING_OUT + 1]
-    rr = np.hypot(yy, xx)
-    ring = (rr >= RING_IN) & (rr <= RING_OUT)
-    dy, dx = yy[ring], xx[ring]
-    h, w = rank.shape
-    out = []
-    for (r, c), lb in zip(cents, keep):
+    peaks = ndimage.maximum(rank, lab, idx)
+    sel = idx[(sizes >= MIN_PX) & (sizes <= MAX_PX) & (peaks > T_PEAK)]
+    if len(sel) == 0:
+        return [], rank, covered
+    slices = ndimage.find_objects(lab)
+    cents = ndimage.center_of_mass(np.ones_like(rank), lab, sel)
+    feats = []
+    for (r, c), lb in zip(cents, sel):
+        sl = slices[lb - 1]
+        ext = max(sl[0].stop - sl[0].start, sl[1].stop - sl[1].start)
+        ys, xs = np.nonzero(lab[sl] == lb)
+        ev = np.sort(np.linalg.eigvalsh(np.cov(np.vstack([ys, xs]))))
+        elong = float(np.sqrt(ev[1] / max(ev[0], 1e-3)))
         r, c = int(round(r)), int(round(c))
-        ys, xs = r + dy, c + dx
-        ok = (ys >= 0) & (ys < h) & (xs >= 0) & (xs < w)
-        ys, xs = ys[ok], xs[ok]
-        vals = rank[ys, xs]
-        vals = vals[covered[ys, xs]]
-        if len(vals) < 0.8 * ring.sum():
-            continue                                  # too close to the data edge
-        if vals.mean() < RING_MAX:
-            out.append((r, c, int(sizes[lb - 1])))
-    return out, cover
+        ring = _sample(rank, covered, r, c, _RDY, _RDX)
+        if len(ring) < 0.8 * _RING.sum():
+            continue                                   # too close to the data edge
+        line = max(((_sample(rank, covered, r, c, dy, dx) > 0.95).mean()
+                    for dy, dx in _LINE_OFF), default=1.0)
+        feats.append(dict(r=r, c=c, size=int(sizes[lb - 1]), ext=int(ext), elong=elong,
+                          peak=float(peaks[lb - 1]), ring_hi=float((ring > RING_HI_T).mean()),
+                          ring_mean=float(ring.mean()), line=float(line)))
+    return feats, rank, covered
+
+
+def is_object(f):
+    if f["ext"] > MAX_EXT or f["elong"] > MAX_ELONG:
+        return False
+    small = f["line"] < MAX_LINE and f["ring_hi"] < MAX_RING_HI and f["ring_mean"] < MAX_RING_MEAN
+    big = (f["size"] >= BIG_PX and f["peak"] >= BIG_PEAK and f["line"] < BIG_MAX_LINE
+           and f["ring_mean"] < BIG_MAX_RING_MEAN)
+    return small or big
+
+
+def merge(dets):
+    """Greedy merge: keep the largest blob, drop others within MERGE_M."""
+    dets = sorted(dets, key=lambda d: -d[2])
+    out = []
+    for d in dets:
+        if all((d[0] - o[0]) ** 2 + (d[1] - o[1]) ** 2 > MERGE_M ** 2 for o in out):
+            out.append(d)
+    return out
+
+
+def detect_array(a, return_rejected=False):
+    """Return list of (row, col, area_px) detections and the image coverage share."""
+    feats, rank, covered = candidate_features(a)
+    kept = merge([(f["r"], f["c"], f["size"]) for f in feats if is_object(f)])
+    if return_rejected:
+        rej = [(f["r"], f["c"], f["size"]) for f in feats if not is_object(f)]
+        return kept, rej, float(covered.mean())
+    return kept, float(covered.mean())
 
 
 def detect(index_csv, cache, out_json):
@@ -180,8 +239,8 @@ def detect(index_csv, cache, out_json):
         out = list(ex.map(one, d.time))
     tf, w, h = grid()
     meta = {"grid": {"crs": CRS, "transform": list(tf)[:6], "width": w, "height": h},
-            "params": dict(TOP_Q=TOP_Q, MIN_PX=MIN_PX, MAX_PX=MAX_PX, RING_IN=RING_IN,
-                           RING_OUT=RING_OUT, RING_MAX=RING_MAX, MIN_COVER=MIN_COVER),
+            "params": {k: v for k, v in globals().items()
+                       if k.isupper() and isinstance(v, (int, float))},
             "images": out}
     json.dump(meta, open(out_json, "w"))
     good = [o for o in out if "error" not in o]
@@ -191,24 +250,24 @@ def detect(index_csv, cache, out_json):
 
 # ---------------------------------------------------------------- render
 def render(cache, time, out_png, crop=None):
+    """Rank image with kept (red) and rejected (cyan) candidates."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.patches import Rectangle
     a = np.load(os.path.join(cache, key(time) + ".npy"))
-    dets, _ = detect_array(a)
+    kept, rej, _ = detect_array(a, return_rejected=True)
     rank, _ = to_rank(a)
     r0, c0, r1, c1 = crop or (0, 0, a.shape[0], a.shape[1])
-    fig, ax = plt.subplots(figsize=(14, 14 * (r1 - r0) / (c1 - c0)), dpi=110)
-    ax.imshow(rank[r0:r1, c0:c1], cmap="gray", vmin=0.3, vmax=1.0,
+    fig, ax = plt.subplots(figsize=(12, 12 * (r1 - r0) / (c1 - c0)), dpi=100)
+    ax.imshow(rank[r0:r1, c0:c1], cmap="gray", vmin=0.85, vmax=1.0,
               extent=(c0, c1, r1, r0), interpolation="nearest")
-    for r, c, s in dets:
-        if r0 <= r < r1 and c0 <= c < c1:
-            half = max(5, np.sqrt(s))
-            ax.add_patch(Rectangle((c - half, r - half), 2 * half, 2 * half,
-                                   fill=False, ec="#ff3b30", lw=0.8))
-    ax.set_title(f"{time}  detections in view: "
-                 f"{sum(r0 <= r < r1 and c0 <= c < c1 for r, c, _ in dets)} / {len(dets)}")
+    for dets, col in ((rej, "#3ad1e0"), (kept, "#ff3b30")):
+        for r, c, s in dets:
+            if r0 <= r < r1 and c0 <= c < c1:
+                ax.add_patch(Rectangle((c - 8, r - 8), 16, 16, fill=False, ec=col, lw=0.9))
+    n_in = sum(r0 <= r < r1 and c0 <= c < c1 for r, c, _ in kept)
+    ax.set_title(f"{time}   kept (red) {n_in} in view, {len(kept)} in image; cyan = rejected")
     ax.set_xticks([]); ax.set_yticks([])
     fig.tight_layout()
     fig.savefig(out_png)

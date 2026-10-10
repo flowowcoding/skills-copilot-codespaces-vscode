@@ -12,7 +12,7 @@ truth values had been downloaded and glanced at for parsing, but no comparison w
 **Mines (15 operations, 17 Cochilco columns).** Escondida, Zaldívar, Radomiro Tomic,
 Chuquicamata, Ministro Hales, Gabriela Mistral, Spence, Sierra Gorda, Centinela (sulphides +
 oxides), Collahuasi, Quebrada Blanca, El Abra, Los Pelambres, Los Bronces, Caserones,
-Candelaria, Mantos Blancos. Together about 70% of Chilean mine output. Underground mines
+Candelaria, Mantos Blancos. Together 77-81% of Chilean mine output (2018-2025). Underground mines
 (El Teniente, Andina) are excluded.
 
 **Pit zones.** Hand-drawn polygons over the pits only (not dumps, pads, plants or tailings),
@@ -21,8 +21,13 @@ shown in `figures/pit_zones.png`.
 
 **Index** (`activity_index.py`, frozen):
 - Sentinel-2 L2A, 2018-01 to 2026-10, one tile + orbit per site, brightness = red (B04) + SWIR
-  (B11) at 20 m, cloud/shadow/snow masked by the scene classification, images with > 20% of
-  the box masked dropped (`s2bright.py`).
+  (B11) at 20 m (`s2bright.py`). Clouds and snow masked with a spectral rule (blue > 0.20 and
+  blue > 0.9 x SWIR, dilated 40 m); images with > 10% of the box masked dropped.
+  *Amendment made before any index was computed:* the first download used ESA's scene
+  classification (SCL) for masking, as in `../s2stack.py`. Its pre-2022 processing labels bright
+  dumps, leach pads and pit benches as cloud or snow (16% of the Escondida box masked on
+  average in 2018-21, 3% from 2023; `figures/scl_mask_bias.png`), which would hide the mines
+  and put a break into every series at the 2022 reprocessing. That download was discarded.
 - Pair consecutive clear images at most 12 days apart. A pixel changed if its normalised log
   brightness moved by more than 0.12. Pixels in deep shadow (< -0.3) are ignored.
 - Control = quieter half of the ground more than 300 m from any pit. Busy pit pixels = above
@@ -72,3 +77,21 @@ holdout. Anything weaker is reported as a failure.
 - Quebrada Blanca: QB2 mining ramps up 2022-2024: index rises.
 - Chuquicamata: pit wound down after the move underground in 2019: index falls over time.
 - Los Pelambres drought 2019-2022 limited the plant, not the pit: no clear pit signal expected.
+
+## Data
+
+| file | what | source |
+|---|---|---|
+| `cochilco_monthly_by_operation.csv` | monthly payable copper by operation, kt, 2014-01 to 2026-07, 42 operations + total | [Cochilco xlsx](https://www.cochilco.cl/web/download/951/cobre/12683/produccion-de-cobre-mina-por-empresa-mensual.xlsx), linked from [this page](https://www.cochilco.cl/web/historico-produccion-de-cobre-y-molibdeno/) |
+| `bhp_material_mined_quarterly.csv` | Escondida and Spence material mined, kt per quarter, 2017Q4-2026Q2 | 31 BHP Operational Review 6-K filings on SEC EDGAR (URL per row) |
+| `anglo_ore_mined_quarterly.csv` | Los Bronces and Collahuasi ore mined, t per quarter, 2018Q3-2026Q2 | 26 Anglo American quarterly production reports (URL per row) |
+| `mines.json` | pit polygons and stack boxes | drawn here |
+| `results/<mine>_pairs.csv` | index per image pair, variants R/F/A, pixel counts | `activity_index.py` |
+
+Codelco, Antofagasta and the other operators publish only copper output or plant throughput,
+not material moved, so the secondary ground truth covers four mines (BHP, Anglo American).
+
+**Sentinel-1 over Chile.** Radar coverage did not stop when Sentinel-1B failed (Dec 2021):
+every site checked (Escondida, Collahuasi, Los Bronces, Caserones) kept at least one orbit at
+12-day revisit through 2022-24 (about 25-60 scenes a year per site, back to 6-day in 2025-26).
+It was not needed here because the Atacama is clear on most Sentinel-2 passes.

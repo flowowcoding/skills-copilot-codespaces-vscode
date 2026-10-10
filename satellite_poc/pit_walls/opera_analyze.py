@@ -92,6 +92,7 @@ def main():
     print("\npseudo-date windows firing (fraction):")
     print(fa.groupby(["direction", "segment"]).fired.mean().round(2).unstack(0))
 
+    overview(tracks["DESCENDING"], os.path.join(figdir, "bingham_opera_overview_des.png"))
     style.apply()
     for ev, d, seg in [(pre["events"][0], "DESCENDING", "S"), (pre["events"][1], "ASCENDING", "SE"), (pre["events"][1], "DESCENDING", "SE")]:
         S = tracks[d]; D = pd.Timestamp(ev["D"])
@@ -119,6 +120,23 @@ def main():
         fig.tight_layout()
         fn = os.path.join(figdir, f"bingham_opera_{'2024' if ev['D'].startswith('2024') else '2021'}_{d[:3].lower()}.png")
         fig.savefig(fn, dpi=150); plt.close(fig); print(fn)
+
+
+def overview(S, fn):
+    """All six wall sectors, descending track, whole archive."""
+    style.apply()
+    fig, ax = plt.subplots(figsize=(8.5, 3.6))
+    for seg in SEGS:
+        c = S[seg + "|cum"]
+        hl = seg in ("S", "SE")
+        ax.plot(c.index, c, color=style.PRIMARY if seg == "S" else (style.INK if seg == "SE" else style.MUTED), lw=1.8 if hl else 1)
+        ax.text(c.index[-1], c.iloc[-1], f" {seg}", color=style.INK if hl else style.MUTED, fontsize=8, va="center")
+    style.mark(ax, pd.Timestamp("2021-05-31"), "Leo failure (SE)", y=0.98, ls=":")
+    style.mark(ax, pd.Timestamp("2024-07-16"), "Q2 2024 disclosure", y=0.98)
+    ax.set_ylabel("LOS displacement vs control (mm)")
+    ax.set_title("Bingham Canyon wall sectors, OPERA DISP-S1 descending (flat stretches = winter gaps)")
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+    fig.tight_layout(); fig.savefig(fn, dpi=150); plt.close(fig); print(fn)
 
 
 if __name__ == "__main__":

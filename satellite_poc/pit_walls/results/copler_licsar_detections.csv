@@ -1,0 +1,3 @@
+D,n_base,base_mean,base_sd,first_alarm,lead_days,alarm_sign,alarm_value,late_alarm,site,track,segment,coherent_pairs_window,pairs_window
+2024-02-13,23,-18.12,38.82,,,,,,copler,asc043,heap leach pad,26,30
+2024-02-13,27,-0.04,5.43,,,,,,copler,desc123,heap leach pad,28,31

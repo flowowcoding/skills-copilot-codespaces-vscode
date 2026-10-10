@@ -41,7 +41,7 @@ for lon in np.arange(np.ceil(bbox[0] / a.step) * a.step, bbox[2], a.step):
 for lat in np.arange(np.ceil(bbox[1] / a.step) * a.step, bbox[3], a.step):
     _, y = px(0, lat); d.line([(0, y), (W, y)], fill=(255, 255, 0)); d.text((2, y + 2), f"{lat:.3f}", fill=(255, 255, 0))
 if a.segments:
-    segs = json.load(open(a.segments))[a.site]["segments"]
+    segs = json.load(open(a.segments))["sites"][a.site]["segments"]
     for name, poly in segs.items():
         pts = [px(lo, la) for lo, la in poly]
         d.polygon(pts, outline=(0, 255, 255)); d.line(pts + [pts[0]], fill=(0, 255, 255), width=2)

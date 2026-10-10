@@ -21,6 +21,9 @@ Three variants, all scored only outside their own calibration window:
                follow the mining front as it moves). Scored from 2019.
   F            fixed: busy pixels and control picked once on 2018. Scored from 2019.
   A            all pit pixels (no busy selection), control as in R. Scored from 2019.
+Event mode (--calib-end DATE): busy pixels and control picked once on all pairs before DATE,
+index scored after it (column F only). Used for the 2017 Escondida strike, where the 2016-17
+archive has fewer images, so --maxgap is raised.
 Pit polygons are rasterised by linear lon/lat interpolation over the stack box (UTM zone 19
 grid, error well under 100 m at these sites).
 """
@@ -37,7 +40,10 @@ THRESH, SHADOW, MAXGAP, BUF, Q_BUSY = 0.12, -0.3, 12, 15, 0.9
 ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 ap.add_argument("stack"); ap.add_argument("name"); ap.add_argument("outdir")
 ap.add_argument("--mines", default="mines.json")
+ap.add_argument("--calib-end", help="event mode: fixed calibration on pairs before this date")
+ap.add_argument("--maxgap", type=int, default=MAXGAP)
 a = ap.parse_args()
+MAXGAP = a.maxgap
 cfg = json.load(open(a.mines))
 mines = {k: v for k, v in cfg["mines"].items() if v["stack"] == a.name}
 
@@ -100,6 +106,20 @@ def share(sel, mask):
     n = ok[sel][:, mask].sum(1)
     return np.where(n > 0, big[sel][:, mask].sum(1) / np.maximum(n, 1), np.nan), n
 
+
+if a.calib_end:
+    cal = pend < pd.Timestamp(a.calib_end)
+    freq, enough, ctrl, thr = calib(cal)
+    print(f"  calibration pairs {cal.sum()}, scored pairs {(~cal).sum()}")
+    for k in mines:
+        busy = pit[k] & enough & (freq > thr)
+        s_pit, n_pit = share(~cal, busy)
+        s_ctl, _ = share(~cal, ctrl)
+        df = pd.DataFrame({"F": (s_pit - s_ctl) * 100, "n_F": n_pit, "control": s_ctl * 100}, index=pend[~cal])
+        df.index.name = "date"
+        df.round(3).to_csv(f"{a.outdir}/{k}_event_pairs.csv")
+        print(f"  {k}: busy px {busy.sum()}")
+    raise SystemExit
 
 years = sorted(set(pend.year))
 out = {k: [] for k in mines}

@@ -18,7 +18,7 @@ hdr = raw.index[raw[0].astype(str).str.strip().str.startswith("mes")][0]
 df = raw.iloc[hdr + 1:].copy()
 df.columns = [str(c).strip() for c in raw.iloc[hdr]]
 df = df.rename(columns={df.columns[0]: "month"})
-df = df[pd.to_datetime(df["month"], errors="coerce").notna() & df["month"].map(lambda v: not isinstance(v, (int, float)))]
+df = df[df["month"].map(lambda v: isinstance(v, (pd.Timestamp, __import__("datetime").datetime)))]   # drop annual subtotals
 df["month"] = pd.to_datetime(df["month"]).dt.to_period("M").astype(str)
 df = df.set_index("month").apply(pd.to_numeric, errors="coerce")
 df = df[df["TOTAL CHILE"] > 0]
