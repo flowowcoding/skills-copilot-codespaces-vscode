@@ -38,8 +38,10 @@ def num(s):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "data"))
-    ap.add_argument("--first", type=int, default=2000)
+    ap.add_argument("--first", type=int, default=2000, help="first year for municipal PAM")
+    ap.add_argument("--first-state", type=int, default=1985, help="first year for state PAM (trend history)")
     ap.add_argument("--last", type=int, default=2025)
+    ap.add_argument("--skip-muni", action="store_true", help="do not refetch municipal PAM")
     ap.add_argument("--skip-pam", action="store_true", help="only refresh LSPA vintages and meshes")
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
     yrs = ",".join(str(y) for y in range(a.first, a.last + 1))
@@ -47,7 +49,7 @@ def main():
     inv = {str(v): k for k, v in UF.items()}
     # state PAM: 109 planted, 216 harvested, 214 production, 112 yield
     if not a.skip_pam:
-        pam(a, yrs, inv)
+        pam(a, ",".join(str(y) for y in range(a.first_state, a.last + 1)), inv)
     lspa(a, inv)
     meshes(a)
 
@@ -67,6 +69,8 @@ def pam(a, yrs, inv):
     w[["state", "year", "area_planted_ha", "area_harvested_ha", "production_t", "yield_kg_ha"]].sort_values(["state", "year"]).to_csv(f"{a.out}/pam_state.csv", index=False)
     print("pam_state", len(w))
 
+    if a.skip_muni:
+        return
     # municipal planted area, one call per year (SIDRA cell limit)
     rows = []
     for y in range(a.first, a.last + 1):
