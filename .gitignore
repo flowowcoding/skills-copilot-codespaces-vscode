@@ -35,3 +35,6 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+# large intermediate data written by research agents
+soy_research/satellite/data/pixels.csv
+*.npz
