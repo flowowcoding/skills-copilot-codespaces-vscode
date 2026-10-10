@@ -1,0 +1,56 @@
+variant F, period dev
+
+Per mine vs Cochilco copper production:
+                   yoy_n  yoy_spearman  yoy_pearson  yoy_sign_hit  qoq_n  qoq_spearman  qoq_pearson
+mine                                                                                              
+escondida            20         -0.28        -0.21          0.30     23          0.01         0.10
+zaldivar             20         -0.12        -0.14          0.60     23         -0.16        -0.11
+radomiro_tomic       20          0.14         0.13          0.55     23         -0.18        -0.16
+chuquicamata         20          0.19         0.13          0.40     23         -0.04        -0.08
+ministro_hales       20          0.10         0.10          0.60     23          0.00         0.07
+gabriela_mistral     20          0.35         0.36          0.60     23         -0.06        -0.04
+spence               20          0.36         0.23          0.65     23         -0.04        -0.06
+sierra_gorda         20         -0.25        -0.23          0.45     23          0.22         0.14
+centinela            20          0.02         0.08          0.60     23         -0.44        -0.36
+collahuasi           20          0.06        -0.02          0.55     23          0.04         0.17
+quebrada_blanca      20          0.03        -0.08          0.35     23          0.10         0.11
+el_abra              20          0.14         0.16          0.40     23         -0.24        -0.32
+los_pelambres        14         -0.52        -0.43          0.36     11         -0.16        -0.07
+los_bronces          10         -0.09        -0.07          0.60      8         -0.14        -0.27
+caserones            15         -0.14        -0.09          0.47     15         -0.18        -0.35
+candelaria           20          0.37         0.21          0.60     23          0.21         0.21
+mantos_blancos       20          0.28         0.16          0.65     23          0.03        -0.07
+
+Aggregate:
+                                n  spearman  pearson  sign_hit  shift_p
+covered mines               20.0    -0.677   -0.672     0.250    0.071
+total Chile                 20.0    -0.574   -0.593     0.200    0.143
+covered mines, QoQ          23.0    -0.243   -0.325     0.435      NaN
+covered mines, monthly YoY  60.0    -0.350   -0.385     0.383      NaN
+
+Secondary ground truth (material / ore mined):
+                        measure  yoy_n  yoy_spearman  yoy_pearson  qoq_n  qoq_spearman  qoq_pearson
+mine                                                                                              
+escondida    material_mined_kt     20          0.40         0.41     23         -0.05        -0.03
+spence       material_mined_kt     20          0.48         0.56     23          0.20         0.28
+los_bronces        ore_mined_t     10          0.05        -0.17      8          0.02         0.10
+collahuasi         ore_mined_t     20          0.12         0.03     23          0.22         0.24
+
+Weights (2018 production share):
+ escondida           0.275
+zaldivar            0.021
+radomiro_tomic      0.074
+chuquicamata        0.071
+ministro_hales      0.043
+gabriela_mistral    0.024
+spence              0.039
+sierra_gorda        0.023
+centinela           0.055
+collahuasi          0.124
+quebrada_blanca     0.006
+el_abra             0.020
+los_pelambres       0.082
+los_bronces         0.082
+caserones           0.030
+candelaria          0.023
+mantos_blancos      0.009

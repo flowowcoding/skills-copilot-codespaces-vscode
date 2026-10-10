@@ -195,6 +195,27 @@ Details, caveats and figures are in `pit_walls/README.md`. Free, anonymous produ
 lead. A lead would need your own near-real-time InSAR, point-scale anomaly detection and many
 more events.
 
+## Chilean copper: aggregate pit activity vs national output (`chile_copper/`)
+
+Full write-up, pre-registration and scripts: `chile_copper/README.md`.
+
+- **Question.** Does pit activity summed over 17 big Chilean open-pit operations (77-81% of
+  national output) track copper production, where single mines did not?
+- **Data.** Optical index on the pits only (Sentinel-2, 2018-2026). Tested against Cochilco's
+  monthly output by operation, plus BHP/Anglo American material and ore mined for four mines.
+- **Pre-registered result: no.**
+  - Aggregate YoY Spearman vs output was **-0.70** in development (2020-24, n = 20), the wrong
+    sign.
+  - The holdout (2025Q1-2026Q2) gave +0.43 on n = 6, which is not significant.
+  - Per mine, the median was +0.09.
+- **Why.** Two reasons:
+  - Output follows grade and plant throughput, not earthmoving: Escondida's own material mined
+    vs copper correlates +0.01 YoY.
+  - Summing mines keeps what they all share, and here that is imaging artifacts (a jump at the
+    Jan 2022 processing change, and an unexplained drop at all 17 mines in 2024).
+- **Lead time.** The index is ready about 4 weeks before INE and 5-6 weeks before Cochilco.
+  That is worthless without tracking.
+
 ## Takeaways
 
 - Tests 1 and 2: both free sensors resolve the sites, but neither picks out the business

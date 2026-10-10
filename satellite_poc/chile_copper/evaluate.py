@@ -49,7 +49,7 @@ def load_production(cfg):
     gt = pd.read_csv(HERE / "cochilco_monthly_by_operation.csv")
     wide = gt.pivot(index="month", columns="operation", values="kt_cu")
     wide.index = pd.PeriodIndex(wide.index, freq="M")
-    pm = pd.DataFrame({k: wide[v["cochilco"]].sum(1, min_count=len(v["cochilco"])) for k, v in cfg.items()})
+    pm = pd.DataFrame({k: wide[v["cochilco"]].sum(axis=1, min_count=len(v["cochilco"])) for k, v in cfg.items()})
     pm["_chile"] = wide["TOTAL CHILE"]
     full = pm.groupby(pm.index.asfreq("Q")).count() == 3          # complete quarters only
     pq = pm.groupby(pm.index.asfreq("Q")).sum(min_count=3).where(full)
@@ -108,8 +108,8 @@ def main():
     sd = window(yoy_i, "dev")[list(cfg)].std()
     z = yoy_i[list(cfg)] / sd
     avail = z.notna()
-    agg = (z.fillna(0) * w).sum(1) / (avail * w).sum(1).replace(0, np.nan)   # renormalise if a mine is missing
-    agg_p = np.log(pq[list(cfg)].sum(1, min_count=len(cfg)) / pq[list(cfg)].sum(1, min_count=len(cfg)).shift(4)).reindex(iq.index)
+    agg = (z.fillna(0) * w).sum(axis=1) / (avail * w).sum(axis=1).replace(0, np.nan)   # renormalise if a mine is missing
+    agg_p = np.log(pq[list(cfg)].sum(axis=1, min_count=len(cfg)) / pq[list(cfg)].sum(axis=1, min_count=len(cfg)).shift(4)).reindex(iq.index)
     chile_p = np.log(pq["_chile"] / pq["_chile"].shift(4)).reindex(iq.index)
     A, P, C = window(agg, a.period), window(agg_p, a.period), window(chile_p, a.period)
     aggr = {"covered mines": corr(A, P), "total Chile": corr(A, C)}
@@ -117,16 +117,16 @@ def main():
         aggr[k]["shift_p"] = shift_p(A, y) if aggr[k]["n"] >= 10 else np.nan
     # QoQ aggregate
     zq = qoq_i[list(cfg)] / window(qoq_i, "dev")[list(cfg)].std()
-    aggq = (zq.fillna(0) * w).sum(1) / (zq.notna() * w).sum(1).replace(0, np.nan)
-    aggq_p = np.log(pq[list(cfg)].sum(1, min_count=len(cfg)) / pq[list(cfg)].sum(1, min_count=len(cfg)).shift(1)).reindex(iq.index)
+    aggq = (zq.fillna(0) * w).sum(axis=1) / (zq.notna() * w).sum(axis=1).replace(0, np.nan)
+    aggq_p = np.log(pq[list(cfg)].sum(axis=1, min_count=len(cfg)) / pq[list(cfg)].sum(axis=1, min_count=len(cfg)).shift(1)).reindex(iq.index)
     aggr["covered mines, QoQ"] = corr(window(aggq, a.period), window(aggq_p, a.period))
 
     # monthly aggregate YoY (secondary)
     im = im.reindex(pd.period_range("2019-01", "2026-09", freq="M"))
     myoy = im - im.shift(12)
     mz = myoy[list(cfg)] / myoy.loc[:"2024-12", list(cfg)].std()
-    magg = (mz.fillna(0) * w).sum(1) / (mz.notna() * w).sum(1).replace(0, np.nan)
-    mp = pm[list(cfg)].sum(1, min_count=len(cfg))
+    magg = (mz.fillna(0) * w).sum(axis=1) / (mz.notna() * w).sum(axis=1).replace(0, np.nan)
+    mp = pm[list(cfg)].sum(axis=1, min_count=len(cfg))
     mpy = np.log(mp / mp.shift(12)).reindex(im.index)
     lo, hi = {"dev": ("2019-01", "2024-12"), "holdout": ("2025-01", "2026-07"), "all": ("2019-01", "2026-07")}[a.period]
     aggr["covered mines, monthly YoY"] = corr(magg[lo:hi], mpy[lo:hi])
@@ -156,6 +156,9 @@ def main():
     print("\nWeights (2018 production share):\n", w.round(3).to_string())
     if a.out:
         per_mine.round(3).to_csv(f"{a.out}_per_mine.csv")
+        iq.round(3).to_csv(Path(a.results) / f"index_quarterly_{a.variant}.csv")
+        im.round(3).to_csv(Path(a.results) / f"index_monthly_{a.variant}.csv")
+        pq.round(3).to_csv(Path(a.results) / "production_quarterly_kt.csv")
         pd.DataFrame(aggr).T.round(4).to_csv(f"{a.out}_aggregate.csv")
         sec.round(3).to_csv(f"{a.out}_secondary.csv")
         pd.DataFrame({"agg_index_yoy": agg, "covered_prod_yoy_log": agg_p, "chile_prod_yoy_log": chile_p}).to_csv(f"{a.out}_aggregate_series.csv")

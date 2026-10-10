@@ -19,6 +19,7 @@ import pandas as pd
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 BLUE, ORANGE, GREEN, YELLOW = "#2a78d6", "#eb6834", "#1baf7a", "#eda100"
 INK, INK2, BG, GRID, AX = "#0b0b0b", "#52514e", "#fcfcfb", "#e8e7e3", "#c3c2b7"
@@ -64,13 +65,16 @@ def main():
         ax.plot(z(p).index, z(p), color=ORANGE, lw=2, label="copper produced (Cochilco)")
         ax.plot(z(i).index, z(i), color=BLUE, lw=2, label=f"pit activity index ({a.variant})")
         ax.set_title(k.replace("_", " ").title(), loc="left", color=INK)
-        ax.set_ylim(-4, 4)
+        ax.set_ylim(-5, 4)
+        ax.xaxis.set_major_locator(mdates.YearLocator(2))
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+        ax.tick_params(labelbottom=True)
         style(ax)
     for ax in axes.flat[len(names):]:
         ax.axis("off")
     h, l = axes.flat[0].get_legend_handles_labels()
     fig.legend(h, l, loc="upper right", frameon=False, ncol=2, fontsize=8)
-    fig.suptitle("Quarterly pit activity vs copper output, 15 Chilean mines (z-scores over 2019-2024; shaded = holdout)",
+    fig.suptitle(f"Quarterly pit activity vs copper output, {len(names)} Chilean operations (z-scores over 2019-2024; shaded = holdout)",
                  x=0.01, ha="left", fontsize=10, color=INK)
     fig.tight_layout(rect=(0, 0, 1, 0.95))
     fig.savefig(Path(a.figdir) / "chile_mines_index_vs_production.png")
@@ -83,7 +87,7 @@ def main():
     ax.axvspan(HOLD0, pd.Timestamp("2026-10-01"), color="#f1f0ec", lw=0)
     ax.text(HOLD0 + pd.Timedelta(days=20), 3.1, "holdout", color=INK2, fontsize=8)
     ax.axhline(0, color=AX, lw=1)
-    ax.plot(s.index, z(s.covered_prod_yoy_log), color=ORANGE, lw=2, marker="o", ms=4, label="copper output of the 15 mines, YoY")
+    ax.plot(s.index, z(s.covered_prod_yoy_log), color=ORANGE, lw=2, marker="o", ms=4, label=f"copper output of the {len(cfg)} operations, YoY")
     ax.plot(s.index, z(s.agg_index_yoy), color=BLUE, lw=2, marker="o", ms=4, label="aggregate pit activity, YoY")
     ax.set_ylim(-3.5, 3.5)
     ax.set_ylabel("standardised YoY change")

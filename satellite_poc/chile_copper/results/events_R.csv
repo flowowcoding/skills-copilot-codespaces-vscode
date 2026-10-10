@@ -1,0 +1,5 @@
+event,event_mean,n_event,reference_mean,n_ref,expected,seen
+Escondida COVID crew cuts 2020Q2 vs 2019Q2,13.108,17,22.007,18,lower,yes
+Spence 2024Q1 vs 2023Q1,3.164,16,10.033,17,lower,yes
+Escondida July 2026 storms vs July 2025 (not pre-registered),18.443,7,9.987,7,lower,no
+Escondida strike 9 Feb-24 Mar 2017 vs rest of 2017,20.006,3,17.092,18,lower,no

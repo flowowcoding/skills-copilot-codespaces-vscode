@@ -1,0 +1,5 @@
+mine,measure,yoy_n,yoy_spearman,yoy_pearson,qoq_n,qoq_spearman,qoq_pearson
+escondida,material_mined_kt,6,-0.143,0.073,6,0.543,0.674
+spence,material_mined_kt,6,0.2,0.213,6,0.486,0.354
+los_bronces,ore_mined_t,2,,,0,,
+collahuasi,ore_mined_t,6,-0.886,-0.956,6,-0.429,-0.355
