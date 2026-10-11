@@ -15,6 +15,7 @@ on data held back from tuning. Negative results are reported as they came out.
 | `satellite_poc/` | Mining track: activity indices, halts, production tests, sub-metre radar, pit walls, mine inventory, event study, Chile copper, lithium |
 | `soy_research/benchmark/` | Point-in-time Conab / WASDE / IBGE vintages for Brazilian soy, CBOT prices, revision behaviour |
 | `soy_research/satellite/` | MODIS + CHIRPS state-level soybean yield signal, versioned and timestamped |
+| `forward_tests/` | Frozen post-hoc signals, scored only on data that arrives after registration |
 
 ## Results so far
 
