@@ -58,8 +58,9 @@ on data held back from tuning. Negative results are reported as they came out.
 - **Forward tests** (`forward_tests/REGISTRY.md`): FT-1 Greenbushes (late Oct 2026), FT-2 Brazil
   soy v2 (from 2026/27), FT-3 US corn/soy 2026 and FT-5 field-level IA+IL (both against USDA's
   January 2027 final), FT-4 OJ after hurricane landfall (from the 2027 season).
-- **Honest status:** no free-satellite signal tested so far beats the official forecasts or the
-  analyst consensus out of sample. The public crop and mine data are hard to beat with free
+- **Honest status:** across 16 tracks, only one free-satellite signal beat the official forecast on
+  held-back data: field-level corn at state level (2.1% vs USDA 2.3%, 4 years). None beat the
+  analyst consensus or made money after costs. The public crop and mine data are hard to beat with free
   250 m–10 m imagery and simple models.
 - **What's left after 16 tracks:**
   1. **Operating-status alerts, not supply forecasts.** Free imagery reliably flags shutdowns and

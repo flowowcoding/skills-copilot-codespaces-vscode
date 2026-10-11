@@ -75,7 +75,7 @@ figure.wide { grid-column: 1 / -1; }
 figure img { width: 100%; height: auto; display: block; background: var(--fig-bg); border: 1px solid var(--line); border-radius: 4px; }
 figcaption { font-size: 0.88rem; color: var(--ink-2); }
 figcaption b { color: var(--ink); font-weight: 600; }
-.ft { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ft { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 .ft-card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
 .ft-card .due { font-family: var(--f-mono); font-size: 0.75rem; color: var(--accent); }
 .ft-card h3 { margin: 0; font-size: 1rem; font-weight: 600; }
@@ -94,13 +94,13 @@ code { font-family: var(--f-mono); font-size: 0.85em; }
   <header class="stack prose">
     <span class="eyebrow">Research log · Oct 2026</span>
     <h1>Satellite Supply Signals</h1>
-    <p class="lede">Can free satellite data estimate changes in physical commodity supply before the market prices them in? Ten research tracks, from oil tanks and copper pits to soybean fields, each tested against what officials, companies and analysts already knew at the time.</p>
+    <p class="lede">Can free satellite data estimate changes in physical commodity supply before the market prices them in? Sixteen research tracks, from oil tanks and copper smelters to cocoa, wheat and soybean fields, plus hurricanes, each tested against what officials, companies and analysts already knew at the time.</p>
     <div class="meta"><span>Sentinel-1 · Sentinel-2 · MODIS · Landsat · Umbra</span><span>Rules fixed before outcomes</span><span>Held-back data for scoring</span></div>
   </header>
 
   <section class="answer prose" aria-label="Short answer">
     <strong>Short answer: not yet.</strong>
-    <p>Free imagery reliably shows whether something is happening: a mine halting, a plant being built, machines working a pit. It does not measure how much is produced, and none of the signals tested beat the official forecasts or the analysts' consensus on held-back data. One weak signal survives: a satellite gap that predicts the next Brazilian state crop revision 1–6 weeks early in drought years.</p>
+    <p>Free imagery reliably shows whether something is happening: a mine or smelter halting, a plant being built, machines working a pit. It does not measure how much is produced. Markets with weaker official data (cocoa, Russian wheat, Indian pulses) were no easier, and hurricane forecasts are priced on the day they appear. On held-back data only one signal beat an official forecast: field-level corn yields in Iowa and Illinois, by a small margin over four years. None beat the analysts' consensus or made money after costs.</p>
   </section>
 
   <section class="stack">
@@ -119,6 +119,12 @@ code { font-family: var(--f-mono); font-size: 0.85em; }
           <tr><td class="track">Event study</td><td>What is early warning of a mine disruption worth?</td><td><span class="pill warn">Valuable, unreachable</span></td><td class="num">≈12% per event; disclosed within 0–1 days</td></tr>
           <tr><td class="track">Brazil soy</td><td>Does a satellite yield estimate beat Conab and IBGE?</td><td><span class="pill warn">State-level only</span></td><td class="num">Brazil holdout worse than trend; state revisions led 1–6 wks</td></tr>
           <tr><td class="track">US corn and soy</td><td>Does satellite minus consensus predict the USDA surprise?</td><td><span class="pill bad">Fails</span></td><td class="num">Hit rate 44% vs 56% base; −3.3 ¢/bu</td></tr>
+          <tr><td class="track">West African cocoa</td><td>Does weather beat weak ICCO data and port arrivals?</td><td><span class="pill bad">Fails</span></td><td class="num">Rule −4.3%/month net; 2023 shock unprecedented</td></tr>
+          <tr><td class="track">Black Sea wheat</td><td>Does satellite beat USDA's weak Russia numbers?</td><td><span class="pill bad">Fails</span></td><td class="num">11.4% error vs trend 9.2%; USDA follows IKAR/SovEcon</td></tr>
+          <tr><td class="track">India pulses</td><td>Does satellite beat India's advance estimates?</td><td><span class="pill bad">Fails</span></td><td class="num">17.9% error vs 6.3% official</td></tr>
+          <tr><td class="track">Field-level crops</td><td>Does 30 m field data close the gap to USDA (IA+IL)?</td><td><span class="pill warn">Corn only</span></td><td class="num">Corn 2.1% vs USDA 2.3%; soy 4.6% vs 2.3%</td></tr>
+          <tr><td class="track">Copper smelters</td><td>Do smelter heat signals track copper supply?</td><td><span class="pill warn">On/off only</span></td><td class="num">Shutdowns 9/15 and 5/6; output fails</td></tr>
+          <tr><td class="track">Hurricanes</td><td>Do free storm forecasts get ahead of futures?</td><td><span class="pill bad">Fails</span></td><td class="num">5/5 rules fail on 2018–26; priced on threat day</td></tr>
         </tbody>
       </table>
     </div>
@@ -130,6 +136,7 @@ code { font-family: var(--f-mono); font-size: 0.85em; }
       <li><b>Imagery answers "is it happening?", not "how much?"</b> This held at 10 m and at 33 cm, for mines, construction and equipment.</li>
       <li><b>For metals, earthmoving is the wrong supply measure.</b> Copper output follows ore grade and plant throughput; even Escondida's own reported tonnes mined correlate +0.01 with its copper output.</li>
       <li><b>Company events can't be front-run with free data.</b> An early warning is worth about 12% per event for single-mine companies, but listed miners disclose within a day, and free radar archives arrive weeks to months later.</li>
+      <li><b>Weak official data didn't make it easier.</b> In cocoa, Russian wheat and Indian pulses, local analysts already fill the gap, or the shock had a cause the history didn't contain (cocoa's 2023 disease outbreak). Hurricane forecasts are priced the day they appear.</li>
       <li><b>Crops fit imagery better, but the benchmark is strong.</b> US yield surprises against analysts move prices (about −0.9% per 1% surprise for corn), yet neither public crop ratings nor the satellite model predicted them out of sample. Brazilian revisions barely move CBOT at all.</li>
     </ol>
   </section>
@@ -166,20 +173,22 @@ code { font-family: var(--f-mono); font-size: 0.85em; }
 
   <section class="stack">
     <h2>Forward tests</h2>
-    <p class="prose">Three signals were found after looking at the data. They are frozen with code fingerprints and scored only on data that arrives later.</p>
+    <p class="prose">Five signals were found after looking at the data, or need more years. They are frozen with code fingerprints and scored only on data that arrives later.</p>
     <div class="ft">
       <div class="ft-card"><span class="due">Due late Oct 2026</span><h3>Greenbushes pit-minus-plant</h3><p>Predicts 2.4 Mbcm mined (1.4–3.4) for the Sep-2026 quarter, down from 3.44. Pass if IGO's figure falls in range and below June.</p></div>
       <div class="ft-card"><span class="due">Due Jan 2027</span><h3>US corn and soy, 2026 crop</h3><p>Satellite Sep forecast 185.7 corn / 55.1 soy vs USDA 178.5 / 52.8. Scored on which is closer to USDA's January final.</p></div>
+      <div class="ft-card"><span class="due">Due Jan 2027, judged after 3 years</span><h3>Field-level corn, Iowa + Illinois</h3><p>2026 forecast 219.8 bu/ac vs USDA 214.5. Must keep beating USDA's September state forecasts.</p></div>
+      <div class="ft-card"><span class="due">From the 2027 hurricane season</span><h3>Orange juice after landfall</h3><p>Long OJ for 20 days after a hurricane reaches the citrus belt: 8 of 8 in the past. Pass if 3 of the next 4 beat the same dates in other years.</p></div>
       <div class="ft-card"><span class="due">From 2026/27, judged after 3 seasons</span><h3>Brazil soy v2 (no LST)</h3><p>Must beat trend and come within 1 point of Conab on Feb 1 and Mar 1, and keep a positive state-level revision lead.</p></div>
     </div>
   </section>
 
   <section class="stack prose">
-    <h2>Where an edge could still be</h2>
+    <h2>What's left</h2>
     <ul class="next">
-      <li><b>Markets with weaker official data</b> than the US or Brazil, such as Black Sea wheat, Indian pulses or West African cocoa, where the benchmark is easier to beat.</li>
-      <li><b>Better crop models</b> at field level with Sentinel-2 or HLS and crop-specific phenology, the gap between this work and commercial providers.</li>
-      <li><b>Metals through processing</b>, not pits: smelter heat, concentrate stockpiles and shipping, measured against the specialist services that already sell this.</li>
+      <li><b>Operating-status alerts</b> for specific plants and mines. Free imagery flags shutdowns and restarts, sometimes before the press (Altonorte went dark 10 days before the first report). Useful for risk monitoring, not as a supply forecast.</li>
+      <li><b>Field-level corn.</b> The one model that beat an official forecast, narrowly. It needs forward years and then a national version.</li>
+      <li><b>Large, slow-to-report physical shocks</b>, like citrus after a direct hurricane hit, tracked as a forward test.</li>
     </ul>
   </section>
 
