@@ -1,0 +1,330 @@
+{
+ "kennecott_level": {
+  "active_share": {
+   "dev": {
+    "n": 31,
+    "spearman": 0.272,
+    "pearson": 0.366,
+    "sign_agree": 1.0,
+    "circ_perm_p": 0.05
+   },
+   "holdout": {
+    "n": 6,
+    "spearman": -0.314,
+    "pearson": -0.333,
+    "sign_agree": 1.0
+   },
+   "all": {
+    "n": 37,
+    "spearman": 0.237,
+    "pearson": 0.295,
+    "sign_agree": 1.0
+   }
+  },
+  "intensity": {
+   "dev": {
+    "n": 31,
+    "spearman": 0.292,
+    "pearson": 0.361,
+    "sign_agree": 1.0,
+    "circ_perm_p": 0.05
+   },
+   "holdout": {
+    "n": 6,
+    "spearman": -0.714,
+    "pearson": -0.637,
+    "sign_agree": 1.0
+   },
+   "all": {
+    "n": 37,
+    "spearman": 0.185,
+    "pearson": 0.288,
+    "sign_agree": 1.0
+   }
+  }
+ },
+ "china_yoy": {
+  "dev": {
+   "n": 65,
+   "spearman": 0.265,
+   "pearson": 0.297,
+   "sign_agree": 0.55,
+   "circ_perm_p": 0.019
+  },
+  "holdout": {
+   "n": 16,
+   "spearman": -0.517,
+   "pearson": -0.649,
+   "sign_agree": 0.31
+  },
+  "all": {
+   "n": 81,
+   "spearman": 0.103,
+   "pearson": 0.099,
+   "sign_agree": 0.51
+  }
+ },
+ "china_mom": {
+  "dev": {
+   "n": 68,
+   "spearman": -0.197,
+   "pearson": -0.203,
+   "sign_agree": 0.26,
+   "circ_perm_p": 0.772
+  },
+  "holdout": {
+   "n": 14,
+   "spearman": -0.682,
+   "pearson": -0.552,
+   "sign_agree": 0.0
+  },
+  "all": {
+   "n": 82,
+   "spearman": -0.274,
+   "pearson": -0.254,
+   "sign_agree": 0.22
+  }
+ },
+ "china_observed_capacity_share_mean": 0.58,
+ "china_intensity_yoy_exploratory": {
+  "dev": {
+   "n": 65,
+   "spearman": -0.084,
+   "pearson": -0.112,
+   "sign_agree": 0.58,
+   "circ_perm_p": 0.648
+  },
+  "holdout": {
+   "n": 16,
+   "spearman": -0.024,
+   "pearson": 0.044,
+   "sign_agree": 0.38
+  },
+  "all": {
+   "n": 81,
+   "spearman": -0.129,
+   "pearson": -0.123,
+   "sign_agree": 0.54
+  }
+ },
+ "china_yoy_lead_exploratory": {
+  "index_leads_by_1m": {
+   "dev": {
+    "n": 64,
+    "spearman": 0.238,
+    "pearson": 0.186,
+    "sign_agree": 0.59,
+    "circ_perm_p": 0.075
+   },
+   "holdout": {
+    "n": 16,
+    "spearman": -0.44,
+    "pearson": -0.695,
+    "sign_agree": 0.19
+   },
+   "all": {
+    "n": 80,
+    "spearman": 0.055,
+    "pearson": 0.013,
+    "sign_agree": 0.51
+   }
+  },
+  "index_leads_by_2m": {
+   "dev": {
+    "n": 63,
+    "spearman": 0.296,
+    "pearson": 0.274,
+    "sign_agree": 0.57,
+    "circ_perm_p": 0.115
+   },
+   "holdout": {
+    "n": 16,
+    "spearman": -0.516,
+    "pearson": -0.688,
+    "sign_agree": 0.19
+   },
+   "all": {
+    "n": 79,
+    "spearman": 0.116,
+    "pearson": 0.119,
+    "sign_agree": 0.49
+   }
+  },
+  "index_leads_by_3m": {
+   "dev": {
+    "n": 62,
+    "spearman": 0.159,
+    "pearson": 0.275,
+    "sign_agree": 0.53,
+    "circ_perm_p": 0.314
+   },
+   "holdout": {
+    "n": 16,
+    "spearman": -0.591,
+    "pearson": -0.635,
+    "sign_agree": 0.25
+   },
+   "all": {
+    "n": 78,
+    "spearman": 0.017,
+    "pearson": 0.15,
+    "sign_agree": 0.47
+   }
+  }
+ },
+ "china_frp_smelters": [
+  "guixi",
+  "fangchenggang",
+  "jinchuan",
+  "qiqihar"
+ ],
+ "china_frp_yoy": {
+  "dev": {
+   "n": 30,
+   "spearman": 0.161,
+   "pearson": 0.23,
+   "sign_agree": 0.63,
+   "circ_perm_p": 0.158
+  },
+  "holdout": {
+   "n": 16,
+   "spearman": 0.612,
+   "pearson": 0.534,
+   "sign_agree": 0.56
+  },
+  "all": {
+   "n": 46,
+   "spearman": 0.204,
+   "pearson": 0.272,
+   "sign_agree": 0.61
+  }
+ },
+ "kennecott_frp_level": {
+  "dev": {
+   "n": 18,
+   "spearman": NaN,
+   "pearson": NaN,
+   "sign_agree": 0.0,
+   "circ_perm_p": 0.143
+  },
+  "holdout": {
+   "n": 6,
+   "spearman": NaN,
+   "pearson": NaN,
+   "sign_agree": 0.0
+  },
+  "all": {
+   "n": 24,
+   "spearman": NaN,
+   "pearson": NaN,
+   "sign_agree": 0.0
+  }
+ },
+ "global_chg3_vs_next_month_hg": {
+  "dev": {
+   "n": 93,
+   "spearman": -0.127,
+   "pearson": -0.097,
+   "sign_agree": 0.45,
+   "circ_perm_p": 0.915
+  },
+  "holdout": {
+   "n": 21,
+   "spearman": -0.018,
+   "pearson": -0.046,
+   "sign_agree": 0.52
+  },
+  "all": {
+   "n": 114,
+   "spearman": -0.115,
+   "pearson": -0.09,
+   "sign_agree": 0.46
+  }
+ },
+ "global_rule": {
+  "dev": {
+   "n_trades": 33,
+   "hit_rate": 0.61,
+   "mean_net_ret_pct": 0.47,
+   "months": 96
+  },
+  "holdout": {
+   "n_trades": 3,
+   "hit_rate": 0.67,
+   "mean_net_ret_pct": 0.11,
+   "months": 21
+  }
+ },
+ "tc_vs_index_descriptive": [
+  {
+   "year": 2017,
+   "tc_usd_per_t": 92.5,
+   "rc_usc_per_lb": 9.25,
+   "source": "annual mid-year benchmark (Freeport/Antofagasta vs Chinese smelters) as widely reported by Reuters/Fastmarkets",
+   "global_index_mean": 0.729
+  },
+  {
+   "year": 2018,
+   "tc_usd_per_t": 82.25,
+   "rc_usc_per_lb": 8.225,
+   "source": "same",
+   "global_index_mean": 0.729
+  },
+  {
+   "year": 2019,
+   "tc_usd_per_t": 80.8,
+   "rc_usc_per_lb": 8.08,
+   "source": "same",
+   "global_index_mean": 0.719
+  },
+  {
+   "year": 2020,
+   "tc_usd_per_t": 62.0,
+   "rc_usc_per_lb": 6.2,
+   "source": "same",
+   "global_index_mean": 0.726
+  },
+  {
+   "year": 2021,
+   "tc_usd_per_t": 59.5,
+   "rc_usc_per_lb": 5.95,
+   "source": "same",
+   "global_index_mean": 0.725
+  },
+  {
+   "year": 2022,
+   "tc_usd_per_t": 65.0,
+   "rc_usc_per_lb": 6.5,
+   "source": "same",
+   "global_index_mean": 0.737
+  },
+  {
+   "year": 2023,
+   "tc_usd_per_t": 88.0,
+   "rc_usc_per_lb": 8.8,
+   "source": "same",
+   "global_index_mean": 0.758
+  },
+  {
+   "year": 2024,
+   "tc_usd_per_t": 80.0,
+   "rc_usc_per_lb": 8.0,
+   "source": "same",
+   "global_index_mean": 0.754
+  },
+  {
+   "year": 2025,
+   "tc_usd_per_t": 21.25,
+   "rc_usc_per_lb": 2.125,
+   "source": "same",
+   "global_index_mean": 0.725
+  },
+  {
+   "year": 2026,
+   "tc_usd_per_t": 0.0,
+   "rc_usc_per_lb": 0.0,
+   "source": "same (zero benchmark agreed for 2026)",
+   "global_index_mean": 0.734
+  }
+ ]
+}

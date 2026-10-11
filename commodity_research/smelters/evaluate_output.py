@@ -51,9 +51,11 @@ def weighted_index(monthly, smelters, ids):
     for c in m.columns:
         filled[c] = m[c].fillna(pd.Series(cal, index=m.index).map(clim[c]))
     w = smelters.set_index("id").approx_capacity_kt_cu.reindex(m.columns).astype(float)
-    idx_ = (filled * w).sum(1) / w.sum()
-    coverage = (m.notna() * w).sum(1) / w.sum()
-    return pd.DataFrame({"index": idx_, "observed_capacity_share": coverage})
+    idx_ = (filled * w).sum(axis=1) / w.sum()
+    coverage = (m.notna() * w).sum(axis=1) / w.sum()
+    out = pd.DataFrame({"index": idx_, "observed_capacity_share": coverage})
+    out.index.name = "month"
+    return out
 
 
 def main():
@@ -86,11 +88,20 @@ def main():
     nbs = pd.read_csv(os.path.join(HERE, "data", "china_nbs_refined_copper_monthly.csv")).set_index("month")
     ci = ci.join(nbs[["kt", "yoy_pct"]], how="left")
     ci["nbs_mom_pct"] = 100 * (ci.kt / ci.kt.shift(1) - 1)
-    ci = ci.reset_index().rename(columns={"index": "month", "index_": "index"}) if "month" not in ci.columns else ci
-    ci = ci.rename(columns={ci.columns[0]: "month"})
+    ci = ci.reset_index()
     ci.to_csv(os.path.join(a.out, "china_index_vs_nbs.csv"), index=False)
     res["china_yoy"] = corr_block(ci, "yoy_pts", "yoy_pct", "month", HOLD_M)
     res["china_mom"] = corr_block(ci, "mom_pts", "nbs_mom_pct", "month", HOLD_M)
+    res["china_observed_capacity_share_mean"] = round(float(ci.observed_capacity_share.mean()), 2)
+    # exploratory (post hoc, not pre-registered): intensity instead of active share, because the
+    # active share of the big Chinese smelters sits at 1.0 almost every month (no variance)
+    mi = monthly.copy()
+    devmean = mi[mi.month <= "2024-12"].groupby("smelter").intensity.mean()
+    mi["active_share"] = mi.intensity / mi.smelter.map(devmean)
+    cii = weighted_index(mi, sm, cn)
+    cii["idx3"] = cii["index"].rolling(3).mean(); cii["yoy_pts"] = cii.idx3 / cii.idx3.shift(12) - 1
+    cii = cii.join(nbs[["yoy_pct"]], how="left").reset_index()
+    res["china_intensity_yoy_exploratory"] = corr_block(cii, "yoy_pts", "yoy_pct", "month", HOLD_M)
     # exploratory: does the index lead NBS YoY by k months?
     lead = {}
     for k in [1, 2, 3]:
@@ -114,10 +125,13 @@ def main():
         cnf = [c for c in cn if c in set(fm.smelter)]
         fpiv = fm[fm.smelter.isin(cnf)].pivot(index="month", columns="smelter", values="active_share")
         w = sm.set_index("id").approx_capacity_kt_cu.reindex(fpiv.columns).astype(float)
-        fidx = (fpiv.fillna(fpiv.mean()) * w).sum(1) / w.sum()
+        fidx = (fpiv.fillna(fpiv.mean()) * w).sum(axis=1) / w.sum()
+    if frp_rows and len(fidx):
+        res["china_frp_smelters"] = cnf
         fc = pd.DataFrame({"frp_index": fidx}).reindex(pd.period_range(fidx.index.min(), fidx.index.max(), freq="M").astype(str))
         fc["idx3"] = fc.frp_index.rolling(3).mean(); fc["yoy_pts"] = fc.idx3 - fc.idx3.shift(12)
-        fc = fc.join(nbs[["yoy_pct"]], how="left").reset_index().rename(columns={"index": "month"})
+        fc.index.name = "month"
+        fc = fc.join(nbs[["yoy_pct"]], how="left").reset_index()
         fc.to_csv(os.path.join(a.out, "china_frp_index_vs_nbs.csv"), index=False)
         res["china_frp_yoy"] = corr_block(fc, "yoy_pts", "yoy_pct", "month", HOLD_M)
         # Kennecott quarterly night detections vs concentrate smelted
@@ -137,9 +151,7 @@ def main():
     g = px.groupby("month")
     entry = g.close.apply(lambda s: s.iloc[min(2, len(s) - 1)]); exit_ = g.close.last()
     ret_next = (exit_ / entry - 1).shift(-1)       # aligned to signal month m
-    gi = gi.join(ret_next.rename("hg_ret_next"), how="left").reset_index().rename(columns={"index": "month", "level_0": "month"})
-    gi = gi.rename(columns={gi.columns[0]: "month"})
-    gi.columns = ["month", "index", "observed_capacity_share", "chg3", "hg_ret_next"]
+    gi = gi.join(ret_next.rename("hg_ret_next"), how="left").reset_index()
     sd = gi[gi.month <= "2024-12"].chg3.std()
     gi["pos"] = np.where(gi.chg3 < -sd, 1, np.where(gi.chg3 > sd, -1, 0))
     gi["trade_ret"] = gi.pos * gi.hg_ret_next - (gi.pos != 0) * 0.001

@@ -1,0 +1,47 @@
+event_id,smelter,variant,expected,baseline_valid,baseline_active,baseline_share,window_valid,window_active,window_share,fisher_p,status,mask_px,last_active_before,first_active_from_start
+ventanas_closure_2023,ventanas,primary,off,28,13,0.464,33,0,0.0,0.0,detected,517.0,2023-05-18,2026-01-27
+ventanas_closure_2023,ventanas,baseline_mask,off,28,12,0.429,33,0,0.0,0.0,detected,123.0,2023-05-18,
+ventanas_closure_2023,ventanas,s3_frp_night,off,451,61,0.135,452,1,0.002,0.0,detected,,,
+hvl_halt_2024,hvl_paipote,primary,off,57,20,0.351,51,0,0.0,0.0,detected,633.0,2024-02-22,
+hvl_halt_2024,hvl_paipote,baseline_mask,off,57,18,0.316,51,0,0.0,0.0,detected,109.0,2024-02-22,
+hvl_halt_2024,hvl_paipote,s3_frp_night,off,453,105,0.232,400,0,0.0,0.0,detected,,,
+sterlite_closure_2018,sterlite,primary,off,14,0,0.0,31,0,0.0,1.0,missed,0.0,,
+sterlite_closure_2018,sterlite,baseline_mask,off,14,0,0.0,31,0,0.0,1.0,missed,0.0,,
+kennecott_2017,kennecott,primary,off,2,2,1.0,2,1,0.5,,not testable,306.0,2017-04-08,2017-05-31
+kennecott_2017,kennecott,baseline_mask,off,2,0,0.0,2,0,0.0,,not testable,0.0,,
+kennecott_2020,kennecott,primary,off,74,40,0.541,34,10,0.294,0.0141,missed,306.0,2020-05-25,2020-06-09
+kennecott_2020,kennecott,baseline_mask,off,74,40,0.541,34,10,0.294,0.0141,missed,103.0,2020-05-25,2020-06-09
+kennecott_2023,kennecott,primary,off,69,35,0.507,29,11,0.379,0.1746,missed,306.0,2023-03-28,2023-05-15
+kennecott_2023,kennecott,baseline_mask,off,69,34,0.493,29,10,0.345,0.1308,missed,78.0,2023-03-28,2023-05-15
+kennecott_2023,kennecott,s3_frp_night,off,523,0,0.0,176,0,0.0,,no baseline signal,,,
+kennecott_2025,kennecott,primary,off,85,49,0.576,15,2,0.133,0.0015,detected,306.0,2025-08-22,2025-09-08
+kennecott_2025,kennecott,baseline_mask,off,85,49,0.576,15,2,0.133,0.0015,detected,145.0,2025-08-22,2025-09-08
+kennecott_2025,kennecott,s3_frp_night,off,480,0,0.0,56,0,0.0,,no baseline signal,,,
+manyar_fire_2024,manyar,primary,off,13,13,1.0,7,6,0.857,0.35,missed,163.0,2024-10-19,2024-10-29
+manyar_fire_2024,manyar,baseline_mask,off,13,13,1.0,7,6,0.857,0.35,missed,82.0,2024-09-29,2024-10-29
+manyar_fire_2024,manyar,s3_frp_night,off,107,0,0.0,212,0,0.0,,no baseline signal,,,
+manyar_restart_2025,manyar,primary,on,7,6,0.857,18,16,0.889,0.6452,missed,163.0,2025-06-28,2025-07-01
+manyar_restart_2025,manyar,baseline_mask,on,7,6,0.857,18,14,0.778,0.8387,missed,36.0,2025-06-21,2025-07-01
+manyar_restart_2025,manyar,s3_frp_night,on,212,0,0.0,198,0,0.0,1.0,missed,,,
+altonorte_halt_2025,altonorte,primary,off,68,68,1.0,7,0,0.0,0.0,detected,358.0,2025-03-13,2025-05-05
+altonorte_halt_2025,altonorte,baseline_mask,off,68,68,1.0,7,0,0.0,0.0,detected,203.0,2025-03-13,2025-05-05
+altonorte_halt_2025,altonorte,s3_frp_night,off,410,80,0.195,38,0,0.0,0.0004,detected,,,
+pasar_cm_2025,pasar,primary,off,24,19,0.792,15,0,0.0,0.0,detected,156.0,2025-02-14,
+pasar_cm_2025,pasar,baseline_mask,off,24,19,0.792,15,0,0.0,0.0,detected,84.0,2025-02-14,
+pasar_cm_2025,pasar,s3_frp_night,off,381,0,0.0,294,0,0.0,,no baseline signal,,,
+fangchenggang_2025,fangchenggang,primary,off,19,19,1.0,1,1,1.0,,not testable,326.0,2025-02-13,2025-03-20
+fangchenggang_2025,fangchenggang,baseline_mask,off,19,19,1.0,1,1,1.0,,not testable,225.0,2025-02-13,2025-03-20
+fangchenggang_2025,fangchenggang,s3_frp_night,off,399,0,0.0,47,0,0.0,,no baseline signal,,,
+pirdop_2023,pirdop,primary,off,61,61,1.0,6,1,0.167,0.0,detected,621.0,2023-05-13,2023-06-02
+pirdop_2023,pirdop,baseline_mask,off,61,61,1.0,6,1,0.167,0.0,detected,330.0,2023-05-13,2023-06-02
+pirdop_2023,pirdop,s3_frp_night,off,561,139,0.248,53,0,0.0,0.0,detected,,,
+pirdop_2025,pirdop,primary,off,73,73,1.0,17,4,0.235,0.0,detected,621.0,2025-05-09,2025-06-08
+pirdop_2025,pirdop,baseline_mask,off,73,73,1.0,17,2,0.118,0.0,detected,364.0,2025-05-09,2025-07-13
+pirdop_2025,pirdop,s3_frp_night,off,521,118,0.226,76,0,0.0,0.0,detected,,,
+hamburg_2023,hamburg,primary,off,16,11,0.688,7,7,1.0,1.0,missed,154.0,2023-05-09,2023-05-19
+hamburg_2023,hamburg,baseline_mask,off,16,11,0.688,7,6,0.857,0.9207,missed,56.0,2023-05-09,2023-05-29
+hamburg_2023,hamburg,s3_frp_night,off,675,0,0.0,111,0,0.0,,no baseline signal,,,
+olympic_dam_2017,olympic_dam,primary,off,8,8,1.0,5,2,0.4,0.035,detected,300.0,2017-07-22,2017-08-31
+olympic_dam_2017,olympic_dam,baseline_mask,off,8,8,1.0,5,2,0.4,0.035,detected,74.0,2017-07-22,2017-08-31
+olympic_dam_2021,olympic_dam,primary,off,50,43,0.86,13,3,0.231,0.0,detected,300.0,2021-08-10,2021-08-30
+olympic_dam_2021,olympic_dam,baseline_mask,off,50,43,0.86,13,3,0.231,0.0,detected,184.0,2021-08-10,2021-08-30
