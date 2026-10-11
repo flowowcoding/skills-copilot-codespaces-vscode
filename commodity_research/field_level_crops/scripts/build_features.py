@@ -6,8 +6,8 @@ forecast date T = NASS Crop Production release date - 5 days:
   * CDL year Y-1 and Y-2 (masks, field interiors); CDL labels of years < Y for the crop classifier
 
 Steps (subcommands):
-  offsets   sensor harmonisation: NDVI / NIRv / NIR of each sensor mapped onto Landsat 8 OLI with linear fits
-            on near-coincident clear pairs (same point, |dt| <= 1 day; Landsat 7 / S2A / S2B / S2C vs L8/L9;
+  offsets   sensor harmonisation: NDVI and NIR of each sensor shifted onto Landsat 8/9 OLI by the median
+            difference of near-coincident clear pairs (same point, |dt| <= 1 day; Landsat 7 / S2A / S2B / S2C vs L8/L9;
             years <= 2021 only) -> features/sensor_offsets.csv
   pixels    per year: field-interior sample points (CDL Y-1 centre is corn or soy and >= 23 of its 5 x 5
             neighbours share the class), per-pixel smoothed NDVI / NIRv curves to the cutoff and phenology
@@ -52,10 +52,10 @@ def forecast_dates():
 
 
 # ---------------------------------------------------------------- observations
-def load_obs(work, y):
+def load_obs(work, y, sources=("landsat", "s2")):
     """stack Landsat and S2 observations of year y: dict of arrays (rows = window x acquisition)"""
     parts = []
-    for src in ["landsat", "s2"]:
+    for src in sources:
         fn = f"{work}/obs/{src}_{y}.npz"
         if not os.path.exists(fn):
             continue
@@ -110,10 +110,11 @@ def cmd_offsets(a):
         g = g.sample(min(len(g), 200000), random_state=0)
         res = dict(sensor=s, n=len(g), years=g.year.nunique())
         for v in ["ndvi", "nir"]:
-            # reduced-major-axis line (symmetric; OLS slopes are attenuated by noise in the predictor)
+            # additive offset = median paired difference (robust to the cloud/shadow and 1-day-lag noise in the
+            # pairs; the RMA slope is reported for information only)
             x, yv = g[f"{v}_s"].values, g[f"{v}_r"].values
-            b = np.sign(np.corrcoef(x, yv)[0, 1]) * yv.std() / x.std(); a0 = yv.mean() - b * x.mean()
-            res.update({f"a_{v}": a0, f"b_{v}": b, f"bias_{v}": (yv - x).mean(), f"r_{v}": np.corrcoef(x, yv)[0, 1]})
+            b_rma = np.sign(np.corrcoef(x, yv)[0, 1]) * yv.std() / x.std()
+            res.update({f"a_{v}": np.median(yv - x), f"b_{v}": 1.0, f"rma_slope_{v}": b_rma, f"bias_{v}": (yv - x).mean(), f"r_{v}": np.corrcoef(x, yv)[0, 1]})
         out.append(res)
     out.append(dict(sensor=8, n=0, years=0, a_ndvi=0, b_ndvi=1, a_nir=0, b_nir=1, bias_ndvi=0, bias_nir=0, r_ndvi=1, r_nir=1))
     out.append(dict(sensor=9, n=0, years=0, a_ndvi=0, b_ndvi=1, a_nir=0, b_nir=1, bias_ndvi=0, bias_nir=0, r_ndvi=1, r_nir=1))
@@ -184,8 +185,8 @@ def metrics(Z, cut_i, prefix, base):
     return out
 
 
-def pixel_year(work, y, offs, fd):
-    o = load_obs(work, y)
+def pixel_year(work, y, offs, fd, sources=("landsat", "s2"), pixdir="pix"):
+    o = load_obs(work, y, sources)
     if o is None:
         return
     pts = sample_points(work, y)
@@ -241,8 +242,8 @@ def pixel_year(work, y, offs, fd):
                     res[f"c_{dd}"] = Z[:, dd - D0]
         res["cut_doy"] = cut_doy
         res = res[res.nobs >= 4]
-        os.makedirs(f"{work}/pix", exist_ok=True)
-        res.to_parquet(f"{work}/pix/pix_{y}_{rep}.parquet", index=False)
+        os.makedirs(f"{work}/{pixdir}", exist_ok=True)
+        res.to_parquet(f"{work}/{pixdir}/pix_{y}_{rep}.parquet", index=False)
         print(y, rep, "T", T.date(), "cut_doy", cut_doy, "pixels", len(res), "median nobs", res.nobs.median(), flush=True)
 
 
@@ -251,9 +252,9 @@ def cmd_pixels(a):
     fd = forecast_dates()
     y0, y1 = map(int, a.years.split("-"))
     for y in range(y0, y1 + 1):
-        if all(os.path.exists(f"{a.work}/pix/pix_{y}_{r}.parquet") for r in ["aug", "sep"]) and not a.force:
+        if all(os.path.exists(f"{a.work}/{a.pixdir}/pix_{y}_{r}.parquet") for r in ["aug", "sep"]) and not a.force:
             continue
-        pixel_year(a.work, y, offs, fd)
+        pixel_year(a.work, y, offs, fd, a.sources.split(","), a.pixdir)
 
 
 # ---------------------------------------------------------------- classification
@@ -267,7 +268,7 @@ def cmd_classify(a):
     y0, y1 = map(int, a.years.split("-"))
     rows = []
     for rep in ["aug", "sep"]:
-        files = {int(os.path.basename(f).split("_")[1]): f for f in glob.glob(f"{a.work}/pix/pix_*_{rep}.parquet")}
+        files = {int(os.path.basename(f).split("_")[1]): f for f in glob.glob(f"{a.work}/{a.pixdir}/pix_*_{rep}.parquet")}
         data = {y: pd.read_parquet(f) for y, f in sorted(files.items())}
         for y in range(y0, y1 + 1):
             if y not in data:
@@ -297,7 +298,7 @@ def cmd_classify(a):
                 rows.append(dict(year=y, report=rep, method=method, n_train_years=len(tr_years), acc=acc, acc_rotation=acc_rot,
                                  acc_confident=acc_conf, share_confident=len(conf) / len(lab), n=len(lab)))
                 print(rows[-1], flush=True)
-    pd.DataFrame(rows).to_csv(f"{FEAT}/classifier_accuracy.csv", index=False, float_format="%.4f")
+    pd.DataFrame(rows).to_csv(f"{FEAT}/classifier_accuracy{a.tag}.csv", index=False, float_format="%.4f")
 
 
 # ---------------------------------------------------------------- county aggregation
@@ -307,7 +308,7 @@ MET = ["ndvi_peak", "ndvi_peak_doy", "ndvi_auc", "ndvi_jul", "ndvi_last", "nirv_
 def cmd_county(a):
     w = pd.read_csv(f"{DATA}/windows.csv", dtype={"fips": str})
     out = []
-    for f in sorted(glob.glob(f"{a.work}/pix/pix_*_*.parquet")):
+    for f in sorted(glob.glob(f"{a.work}/{a.pixdir}/pix_*_*.parquet")):
         _, y, rep = os.path.basename(f)[:-8].split("_")
         d = pd.read_parquet(f)
         if "p_corn" not in d:
@@ -325,7 +326,7 @@ def cmd_county(a):
     c = pd.concat(out)
     c = c[c.npix >= 30]
     cols = ["year", "report", "crop", "fips", "npix", "cut_doy"] + MET + ["n_re"]
-    c[cols].sort_values(["crop", "report", "year", "fips"]).to_csv(f"{FEAT}/county_vi.csv", index=False, float_format="%.4f")
+    c[cols].sort_values(["crop", "report", "year", "fips"]).to_csv(f"{FEAT}/county_vi{a.tag}.csv", index=False, float_format="%.4f")
     print(c.groupby(["crop", "report", "year"]).agg(n=("fips", "size"), npix=("npix", "median"), peak=("ndvi_peak", "mean")).to_string())
 
 
@@ -371,6 +372,9 @@ def main():
     ap.add_argument("--work", required=True)
     ap.add_argument("--years", default="2013-2026")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--sources", default="landsat,s2", help="pixels: imagery sources to use")
+    ap.add_argument("--pixdir", default="pix", help="pixels/classify/county: sub-directory of --work for pixel files")
+    ap.add_argument("--tag", default="", help="county: suffix of features/county_vi<tag>.csv")
     a = ap.parse_args()
     {"offsets": cmd_offsets, "pixels": cmd_pixels, "classify": cmd_classify, "county": cmd_county, "weather": cmd_weather}[a.cmd](a)
 
