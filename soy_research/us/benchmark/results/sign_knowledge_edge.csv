@@ -1,0 +1,41 @@
+crop,months,rule,n,years,hit_rate,mean_gross_cbu,mean_net_cbu,mean_net_pct,t_net,mean_net_usd_per_contract,cost_cbu,total_net_cbu
+corn,Aug,know sign of surprise (all reports),22,2005-2026,0.5909,5.1439,4.5439,1.1704,2.1433,227.1959,0.6000,99.9662
+corn,Aug,"know sign, only |surprise| > median",11,2008-2025,0.6364,5.0458,4.4458,1.1765,1.5728,222.2895,0.6000,48.9037
+corn,Aug,perfect foresight of return sign (upper bound),22,2005-2026,1.0000,9.8471,9.2471,2.2116,6.4813,462.3535,0.6000,203.4355
+corn,Aug,sign from public-info model (LOYO),22,2005-2026,0.4091,-1.0133,-1.6133,0.0678,0.1107,-80.6632,0.6000,-35.4918
+corn,Sep,know sign of surprise (all reports),14,2012-2026,0.5714,0.5366,-0.0634,-0.0904,-0.2057,-3.1698,0.6000,-0.8875
+corn,Sep,"know sign, only |surprise| > median",7,2012-2019,0.8571,3.7475,3.1475,0.7133,1.2986,157.3769,0.6000,22.0328
+corn,Sep,perfect foresight of return sign (upper bound),14,2012-2026,1.0000,5.4584,4.8584,1.1972,5.2410,242.9212,0.6000,68.0179
+corn,Sep,sign from public-info model (LOYO),14,2012-2026,0.5714,0.5366,-0.0634,-0.0904,-0.2057,-3.1698,0.6000,-0.8875
+corn,Aug+Sep,know sign of surprise (all reports),36,2005-2026,0.5833,3.3522,2.7522,0.6801,1.7675,137.6092,0.6000,99.0787
+corn,Aug+Sep,"know sign, only |surprise| > median",18,2006-2025,0.7778,7.4361,6.8361,1.7213,3.2013,341.8074,0.6000,123.0507
+corn,Aug+Sep,perfect foresight of return sign (upper bound),36,2005-2026,1.0000,8.1404,7.5404,1.8171,7.5966,377.0187,0.6000,271.4535
+corn,Aug+Sep,sign from public-info model (LOYO),36,2005-2026,0.4722,-0.4105,-1.0105,0.0063,0.0154,-50.5269,0.6000,-36.3793
+corn,Aug-Nov,know sign of surprise (all reports),57,2005-2026,0.6316,3.1651,2.5651,0.6128,2.2294,128.2555,0.6000,146.2113
+corn,Aug-Nov,"know sign, only |surprise| > median",28,2006-2026,0.7857,6.9223,6.3223,1.5457,3.9134,316.1147,0.6000,177.0242
+corn,Aug-Nov,perfect foresight of return sign (upper bound),57,2005-2026,1.0000,7.4348,6.8348,1.6544,9.9401,341.7392,0.6000,389.5827
+corn,Aug-Nov,sign from public-info model (LOYO),57,2005-2026,0.5088,0.7170,0.1170,0.1964,0.6813,5.8519,0.6000,6.6711
+corn,All incl. Jan,know sign of surprise (all reports),63,2005-2026,0.6349,3.2296,2.6296,0.6430,2.4301,131.4792,0.6000,165.6638
+corn,All incl. Jan,"know sign, only |surprise| > median",31,2006-2026,0.8065,7.5847,6.9847,1.7028,4.6673,349.2359,0.6000,216.5263
+corn,All incl. Jan,perfect foresight of return sign (upper bound),63,2005-2026,1.0000,7.5962,6.9962,1.6720,10.2444,349.8113,0.6000,440.7622
+corn,All incl. Jan,sign from public-info model (LOYO),57,2005-2026,0.5088,0.7170,0.1170,0.1964,0.6813,5.8519,0.6000,6.6711
+soybeans,Aug,know sign of surprise (all reports),15,2012-2026,0.6000,11.6871,11.0871,1.0454,1.8773,554.3568,0.6000,166.3070
+soybeans,Aug,"know sign, only |surprise| > median",7,2012-2020,0.7143,25.2880,24.6880,2.2402,2.4337,1234.3991,0.6000,172.8159
+soybeans,Aug,perfect foresight of return sign (upper bound),15,2012-2026,0.9333,19.1936,18.5936,1.7291,4.2049,929.6804,0.6000,278.9041
+soybeans,Aug,sign from public-info model (LOYO),15,2012-2026,0.5333,1.7452,1.1452,0.0881,0.1400,57.2588,0.6000,17.1776
+soybeans,Sep,know sign of surprise (all reports),15,2012-2026,0.4667,3.8805,3.2805,0.0873,0.1657,164.0234,0.6000,49.2070
+soybeans,Sep,"know sign, only |surprise| > median",7,2015-2022,0.4286,4.4925,3.8925,0.0456,0.0522,194.6232,0.6000,27.2472
+soybeans,Sep,perfect foresight of return sign (upper bound),15,2012-2026,1.0000,20.8265,20.2265,1.6480,6.1866,1011.3245,0.6000,303.3974
+soybeans,Sep,sign from public-info model (LOYO),15,2012-2026,0.4000,-8.2601,-8.8601,-0.6586,-1.3153,-443.0032,0.6000,-132.9010
+soybeans,Aug+Sep,know sign of surprise (all reports),30,2012-2026,0.5333,7.7838,7.1838,0.5663,1.4637,359.1901,0.6000,215.5141
+soybeans,Aug+Sep,"know sign, only |surprise| > median",15,2012-2024,0.7333,17.3373,16.7373,1.4104,2.3809,836.8633,0.6000,251.0590
+soybeans,Aug+Sep,perfect foresight of return sign (upper bound),30,2012-2026,0.9667,20.0100,19.4100,1.6885,7.0112,970.5025,0.6000,582.3015
+soybeans,Aug+Sep,sign from public-info model (LOYO),30,2012-2026,0.4667,-3.2574,-3.8574,-0.2852,-0.7112,-192.8722,0.6000,-115.7233
+soybeans,Aug-Nov,know sign of surprise (all reports),51,2012-2026,0.5686,5.6517,5.0517,0.4064,1.5428,252.5854,0.6000,257.6371
+soybeans,Aug-Nov,"know sign, only |surprise| > median",25,2012-2025,0.6400,9.1381,8.5381,0.6955,1.5877,426.9063,0.6000,213.4532
+soybeans,Aug-Nov,perfect foresight of return sign (upper bound),51,2012-2026,0.9804,17.4572,16.8572,1.4917,9.3023,842.8620,0.6000,859.7192
+soybeans,Aug-Nov,sign from public-info model (LOYO),51,2012-2026,0.5294,-0.9062,-1.5062,-0.1012,-0.3734,-75.3097,0.6000,-76.8159
+soybeans,All incl. Jan,know sign of surprise (all reports),56,2012-2026,0.5893,6.3871,5.7871,0.4856,1.9618,289.3568,0.6000,324.0797
+soybeans,All incl. Jan,"know sign, only |surprise| > median",28,2012-2025,0.6429,9.2157,8.6157,0.7207,1.8106,430.7864,0.6000,241.2404
+soybeans,All incl. Jan,perfect foresight of return sign (upper bound),56,2012-2026,0.9821,17.3086,16.7086,1.4922,9.8428,835.4323,0.6000,935.6842
+soybeans,All incl. Jan,sign from public-info model (LOYO),51,2012-2026,0.5294,-0.9062,-1.5062,-0.1012,-0.3734,-75.3097,0.6000,-76.8159

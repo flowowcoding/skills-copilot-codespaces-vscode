@@ -1,0 +1,26 @@
+{
+ "version": "us-corn-soy-pit v1.0",
+ "built": "2026-10-11T01:19:08Z",
+ "files": {
+  "pit/pit_us_corn_soy.parquet": {
+   "rows": 63712,
+   "bytes": 188137,
+   "sha256": "f7c80a3a4dbd1dd13db7fc156034bdd7b5e407979ecf595b119ee7e11b9831c7"
+  },
+  "pit/pit_us_corn_soy_core.csv": {
+   "rows": 16912,
+   "bytes": 1957479,
+   "sha256": "5ca679c437a5fd206abfaccb543db1ac6ebf597f8433223e47be5d666bee0adb"
+  },
+  "consensus/consensus.csv": {
+   "rows": 203,
+   "bytes": 42015,
+   "sha256": "d8f5f534721d8f12f8beacdb34578aae94ef927289fa646d35df917ccae40557"
+  },
+  "interim/crop_condition.csv": {
+   "rows": 14547,
+   "bytes": 1297578,
+   "sha256": "0fd54c0fe93576f5464f8a4abcfcdf5cfa8e15a13d1d25843a014960f171bbef"
+  }
+ }
+}

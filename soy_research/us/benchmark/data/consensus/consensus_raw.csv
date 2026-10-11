@@ -1,0 +1,183 @@
+report_date,crop,variable,avg,low,high,poll,source,source_url,note,capture
+2012-08-10,corn,production,10971.0,,,trade avg (likely Reuters),world-grain/meatpoultry,https://www.meatpoultry.com/articles/7836-us-2012-corn-crop-to-decline-13,production in million bu,web-search snippet of the cited page
+2012-08-10,soybeans,production,2786.0,,,trade avg (likely Reuters),world-grain/meatpoultry,https://www.meatpoultry.com/articles/7836-us-2012-corn-crop-to-decline-13,,web-search snippet of the cited page
+2012-09-12,corn,production,10403.0,,,trade avg,world-grain/meatpoultry,https://www.meatpoultry.com/articles/7855-2012-corn-crop-declines-slightly-from-august,,web-search snippet of the cited page
+2012-09-12,soybeans,production,2638.0,,,trade avg,world-grain/meatpoultry,https://www.meatpoultry.com/articles/7855-2012-corn-crop-declines-slightly-from-august,,web-search snippet of the cited page
+2013-08-12,corn,production,14005.0,13485.0,14348.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL130812.pdf,,direct (page/PDF read)
+2013-08-12,corn,yield,157.7,155.1,161.2,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL130812.pdf,,direct (page/PDF read)
+2013-08-12,soybeans,production,3336.0,3226.0,3420.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL130812.pdf,,direct (page/PDF read)
+2013-08-12,soybeans,yield,43.6,42.5,44.5,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL130812.pdf,,direct (page/PDF read)
+2013-09-12,corn,production,13620.0,13330.0,14013.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL130912.pdf,,direct (page/PDF read)
+2013-09-12,corn,yield,153.69,150.2,157.2,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL130912.pdf,,direct (page/PDF read)
+2013-09-12,soybeans,production,3140.0,2980.0,3239.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL130912.pdf,,direct (page/PDF read)
+2013-09-12,soybeans,yield,41.172,39.0,42.4,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL130912.pdf,,direct (page/PDF read)
+2013-11-08,corn,production,14029.0,13774.0,14330.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL131108.pdf,,direct (page/PDF read)
+2013-11-08,corn,yield,159.2,157.0,163.3,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL131108.pdf,,direct (page/PDF read)
+2013-11-08,soybeans,production,3215.0,3123.0,3298.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL131108.pdf,,direct (page/PDF read)
+2013-11-08,soybeans,yield,42.3,41.2,43.3,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL131108.pdf,,direct (page/PDF read)
+2014-01-10,corn,production,14066.0,13897.0,14255.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140110.pdf,high printed as 12.255 (typo),direct (page/PDF read)
+2014-01-10,corn,yield,161.2,159.8,163.3,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140110.pdf,,direct (page/PDF read)
+2014-01-10,soybeans,production,3279.0,3240.0,3330.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140110.pdf,,direct (page/PDF read)
+2014-01-10,soybeans,yield,43.3,42.7,44.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140110.pdf,,direct (page/PDF read)
+2014-08-12,corn,production,14250.0,13936.0,14612.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140812.pdf,,direct (page/PDF read)
+2014-08-12,corn,yield,170.2,168.0,173.9,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140812.pdf,,direct (page/PDF read)
+2014-08-12,soybeans,production,3815.0,3582.0,3951.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140812.pdf,,direct (page/PDF read)
+2014-08-12,soybeans,yield,45.5,42.8,47.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140812.pdf,,direct (page/PDF read)
+2014-09-11,corn,production,14288.0,14000.0,14649.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140911.pdf,,direct (page/PDF read)
+2014-09-11,corn,yield,170.74,168.5,174.1,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140911.pdf,,direct (page/PDF read)
+2014-09-11,soybeans,production,3883.0,3760.0,4035.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140911.pdf,,direct (page/PDF read)
+2014-09-11,soybeans,yield,46.29,45.4,48.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL140911.pdf,,direct (page/PDF read)
+2014-10-10,corn,production,14506.0,14063.0,14958.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL141010.pdf,,direct (page/PDF read)
+2014-10-10,corn,yield,174.65,172.0,178.4,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL141010.pdf,,direct (page/PDF read)
+2014-10-10,soybeans,production,3976.0,3880.0,4104.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL141010.pdf,,direct (page/PDF read)
+2014-10-10,soybeans,yield,47.58,46.9,48.8,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL141010.pdf,,direct (page/PDF read)
+2014-11-10,corn,production,14551.0,14242.0,14842.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL141110.pdf,,direct (page/PDF read)
+2014-11-10,corn,yield,175.23,171.4,178.6,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL141110.pdf,,direct (page/PDF read)
+2014-11-10,soybeans,production,3967.0,3903.0,4064.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL141110.pdf,,direct (page/PDF read)
+2014-11-10,soybeans,yield,47.6,46.8,48.7,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL141110.pdf,,direct (page/PDF read)
+2015-01-12,corn,production,14342.0,14171.0,14543.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL150112.pdf,,direct (page/PDF read)
+2015-01-12,corn,yield,173.4,171.3,176.5,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL150112.pdf,,direct (page/PDF read)
+2015-01-12,soybeans,production,3962.0,3844.0,4020.0,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL150112.pdf,,direct (page/PDF read)
+2015-01-12,soybeans,yield,47.7,46.8,48.2,trade avg,WILL Agri-Newsline,https://will.illinois.edu/nfs/WANL150112.pdf,,direct (page/PDF read)
+2015-08-12,corn,production,13318.0,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/6535-crop-forecasts-in-flux,,web-search snippet of the cited page
+2015-08-12,corn,yield,164.4,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/6535-crop-forecasts-in-flux,farmdoc: USDA ~4 bu above avg trade,web-search snippet of the cited page
+2015-09-11,corn,yield,166.6,,,trade avg,World-Grain,https://world-grain.com/articles/5885-u-s-corn-crop-forecast-down-slightly,,web-search snippet of the cited page
+2015-09-11,soybeans,yield,46.4,,,Reuters,agcanada (Reuters),https://www.agcanada.com/2015/09/usda-raises-soybean-estimate-cuts-corn-outlook,World-Grain gives 46.0; Reuters 46.4 used,web-search snippet of the cited page
+2015-09-11,soybeans,production,3869.0,,,Reuters,agcanada (Reuters),https://www.agcanada.com/2015/09/usda-raises-soybean-estimate-cuts-corn-outlook,,web-search snippet of the cited page
+2015-10-09,corn,production,13461.0,,,trade avg,World-Grain,https://world-grain.com/articles/4792-u-s-corn-crop-down-slightly-from-september,,web-search snippet of the cited page
+2015-10-09,corn,yield,166.4,,,trade avg,World-Grain,https://world-grain.com/articles/4792-u-s-corn-crop-down-slightly-from-september,,web-search snippet of the cited page
+2015-10-09,soybeans,production,3884.0,,,trade avg,World-Grain,https://world-grain.com/articles/4792-u-s-corn-crop-down-slightly-from-september,,web-search snippet of the cited page
+2015-10-09,soybeans,yield,46.9,,,trade avg,World-Grain,https://world-grain.com/articles/4792-u-s-corn-crop-down-slightly-from-september,another source says 47.2,web-search snippet of the cited page
+2015-11-10,corn,production,13556.0,,,trade avg,World-Grain,https://world-grain.com/articles/4918-u-s-corn-soybean-crops-up-from-october,,web-search snippet of the cited page
+2015-11-10,corn,yield,168.0,,,trade avg,World-Grain,https://world-grain.com/articles/4918-u-s-corn-soybean-crops-up-from-october,,web-search snippet of the cited page
+2015-11-10,soybeans,production,3912.0,,,trade avg,World-Grain,https://world-grain.com/articles/4918-u-s-corn-soybean-crops-up-from-october,,web-search snippet of the cited page
+2015-11-10,soybeans,yield,47.5,,,trade avg,World-Grain,https://world-grain.com/articles/4918-u-s-corn-soybean-crops-up-from-october,,web-search snippet of the cited page
+2016-08-12,corn,production,14770.0,14580.0,15146.0,Reuters range; avg Feedstuffs,Feedstuffs / Reuters,https://www.feedstuffs.com/agribusiness-news/usda-forecasts-record-crop-production-in-2016,,web-search snippet of the cited page
+2016-08-12,corn,yield,170.6,168.6,175.0,trade avg (Iowa FB); Reuters range,Iowa Farm Bureau,https://www.iowafarmbureau.com/Article/August-2016-Crop-Market-Update,,web-search snippet of the cited page
+2016-08-12,soybeans,production,3950.0,3865.0,4054.0,Reuters range; avg Feedstuffs,Feedstuffs / Reuters,https://www.feedstuffs.com/agribusiness-news/usda-forecasts-record-crop-production-in-2016,,web-search snippet of the cited page
+2016-08-12,soybeans,yield,47.5,46.7,48.8,trade avg (Iowa FB); Reuters range,Iowa Farm Bureau,https://www.iowafarmbureau.com/Article/August-2016-Crop-Market-Update,,web-search snippet of the cited page
+2016-09-12,corn,production,14974.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/7033-u-s-corn-crop-down-slightly-from-august,,web-search snippet of the cited page
+2016-09-12,corn,yield,172.9,,,trade avg,World-Grain,https://www.world-grain.com/articles/7033-u-s-corn-crop-down-slightly-from-august,another source 173.4,web-search snippet of the cited page
+2016-09-12,soybeans,production,4100.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/7033-u-s-corn-crop-down-slightly-from-august,,web-search snippet of the cited page
+2016-09-12,soybeans,yield,49.4,,,trade avg,World-Grain,https://www.world-grain.com/articles/7033-u-s-corn-crop-down-slightly-from-august,,web-search snippet of the cited page
+2016-10-12,corn,production,15060.0,,,Reuters,Producer.com (Reuters),https://www.producer.com/?p=172774,World-Grain: 15040 / 173.4,web-search snippet of the cited page
+2016-10-12,corn,yield,173.5,,,Reuters,Producer.com (Reuters),https://www.producer.com/?p=172774,,web-search snippet of the cited page
+2016-10-12,soybeans,production,4286.0,,,Reuters,Producer.com (Reuters),https://www.producer.com/?p=172774,World-Grain: 4277,web-search snippet of the cited page
+2016-10-12,soybeans,yield,51.5,,,Reuters,Producer.com (Reuters),https://www.producer.com/?p=172774,,web-search snippet of the cited page
+2016-11-09,corn,production,15041.0,,,Reuters,Producer.com (Reuters),https://www.producer.com/markets/u-s-corn-soybean-harvests-bigger-than-expected-usda/,,web-search snippet of the cited page
+2016-11-09,corn,yield,173.2,,,Reuters,Producer.com (Reuters),https://www.producer.com/markets/u-s-corn-soybean-harvests-bigger-than-expected-usda/,,web-search snippet of the cited page
+2016-11-09,soybeans,production,4314.0,,,Reuters,Producer.com (Reuters),https://www.producer.com/markets/u-s-corn-soybean-harvests-bigger-than-expected-usda/,,web-search snippet of the cited page
+2016-11-09,soybeans,yield,52.0,,,Reuters,Producer.com (Reuters),https://www.producer.com/markets/u-s-corn-soybean-harvests-bigger-than-expected-usda/,,web-search snippet of the cited page
+2017-01-12,corn,production,15198.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/7592-u-s-corn-soybean-production-down-1-from-november,via search summary,web-search snippet of the cited page
+2017-01-12,corn,yield,175.3,,,trade avg,World-Grain,https://www.world-grain.com/articles/7592-u-s-corn-soybean-production-down-1-from-november,via search summary,web-search snippet of the cited page
+2017-01-12,soybeans,production,4380.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/7592-u-s-corn-soybean-production-down-1-from-november,via search summary,web-search snippet of the cited page
+2017-01-12,soybeans,yield,52.7,,,trade avg,World-Grain,https://www.world-grain.com/articles/7592-u-s-corn-soybean-production-down-1-from-november,via search summary,web-search snippet of the cited page
+2017-08-10,corn,yield,166.2,,,Reuters,Producer.com (Reuters),https://www.producer.com/?p=186210,,web-search snippet of the cited page
+2017-08-10,soybeans,yield,47.5,,,Reuters,Producer.com (Reuters),https://www.producer.com/?p=186210,,web-search snippet of the cited page
+2017-09-12,corn,yield,168.2,,,Reuters,Grainews (Reuters),https://www.grainews.ca/daily/u-s-grains-corn-falls-after-usda-raises-yield-estimate,World-Grain 167.8,web-search snippet of the cited page
+2017-09-12,corn,production,14000.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/8660-u-s-corn-soybean-production-up-slightly-from-august,,web-search snippet of the cited page
+2017-09-12,soybeans,production,4321.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/8660-u-s-corn-soybean-production-up-slightly-from-august,,web-search snippet of the cited page
+2017-09-12,soybeans,yield,48.7,,,trade avg,World-Grain,https://www.world-grain.com/articles/8660-u-s-corn-soybean-production-up-slightly-from-august,Farm Progress 49.1,web-search snippet of the cited page
+2018-08-10,corn,yield,176.0,,,trade avg,Farm Bureau Market Intel,https://www.fb.org/market-intel/corn-and-soybean-yields-are-yuuuge,farmdoc: USDA 2.2 above avg,web-search snippet of the cited page
+2018-08-10,soybeans,yield,49.6,,,trade avg (implied),farmdoc daily,https://farmdocdaily.illinois.edu/2018/08/large-corn-soybean-yield-forecasts-hurt-price-prospects.html,USDA 2.0 above trade expectations; adviser cites 49.8,web-search snippet of the cited page
+2018-09-12,corn,production,14530.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/10966-usda-forecasts-record-soybean-production,,web-search snippet of the cited page
+2018-09-12,corn,yield,177.8,,,trade avg,World-Grain,https://www.world-grain.com/articles/10966-usda-forecasts-record-soybean-production,,web-search snippet of the cited page
+2018-09-12,soybeans,production,4650.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/10966-usda-forecasts-record-soybean-production,,web-search snippet of the cited page
+2018-09-12,soybeans,yield,52.2,,,trade avg,World-Grain,https://www.world-grain.com/articles/10966-usda-forecasts-record-soybean-production,,web-search snippet of the cited page
+2019-08-12,corn,production,13164.0,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/14308-usda-sees-corn-production-down-36-soybeans-down-19-from-2018,,web-search snippet of the cited page
+2019-08-12,corn,yield,165.3,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/14308-usda-sees-corn-production-down-36-soybeans-down-19-from-2018,,web-search snippet of the cited page
+2019-08-12,soybeans,production,3783.0,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/14308-usda-sees-corn-production-down-36-soybeans-down-19-from-2018,,web-search snippet of the cited page
+2019-08-12,soybeans,yield,47.5,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/14308-usda-sees-corn-production-down-36-soybeans-down-19-from-2018,,web-search snippet of the cited page
+2019-09-12,corn,yield,166.7,,,Dow Jones,DTN,https://www.dtnpf.com/agriculture/web/AG/news/article/2019/09/12/soybean-futures-soar-despite-bearish,,web-search snippet of the cited page
+2019-09-12,soybeans,yield,47.2,,,Dow Jones,DTN,https://www.dtnpf.com/agriculture/web/AG/news/article/2019/09/12/soybean-futures-soar-despite-bearish,,web-search snippet of the cited page
+2020-08-12,corn,yield,180.4,,,trade avg,farmdoc webinar / Farm Progress,https://farmdoc.illinois.edu/wp-content/uploads/2020/02/2020-08-12-FarmDoc-Webinar.pdf,,direct (page/PDF read)
+2020-08-12,soybeans,yield,51.3,,,trade avg,farmdoc webinar / Farm Progress,https://farmdoc.illinois.edu/wp-content/uploads/2020/02/2020-08-12-FarmDoc-Webinar.pdf,,direct (page/PDF read)
+2020-09-11,corn,yield,178.3,,,trade avg,ADMIS recap,https://www.admis.com/september-usda-recap/,,web-search snippet of the cited page
+2020-09-11,soybeans,yield,51.8,,,trade avg,ADMIS recap,https://www.admis.com/september-usda-recap/,,web-search snippet of the cited page
+2021-08-12,corn,yield,177.1,,,trade avg,DTN,https://www.dtnpf.com/agriculture/web/ag/news/article/2021/08/12/corn-wheat-futures-surge-following,,web-search snippet of the cited page
+2021-08-12,soybeans,yield,50.4,,,trade avg,Farm Progress,https://www.farmprogress.com/marketing/surprisingly-low-corn-yields-spark-rally,,web-search snippet of the cited page
+2021-09-10,corn,production,14942.0,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/19569-usda-forecasts-higher-corn-soybean-production-from-august,,web-search snippet of the cited page
+2021-09-10,corn,yield,175.8,,,trade avg,ADMIS,https://www.admis.com/usda-sep-10-crop-report-review/,,web-search snippet of the cited page
+2021-09-10,soybeans,production,4377.0,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/19569-usda-forecasts-higher-corn-soybean-production-from-august,,web-search snippet of the cited page
+2021-09-10,soybeans,yield,50.0,,,trade avg,ADMIS,https://www.admis.com/usda-sep-10-crop-report-review/,,web-search snippet of the cited page
+2022-08-12,corn,yield,175.9,173.2,177.6,trade avg,Farm Progress,https://www.farmprogress.com/corn/august-22-wasde-markets-yawn-at-corn-yields,,web-search snippet of the cited page
+2022-08-12,soybeans,yield,51.1,,,trade avg,DTN / Farm Progress,https://www.dtnpf.com/agriculture/web/ag/news/article/2022/08/12/corn-soybean-markets-focus-future,,web-search snippet of the cited page
+2022-09-12,corn,production,14088.0,,,trade avg,Pro Farmer,https://www.profarmer.com/news/agriculture-news/smaller-corn-soybean-crop-estimates-expected-sept-12,,web-search snippet of the cited page
+2022-09-12,corn,yield,172.5,,,trade avg,Pro Farmer,https://www.profarmer.com/news/agriculture-news/smaller-corn-soybean-crop-estimates-expected-sept-12,DTN 172.4,web-search snippet of the cited page
+2022-09-12,soybeans,yield,51.5,50.7,52.0,trade avg,Pro Farmer,https://www.profarmer.com/news/agriculture-news/smaller-corn-soybean-crop-estimates-expected-sept-12,,web-search snippet of the cited page
+2023-08-11,corn,yield,175.5,,,trade avg,ADMIS / farmdoc,https://www.admis.com/?p=36518,,web-search snippet of the cited page
+2023-08-11,soybeans,yield,51.3,,,trade avg,ADMIS,https://www.admis.com/?p=36518,,web-search snippet of the cited page
+2023-09-12,corn,yield,173.5,,,trade avg,World-Grain,https://world-grain.com/articles/19032-us-corn-outlook-climbs-soybeans-dip-in-latest-forecast,,web-search snippet of the cited page
+2023-09-12,soybeans,yield,50.2,,,trade avg,World-Grain,https://world-grain.com/articles/19032-us-corn-outlook-climbs-soybeans-dip-in-latest-forecast,,web-search snippet of the cited page
+2024-09-12,corn,yield,182.7,,,trade avg,Farmtario / DTN,https://farmtario.com/daily/usdas-september-numbers-meet-trade-expectations/,,web-search snippet of the cited page
+2024-09-12,soybeans,yield,53.4,,,trade avg,Farmtario,https://farmtario.com/daily/usdas-september-numbers-meet-trade-expectations/,preview said 53.3,web-search snippet of the cited page
+2025-08-12,corn,production,15990.0,15830.0,16323.0,Reuters,TradingView (Reuters),"https://www.tradingview.com/news/reuters.com,2025:newsml_L4N3TY189:0-trade-estimates-for-usda-august-us-corn-soy-production/",,direct (page/PDF read)
+2025-08-12,corn,yield,184.411,182.5,188.1,Reuters,TradingView (Reuters),"https://www.tradingview.com/news/reuters.com,2025:newsml_L4N3TY189:0-trade-estimates-for-usda-august-us-corn-soy-production/",,direct (page/PDF read)
+2025-08-12,soybeans,production,4368.0,4290.0,4425.0,Reuters,TradingView (Reuters),"https://www.tradingview.com/news/reuters.com,2025:newsml_L4N3TY189:0-trade-estimates-for-usda-august-us-corn-soy-production/",,direct (page/PDF read)
+2025-08-12,soybeans,yield,52.937,52.0,53.6,Reuters,TradingView (Reuters),"https://www.tradingview.com/news/reuters.com,2025:newsml_L4N3TY189:0-trade-estimates-for-usda-august-us-corn-soy-production/",,direct (page/PDF read)
+2025-09-12,corn,yield,186.0,,,trade avg,AgroLatam,https://www.agrolatam.com/amp/usda-raises-corn-soybean-output-stocks-shift,,web-search snippet of the cited page
+2025-09-12,corn,production,16500.0,,,trade avg,AgroLatam,https://www.agrolatam.com/amp/usda-raises-corn-soybean-output-stocks-shift,,web-search snippet of the cited page
+2025-09-12,soybeans,yield,53.2,,,trade avg,AgroLatam,https://www.agrolatam.com/amp/usda-raises-corn-soybean-output-stocks-shift,Barchart: ~53.5,web-search snippet of the cited page
+2026-08-12,corn,production,15944.0,15780.0,16160.0,trade avg (Reuters),AgOptimus audit,https://agoptimus.com/august-2026-wasde-audit/,,direct (page/PDF read)
+2026-08-12,corn,yield,182.4,180.5,184.8,Reuters,AgOptimus audit / AgWeb,https://agoptimus.com/august-2026-wasde-audit/,,direct (page/PDF read)
+2026-08-12,soybeans,production,4469.0,4389.0,4523.0,trade avg (Reuters),AgOptimus audit,https://agoptimus.com/august-2026-wasde-audit/,,direct (page/PDF read)
+2026-08-12,soybeans,yield,52.9,52.0,53.5,Reuters,AgOptimus audit / AgWeb,https://agoptimus.com/august-2026-wasde-audit/,,direct (page/PDF read)
+2026-09-11,corn,production,15777.0,,,Bloomberg (yield),Pro Farmer,https://www.profarmer.com/news/what-expect-usdas-september-crop-report-friday,,direct (page/PDF read)
+2026-09-11,corn,yield,178.1,,,Bloomberg,Pro Farmer,https://www.profarmer.com/news/what-expect-usdas-september-crop-report-friday,,direct (page/PDF read)
+2026-09-11,soybeans,production,4492.0,,,Bloomberg (yield),Pro Farmer,https://www.profarmer.com/news/what-expect-usdas-september-crop-report-friday,,direct (page/PDF read)
+2026-09-11,soybeans,yield,52.4,,,Bloomberg,Pro Farmer,https://www.profarmer.com/news/what-expect-usdas-september-crop-report-friday,,direct (page/PDF read)
+2017-08-10,corn,production,13855.0,,,farmdoc average trade guess,farmdoc webinar deck,https://farmdoc.illinois.edu/wp-content/uploads/2019/10/farmdoc-webinar_2017-08-11.pdf,,direct (page/PDF read)
+2017-08-10,soybeans,production,4212.0,,,farmdoc average trade guess,farmdoc webinar deck,https://farmdoc.illinois.edu/wp-content/uploads/2019/10/farmdoc-webinar_2017-08-11.pdf,,direct (page/PDF read)
+2018-08-10,corn,production,14411.0,,,farmdoc average trade guess,farmdoc webinar deck,https://farmdoc.illinois.edu/wp-content/uploads/2019/10/farmdoc-webinar_2018-08-10.pdf,,direct (page/PDF read)
+2019-10-10,corn,yield,167.5,,,farmdoc average trade guess,farmdoc handout,https://farmdoc.illinois.edu/wp-content/uploads/2019/09/2019-10-10-FarmDoc-Handout-1pp.pdf,,direct (page/PDF read)
+2019-10-10,corn,production,13684.0,,,farmdoc average trade guess,farmdoc handout,https://farmdoc.illinois.edu/wp-content/uploads/2019/09/2019-10-10-FarmDoc-Handout-1pp.pdf,,direct (page/PDF read)
+2019-10-10,soybeans,yield,47.3,,,farmdoc average trade guess,farmdoc handout,https://farmdoc.illinois.edu/wp-content/uploads/2019/09/2019-10-10-FarmDoc-Handout-1pp.pdf,,direct (page/PDF read)
+2020-01-10,corn,production,13513.0,,,farmdoc average trade guess,farmdoc webinar deck,https://farmdoc.illinois.edu/wp-content/uploads/2020/01/2020-01-10_FarmDoc_Webinar.pdf,,direct (page/PDF read)
+2020-08-12,corn,production,15170.0,,,farmdoc average trade guess,farmdoc webinar deck,https://farmdoc.illinois.edu/wp-content/uploads/2020/02/2020-08-12-FarmDoc-Webinar.pdf,,direct (page/PDF read)
+2017-10-12,corn,yield,169.7,,,trade avg,DTN / Baking Business,https://www.dtnpf.com/agriculture/web/ag/news/article/2017/10/12/usda-bumps-corn-production-yield,,web-search snippet of the cited page
+2017-10-12,corn,production,14168.0,,,trade avg,DTN,https://www.dtnpf.com/agriculture/web/ag/news/article/2017/10/12/usda-bumps-corn-production-yield,,web-search snippet of the cited page
+2017-10-12,soybeans,yield,49.8,,,trade avg,DTN / Baking Business,https://www.dtnpf.com/agriculture/web/ag/news/article/2017/10/12/usda-bumps-corn-production-yield,,web-search snippet of the cited page
+2017-10-12,soybeans,production,4439.0,,,trade avg,DTN,https://www.dtnpf.com/agriculture/web/ag/news/article/2017/10/12/usda-bumps-corn-production-yield,,web-search snippet of the cited page
+2017-11-09,corn,yield,172.3,171.7,174.0,trade avg; Reuters range,World-Grain / Grainews (Reuters),https://www.world-grain.com/articles/8906-u-s-corn-production-up-soybean-down-from-october,,web-search snippet of the cited page
+2017-11-09,corn,production,14323.0,,,trade avg,World-Grain,https://www.world-grain.com/articles/8906-u-s-corn-production-up-soybean-down-from-october,,web-search snippet of the cited page
+2017-11-09,soybeans,yield,49.2,,,trade avg,World-Grain,https://www.world-grain.com/articles/8906-u-s-corn-production-up-soybean-down-from-october,,web-search snippet of the cited page
+2018-01-12,soybeans,yield,49.5,,,trade avg (implied),farmdoc daily,https://farmdocdaily.illinois.edu/2018/01/usda-reports-provide-surprises.html,USDA 0.4 below previous forecast and trade expectations,web-search snippet of the cited page
+2018-10-11,corn,production,14851.0,,,trade avg,World-Grain,https://world-grain.com/articles/11092-usda-lowers-forecast-for-corn-soybean-production,,web-search snippet of the cited page
+2018-10-11,corn,yield,181.8,,,trade avg,World-Grain,https://world-grain.com/articles/11092-usda-lowers-forecast-for-corn-soybean-production,,web-search snippet of the cited page
+2018-10-11,soybeans,production,4733.0,,,trade avg,World-Grain,https://world-grain.com/articles/11092-usda-lowers-forecast-for-corn-soybean-production,,web-search snippet of the cited page
+2018-10-11,soybeans,yield,53.4,,,trade avg,World-Grain,https://world-grain.com/articles/11092-usda-lowers-forecast-for-corn-soybean-production,,web-search snippet of the cited page
+2019-11-08,corn,yield,167.3,164.5,170.0,trade avg,MarketsFarm,https://marketsfarm.com/?p=17977,another source 167.2,web-search snippet of the cited page
+2019-11-08,soybeans,yield,46.6,,,trade avg,World-Grain,https://www.world-grain.com/articles/12863-usda-lowers-production-forecasts-for-corn-soybeans-and-wheat,,web-search snippet of the cited page
+2020-10-09,corn,yield,177.7,,,Reuters (Braun column),Latifundist (Reuters),https://latifundist.com/en/novosti/52342-oktyabrskij-otchet-usda-mozhet-pokazat-snizhenie-urozhajnosti-kukuruzy-i-soi--analitiki,via search summary,web-search snippet of the cited page
+2020-10-09,soybeans,yield,51.6,,,Reuters (Braun column),Latifundist (Reuters),https://latifundist.com/en/novosti/52342-oktyabrskij-otchet-usda-mozhet-pokazat-snizhenie-urozhajnosti-kukuruzy-i-soi--analitiki,via search summary,web-search snippet of the cited page
+2021-10-12,corn,yield,176.0,,,Reuters,Pro Farmer,https://www.profarmer.com/pro-farmer-max/evening-report/evening-report-oct-12-2021,,web-search snippet of the cited page
+2021-10-12,corn,production,14973.0,,,Reuters,Pro Farmer,https://www.profarmer.com/pro-farmer-max/evening-report/evening-report-oct-12-2021,,web-search snippet of the cited page
+2021-10-12,soybeans,yield,51.1,,,Reuters,Pro Farmer,https://www.profarmer.com/pro-farmer-max/evening-report/evening-report-oct-12-2021,,web-search snippet of the cited page
+2021-10-12,soybeans,production,4415.0,,,Reuters,Pro Farmer,https://www.profarmer.com/pro-farmer-max/evening-report/evening-report-oct-12-2021,,web-search snippet of the cited page
+2021-11-09,corn,yield,176.9,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/20015-usda-sees-larger-corn-crop-small-soybean-crop,,web-search snippet of the cited page
+2021-11-09,corn,production,15050.0,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/20015-usda-sees-larger-corn-crop-small-soybean-crop,,web-search snippet of the cited page
+2021-11-09,soybeans,yield,51.9,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/20015-usda-sees-larger-corn-crop-small-soybean-crop,,web-search snippet of the cited page
+2021-11-09,soybeans,production,4484.0,,,trade avg,Food Business News,https://www.foodbusinessnews.net/articles/20015-usda-sees-larger-corn-crop-small-soybean-crop,,web-search snippet of the cited page
+2022-10-12,corn,yield,172.1,,,Bloomberg,Barchart,https://www.barchart.com/story/news/10848030/barchart-cuts-crop-production-forecasts-for-us-corn-and-raises-soybeans-production-estimates,survey date uncertain,web-search snippet of the cited page
+2022-11-09,soybeans,yield,49.8,,,trade avg,Farm Progress,https://www.farmprogress.com/market-reports/november-wasde-usda-raises-corn-soybean-yields,,web-search snippet of the cited page
+2023-01-12,corn,yield,172.5,,,consensus,CME Group / Econoday,https://www.cmegroup.com/education/events/econoday/2023/01/feed565151.html,,web-search snippet of the cited page
+2023-01-12,corn,production,13936.0,,,consensus,CME Group / Econoday,https://www.cmegroup.com/education/events/econoday/2023/01/feed565151.html,,web-search snippet of the cited page
+2023-10-12,corn,yield,173.5,,,Reuters / Dow Jones,Farm Policy News,https://farmpolicynews.illinois.edu/2023/10/corn-soybean-futures-climb-on-production-cuts-third-largest-corn-harvest-expected/,,web-search snippet of the cited page
+2023-10-12,corn,production,15101.0,,,Reuters,Farm Policy News,https://farmpolicynews.illinois.edu/2023/10/corn-soybean-futures-climb-on-production-cuts-third-largest-corn-harvest-expected/,,web-search snippet of the cited page
+2023-10-12,soybeans,yield,49.9,,,Reuters,Farm Policy News,https://farmpolicynews.illinois.edu/2023/10/corn-soybean-futures-climb-on-production-cuts-third-largest-corn-harvest-expected/,,web-search snippet of the cited page
+2023-10-12,soybeans,production,4132.0,,,trade avg (implied),Farm Policy News,https://farmpolicynews.illinois.edu/2023/10/corn-soybean-futures-climb-on-production-cuts-third-largest-corn-harvest-expected/,USDA 28 mb below avg,web-search snippet of the cited page
+2023-11-09,corn,yield,173.2,,,trade avg,MarketsFarm / AgWeb,https://marketsfarm.com/usda-report-throws-a-few-curveballs/,,web-search snippet of the cited page
+2023-11-09,corn,production,15076.0,,,trade avg,MarketsFarm survey table,https://marketsfarm.com/?p=100865,,web-search snippet of the cited page
+2023-11-09,soybeans,yield,49.5,49.0,50.4,trade avg,MarketsFarm,https://marketsfarm.com/?p=100865,,web-search snippet of the cited page
+2023-11-09,soybeans,production,4110.0,,,trade avg,AgWeb,https://www.agweb.com/news/crops/corn/usda-makes-two-surprise-changes-corn-yield-and-demand-its-latest-crop-production-report,,web-search snippet of the cited page
+2024-08-12,corn,yield,182.2,,,Bloomberg,BNN Bloomberg,https://bnnbloomberg.ca/investing/commodities/2024/08/07/corn-and-soy-ease-as-analysts-see-yields-above-usdas-records,WSJ survey 182.1,web-search snippet of the cited page
+2024-08-12,soybeans,yield,52.5,,,Bloomberg,BNN Bloomberg,https://bnnbloomberg.ca/investing/commodities/2024/08/07/corn-and-soy-ease-as-analysts-see-yields-above-usdas-records,WSJ survey 52.5,web-search snippet of the cited page
+2024-10-11,corn,yield,183.4,181.6,184.5,trade avg,DTN,https://www.dtnpf.com/agriculture/web/ag/news/article/2024/10/11/usda-releases-october-crop-wasde-2,,web-search snippet of the cited page
+2024-10-11,soybeans,yield,53.0,51.7,54.0,trade avg,DTN,https://www.dtnpf.com/agriculture/web/ag/news/article/2024/10/11/usda-releases-october-crop-wasde-2,,web-search snippet of the cited page
+2024-10-11,soybeans,production,4586.0,,,trade avg,DTN,https://www.dtnpf.com/agriculture/web/ag/news/article/2024/10/11/usda-releases-october-crop-wasde-2,,web-search snippet of the cited page
+2025-11-14,corn,yield,184.0,,,Reuters,MarketsFarm (Reuters poll),https://marketsfarm.com/u-s-corn-and-soybean-yields-revised-down-by-usda/,,web-search snippet of the cited page
+2025-11-14,soybeans,yield,53.1,,,Reuters,MarketsFarm (Reuters poll),https://marketsfarm.com/u-s-corn-and-soybean-yields-revised-down-by-usda/,,web-search snippet of the cited page
+2026-10-09,corn,production,15733.0,,,trade avg,Pro Farmer,https://www.profarmer.com/news/report-reactions/report-reaction-corn-leads-slide-after-usda-production-figures-surprise-upside,,direct (page/PDF read)
+2026-10-09,soybeans,production,4538.0,,,trade avg,Pro Farmer,https://www.profarmer.com/news/report-reactions/report-reaction-corn-leads-slide-after-usda-production-figures-surprise-upside,,direct (page/PDF read)
+2026-01-12,corn,yield,184.0,,,trade avg (approx.),Farm Futures / Barchart,https://farmfutures.pl.barchart.com/mobile/news/story/37002735,approximate: trade expected a cut of about 2 bpa from Nov (186.0),web-search snippet of the cited page
+2026-01-12,soybeans,yield,52.7,,,trade avg (approx.),Farm Futures / Barchart,https://farmfutures.pl.barchart.com/mobile/news/story/37002735,approximate: trade expected a cut of about 0.3 bpa from Nov (53.0),web-search snippet of the cited page

@@ -1,0 +1,21 @@
+release_date,crop,month,symbol,contract_role,surp_pct,ret_prevclose_to_1200,ret_1200_to_close,ret_total
+2024-10-11,corn,Oct,ZCZ26.CBT,deferred (next year's crop),0.2181,-0.4360,-0.2734,-0.7094
+2024-11-08,corn,Nov,ZCZ26.CBT,deferred (next year's crop),,0.2201,-0.0550,0.1652
+2025-01-10,corn,Jan,ZCZ26.CBT,deferred (next year's crop),,-0.2771,0.3877,0.1106
+2025-08-12,corn,Aug,ZCZ26.CBT,deferred (next year's crop),2.3800,-0.7252,-0.5052,-1.2304
+2025-09-12,corn,Sep,ZCZ26.CBT,deferred (next year's crop),0.3763,0.3789,1.0747,1.4536
+2025-11-14,corn,Nov,ZCZ26.CBT,deferred (next year's crop),1.0870,-0.2643,-1.0644,-1.3287
+2026-01-12,corn,Jan,ZCZ26.CBT,deferred (next year's crop),1.3587,0.3228,-3.2754,-2.9526
+2026-08-12,corn,Aug,ZCZ26.CBT,new-crop,-0.9320,1.8823,2.4732,4.3554
+2026-09-11,corn,Sep,ZCZ26.CBT,new-crop,0.2246,-0.7526,0.4710,-0.2816
+2026-10-09,corn,Oct,ZCZ26.CBT,new-crop,1.9341,0.7972,-4.8815,-4.0843
+2024-10-11,soybeans,Oct,ZSX26.CBT,deferred (next year's crop),0.1887,0.2795,-1.1226,-0.8431
+2024-11-08,soybeans,Nov,ZSX26.CBT,deferred (next year's crop),,-0.2123,0.2123,0.0000
+2025-01-10,soybeans,Jan,ZSX26.CBT,deferred (next year's crop),,0.5149,0.7067,1.2216
+2025-08-12,soybeans,Aug,ZSX26.CBT,deferred (next year's crop),1.2524,-0.6904,1.7289,1.0385
+2025-09-12,soybeans,Sep,ZSX26.CBT,deferred (next year's crop),0.5639,0.2089,0.5550,0.7640
+2025-11-14,soybeans,Nov,ZSX26.CBT,deferred (next year's crop),-0.1883,0.0446,-0.6036,-0.5590
+2026-01-12,soybeans,Jan,ZSX26.CBT,deferred (next year's crop),0.5693,0.5815,-0.8150,-0.2335
+2026-08-12,soybeans,Aug,ZSX26.CBT,new-crop,-0.3781,0.8527,0.4659,1.3186
+2026-09-11,soybeans,Sep,ZSX26.CBT,new-crop,0.7634,-1.5513,-0.9386,-2.4899
+2026-10-09,soybeans,Oct,ZSX26.CBT,new-crop,0.4910,0.6778,-0.2512,0.4266

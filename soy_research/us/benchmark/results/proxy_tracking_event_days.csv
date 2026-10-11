@@ -1,0 +1,10 @@
+release_date,crop,month,r_newcrop,r_etf,r_cont
+2026-08-12,corn,Aug,4.303,3.523,4.532
+2026-09-11,corn,Sep,-0.658,-0.451,
+2026-10-09,corn,Oct,-4.184,-2.889,-4.184
+2025-08-12,soybeans,Aug,2.104,1.837,
+2025-09-12,soybeans,Sep,1.226,0.945,
+2025-11-14,soybeans,Nov,-1.715,-1.487,
+2026-08-12,soybeans,Aug,1.233,1.276,
+2026-09-11,soybeans,Sep,-2.720,-2.301,
+2026-10-09,soybeans,Oct,0.349,0.510,0.349
