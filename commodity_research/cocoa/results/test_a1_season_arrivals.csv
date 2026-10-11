@@ -1,0 +1,7 @@
+target,excl_2023_24,n_train,n_hold,b_DRY,t_DRY,b_WETX,t_WETX,r2_train,mae_model,mae_naive,sign_hits,hold_detail
+MC_yoy,False,9,3,3.862,0.519,-70.147,-1.505,0.288,20.253,14.708,0,2022/23: actual -4.8 pred +5.9; 2023/24: actual -28.0 pred +6.0; 2024/25: actual +11.0 pred -5.1
+MC_yoy,True,9,2,3.862,0.519,-70.147,-1.505,0.288,13.386,7.882,0,2022/23: actual -4.8 pred +5.9; 2024/25: actual +11.0 pred -5.1
+SEAS_yoy,False,11,2,-3.328,-0.410,21.179,0.828,0.079,18.186,22.550,2,2023/24: actual -25.3 pred -1.1; 2025/26: actual +19.8 pred +7.6
+SEAS_yoy,True,11,1,-3.328,-0.410,21.179,0.828,0.079,12.174,17.409,1,2025/26: actual +19.8 pred +7.6
+MID_delta,False,8,1,5.058,1.310,17.165,1.327,0.339,1.921,2.619,1,2023/24: actual +2.7 pred +0.8
+MID_delta,True,8,0,5.058,1.310,17.165,1.327,0.339,,,0,

@@ -1,0 +1,118 @@
+as_of,country,cum_kt,prev_cum_kt,yoy_pct_reported,series,source,note
+2009-03-31,CIV,872,1067,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-March-2009.pdf,main crop Oct-Mar
+2009-05-31,CIV,1016,1182,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-May-2009.pdf,
+2009-06-30,CIV,1058,1248,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-June-2009.pdf,
+2009-08-31,CIV,1126,1319,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-August-2009.pdf,
+2009-09-30,CIV,1222,1383,,CGFCC,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-September-2009.pdf,season end 2008/09
+2009-12-31,CIV,595,,17,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-January-2010.pdf,
+2010-05-31,CIV,983.9,,,CGFCC,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-May-2010.pdf,
+2010-06-30,CIV,1049,,,CGFCC,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-June-2010.pdf,
+2010-07-31,CIV,1090,,,exporters,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-July-2010.pdf,
+2010-09-30,CIV,1213,1221,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-September-2010.pdf,season end 2009/10
+2010-10-31,CIV,109,,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-October-2010.pdf,
+2010-11-30,CIV,412,,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-November-2010.pdf,
+2010-12-31,CIV,600,,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-December-2010.pdf,
+2011-01-31,CIV,895,,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-January-2011.pdf,
+2011-02-28,CIV,1013,,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-February-2011.pdf,civil-war disruption 2011
+2011-06-30,CIV,1286,,,BCC,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-June-2011.pdf,
+2011-07-31,CIV,1368,1100,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-July-2011.pdf,
+2011-09-30,CIV,1482,1242.3,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-September-2011.pdf,season end 2010/11
+2011-10-31,CIV,91,,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-October-2011.pdf,
+2011-11-30,CIV,369,,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-November-2011.pdf,
+2011-12-31,CIV,676,653.9,,Reuters,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-December-2011.pdf,
+2013-03-17,CIV,998,1025,,Reuters_exporters,https://www.brecorder.com/news/111249,via WebSearch snippet
+2015-08-16,CIV,1682,1663,,Reuters_exporters,https://www.brecorder.com/news/251467,via WebSearch snippet
+2016-01-31,CIV,1063,,-3,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-monthly-review_January-2016-1.pdf,
+2016-03-31,CIV,1216.8,1257.5,,CCC,https://www.icco.org/wp-content/uploads/2019/07/ICCO-monthly-review_March-2016.pdf,
+2016-05-08,CIV,1269,1373,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-review-April-2016-1.pdf,
+2016-06-05,CIV,1326,1469,,Reuters,https://www.icco.org/wp-content/uploads/2019/07/ICCO-monthly-review_May-2016.pdf,
+2016-06-30,CIV,1395.0,1548.5,,CCC,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review_June-2016.pdf,
+2016-07-31,CIV,1434,1645,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review_July-2016.pdf,
+2016-09-04,CIV,1458,1732,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-August-2016.pdf,
+2016-10-16,CIV,98,145,,Reuters_exporters,https://www.fin24.com/Economy/ivory-coast-cocoa-port-arrivals-down-32-20161017,via WebSearch snippet
+2016-11-06,CIV,252,362,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-October-2016.pdf,
+2016-12-04,CIV,548,556,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-November-2016.pdf,
+2016-12-31,CIV,862.5,898.2,,CCC,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-December-2016.pdf,
+2017-02-12,CIV,1187,,1,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-January-2017.pdf,
+2017-03-12,CIV,1351,1258,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-February-2017.pdf,
+2017-03-31,CIV,1403,1216,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-monthly-review_March-2017.pdf,
+2017-05-07,CIV,1523,1276,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review_April-2017.pdf,
+2017-06-04,CIV,1631,1352,,Reuters,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review_May-2017.pdf,
+2017-07-30,CIV,1900,1435,,news_agency,https://www.icco.org/wp-content/uploads/Cocoa-Market-Review-July-2017.pdf,
+2017-09-03,CIV,1966,1458,,news_agency,https://www.icco.org/wp-content/uploads/Cocoa-market-review-August-2017-1.pdf,
+2017-09-30,CIV,2015,1568,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-September-2017.pdf,season end 2016/17
+2017-10-15,CIV,67,98,,Reuters,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-September-2017.pdf,
+2017-11-19,CIV,346,382,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review_October-2017.pdf,
+2017-12-19,CIV,662,750,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-November-2017.pdf,
+2018-01-14,CIV,,,-4,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-December-2017.pdf,
+2018-02-04,CIV,1179,1175,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-January-2018.pdf,
+2018-03-13,CIV,1312,1381,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-February-2018.pdf,
+2018-03-31,CIV,1441,1507,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-March-2018.pdf,
+2018-06-12,CIV,1748,1774,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-May-2018.pdf,
+2018-07-15,CIV,1809,1863,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-June-2018.pdf,
+2018-09-09,CIV,1848,2007,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-August-2018.pdf,
+2018-10-01,CIV,1938,,-2,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-September-2018.pdf,season end 2017/18
+2018-11-06,CIV,327,224,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-October-2018.pdf,
+2019-01-13,CIV,1195,1071,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-December-2018.pdf,
+2019-02-24,CIV,1469,1343,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-January-2019.pdf,
+2019-04-21,CIV,1803,1580,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-March-2019.pdf,
+2019-06-30,CIV,2061,1869,,news_agency,https://www.icco.org/wp-content/uploads/2019/07/ICCO-Monthly-Cocoa-Market-Review-June-2019.pdf,
+2019-08-05,CIV,2138,1972,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-July-2019.pdf,
+2019-08-21,CIV,2135,1913,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-August-2019.pdf,level below 08-05 value: different source
+2019-09-23,CIV,2164,1954,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-September-2019.pdf,season end 2018/19
+2019-10-27,CIV,287,252,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-October-2019.pdf,
+2019-11-11,CIV,446,422,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-October-2019.pdf,
+2019-12-01,CIV,694,708,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-November-2019.pdf,
+2020-01-19,CIV,1296,1281,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-December-2019.pdf,
+2020-02-02,CIV,1419,1416,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-January-2020.pdf,
+2020-03-29,CIV,1645,1674,,Reuters_exporters,https://www.brecorder.com/news/584913,via WebSearch snippet
+2020-04-05,CIV,1677,1725,,news_agency,https://www.icco.org/wp-content/uploads/ICCO_Monthly_Cocoa_Market_Review_March_2020.pdf,
+2020-05-03,CIV,1753,1858,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-April-2020.pdf,
+2020-07-12,CIV,1986,2111,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-June-2020.pdf,
+2020-08-03,CIV,2043,2160,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-July-2020.pdf,
+2020-09-30,CIV,2074,2179,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-September-2020.pdf,season end 2019/20
+2020-11-29,CIV,740,672,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-November-2020.pdf,
+2020-12-27,CIV,1062,1098,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Review-December-2020.pdf,
+2021-02-14,CIV,1439,1474,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-January-2021.pdf,
+2021-04-11,CIV,1718,,2.8,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-March-2021.pdf,
+2021-05-16,CIV,1916,1790,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-April-2021.pdf,
+2021-05-23,CIV,1960,1810,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-May-2021.pdf,
+2021-06-20,CIV,2057,1936,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-May-2021.pdf,
+2021-06-30,CIV,2093,1989,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-June-2021.pdf,
+2021-08-08,CIV,2111,2014,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-July-2021.pdf,
+2021-09-12,CIV,2168,2060,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-August-2021.pdf,
+2021-09-30,CIV,2191,2074,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-September-2021.pdf,season end 2020/21
+2021-11-15,CIV,489,549,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-October-2021.pdf,
+2021-11-28,CIV,667,740,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-November-2021.pdf,
+2022-04-10,CIV,1709,,1.2,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-March-2022.pdf,
+2022-06-04,CIV,1926,2027,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-May-2022.pdf,
+2022-06-19,CIV,1943,2045,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-June-2022.pdf,
+2022-07-31,CIV,2028,2110,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-July-2022.pdf,
+2022-08-07,CIV,2034,,-3.6,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-August-2022.pdf,
+2022-09-07,CIV,2072,,-4.1,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-August-2022.pdf,
+2022-11-06,CIV,348,452,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-October-2022.pdf,
+2022-12-11,CIV,954,867,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-November-2022.pdf,
+2023-01-08,CIV,1346,,11.6,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-December-2022.pdf,
+2023-03-19,CIV,1727,1825,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-February-2023.pdf,
+2023-03-31,CIV,1779,1868,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-March-2023.pdf,
+2023-06-04,CIV,2104,2204,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-May-2023.pdf,
+2023-07-09,CIV,2238,2338,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-June-2023.pdf,
+2023-07-30,CIV,2283,2382,,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-July-2023.pdf,
+2023-10-29,CIV,227,,-23.1,news_agency,https://www.icco.org/wp-content/uploads/Cocoa-Market-Report-October-2023.pdf,
+2023-12-03,CIV,548,,-35,Reuters,https://www.icco.org/wp-content/uploads/Cocoa-Market-Report-November-2023.pdf,
+2024-01-14,CIV,914,,-36,news_agency,https://www.icco.org/wp-content/uploads/Cocoa-Market-Report-December-2023-.pdf,
+2024-02-04,CIV,1051,,-34,news_agency,https://www.icco.org/wp-content/uploads/ICCO-Monthly-Cocoa-Market-Report-–-January-2024.pdf,
+2024-04-14,CIV,1317,,-28,Reuters_exporters,https://cropgpt.ai/ivory-coast-experiences-significant-drop-in-cocoa-shipments-impacting-global-market,via WebSearch snippet (aggregator)
+2024-09-15,CIV,1733,2320,-25.3,Reuters_exporters,https://cropgpt.ai/ivory-coast-cocoa-port-arrivals-decline-25-3-year-on-year-by-mid-september,via WebSearch snippet (aggregator); prior year revised
+2024-09-30,CIV,1771,,,Reuters_exporters,https://cropgpt.ai/ivory-coast-cocoa-final-2023-24-season-port-arrivals,season end 2023/24; aggregator
+2024-10-20,CIV,192.8,170.8,,news_agency,https://www.icco.org/wp-content/uploads/Cocoa-Market-Report-October-2024.pdf,
+2024-11-17,CIV,549,417,,Reuters_exporters,https://cropgpt.ai/ivory-coast-cocoa-port-arrivals-surge-in-early-2024-25-season,via WebSearch snippet (aggregator)
+2024-12-01,CIV,735,548,,Reuters_exporters,https://cropgpt.ai/ivory-coast-cocoa-early-season-port-arrivals-surge,via WebSearch snippet (aggregator)
+2024-12-29,CIV,1054,,27.4,news_agency,https://www.icco.org/wp-content/uploads/Cocoa-Market-Report-December-2024.pdf,
+2025-03-09,CIV,1400,,14.8,LSEG,https://www.icco.org/wp-content/uploads/Cocoa-Market-Report-February-2025.pdf,
+2025-04-27,CIV,1505,,11,news_agency,https://www.icco.org/wp-content/uploads/Cocoa-Market-Report_April-2025.pdf,
+2025-06-22,CIV,1679,,6.9,government_via_Barchart,https://cropgpt.ai/ivory-coast-cocoa-port-arrivals-and-supply-dynamics,via WebSearch snippet; differs from Reuters series
+2025-06-29,CIV,1613,,1.1,Reuters,https://www.icco.org/wp-content/uploads/Cocoa-Market-Report_June.pdf,Reuters exporters series
+2025-07-13,CIV,1730,,6.8,government_via_Barchart,https://tr.tradingview.com/news/barchart:441ae7916094b:0-cocoa-prices-settle-higher-as-ivory-coast-cocoa-exports-slow,via WebSearch snippet
+2026-02-01,CIV,1230,,-4.7,government_via_Barchart,https://www.webull.com/news/15656896542409728,via WebSearch snippet
+2026-09-27,CIV,2180,,19.8,government_via_Barchart,https://www.webull.com/news/15657407750030336,via WebSearch snippet; CIV moved its marketing-year start to 1 Sep in 2025/26

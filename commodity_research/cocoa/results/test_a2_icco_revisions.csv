@@ -1,0 +1,3 @@
+excl_2023_24,n_train,n_hold,b_rev_prev,b_DRY,t_DRY,b_WETX,t_WETX,mae_full,mae_persist,mae_zero,corr_DRY_rev_hold
+False,53,15,0.181,0.220,0.796,1.729,2.367,2.122,1.266,1.085,-0.226
+True,53,9,0.181,0.220,0.796,1.729,2.367,2.296,0.870,0.750,0.113
