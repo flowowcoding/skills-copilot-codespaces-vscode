@@ -63,3 +63,17 @@ Frozen at commit `b4f0a0a` (2026-10-11). Code fingerprints (sha256, first 16 hex
   USDA's September forecast, for each crop? USDA's October report (181.2 corn, 53.1 soy) moved
   toward the satellite, but October is not the truth.
 - **Outcome:** _pending (USDA January 2027 Crop Production Annual Summary)_
+
+## FT-4: Orange-juice drift after a hurricane hits the Florida citrus belt (registered 2026-10-11)
+
+- **Found after looking at the data** in `commodity_research/weather_events/`: 8 of 8 past events
+  positive, +9.2% net over 20 days, p 0.009 against the same dates in other years. All five
+  pre-registered hurricane rules failed; this one was not among them.
+- **Rule:** go long OJ (ICE, front month) at the close of the first trading day after an NHC
+  advisory puts a hurricane-strength centre (≥ 64 kt) within 100 km of the 22 citrus counties
+  defined in `data/regions.geojson`. Exit after 20 trading days. Cost: 0.75% round trip.
+  Code: `scripts/explore_postlandfall.py` (sha256 55d4af1ffef67f92).
+- **Score:** each event's net return against the same-date return in other years.
+- **Pass:** after 4 new events (from the 2027 season on; Isaias 2026 excluded), mean net return > 0
+  **and** at least 3 of 4 events beat the comparison. **Fail:** anything else.
+- **Outcome:** _pending (0 of 4 events)_

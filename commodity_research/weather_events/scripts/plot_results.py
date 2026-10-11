@@ -47,7 +47,7 @@ def main():
 
     # --- CAR paths, all years pooled (sample-specific numbers are in car_paths.csv)
     for tk in ["OJ", "NG", "CL", "RB", "CT", "ZR"]:
-        e = ev[ev.market == tk]
+        e = ev[(ev.market == tk) & ev.complete]
         if e.empty:
             continue
         fig, ax = plt.subplots(figsize=(6.4, 3.8))
