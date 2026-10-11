@@ -42,8 +42,8 @@ def list_items(tiles, first, last):
     for t in sorted(tiles):
         h, v = int(t[1:3]), int(t[4:6])
         for it in cat.search(collections=["modis-13Q1-061"], datetime=f"{first}-03-01/{last}-12-31",
-                             query={"modis:horizontal-tile": {"eq": h}, "modis:vertical-tile": {"eq": v},
-                                    "platform": {"eq": "aqua"}}).items():
+                             query={"modis:horizontal-tile": {"eq": h}, "modis:vertical-tile": {"eq": v}}).items():
+            # (no "platform" filter: some 2024-2025 items carry an empty platform property)
             if not it.id.startswith("MYD13Q1"):
                 continue
             doy = int(it.id.split(".")[1][5:8])
@@ -95,6 +95,7 @@ def main():
     ap.add_argument("--first-year", type=int, default=2002)
     ap.add_argument("--last-year", type=int, default=2026)
     ap.add_argument("--relist", action="store_true")
+    ap.add_argument("--relist-years", default=None, help="first-last: relist only these years and merge")
     ap.add_argument("--years", default=None, help="comma list of calendar years to process (default all)")
     a = ap.parse_args()
     px = pd.read_csv(a.pixels)
@@ -102,7 +103,14 @@ def main():
     outdir = f"{a.work}/modis_MYD"
     os.makedirs(outdir, exist_ok=True)
     lf = f"{a.work}/modis_MYD_items.csv"
-    if os.path.exists(lf) and not a.relist:
+    if os.path.exists(lf) and a.relist_years:
+        y0, y1 = [int(x) for x in a.relist_years.split("-")]
+        old = pd.read_csv(lf, dtype={"key": str, "produced": str})
+        new = list_items(tiles, y0, y1).astype({"produced": str})
+        items = pd.concat([old, new]).sort_values("produced").drop_duplicates(["key", "tile"], keep="last")
+        items = items.sort_values(["key", "tile"])
+        items.to_csv(lf, index=False)
+    elif os.path.exists(lf) and not a.relist:
         items = pd.read_csv(lf, dtype={"key": str})
     else:
         items = list_items(tiles, a.first_year, a.last_year)

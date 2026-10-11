@@ -103,9 +103,18 @@ def main():
     a = ap.parse_args()
     c = parse_csvs(a.csv_dir)
     t = []
-    for f in sorted(glob.glob(os.path.join(a.txt_dir, "wasde-*.txt"))):
+    seen = {}
+    files = sorted(glob.glob(os.path.join(a.txt_dir, "wasde-*.txt")),
+                   key=lambda f: pd.Timestamp("{2}-{0}-{1}".format(*re.search(r"wasde-(\d\d)-(\d\d)-(\d{4})", f).groups())))
+    for f in files:
         if "Announcement" in f:
             continue
+        m = re.search(r"WASDE\s*-\s*(\d{3})", open(f, encoding="latin1").read(3000))
+        if m and m.group(1) in seen:  # same report number re-posted (copy or "Revised"): keep the original
+            print("skip duplicate report", os.path.basename(f), "=", seen[m.group(1)])
+            continue
+        if m:
+            seen[m.group(1)] = os.path.basename(f)
         t += parse_txt_file(f)
     t = pd.DataFrame(t)
     t["_rev"] = t.src.str.contains("revision|correct", case=False).astype(int)

@@ -1,0 +1,20 @@
+{
+ "dataset": "bsw_sat_v1_v1",
+ "spec": "v1",
+ "built_utc": "2026-10-11T04:19:37+00:00",
+ "rows": 2739,
+ "feats": [
+  "evi_w",
+  "prcp_w",
+  "hdd_w",
+  "frost_w",
+  "evi_s",
+  "prcp_s",
+  "hdd_s"
+ ],
+ "alpha": 3.0,
+ "sha256": {
+  "bsw_signal_v1.csv": "a431befd63d4d61778f5161dd2e8595a8430ba24146df1884d4eb00d77c65624",
+  "model.py": "be3a05a3d89be725c1ce7b7d1123ba6a2e8c19053b5421f93e29ab3515ff5712"
+ }
+}

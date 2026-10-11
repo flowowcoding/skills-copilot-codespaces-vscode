@@ -1,0 +1,17 @@
+scope,period,spec,n,years,b_gap,t_gap,b_prev,t_prev,b_priv,t_priv,r2,hit_gap3,n_gap3
+Russia,dev,persistence,89,13,,,0.4813,3.8488,,,0.2459,0.2353,51
+Russia,dev,gap,102,13,-0.0412,-2.2770,,,,,0.0655,0.2353,51
+Russia,dev,gap+persistence,89,13,-0.0156,-2.1715,0.4433,3.5339,,,0.2536,0.2353,51
+Russia,dev,private+persistence,31,13,,,0.3303,2.1783,0.6261,3.5822,0.6290,0.2353,51
+Russia,dev,gap+private+persistence,31,13,0.0201,0.6205,0.3722,2.2150,0.6355,3.5349,0.6318,0.2353,51
+Russia,holdout,persistence,34,5,,,0.1345,2.4302,,,0.0205,0.7500,16
+Russia,holdout,gap,39,5,0.0153,0.2252,,,,,0.0022,0.7500,16
+Russia,holdout,gap+persistence,34,5,0.0769,0.9787,0.1876,3.3412,,,0.0611,0.7500,16
+Russia,holdout,private+persistence,20,5,,,0.1037,0.9021,0.6290,3.0898,0.5838,0.7500,16
+Russia,holdout,gap+private+persistence,20,5,0.1447,3.5542,0.1828,2.0376,0.6192,5.0696,0.6668,0.7500,16
+pooled3,dev,persistence,267,13,,,0.3310,4.1820,,,0.1122,0.3583,120
+pooled3,dev,gap,306,13,-0.0103,-1.0859,,,,,0.0054,0.3583,120
+pooled3,dev,gap+persistence,267,13,-0.0060,-0.7623,0.3230,3.9516,,,0.1138,0.3583,120
+pooled3,holdout,persistence,75,5,,,0.1619,2.3360,,,0.0271,0.7667,30
+pooled3,holdout,gap,86,5,0.0605,2.7772,,,,,0.0585,0.7667,30
+pooled3,holdout,gap+persistence,75,5,0.0777,4.0204,0.1664,4.6101,,,0.1092,0.7667,30

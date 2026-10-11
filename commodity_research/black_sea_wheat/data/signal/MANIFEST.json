@@ -1,0 +1,142 @@
+{
+ "version": "bsw-signal-v1.0",
+ "built_utc": "2026-10-11T04:32:58+00:00",
+ "primary_signal": "signal/bsw_signal_v1.csv (pre-registered spec, model_version bsw_sat_v1_v1)",
+ "preregistered": "2026-10-11 04:25 UTC (README)",
+ "files": {
+  "benchmark/final_outturns.csv": {
+   "sha256": "7d49e3ffb2d14f9325a2aba0b356528edcf51825066f535b28f477e5c7efef23",
+   "bytes": 46036,
+   "rows": 848
+  },
+  "benchmark/wasde_wheat_vintages.csv": {
+   "sha256": "52d3a5e9a8ca4ee7b32c6810bd21688faba4105d55b041d4f69ecadde186b528",
+   "bytes": 4343067,
+   "rows": 54579
+  },
+  "features/modis_region.csv": {
+   "sha256": "14a8393d1061665d3f4978fa9889fd609dd27e61f2fe730231fd358078c93baf",
+   "bytes": 593435,
+   "rows": 7672
+  },
+  "features/pixel_class.csv.gz": {
+   "sha256": "44ee35deb90dac7c99f1ca1b235aa7dc19e0a07504c0cdff93395001dc84d95a",
+   "bytes": 3684458,
+   "rows": null
+  },
+  "features/weather_points.csv": {
+   "sha256": "c16aad290575718156d6d6aece4f1d830dd21326ad02cea26556e78484ae5859",
+   "bytes": 17951,
+   "rows": 496
+  },
+  "features/weather_region_daily.csv": {
+   "sha256": "115801b71f3c491b2f59fa34738c4b5301ab179bb71b6870fc22fd923f1ce439",
+   "bytes": 4456638,
+   "rows": 75288
+  },
+  "prices/cbot_wheat_zw_daily.csv": {
+   "sha256": "bfd757fdeb67bcf4f1e64b176d2fd55aeb858b7f42c8e31a6061e6065e821fc6",
+   "bytes": 440510,
+   "rows": 6576
+  },
+  "prices/kc_wheat_ke_daily.csv": {
+   "sha256": "badee949bef85f582d890b870e41ce2dc5a9cbf82fd13f62ba1b7330ea54590f",
+   "bytes": 433243,
+   "rows": 6553
+  },
+  "prices/teucrium_weat_daily.csv": {
+   "sha256": "a9c6d726a283b7ac42775fb62a5411a50aa4b54f1fdb67e4b699591473e58160",
+   "bytes": 386147,
+   "rows": 3787
+  },
+  "prices/usdrub_daily.csv": {
+   "sha256": "5ce7570f53bfff72699a4bab61f7a6a4cedcb0d772c33ce3e3135228b7b9f745",
+   "bytes": 643659,
+   "rows": 5823
+  },
+  "private/ikar_press_index.csv": {
+   "sha256": "0e20492422a0aa28107bfdb38af00d705d31651f7b5d01e5ff58ea6bfea41ed1",
+   "bytes": 1071998,
+   "rows": 3906
+  },
+  "private/manual_additions.csv": {
+   "sha256": "56794a2357189e89d913353f01abcb815f042d99faf0a133a58da8a39901a695",
+   "bytes": 1828,
+   "rows": 10
+  },
+  "private/manual_overrides.csv": {
+   "sha256": "18fca7ccd0cd0c3cb88f028b2985427c2418053ea8fb75e71e79816097b84d47",
+   "bytes": 1988,
+   "rows": 36
+  },
+  "private/private_estimates.csv": {
+   "sha256": "129c4f90e3b453b8071aab2116a4d9933dbd472892ff762e230dc434268893b8",
+   "bytes": 210676,
+   "rows": 555
+  },
+  "private/private_estimates_candidates.csv": {
+   "sha256": "a68c08901febc7c9ae6155694ae435908ce483c626dbe20499b2a5d0552b6f2e",
+   "bytes": 202807,
+   "rows": 545
+  },
+  "reference/pixels.csv": {
+   "sha256": "bf1a7c59beb236eb34471506c2d974eb157ac803efb27edc31c3ce5d81afd88f",
+   "bytes": 1688284,
+   "rows": 24000
+  },
+  "reference/region_cropland_cells.csv": {
+   "sha256": "5e61c5d4c020007db6eb4420ecefc9fc428ed324278edff4a55070e928a684be",
+   "bytes": 3145,
+   "rows": 90
+  },
+  "reference/regions.csv": {
+   "sha256": "cfeec59c058f18b3227eaa6274ddce0b999b2cc4391370e96b72ee0b00bec3b8",
+   "bytes": 3360,
+   "rows": 90
+  },
+  "reference/worldcereal_2021_at_pixels.csv": {
+   "sha256": "6a6e188cecb4106b64186d1f66e38b9bcfe6caed5e0757d8e6eb87ab6d9a7be8",
+   "bytes": 584756,
+   "rows": 24000
+  },
+  "signal/bsw_region_indicators_v1.csv": {
+   "sha256": "4d59fa5e70d71c8864ce53fa07f5a6e0b1e48601c404203cb7352d5a639dbef4",
+   "bytes": 965256,
+   "rows": 7304
+  },
+  "signal/bsw_signal_v0_first.csv": {
+   "sha256": "1a9e5bc3e56bb90d8b82fb60f2d34d9b62f56b59dcfddb33315e5581af9db481",
+   "bytes": 724019,
+   "rows": 2739
+  },
+  "signal/bsw_signal_v1.csv": {
+   "sha256": "a431befd63d4d61778f5161dd2e8595a8430ba24146df1884d4eb00d77c65624",
+   "bytes": 707320,
+   "rows": 2739
+  },
+  "signal/bsw_signal_v1_wx.csv": {
+   "sha256": "ba7b14c8c2f1440e5ab559abebd953403be9e28293fc39d4be342285b94225da",
+   "bytes": 624998,
+   "rows": 2739
+  }
+ },
+ "scripts_sha256_16": {
+  "benchmark_analysis.py": "9be223adce913c81",
+  "build_features.py": "797862d2a66acaa4",
+  "build_frame.py": "e40e24542419005f",
+  "build_manifest.py": "f14ca7ac8c53c4a7",
+  "clean_private_estimates.py": "ed7ce6f5861f575a",
+  "evaluate.py": "6079a11438992cb9",
+  "export_region_signal.py": "8e750e0c3d856ce9",
+  "extract_modis.py": "9d487ff6b84733c2",
+  "fetch_finals.py": "788070d5c8151603",
+  "fetch_prices.py": "f3bfe3909ca8de68",
+  "fetch_private_estimates.py": "bcc9ec96c48b79f8",
+  "fetch_weather.py": "2edf77fb85fbc418",
+  "model.py": "be3a05a3d89be725",
+  "parse_wasde_wheat.py": "8046d9535a5470da",
+  "plot_maps.py": "dbb0fbc905160c1f",
+  "plotstyle.py": "001441d79e7348bd",
+  "sample_worldcereal.py": "9099dcad95697e92"
+ }
+}

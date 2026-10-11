@@ -1,0 +1,134 @@
+       country   period season_month    n    sat  trend   usda
+66  Kazakhstan      dev          all  115  17.08  22.19  12.61
+67  Kazakhstan  holdout          all   44  16.14  22.19  14.00
+68  Kazakhstan     live          all    6   6.11   7.43   1.33
+69      Russia      dev          all  115  25.25  16.63   6.84
+70      Russia  holdout          all   44  14.74   9.24   5.31
+71      Russia     live          all    6  38.55  10.12   0.68
+72     Ukraine      dev          all  115  27.68  15.35   5.99
+73     Ukraine  holdout          all    9  26.49   7.89   4.01
+      scope   period                     spec    n  years  b_gap  t_gap  b_prev  t_prev  b_priv  t_priv     r2  hit_gap3  n_gap3
+0    Russia      dev              persistence   89     13    NaN    NaN   0.481   3.849     NaN     NaN  0.246     0.717      60
+1    Russia      dev                      gap  102     13  0.016  0.974     NaN     NaN     NaN     NaN  0.036     0.717      60
+2    Russia      dev          gap+persistence   89     13  0.010  1.069   0.457   4.029     NaN     NaN  0.258     0.717      60
+3    Russia      dev      private+persistence   31     13    NaN    NaN   0.330   2.178   0.626   3.582  0.629     0.717      60
+4    Russia      dev  gap+private+persistence   31     13  0.034  1.091   0.247   1.951   0.537   2.439  0.642     0.717      60
+5    Russia  holdout              persistence   34      5    NaN    NaN   0.135   2.430     NaN     NaN  0.020     0.632      19
+6    Russia  holdout                      gap   39      5  0.049  2.093     NaN     NaN     NaN     NaN  0.090     0.632      19
+7    Russia  holdout          gap+persistence   34      5  0.072  2.700   0.030   1.359     NaN     NaN  0.179     0.632      19
+8    Russia  holdout      private+persistence   20      5    NaN    NaN   0.104   0.902   0.629   3.090  0.584     0.632      19
+9    Russia  holdout  gap+private+persistence   20      5 -0.048 -0.765   0.181   1.032   0.784   2.025  0.604     0.632      19
+10  pooled3      dev              persistence  267     13    NaN    NaN   0.331   4.182     NaN     NaN  0.112     0.622     127
+11  pooled3      dev                      gap  306     13  0.009  0.870     NaN     NaN     NaN     NaN  0.006     0.622     127
+12  pooled3      dev          gap+persistence  267     13  0.010  0.923   0.329   4.326     NaN     NaN  0.119     0.622     127
+13  pooled3  holdout              persistence   75      5    NaN    NaN   0.162   2.336     NaN     NaN  0.027     0.706      34
+14  pooled3  holdout                      gap   86      5  0.047  2.212     NaN     NaN     NaN     NaN  0.064     0.706      34
+15  pooled3  holdout          gap+persistence   75      5  0.070  2.098   0.128   2.193     NaN     NaN  0.122     0.706      34
+  row["sat_on_side_at_usda_cross"] = bool(((at.sat_estimate_mmt.iloc[-1] / sbase - 1) * sg) >= 0.05) if len(at) else None
+       country  year   period  usda_first usda_first_date  final  change_pct  sat_at_base   sat_cross  usda_cross  lead_weeks sat_on_side_at_usda_cross  private_base private_cross  private_lead_weeks  sat_minus_private_lead_weeks
+0   Kazakhstan  2008      dev        14.0      2008-05-09  12.54  -10.428571     13.94972  2008-05-27  2008-09-12   15.428571                      True           NaN           NaN                 NaN                           NaN
+1   Kazakhstan  2009      dev        14.0      2009-05-12  17.05   21.785714     13.35985  2009-05-27  2009-10-09   19.285714                     False           NaN           NaN                 NaN                           NaN
+2   Kazakhstan  2010      dev        17.0      2010-05-11   9.64  -43.294118     15.21622  2010-05-13  2010-07-09    8.142857                     False           NaN           NaN                 NaN                           NaN
+3   Kazakhstan  2011      dev        15.0      2011-05-11  22.73   51.533333     12.93549  2011-06-10  2011-08-11    8.857143                      True           NaN           NaN                 NaN                           NaN
+4   Kazakhstan  2012      dev        15.0      2012-05-10   9.84  -34.400000     17.91112  2012-06-03  2012-07-11    5.428571                      True           NaN           NaN                 NaN                           NaN
+5   Kazakhstan  2013      dev        15.0      2013-05-10  13.94   -7.066667     13.89276        None  2014-02-10         NaN                       NaN           NaN           NaN                 NaN                           NaN
+6   Kazakhstan  2014      dev        14.5      2014-05-09  13.00  -10.344828     13.13094  2014-05-20  2014-07-11    7.428571                      True           NaN           NaN                 NaN                           NaN
+7   Kazakhstan  2015      dev        12.5      2015-05-12  13.75   10.000000     12.93475  2015-05-27  2015-07-10    6.285714                      True           NaN           NaN                 NaN                           NaN
+8   Kazakhstan  2016      dev        13.0      2016-05-10  14.99   15.307692     13.06691  2016-06-17  2016-08-12    8.000000                      True           NaN           NaN                 NaN                           NaN
+9   Kazakhstan  2017      dev        13.0      2017-05-10  14.80   13.846154     13.86315  2017-06-17  2017-08-10    7.714286                      True           NaN           NaN                 NaN                           NaN
+10  Kazakhstan  2019      dev        13.8      2019-05-10  11.45  -17.028986     14.38351  2019-05-20  2019-08-12   12.000000                     False           NaN           NaN                 NaN                           NaN
+11  Kazakhstan  2020      dev        13.5      2020-05-12  14.26    5.629630     13.13482  2020-07-08  2021-02-09   30.857143                     False           NaN           NaN                 NaN                           NaN
+12  Kazakhstan  2021  holdout        14.0      2021-05-12  11.81  -15.642857     13.25192  2021-05-27  2021-07-12    6.571429                      True           NaN           NaN                 NaN                           NaN
+13  Kazakhstan  2022  holdout        13.0      2022-05-12  16.40   26.153846     11.72081        None  2022-11-09         NaN                       NaN           NaN           NaN                 NaN                           NaN
+14  Kazakhstan  2023  holdout        14.0      2023-05-12  12.11  -13.500000     13.96770  2023-06-03  2023-10-12   18.714286                      True           NaN           NaN                 NaN                           NaN
+15  Kazakhstan  2024  holdout        14.5      2024-05-10  18.58   28.137931     11.99251  2024-05-27  2024-08-12   11.000000                      True           NaN           NaN                 NaN                           NaN
+16  Kazakhstan  2025  holdout        14.5      2025-05-12  19.33   33.310345     14.48291  2025-05-27  2025-07-11    6.428571                      True           NaN           NaN                 NaN                           NaN
+17      Russia  2008      dev        52.0      2008-05-09  63.77   22.634615     61.46401  2008-06-10  2008-08-12    9.000000                     False         52.00          None                 NaN                           NaN
+18      Russia  2009      dev        58.0      2009-05-12  61.77    6.500000     23.10197        None  2010-01-12         NaN                       NaN         58.00          None                 NaN                           NaN
+19      Russia  2010      dev        58.0      2010-05-11  41.51  -28.431034     62.54007  2010-06-03  2010-07-09    5.142857                      True         58.00    2010-07-07            0.285714                      4.857143
+20      Russia  2011      dev        53.0      2011-05-11  56.24    6.113208     52.82286  2011-05-13  2011-08-11   12.857143                     False         52.45          None                 NaN                           NaN
+21      Russia  2012      dev        56.0      2012-05-10  37.72  -32.642857     50.56195  2012-05-13  2012-06-12    4.285714                      True         56.00    2012-06-28           -2.285714                      6.571429
+22      Russia  2013      dev        56.0      2013-05-10  52.09   -6.982143    128.91778  2013-05-13  2013-11-08   25.571429                      True         56.00    2013-06-24           19.571429                      6.000000
+23      Russia  2014      dev        52.0      2014-05-09  59.08   13.615385     43.27388  2014-08-05  2014-08-12    1.000000                      True         52.00    2014-10-14           -9.000000                     10.000000
+24      Russia  2015      dev        53.5      2015-05-12  61.04   14.093458     46.90665  2015-05-20  2015-07-10    7.285714                      True         59.00          None                 NaN                           NaN
+25      Russia  2016      dev        63.0      2016-05-10  72.53   15.126984     61.43745  2016-05-27  2016-08-12   11.000000                      True         63.00          None                 NaN                           NaN
+26      Russia  2017      dev        67.0      2017-05-10  85.17   27.119403     63.27788  2017-06-03  2017-07-12    5.571429                      True         67.00    2017-06-19            3.285714                      2.285714
+27      Russia  2020      dev        77.0      2020-05-12  85.35   10.844156    102.56607  2020-06-10  2020-10-09   17.285714                     False         77.20    2020-08-17            7.571429                      9.714286
+28      Russia  2021  holdout        85.0      2021-05-12  75.16  -11.576471     81.08528  2021-05-20  2021-08-12   12.000000                      True         79.00    2021-09-16           -5.000000                     17.000000
+29      Russia  2022  holdout        80.0      2022-05-12  92.00   15.000000    114.57705  2022-05-20  2022-08-12   12.000000                      True         83.50    2022-05-18           12.285714                     -0.285714
+30      Russia  2023  holdout        81.5      2023-05-12  91.50   12.269939     98.68049        None  2023-11-09         NaN                       NaN         84.00    2023-08-16           12.142857                           NaN
+31      Russia  2024  holdout        88.0      2024-05-10  81.60   -7.272727     98.04438  2024-05-27  2024-06-12    2.285714                      True         93.00    2024-05-13            4.285714                     -2.000000
+32      Russia  2025  holdout        83.0      2025-05-12  90.30    8.795181     77.69721  2025-05-20  2025-12-09   29.000000                      True         82.50    2025-08-08           17.571429                     11.428571
+33     Ukraine  2008      dev        20.0      2008-05-09  25.89   29.450000     10.65666  2008-05-13  2008-06-10    4.000000                      True           NaN           NaN                 NaN                           NaN
+34     Ukraine  2009      dev        19.0      2009-05-12  20.87    9.842105      9.72853        None  2009-09-11         NaN                       NaN           NaN           NaN                 NaN                           NaN
+35     Ukraine  2010      dev        19.5      2010-05-11  16.84  -13.641026     19.27538  2010-05-20  2010-08-12   12.000000                      True           NaN           NaN                 NaN                           NaN
+36     Ukraine  2011      dev        19.0      2011-05-11  22.32   17.473684     19.82045        None  2011-08-11         NaN                       NaN           NaN           NaN                 NaN                           NaN
+37     Ukraine  2012      dev        13.0      2012-05-10  15.76   21.230769      0.00000  2012-05-20  2012-08-10   11.714286                      True           NaN           NaN                 NaN                           NaN
+38     Ukraine  2014      dev        20.0      2014-05-09  24.75   23.750000     25.30796  2014-05-20  2014-07-11    7.428571                      True           NaN           NaN                 NaN                           NaN
+39     Ukraine  2015      dev        22.0      2015-05-12  27.27   23.954545     20.27883  2015-05-13  2015-07-10    8.285714                     False           NaN           NaN                 NaN                           NaN
+40     Ukraine  2016      dev        24.0      2016-05-10  26.79   11.625000     24.33237  2016-05-20  2016-08-12   12.000000                      True           NaN           NaN                 NaN                           NaN
+41     Ukraine  2017      dev        25.0      2017-05-10  26.98    7.920000     22.11305        None  2017-08-10         NaN                       NaN           NaN           NaN                 NaN                           NaN
+42     Ukraine  2018      dev        26.5      2018-05-10  25.06   -5.433962     25.23222  2018-05-13  2018-11-08   25.571429                     False           NaN           NaN                 NaN                           NaN
+43     Ukraine  2020      dev        28.0      2020-05-12  25.42   -9.214286     32.19845  2020-05-13  2020-06-11    4.142857                     False           NaN           NaN                 NaN                           NaN
+44     Ukraine  2021  holdout        29.0      2021-05-12  33.01   13.827586     29.27790  2021-05-27  2021-08-12   11.000000                      True           NaN           NaN                 NaN                           NaN
+                     n  moved  correct
+period  big_change                    
+dev     False        5   1.00     0.20
+        True        34   1.00     0.65
+holdout True        11   0.91     0.90
+live    False        2   1.00     0.00
+          test series         rule   period  horizon_d    n    hit  mean_gross_pct  mean_net_pct   t_net  slope_fwd_on_gap  t_slope_hac  n_slope
+0    wasde_day     ZW    satellite      dev          1   82  0.537           0.106        -0.005  -0.018               NaN          NaN      NaN
+1    wasde_day     ZW    satellite  holdout          1   29  0.793           1.266         1.174   3.581               NaN          NaN      NaN
+2    wasde_day     ZW    satellite     live          1    5  0.600          -0.527        -0.621  -0.502               NaN          NaN      NaN
+3    wasde_day     ZW  persistence      dev          1   53  0.509           0.179         0.067   0.189               NaN          NaN      NaN
+4    wasde_day     ZW  persistence  holdout          1   15  0.800           1.328         1.236   2.090               NaN          NaN      NaN
+5    wasde_day     ZW  persistence     live          1    3  0.000          -2.885        -2.979  -5.485               NaN          NaN      NaN
+6    wasde_day     KE    satellite      dev          1   83  0.506           0.159         0.048   0.209               NaN          NaN      NaN
+7    wasde_day     KE    satellite  holdout          1   29  0.724           0.992         0.905   3.036               NaN          NaN      NaN
+8    wasde_day     KE    satellite     live          1    5  0.400          -0.384        -0.470  -0.380               NaN          NaN      NaN
+9    wasde_day     KE  persistence      dev          1   54  0.537           0.134         0.022   0.070               NaN          NaN      NaN
+10   wasde_day     KE  persistence  holdout          1   15  0.667           1.103         1.014   1.973               NaN          NaN      NaN
+11   wasde_day     KE  persistence     live          1    3  0.000          -2.823        -2.910 -11.766               NaN          NaN      NaN
+12   wasde_day   WEAT    satellite      dev          1   60  0.517          -0.033        -0.133  -0.579               NaN          NaN      NaN
+13   wasde_day   WEAT    satellite  holdout          1   31  0.710           0.889         0.789   2.671               NaN          NaN      NaN
+14   wasde_day   WEAT    satellite     live          1    5  0.600          -0.384        -0.484  -0.483               NaN          NaN      NaN
+15   wasde_day   WEAT  persistence      dev          1   37  0.514          -0.108        -0.208  -0.662               NaN          NaN      NaN
+16   wasde_day   WEAT  persistence  holdout          1   16  0.750           0.936         0.836   1.601               NaN          NaN      NaN
+17   wasde_day   WEAT  persistence     live          1    3  0.000          -2.331        -2.431  -5.330               NaN          NaN      NaN
+18   weekly_5d     ZW    satellite      dev          5  258  0.481           0.106        -0.003  -0.009             0.004        4.694    273.0
+19   weekly_5d     ZW    satellite  holdout          5   90  0.633           1.085         0.991   2.040            -0.030       -1.298    105.0
+20   weekly_5d     ZW    satellite     live          5   19  0.368          -0.585        -0.677  -0.738             0.030        0.459     21.0
+21  weekly_10d     ZW    satellite      dev         10  134  0.515           0.263         0.155   0.259             0.007        4.141    273.0
+22  weekly_10d     ZW    satellite  holdout         10   47  0.617           2.571         2.478   2.841            -0.043       -1.144    105.0
+23  weekly_10d     ZW    satellite     live         10    9  0.444          -0.816        -0.909  -0.400            -0.006       -0.048     20.0
+24  weekly_15d     ZW    satellite      dev         15   88  0.500           0.084        -0.025  -0.027             0.007        2.523    273.0
+25  weekly_15d     ZW    satellite  holdout         15   31  0.581           1.155         1.062   0.843            -0.062       -1.049    105.0
+26  weekly_15d     ZW    satellite     live         15    6  0.500           1.528         1.436   0.509            -0.064       -0.397     19.0
+27  weekly_20d     ZW    satellite      dev         20   72  0.542           0.914         0.805   0.695             0.004        1.360    273.0
+28  weekly_20d     ZW    satellite  holdout         20   25  0.720           3.668         3.574   2.072            -0.073       -0.929    105.0
+29  weekly_20d     ZW    satellite     live         20    4  0.500          -0.518        -0.614  -0.186            -0.128       -0.934     18.0
+30   weekly_5d     KE    satellite      dev          5  258  0.477           0.175         0.068   0.245             0.003        3.701    273.0
+31   weekly_5d     KE    satellite  holdout          5   90  0.656           1.102         1.014   2.253            -0.029       -1.383    105.0
+32   weekly_5d     KE    satellite     live          5   19  0.316          -0.341        -0.426  -0.482             0.002        0.036     21.0
+33  weekly_10d     KE    satellite      dev         10  134  0.545           0.454         0.347   0.602             0.006        3.562    273.0
+34  weekly_10d     KE    satellite  holdout         10   47  0.617           2.300         2.212   2.561            -0.047       -1.213    105.0
+35  weekly_10d     KE    satellite     live         10    9  0.556          -0.392        -0.478  -0.226            -0.043       -0.389     20.0
+36  weekly_15d     KE    satellite      dev         15   88  0.580           0.361         0.254   0.274             0.005        2.220    273.0
+37  weekly_15d     KE    satellite  holdout         15   31  0.645           1.943         1.855   1.542            -0.075       -1.210    105.0
+38  weekly_15d     KE    satellite     live         15    6  0.667           1.549         1.463   0.558            -0.125       -0.872     19.0
+39  weekly_20d     KE    satellite      dev         20   72  0.569           1.303         1.196   1.080             0.004        1.170    273.0
+40  weekly_20d     KE    satellite  holdout         20   25  0.720           4.197         4.108   2.408            -0.089       -1.068    105.0
+41  weekly_20d     KE    satellite     live         20    4  0.250          -0.697        -0.785  -0.265            -0.179       -1.399     18.0
+42   weekly_5d   WEAT    satellite      dev          5  258  0.434          -0.292        -0.392  -1.685             0.004        1.604    273.0
+43   weekly_5d   WEAT    satellite  holdout          5   90  0.633           0.957         0.857   1.915            -0.031       -1.448    105.0
+44   weekly_5d   WEAT    satellite     live          5   19  0.421          -0.538        -0.638  -0.696            -0.021       -0.289     21.0
+45  weekly_10d   WEAT    satellite      dev         10  134  0.448          -0.582        -0.682  -1.360             0.007        2.202    273.0
+46  weekly_10d   WEAT    satellite  holdout         10   47  0.681           2.310         2.210   2.669            -0.050       -1.436    105.0
+47  weekly_10d   WEAT    satellite     live         10    9  0.444          -0.677        -0.777  -0.304            -0.078       -0.578     20.0
+48  weekly_15d   WEAT    satellite      dev         15   88  0.489          -0.060        -0.160  -0.225             0.004        1.223    273.0
+49  weekly_15d   WEAT    satellite  holdout         15   31  0.581           0.965         0.865   0.781            -0.074       -1.368    105.0
+50  weekly_15d   WEAT    satellite     live         15    6  0.667           1.127         1.027   0.304            -0.149       -0.840     19.0
+51  weekly_20d   WEAT    satellite      dev         20   72  0.472          -0.136        -0.236  -0.279             0.004        1.203    273.0
+52  weekly_20d   WEAT    satellite  holdout         20   25  0.640           3.429         3.329   2.196            -0.092       -1.283    105.0
+53  weekly_20d   WEAT    satellite     live         20    4  0.250          -0.524        -0.624  -0.145            -0.233       -1.401     18.0

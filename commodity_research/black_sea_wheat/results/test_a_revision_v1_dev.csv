@@ -1,0 +1,9 @@
+scope,period,spec,n,years,b_gap,t_gap,b_prev,t_prev,b_priv,t_priv,r2,hit_gap3,n_gap3
+Russia,dev,persistence,89,13,,,0.4813,3.8488,,,0.2459,0.6226,53
+Russia,dev,gap,102,13,0.0309,1.0170,,,,,0.0282,0.6226,53
+Russia,dev,gap+persistence,89,13,0.0291,1.2472,0.4662,4.1522,,,0.2667,0.6226,53
+Russia,dev,private+persistence,31,13,,,0.3303,2.1783,0.6261,3.5822,0.6290,0.6226,53
+Russia,dev,gap+private+persistence,31,13,0.1104,2.0898,0.2532,1.9513,0.5062,3.2379,0.6786,0.6226,53
+pooled3,dev,persistence,267,13,,,0.3310,4.1820,,,0.1122,0.5591,127
+pooled3,dev,gap,306,13,0.0053,0.7041,,,,,0.0018,0.5591,127
+pooled3,dev,gap+persistence,267,13,0.0074,0.7432,0.3329,4.2129,,,0.1153,0.5591,127

@@ -12,9 +12,9 @@ excluded from pooled metrics (war).
                 Secondary (Russia): adding the private-minus-USDA gap (IKAR/SovEcon/MinAg, latest
                 per forecaster within 45 days before T) as a control.
   test (b)      lead weeks: in every country-year with |final - first USDA| >= 5 % of the first USDA
-                (USDA's May number), date when the weekly satellite estimate first sits >= 5 % from
-                the first USDA in the direction of the final, vs the first WASDE that does, vs the
-                first private (IKAR/SovEcon/MinAg) Russia estimate that does.
+                (USDA's May number), the date each source first MOVES >= 5 % away from its own value
+                at USDA's first report, in the direction of the final: weekly satellite vs WASDE vs
+                (Russia) private estimates. False alarms reported (see test_b docstring).
   test (c)      prices: (i) WASDE day, Russia May-Dec reports with |gap| >= 2 %: long if satellite
                 below USDA, short if above, close before -> release-day close; (ii) weekly dates
                 Apr 1 .. Sep 23, same rule, hold 5/10/15/20 trading days from the close of the first
@@ -138,36 +138,58 @@ def test_a(s, rv, priv=None):
     return pd.DataFrame(rows), w
 
 
+ALL = []
+
+
 def test_b(s, rv, priv):
+    """Lead weeks, measured on each source's OWN move after USDA's first (May) report.
+    Base date = USDA's first WASDE for the crop. Big-change country-years: |USDA final / USDA first - 1|
+    >= 5 %. USDA crossing = first WASDE >= 5 % away from its first number in the direction of the final.
+    Satellite crossing = first weekly estimate (dated after the base date) >= 5 % away from the satellite's
+    own estimate the day before the base date, same direction. Private (Russia) = first private estimate
+    >= 5 % away from the latest private estimate published before the base date (else from USDA first).
+    False alarms: in every country-year, the direction of the satellite's first +-5 % move after the base
+    date vs the direction of USDA's eventual change."""
     wk = s[s.kind == "weekly"]
+    wa = s[s.kind == "wasde"]
     rows = []
     for (c, y), g in wk.groupby(["country", "year"]):
         u = rv[(rv.country == c) & (rv.crop_year == y)].sort_values("release_date")
-        if u.empty:
+        if u.empty or (c == "Ukraine" and y >= 2022):
             continue
-        base = u.value_mmt.iloc[0]
+        base, d0 = u.value_mmt.iloc[0], u.release_date.iloc[0]
         fin = u.final.iloc[0]
         chg = (fin - base) / base
-        if abs(chg) < 0.05 or (c == "Ukraine" and y >= 2022):
+        s0 = wa[(wa.country == c) & (wa.year == y) & (wa.next_release == d0)]
+        if s0.empty:
+            continue
+        sbase = s0.sat_estimate_mmt.iloc[0]
+        g = g[g.forecast_date >= d0].sort_values("forecast_date")
+        dev = g.sat_estimate_mmt / sbase - 1
+        x0 = g[dev.abs() >= 0.05]
+        ALL.append(dict(country=c, year=y, period=period(y), change_pct=100 * chg,
+                        sat_first_move=x0.forecast_date.iloc[0].date() if len(x0) else None,
+                        sat_move_sign=float(np.sign(dev[x0.index[0]])) if len(x0) else 0.0))
+        if abs(chg) < 0.05:
             continue
         sg = np.sign(chg)
-        thr = base * (1 + 0.05 * sg)
-        hit = lambda v: (v - thr) * sg >= 0  # noqa
-        g = g.sort_values("forecast_date")
-        sd = g[hit(g.sat_estimate_mmt)].forecast_date
-        ud = u[hit(u.value_mmt)].release_date
-        row = dict(country=c, year=y, period=period(y), usda_first=base, final=fin, change_pct=100 * chg,
-                   usda_first_date=u.release_date.iloc[0].date(),
+        sd = g[dev * sg >= 0.05].forecast_date
+        ud = u[(u.value_mmt / base - 1) * sg >= 0.05].release_date
+        row = dict(country=c, year=y, period=period(y), usda_first=base, usda_first_date=d0.date(), final=fin,
+                   change_pct=100 * chg, sat_at_base=sbase,
                    sat_cross=sd.iloc[0].date() if len(sd) else None,
                    usda_cross=ud.iloc[0].date() if len(ud) else None)
-        # satellite must stay on the right side at the USDA cross date (no early false alarm credit)
         if len(sd) and len(ud):
             row["lead_weeks"] = (ud.iloc[0] - sd.iloc[0]).days / 7
             at = g[g.forecast_date <= ud.iloc[0]]
-            row["sat_on_side_at_usda_cross"] = bool(hit(at.sat_estimate_mmt.iloc[-1])) if len(at) else None
+            row["sat_on_side_at_usda_cross"] = bool(((at.sat_estimate_mmt.iloc[-1] / sbase - 1) * sg) >= 0.05) if len(at) else None
         if priv is not None and c == "Russia":
-            q = priv[(priv.crop_year == y)].sort_values("pub_date")
-            pd_ = q[hit(q.value_mmt)].pub_date
+            q = priv[priv.crop_year == y].sort_values("pub_date")
+            pre = q[q.pub_date < d0]
+            pbase = pre.value_mmt.iloc[-1] if len(pre) else base
+            post = q[q.pub_date >= d0]
+            pd_ = post[(post.value_mmt / pbase - 1) * sg >= 0.05].pub_date
+            row["private_base"] = pbase
             row["private_cross"] = pd_.iloc[0].date() if len(pd_) else None
             if len(pd_) and len(ud):
                 row["private_lead_weeks"] = (ud.iloc[0] - pd_.iloc[0]).days / 7
@@ -354,6 +376,12 @@ def main():
     tb = test_b(s, rv, priv)
     tb.to_csv(os.path.join(R, f"test_b_lead{suf}.csv"), index=False, float_format="%.2f")
     print(tb.to_string())
+    fa = pd.DataFrame(ALL)
+    fa["big_change"] = fa.change_pct.abs() >= 5
+    fa["correct_sign"] = np.where(fa.sat_move_sign == 0, np.nan, np.sign(fa.change_pct) == fa.sat_move_sign)
+    fa.to_csv(os.path.join(R, f"test_b_alarms{suf}.csv"), index=False, float_format="%.2f")
+    print(fa.groupby(["period", "big_change"]).agg(n=("year", "size"), moved=("sat_move_sign", lambda v: (v != 0).mean()),
+                                                   correct=("correct_sign", "mean")).round(2))
     tc, trades = test_c(s, rv, prices())
     tc.to_csv(os.path.join(R, f"test_c_prices{suf}.csv"), index=False, float_format="%.4f")
     trades.to_csv(os.path.join(R, f"test_c_trades{suf}.csv"), index=False, float_format="%.4f")

@@ -1,15 +1,15 @@
           country season_month    n  mean_abs_rev_pct  mean_abs_err_pct  rmse_pct  first_abs_err_pct  sd_rev_pct  persistence_slope  persistence_t  persistence_n  share_rev_same_sign_as_prev
-12     Kazakhstan          all  239             2.433             8.805    14.268             19.621       5.474              0.289          4.163          199.0                        0.739
-25         Russia          all  239             1.532             4.089     8.072             12.925       3.276              0.425          3.379          199.0                        0.804
-38        Ukraine          all  239             1.792             4.322     7.562             13.486       3.850              0.190          4.283          199.0                        0.794
-51  United States          all  239             0.724             1.525     2.924              5.110       1.656              0.159          2.067          199.0                        0.644
+12     Kazakhstan          all  238             2.445             8.841    14.298             19.621       5.487              0.289          4.163          198.0                        0.739
+25         Russia          all  238             1.539             4.101     8.088             12.925       3.283              0.425          3.379          198.0                        0.804
+38        Ukraine          all  238             1.800             4.334     7.577             13.486       3.859              0.190          4.283          198.0                        0.794
+51  United States          all  238             0.728             1.532     2.931              5.110       1.660              0.159          2.067          198.0                        0.644
           series         spec    n  slope_russia_pct_per_1pct  t_russia     r2  slope_us   t_us
 0  cbot_wheat_zw  russia_only  154                     -0.097    -1.933  0.027       NaN    NaN
 1  cbot_wheat_zw    russia+us  154                     -0.100    -2.030  0.032    -0.087 -0.706
 2  cbot_wheat_zw    blacksea3  154                     -0.080    -1.411  0.040    -0.094 -0.754
-3    kc_wheat_ke  russia_only  156                     -0.091    -1.974  0.029       NaN    NaN
-4    kc_wheat_ke    russia+us  156                     -0.095    -2.121  0.039    -0.107 -1.106
-5    kc_wheat_ke    blacksea3  156                     -0.078    -1.514  0.045    -0.113 -1.145
+3    kc_wheat_ke  russia_only  155                     -0.091    -1.972  0.029       NaN    NaN
+4    kc_wheat_ke    russia+us  155                     -0.095    -2.117  0.039    -0.107 -1.102
+5    kc_wheat_ke    blacksea3  155                     -0.078    -1.512  0.045    -0.113 -1.142
 6  teucrium_weat  russia_only  104                     -0.085    -1.787  0.033       NaN    NaN
 7  teucrium_weat    russia+us  104                     -0.078    -1.752  0.073    -0.171 -1.481
 8  teucrium_weat    blacksea3  104                     -0.086    -1.781  0.080    -0.166 -1.444

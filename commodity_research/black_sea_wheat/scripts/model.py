@@ -31,9 +31,13 @@ share of sample pixels in the winter (or spring) mask that year):
   Ukraine has no spring features (0); Kazakhstan has no winter features (0).
 Target: ln(truth / trend), trend = Theil-Sen line through truth of years Y-15..Y-1.
 Model: pooled ridge over the three countries, features z-scored within country on the training
-years, country intercepts unpenalised, alpha = 3, training years 2003..Y-1. Ukraine 2022+
+years (v1: winsorised at +-3), target scaled by its within-country training sd (v1), country
+intercepts unpenalised, alpha = 3, training years 2003..Y-1. Ukraine 2022+
 (war: area loss and occupied territory) is excluded from training.
-Estimate: S = trend x exp(prediction); uncertainty = leave-one-year-out RMSE in training.
+Estimate: S = trend x exp(prediction); uncertainty = leave-one-year-out RMSE in training (per country).
+Spec history: v0 = first coded version (no target scaling, no winsorising); v1 = the two changes,
+made after the first development run (see README disclosure). Both are scored on the holdout
+(signal tags v0_first and v1).
 
 Usage: python model.py [--feats evi_w,prcp_w,...] [--tag v1]
 Writes data/signal/bsw_signal_<tag>.csv (+ MANIFEST json)
@@ -239,16 +243,24 @@ def build_X(rows, train_mask, feats):
                 X.loc[ic, fe] = 0.0
             else:
                 X.loc[ic, fe] = (X.loc[ic, fe] - X.loc[tr, fe].mean()) / sd
-    return X[feats].fillna(0.0)
+    X = X[feats].fillna(0.0)
+    if SPEC[0] == "v1":  # SPEC v1: winsorise z-scores at +-3 (one extreme heat/frost season set the 2009-10 forecasts)
+        X = X.clip(-3, 3)
+    return X
 
 
 def ridge_fit(X, y, g, alpha):
-    """Country intercepts unpenalised (features are within-country demeaned on training)."""
+    """Country intercepts unpenalised (features are within-country demeaned on training).
+    SPEC v1: the target is also scaled by its within-country training sd before the pooled fit, so the
+    volatile Kazakh/Ukrainian targets do not set the coefficients applied to Russia; predictions are
+    mu_c + sd_c * X beta. SPEC v0: no scaling (sd_c = 1)."""
     mu = y.groupby(g).mean()
-    yc = y - g.map(mu)
+    sd = y.groupby(g).std() if SPEC[0] == "v1" else y.groupby(g).std() * 0 + 1.0
+    sd = sd.fillna(1.0).replace(0, 1.0)
+    yc = (y - g.map(mu)) / g.map(sd)
     A = X.values
     beta = np.linalg.solve(A.T @ A + alpha * np.eye(A.shape[1]), A.T @ yc.values)
-    return mu, beta
+    return (mu, sd), beta
 
 
 def forecast(F, T, Y, t, cutoff_offset, feats, alpha):
@@ -272,29 +284,65 @@ def forecast(F, T, Y, t, cutoff_offset, feats, alpha):
     df = pd.DataFrame(rows)
     train = (df.year < Y) & df.target.notna()
     X = build_X(df.to_dict("records"), train.values, feats)
-    mu, beta = ridge_fit(X[train], df.target[train], df.country[train], alpha)
-    # leave-one-year-out RMSE within training
-    errs = []
+    (mu, sd), beta = ridge_fit(X[train], df.target[train], df.country[train], alpha)
+
+    def pred_of(m, s_, b, idx):
+        g = df.country[idx]
+        return g.map(m).fillna(0).values + g.map(s_).fillna(1.0).values * (X[idx].values @ b)
+
+    # leave-one-year-out RMSE within training, per country
+    errs = {c: [] for c in COUNTRIES}
     for yy in sorted(df.year[train].unique()):
         tr2 = train & (df.year != yy)
         if tr2.sum() < 6:
             continue
-        mu2, b2 = ridge_fit(X[tr2], df.target[tr2], df.country[tr2], alpha)
+        (m2, s2), b2 = ridge_fit(X[tr2], df.target[tr2], df.country[tr2], alpha)
         te = train & (df.year == yy)
-        p = df.country[te].map(mu2).fillna(0) + X[te].values @ b2
-        errs += list(df.target[te] - p)
-    rmse = float(np.sqrt(np.mean(np.square(errs)))) if errs else np.nan
+        for c, e in zip(df.country[te], df.target[te].values - pred_of(m2, s2, b2, te)):
+            errs[c].append(e)
+    rmse = {c: float(np.sqrt(np.mean(np.square(v)))) if v else np.nan for c, v in errs.items()}
     out = []
     te = df.year == Y
-    pred = df.country[te].map(mu).fillna(0) + X[te].values @ beta
+    pred = pred_of(mu, sd, beta, te)
     for i, p in zip(df.index[te], pred):
         r = df.loc[i]
         out.append(dict(country=r.country, year=Y, forecast_date=pd.Timestamp(t).date(), pred_dev_log=p,
-                        trend_mmt=r.trend, sat_estimate_mmt=r.trend * np.exp(p), uncertainty_log=rmse,
+                        trend_mmt=r.trend, sat_estimate_mmt=r.trend * np.exp(p), uncertainty_log=rmse[r.country],
                         n_train=int(train.sum()), n_train_years=int(df.year[train].nunique()),
                         n_evi_w_comps=len(r.ew), n_evi_s_comps=len(r.es),
                         **{f"x_{k}": X.loc[i, k] for k in feats}, **{f"b_{k}": b for k, b in zip(feats, beta)}))
     return out
+
+
+_FT = {}
+
+
+def run_year(arg):
+    """All forecasts for one harvest year (worker for multiprocessing)."""
+    Y, js, feats, alpha = arg
+    if "F" not in _FT:
+        _FT["T"], _FT["F"] = Truth(), Feats()
+    T, F = _FT["T"], _FT["F"]
+    today = pd.Timestamp("2026-10-11")
+    out = []
+    for (Y_, t, kind, rel) in js:
+        if t > today:
+            continue
+        off = (t - pd.Timestamp(Y, 1, 1)).days
+        for r in forecast(F, T, Y, t, off, feats, alpha):
+            usda = T.asof(r["country"], Y, t + pd.Timedelta(days=1))  # latest USDA published on or before T
+            r.update(kind=kind, next_release=rel, data_cutoff_vi=(t - pd.Timedelta(days=14)).date(),
+                     data_cutoff_weather=(t - pd.Timedelta(days=5)).date(), usda_latest_mmt=usda,
+                     gap_sat_usda_pct=100 * np.log(r["sat_estimate_mmt"] / usda) if usda else np.nan,
+                     final_usda_expost=T.final(r["country"], Y), model_version=f"{VERSION}_{TAG[0]}",
+                     ukraine_war_flag=int(r["country"] == "Ukraine" and Y >= 2022))
+            out.append(r)
+    print("year done", Y, len(out), flush=True)
+    return out
+
+
+TAG = ["v1"]
+SPEC = ["v1"]
 
 
 def main():
@@ -304,11 +352,15 @@ def main():
     ap.add_argument("--alpha", type=float, default=ALPHA)
     ap.add_argument("--years", default="2006-2026")
     ap.add_argument("--no-weekly", action="store_true")
+    ap.add_argument("--jobs", type=int, default=3)
+    ap.add_argument("--spec", default="v1", choices=["v0", "v1"],
+                    help="v1 (default, pre-registered): per-country target scaling + z-score winsorising; v0: as first coded")
     a = ap.parse_args()
     feats = a.feats.split(",")
     y0, y1 = [int(x) for x in a.years.split("-")]
+    TAG[0] = a.tag
+    SPEC[0] = a.spec
     T = Truth()
-    F = Feats()
     jobs = []
     for Y in range(y0, y1 + 1):
         for r in T.releases:
@@ -319,27 +371,22 @@ def main():
         if not a.no_weekly:
             for k in range(40):
                 jobs.append((Y, pd.Timestamp(Y, 4, 1) + pd.Timedelta(days=7 * k), "weekly", None))
-    today = pd.Timestamp("2026-10-11")
-    out = []
-    for i, (Y, t, kind, rel) in enumerate(jobs):
-        if t > today:
-            continue
-        off = (t - pd.Timestamp(Y, 1, 1)).days
-        for r in forecast(F, T, Y, t, off, feats, a.alpha):
-            usda = T.asof(r["country"], Y, t + pd.Timedelta(days=1))  # latest USDA strictly before T+1 (i.e. <= T)
-            r.update(kind=kind, next_release=rel, data_cutoff_vi=(t - pd.Timedelta(days=14)).date(),
-                     data_cutoff_weather=(t - pd.Timedelta(days=5)).date(), usda_latest_mmt=usda,
-                     gap_sat_usda_pct=100 * np.log(r["sat_estimate_mmt"] / usda) if usda else np.nan,
-                     final_usda_expost=T.final(r["country"], Y), model_version=f"{VERSION}_{a.tag}",
-                     ukraine_war_flag=int(r["country"] == "Ukraine" and Y >= 2022))
-            out.append(r)
-        if i % 50 == 0:
-            print(i, len(jobs), Y, t.date(), flush=True)
+    by_year = {}
+    for j in jobs:
+        by_year.setdefault(j[0], []).append(j)
+    args = [(Y, js, feats, a.alpha) for Y, js in sorted(by_year.items())]
+    if a.jobs > 1:
+        import multiprocessing as mp
+        with mp.Pool(a.jobs) as pool:
+            parts = pool.map(run_year, args)
+    else:
+        parts = [run_year(x) for x in args]
+    out = [r for p in parts for r in p]
     o = pd.DataFrame(out)
     os.makedirs(os.path.join(D, "signal"), exist_ok=True)
     fn = os.path.join(D, "signal", f"bsw_signal_{a.tag}.csv")
     o.to_csv(fn, index=False, float_format="%.5f")
-    man = dict(dataset=f"{VERSION}_{a.tag}", built_utc=dt.datetime.utcnow().isoformat(timespec="seconds"),
+    man = dict(dataset=f"{VERSION}_{a.tag}", spec=a.spec, built_utc=dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                rows=len(o), feats=feats, alpha=a.alpha,
                sha256={os.path.basename(fn): hashlib.sha256(open(fn, "rb").read()).hexdigest(),
                        "model.py": hashlib.sha256(open(__file__, "rb").read()).hexdigest()})
