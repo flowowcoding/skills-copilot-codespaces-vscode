@@ -77,3 +77,23 @@ Frozen at commit `b4f0a0a` (2026-10-11). Code fingerprints (sha256, first 16 hex
 - **Pass:** after 4 new events (from the 2027 season on; Isaias 2026 excluded), mean net return > 0
   **and** at least 3 of 4 events beat the comparison. **Fail:** anything else.
 - **Outcome:** _pending (0 of 4 events)_
+
+## FT-5: Field-level corn and soy model, Iowa + Illinois (registered 2026-10-11)
+
+- **Spec:** `commodity_research/field_level_crops/` v1: Landsat 30 m field interiors, in-season
+  crop classifier, county gridMET, ridge model (`scripts/model.py`, sha256 e2bd61bf608a6b2b). Pre-registered
+  2022–25 holdout: corn passed at state level (2.1% vs USDA 2.3%), soy failed (4.6% vs 2.3%).
+- **Also tracked:** the `--no-intercept` soy variant, chosen after seeing the holdout bias. It is
+  tracked separately and is not the main spec.
+- **Frozen 2026 forecasts (IA+IL, September):**
+
+| crop | field model | USDA Sep (weighted) |
+|---|---|---|
+| corn | 219.8 ± 8.9 bu/ac | 214.5 |
+| soy | 68.7 ± 3.0 bu/ac | 65.0 |
+
+- **Score:** each year from 2026, state-level |error| against USDA's January final, compared
+  with USDA's September forecast and with trend.
+- **Pass:** judged after 3 forward years (2026–2028). The corn model must beat USDA's September
+  state forecasts on average, and the soy no-intercept variant must beat trend.
+- **Outcome 2026:** _pending (USDA January 2027 final)_

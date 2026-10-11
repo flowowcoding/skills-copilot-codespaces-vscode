@@ -15,6 +15,7 @@ on data held back from tuning. Negative results are reported as they came out.
 | `satellite_poc/` | Mining track: activity indices, halts, production tests, sub-metre radar, pit walls, mine inventory, event study, Chile copper, lithium |
 | `soy_research/benchmark/` | Point-in-time Conab / WASDE / IBGE vintages for Brazilian soy, CBOT prices, revision behaviour |
 | `soy_research/satellite/` | MODIS + CHIRPS state-level soybean yield signal, versioned and timestamped |
+| `commodity_research/` | Weak-benchmark markets (cocoa, Black Sea wheat, India), field-level crops, copper smelters, hurricanes |
 | `forward_tests/` | Frozen post-hoc signals, scored only on data that arrives after registration |
 
 ## Results so far
@@ -33,6 +34,12 @@ on data held back from tuning. Negative results are reported as they came out.
 | Brazil soy, satellite | Does a satellite yield estimate beat the official ones? | Brazil level: **failed** on held-back seasons (Terra overpass drift). State level: satellite-minus-official predicts the next official revision beyond persistence, with 1–6 week leads in southern droughts. |
 | US corn/soy, benchmark | Do USDA surprises move CBOT? | **Yes**: surprise vs analyst consensus moves new-crop prices (Aug corn −0.90% per 1% surprise, t −2.7; soy −0.64%, t −2.9). Revisions vs prior USDA don't. Public crop-condition data barely predicts the surprise. |
 | US corn/soy, satellite (Aqua EVI + gridMET) | Does satellite − consensus predict the USDA surprise? | **No**: the pre-registered 2022–25 holdout failed. Worse than USDA in September, soy worse than trend, trading hit rate 44% vs a 56% base rate (−3.3 ¢/bu net). 2024 corn was the one clean hit. |
+| West African cocoa | Does weather/satellite beat weak ICCO data and port arrivals? | **No**: arrivals, ICCO revisions and returns not predicted on 2022/23–2025/26; the trading rule lost 4.3% a month. 2023's disease shock had no precedent in the history. |
+| Black Sea wheat | Does satellite beat USDA's weak Russia numbers? | **No**: worse than trend on 2021–25. USDA follows IKAR/SovEcon, and the satellite adds nothing beyond them. |
+| India pulses and monsoon | Does satellite beat India's advance estimates? | **No**: 2–3× worse than the first official estimate. Area swings dominate, and there's no crop map. |
+| Field-level crops (Landsat 30 m, IA+IL) | Does field-level resolution close the gap to USDA? | **Corn yes, soy no**: state corn 2.1% vs USDA 2.3% (mostly from county weather); soy runs high; US-level worse than consensus. |
+| Copper smelters (S2 SWIR, S3 night fire) | Do processing signals track metal supply? | **On/off yes, output no**: 9/15 and 5/6 shutdowns caught (Altonorte 10 days before the press); output and the China index fail; no price signal. |
+| Hurricanes vs futures | Do free storm forecasts get ahead of prices? | **No**: markets react on the threat day; all 5 pre-registered rules fail on 2018–26. OJ after landfall (8/8, found after looking) is now a forward test. |
 
 ## What we've learned
 
@@ -48,14 +55,16 @@ on data held back from tuning. Negative results are reported as they came out.
 
 ## Open next steps
 
-- **Forward tests** (`forward_tests/REGISTRY.md`): Greenbushes against IGO's Sep-2026 quarter
-  (late Oct 2026), US corn/soy 2026 against USDA's January 2027 final, Brazil soy v2 from
-  2026/27 (judged after 3 seasons).
+- **Forward tests** (`forward_tests/REGISTRY.md`): FT-1 Greenbushes (late Oct 2026), FT-2 Brazil
+  soy v2 (from 2026/27), FT-3 US corn/soy 2026 and FT-5 field-level IA+IL (both against USDA's
+  January 2027 final), FT-4 OJ after hurricane landfall (from the 2027 season).
 - **Honest status:** no free-satellite signal tested so far beats the official forecasts or the
   analyst consensus out of sample. The public crop and mine data are hard to beat with free
   250 m–10 m imagery and simple models.
-- **Paths that could still work:** (1) better crop models, such as field-level Sentinel-2 or HLS
-  with a crop-type-specific phenology model, a known gap versus commercial providers; (2) markets
-  with worse official data than the US or Brazil (e.g. Black Sea wheat, Indian pulses, cocoa in
-  West Africa), where the benchmark is weaker; (3) metals via processing (smelter heat,
-  stockpiles, shipping), measured against existing services.
+- **What's left after 16 tracks:**
+  1. **Operating-status alerts, not supply forecasts.** Free imagery reliably flags shutdowns and
+     restarts at specific plants, sometimes before the press (Altonorte). That's useful for risk
+     monitoring or for non-listed assets, but not as a supply forecast.
+  2. **Field-level corn.** The 30 m model edged USDA's state corn forecasts. It needs forward
+     years (FT-5) before anyone should trust it, and then a national version.
+  3. **Physically large, slow-to-report shocks** (citrus after hurricanes). Watch FT-4.
