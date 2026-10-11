@@ -31,6 +31,8 @@ on data held back from tuning. Negative results are reported as they came out.
 | Event study (68 disruptions) | What is an early warning worth? | About 12% per event for single-mine companies, but disclosure comes within 0–1 days. |
 | Brazil soy, benchmark | Do official Brazil revisions move CBOT? | Barely (about −0.1% per Mt, not significant). Revisions are persistent (USDA next ≈ 0.5 × previous). |
 | Brazil soy, satellite | Does a satellite yield estimate beat the official ones? | Brazil level: **failed** on held-back seasons (Terra overpass drift). State level: satellite-minus-official predicts the next official revision beyond persistence, with 1–6 week leads in southern droughts. |
+| US corn/soy, benchmark | Do USDA surprises move CBOT? | **Yes**: surprise vs analyst consensus moves new-crop prices (Aug corn −0.90% per 1% surprise, t −2.7; soy −0.64%, t −2.9). Revisions vs prior USDA don't. Public crop-condition data barely predicts the surprise. |
+| US corn/soy, satellite (Aqua EVI + gridMET) | Does satellite − consensus predict the USDA surprise? | **No**: the pre-registered 2022–25 holdout failed. Worse than USDA in September, soy worse than trend, trading hit rate 44% vs a 56% base rate (−3.3 ¢/bu net). 2024 corn was the one clean hit. |
 
 ## What we've learned
 
@@ -46,10 +48,14 @@ on data held back from tuning. Negative results are reported as they came out.
 
 ## Open next steps
 
-- **Forward test:** score the soy no-LST variant (chosen after the fact) on the 2026/27 season,
-  rules frozen now. Also score the Greenbushes forward test against IGO's Jul–Sep 2026 report.
-- **Go where reports move prices:** USDA's US crop reports move CBOT far more than Brazil's.
-  Repeat the soy benchmark + satellite design for the US corn and soy yields in USDA's August
-  and September reports, then test whether satellite-minus-USDA predicts the report-day return.
-- **Metals via processing, not pits:** smelter thermal signatures, concentrate stockpiles and
-  port shipping, as SAVANT-type services do. The edge has to be measured against those services.
+- **Forward tests** (`forward_tests/REGISTRY.md`): Greenbushes against IGO's Sep-2026 quarter
+  (late Oct 2026), US corn/soy 2026 against USDA's January 2027 final, Brazil soy v2 from
+  2026/27 (judged after 3 seasons).
+- **Honest status:** no free-satellite signal tested so far beats the official forecasts or the
+  analyst consensus out of sample. The public crop and mine data are hard to beat with free
+  250 m–10 m imagery and simple models.
+- **Paths that could still work:** (1) better crop models, such as field-level Sentinel-2 or HLS
+  with a crop-type-specific phenology model, a known gap versus commercial providers; (2) markets
+  with worse official data than the US or Brazil (e.g. Black Sea wheat, Indian pulses, cocoa in
+  West Africa), where the benchmark is weaker; (3) metals via processing (smelter heat,
+  stockpiles, shipping), measured against existing services.

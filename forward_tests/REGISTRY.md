@@ -42,8 +42,24 @@ Frozen at commit `b4f0a0a` (2026-10-11). Code fingerprints (sha256, first 16 hex
   but not judged.
 - **Outcome 2026/27:** _pending_
 
-## FT-3: US corn and soybean yield signal (to be registered)
+## FT-3: US corn and soybean yield signal v1, 2026 crop (registered 2026-10-11)
 
-Registered by the US satellite track before its holdout is opened. The spec, holdout years and
-pass criteria go in `soy_research/us/satellite/README.md`, with a copy here. Live check: the
-Aug/Sep 2026 forecasts against USDA's 2026 reports and the January 2027 final.
+- **Spec:** `soy_research/us/satellite/` v1: Aqua MYD13Q1 EVI, prior-years CDL mask, gridMET,
+  Theil–Sen trend, no land-surface temperature. Signal file `signal/us_sat_signal_v1.csv`.
+  The pre-registered 2022–25 holdout **failed**, so this entry only records a live check. It is
+  not a second chance for the same spec.
+- **Disclosed problems:**
+  - Before the spec was frozen, the holdout numbers of an earlier version were seen by accident.
+  - The 0.02-EVI drift guard was set after the 2026 residual was visible (no yields were used).
+    The no-guard variant is recorded too.
+- **Forecasts made before USDA's January 2027 final (US, bu/acre):**
+
+| crop | satellite, Aug | satellite, Sep | no-guard, Sep | USDA Aug | USDA Sep |
+|---|---|---|---|---|---|
+| corn | 187.1 | 185.7 | 192.2 | 180.7 | 178.5 |
+| soy | 55.6 | 55.1 | – | 52.7 | 52.8 |
+
+- **Score:** is USDA's January 2027 final closer to the satellite's September forecast than to
+  USDA's September forecast, for each crop? USDA's October report (181.2 corn, 53.1 soy) moved
+  toward the satellite, but October is not the truth.
+- **Outcome:** _pending (USDA January 2027 Crop Production Annual Summary)_
