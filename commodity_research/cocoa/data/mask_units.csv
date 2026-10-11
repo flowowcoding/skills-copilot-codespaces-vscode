@@ -1,0 +1,294 @@
+unit,country,cocoa_ha,area_km2,density,zone
+Agneby-Tiassa,CIV,220834.31,8110.66,27.23,CIV_E
+Bafing,CIV,3657.01,8707.93,0.42,CIV_W
+Bagoue,CIV,0.00,10225.83,0.00,CIV_W
+Belier,CIV,25001.96,6810.16,3.67,CIV_E
+Bere,CIV,764.35,10923.12,0.07,CIV_W
+Bounkani,CIV,3.36,22064.55,0.00,CIV_E
+Cavally,CIV,345991.14,11346.23,30.49,CIV_W
+District Autonome D'Abidjan,CIV,1521.80,2137.37,0.71,CIV_E
+District Autonome De Yamoussoukro,CIV,13026.13,2070.53,6.29,CIV_E
+Folon,CIV,0.00,6635.72,0.00,CIV_W
+Gbeke,CIV,659.83,8995.18,0.07,CIV_E
+Gbokle,CIV,298406.58,6215.27,48.01,CIV_W
+Goh,CIV,271164.93,6903.95,39.28,CIV_W
+Gontougo,CIV,34715.97,16092.99,2.16,CIV_E
+Grands Ponts,CIV,58520.96,4432.79,13.20,CIV_E
+Guemon,CIV,331226.40,7216.50,45.90,CIV_W
+Hambol,CIV,9.06,19287.94,0.00,CIV_E
+Haut-Sassandra,CIV,425315.30,15240.42,27.91,CIV_W
+Iffou,CIV,22211.54,8867.11,2.50,CIV_E
+Indenie-Djuablin,CIV,241734.91,6905.45,35.01,CIV_E
+Kabadougou,CIV,11.45,14255.32,0.00,CIV_W
+Loh-Djiboua,CIV,338286.35,8794.00,38.47,CIV_E
+Marahoue,CIV,116685.71,8699.10,13.41,CIV_W
+Me,CIV,204274.67,8040.36,25.41,CIV_E
+Nawa,CIV,406261.59,9776.07,41.56,CIV_W
+Poro,CIV,0.00,12569.17,0.00,CIV_W
+San Pedro,CIV,486846.40,12339.08,39.46,CIV_W
+Sud-Comoe,CIV,114502.52,7069.39,16.20,CIV_E
+Tchologo,CIV,0.00,17350.92,0.00,CIV_E
+Tonkpi,CIV,268524.98,12261.50,21.90,CIV_W
+Worodougou,CIV,26815.11,11469.74,2.34,CIV_W
+N'Zi,CIV,6168.83,4804.70,1.28,CIV_E
+Moronou,CIV,99408.07,5578.96,17.82,CIV_E
+Adenta Municipal,GHA,0.00,77.93,0.00,GHA
+Ledzokuku Municipal,GHA,0.00,29.32,0.00,GHA
+Chereponi,GHA,0.00,1378.11,0.00,GHA
+Wa East,GHA,0.00,4296.54,0.00,GHA
+Wa Municipal,GHA,0.00,579.13,0.00,GHA
+Saboba,GHA,0.00,1755.16,0.00,GHA
+Jirapa,GHA,0.00,1188.16,0.00,GHA
+Gushegu,GHA,0.00,2680.16,0.00,GHA
+Sissala West,GHA,0.00,2049.47,0.00,GHA
+Nanumba North,GHA,0.00,2264.00,0.00,GHA
+Lambussie-karni,GHA,0.00,811.30,0.00,GHA
+Bolgatanga Municipal,GHA,0.00,325.41,0.00,GHA
+Nanumba South,GHA,0.00,1793.55,0.00,GHA
+Wenchi Municipal,GHA,728.77,1144.53,0.64,GHA
+Bongo,GHA,0.00,415.22,0.00,GHA
+Tano South Municipal,GHA,4806.93,489.21,9.83,GHA
+Kasena Nankana West,GHA,0.00,872.60,0.00,GHA
+Wa West,GHA,0.00,1490.26,0.00,GHA
+Sunyani Municipal,GHA,13709.55,506.62,27.06,GHA
+Sawla-tuna-kalba,GHA,0.00,4223.77,0.00,GHA
+Asante Akim South,GHA,57333.35,1154.39,49.67,GHA
+Sissala East,GHA,0.00,5092.48,0.00,GHA
+Ada East,GHA,0.00,291.01,0.00,GHA
+Shai Osudoku,GHA,31.94,971.34,0.03,GHA
+Kasena Nankana East,GHA,0.00,767.35,0.00,GHA
+Ada West,GHA,0.00,324.21,0.00,GHA
+Bunkpurugu Nakpanduri,GHA,0.00,770.52,0.00,GHA
+Garu,GHA,0.00,676.66,0.00,GHA
+Ningo/prampram,GHA,0.00,623.81,0.00,GHA
+East Mamprusi,GHA,0.00,1709.21,0.00,GHA
+La Dade-kotopon,GHA,0.00,36.21,0.00,GHA
+Bawku West,GHA,0.00,1073.09,0.00,GHA
+Aowin,GHA,107768.52,2606.64,41.34,GHA
+Dormaa East,GHA,9822.33,569.68,17.24,GHA
+Suaman,GHA,20087.63,398.71,50.38,GHA
+Berekum East Municipal,GHA,2276.49,461.50,4.93,GHA
+Bia East,GHA,43203.04,781.93,55.25,GHA
+Jaman South Municipal,GHA,9419.59,754.56,12.48,GHA
+Bia West,GHA,72085.01,1285.32,56.08,GHA
+Sunyani West,GHA,3544.68,1058.36,3.35,GHA
+Asunafo North Municipal,GHA,67235.83,1410.80,47.66,GHA
+Bodi,GHA,46363.68,661.17,70.12,GHA
+Juaboso,GHA,65841.87,1368.33,48.12,GHA
+Nkoranza North,GHA,10.92,1387.48,0.01,GHA
+Kintampo South,GHA,4.10,1512.90,0.00,GHA
+Shama,GHA,313.03,193.44,1.62,GHA
+Tano North Municipal,GHA,21116.40,836.39,25.25,GHA
+Wassa East,GHA,54490.93,1651.27,33.00,GHA
+Ketu North,GHA,0.00,424.76,0.00,GHA
+Mpohor,GHA,15722.51,524.78,29.96,GHA
+Wassa Amenfi West,GHA,101190.67,1446.89,69.94,GHA
+Ketu South,GHA,0.00,279.20,0.00,GHA
+Wassa Amenfi Central,GHA,92649.70,1844.72,50.22,GHA
+Keta Municipal,GHA,0.00,518.57,0.00,GHA
+Kadjebi,GHA,23232.41,691.18,33.61,GHA
+Mfantseman Municipal,GHA,642.04,300.96,2.13,GHA
+South Tongu,GHA,0.01,645.14,0.00,GHA
+Ekumfi,GHA,19.79,276.95,0.07,GHA
+Twifo Hemang Lower Denkyira,GHA,22267.24,575.89,38.67,GHA
+Jasikan,GHA,11362.86,557.63,20.38,GHA
+Twifo Atti-morkwa,GHA,42368.82,955.10,44.36,GHA
+Krachi East Municipal,GHA,1615.98,2766.58,0.58,GHA
+Awutu Senya,GHA,154.64,245.01,0.63,GHA
+Nkwanta South Municipal,GHA,1746.27,2739.83,0.64,GHA
+Awutu Senya East,GHA,0.00,107.94,0.00,GHA
+Afigya Kwabre South,GHA,4253.63,223.10,19.07,GHA
+La-nkwantanang-madina,GHA,0.00,71.24,0.00,GHA
+Atwima Kwanwoma,GHA,3876.00,251.51,15.41,GHA
+Sekyere South,GHA,17115.82,417.37,41.01,GHA
+Ga East,GHA,0.06,85.75,0.00,GHA
+Ayawaso West,GHA,0.00,32.84,0.00,GHA
+Sekyere East,GHA,11933.58,239.54,49.82,GHA
+Ga South Municipal,GHA,0.00,178.57,0.00,GHA
+Ga West Municipal,GHA,1.71,175.00,0.01,GHA
+Sekyere Central,GHA,1529.79,1632.14,0.94,GHA
+Ga Central Municipal,GHA,0.00,48.99,0.00,GHA
+Offinso North,GHA,1178.88,945.77,1.25,GHA
+Krachi West,GHA,0.00,930.30,0.00,GHA
+Offinso Municipal,GHA,19419.83,585.49,33.17,GHA
+Obuasi Municipal,GHA,2669.47,145.70,18.32,GHA
+Krachi Nchumuru,GHA,0.00,1197.00,0.00,GHA
+Kwabre East,GHA,171.84,122.89,1.40,GHA
+Agotime Ziope,GHA,0.00,316.31,0.00,GHA
+Adaklu,GHA,3.56,803.14,0.00,GHA
+Ejura-sekyedumase,GHA,125.02,1341.17,0.09,GHA
+Atwima Nwabiagya South,GHA,11545.41,366.38,31.51,GHA
+Akatsi South,GHA,19.31,537.78,0.04,GHA
+Atwima Mponua,GHA,89253.68,1882.42,47.41,GHA
+Akatsi North,GHA,0.29,315.03,0.00,GHA
+Ho Municipal,GHA,1038.18,574.72,1.81,GHA
+Adansi South,GHA,36677.51,759.97,48.26,GHA
+Hohoe Municipal,GHA,6478.01,686.08,9.44,GHA
+Adansi Asokwa,GHA,33020.84,596.15,55.39,GHA
+Ho West,GHA,1900.38,1005.26,1.89,GHA
+Bosome Freho,GHA,24876.71,569.34,43.69,GHA
+Afadzato South,GHA,1997.11,554.47,3.60,GHA
+Ahafo Ano South East,GHA,36229.99,686.30,52.79,GHA
+North Dayi,GHA,982.79,463.56,2.12,GHA
+Bekwai Municipal,GHA,21026.65,535.49,39.27,GHA
+Kpando Municipal,GHA,244.14,315.00,0.78,GHA
+Bosomtwe,GHA,13902.20,422.59,32.90,GHA
+North Tongu,GHA,1.35,1134.45,0.00,GHA
+Central Tongu,GHA,0.34,683.67,0.00,GHA
+Mampong Municipal,GHA,2059.58,670.16,3.07,GHA
+Ajumako-enyan-essiam,GHA,10900.70,521.38,20.91,GHA
+Gomoa West,GHA,1474.51,338.09,4.36,GHA
+Agona West Municipal,GHA,20165.64,356.41,56.58,GHA
+Agona East,GHA,10487.65,327.83,31.99,GHA
+Assin North,GHA,47496.75,726.22,65.40,GHA
+Assin South,GHA,42303.16,1101.81,38.39,GHA
+Asikuma-odoben-brakwa,GHA,48555.22,772.82,62.83,GHA
+Effutu Municipal,GHA,0.00,85.43,0.00,GHA
+Gomoa East,GHA,452.01,540.36,0.84,GHA
+Abura-asebu-kwamankese,GHA,3071.55,377.15,8.14,GHA
+Jomoro,GHA,18790.71,1493.43,12.58,GHA
+Ellembelle,GHA,40859.77,995.47,41.05,GHA
+Dormaa Municipal,GHA,11485.23,1209.17,9.50,GHA
+Dormaa West,GHA,24380.33,380.25,64.12,GHA
+Nadowli-kaleo,GHA,0.00,1130.50,0.00,GHA
+Prestea/huni Valley,GHA,92346.84,1809.10,51.05,GHA
+Ahanta West Municipal,GHA,786.25,554.58,1.42,GHA
+Daffiama Bussie Issa,GHA,0.00,1454.90,0.00,GHA
+Nzema East,GHA,44451.45,1083.65,41.02,GHA
+Lawra,GHA,0.00,527.03,0.00,GHA
+Nandom,GHA,0.00,404.39,0.00,GHA
+Tarkwa Nsuaem,GHA,22062.09,904.94,24.38,GHA
+Talensi,GHA,0.00,839.25,0.00,GHA
+Sefwi Akontombra,GHA,55940.76,1118.86,50.00,GHA
+Effia Kwesimintsim Municipal,GHA,237.37,104.95,2.26,GHA
+Nabdam,GHA,0.00,245.43,0.00,GHA
+Builsa South,GHA,0.00,1242.32,0.00,GHA
+Builsa North,GHA,0.00,816.99,0.00,GHA
+Binduri,GHA,0.00,392.46,0.00,GHA
+Pusiga,GHA,0.00,256.40,0.00,GHA
+Bawku Municipal,GHA,0.00,247.35,0.00,GHA
+North Gonja,GHA,0.00,4846.65,0.00,GHA
+West Gonja,GHA,0.00,4715.02,0.00,GHA
+Mion,GHA,0.00,2718.49,0.00,GHA
+Yendi Municipal,GHA,0.00,1449.61,0.00,GHA
+Tolon,GHA,0.00,1354.78,0.00,GHA
+Kumbungu,GHA,0.00,1542.40,0.00,GHA
+West Mamprusi Municipal,GHA,0.00,2613.27,0.00,GHA
+Mamprugu Moagduri,GHA,0.00,2122.16,0.00,GHA
+Zabzugu,GHA,0.00,1102.77,0.00,GHA
+Tatale Sanguli,GHA,0.00,1092.81,0.00,GHA
+Sene East,GHA,0.00,4400.46,0.00,GHA
+Bibiani-anhwiaso-bekwai Municipal,GHA,37692.23,833.25,45.23,GHA
+Sene West,GHA,0.00,3266.28,0.00,GHA
+Upper Denkyira East Municipal,GHA,31829.73,502.10,63.39,GHA
+Asutifi North,GHA,31898.24,935.16,34.11,GHA
+Ahafo Ano North,GHA,38738.15,593.38,65.28,GHA
+Amansie Central,GHA,40442.47,850.20,47.57,GHA
+Amansie West,GHA,32173.76,637.44,50.47,GHA
+Asutifi South,GHA,33969.70,597.03,56.90,GHA
+Techiman Municipal,GHA,7373.31,648.68,11.37,GHA
+Upper Denkyira West,GHA,35902.75,578.09,62.11,GHA
+Techiman North,GHA,1267.76,389.16,3.26,GHA
+Cape Coast Metropolitan,GHA,44.49,122.37,0.36,GHA
+Komenda-edina-eguafo-abirem Municipal,GHA,1644.90,452.90,3.63,GHA
+Banda,GHA,0.00,2296.56,0.00,GHA
+Sefwi-wiawso,GHA,57693.93,1010.50,57.09,GHA
+Jaman North,GHA,49.42,1030.42,0.05,GHA
+Asunafo South,GHA,58186.33,922.75,63.06,GHA
+Tain,GHA,36.95,1828.16,0.02,GHA
+Nkoranza South,GHA,11.76,922.31,0.01,GHA
+Sekyere Kumawu,GHA,7133.39,576.70,12.37,GHA
+Bole,GHA,0.00,6166.57,0.00,GHA
+Sekyere Afram Plains North,GHA,7.45,3529.02,0.00,GHA
+Asante Akim North,GHA,14740.62,1127.31,13.08,GHA
+Asante Akim Central Municipal,GHA,13691.99,300.06,45.63,GHA
+Kintampo North Municipal,GHA,0.00,4889.67,0.00,GHA
+Asokore Mampong Municipal,GHA,0.00,23.95,0.00,GHA
+Atebubu Amantin,GHA,0.41,2625.97,0.00,GHA
+Kwadaso Municipal,GHA,0.00,64.13,0.00,GHA
+Kpandai,GHA,0.00,1135.02,0.00,GHA
+Ejisu Municipal,GHA,10669.73,411.21,25.95,GHA
+Nkwanta North,GHA,0.00,1102.15,0.00,GHA
+Biakoye,GHA,5094.87,1108.55,4.60,GHA
+Wassa Amenfi East,GHA,78326.46,1557.74,50.28,GHA
+Central Gonja,GHA,0.00,7558.85,0.00,GHA
+Tema West Municipal,GHA,0.00,45.27,0.00,GHA
+Ashaiman Municipal,GHA,0.00,18.54,0.00,GHA
+Pru East,GHA,0.00,1652.85,0.00,GHA
+Kpone Katamanso,GHA,1.35,240.61,0.01,GHA
+Savelugu,GHA,0.00,1547.49,0.00,GHA
+Tamale Metropolitan,GHA,0.00,647.36,0.00,GHA
+Sagnerigu,GHA,0.00,201.07,0.00,GHA
+Karaga,GHA,0.00,3124.24,0.00,GHA
+North East Gonja,GHA,0.00,6097.36,0.00,GHA
+South Dayi,GHA,336.51,358.77,0.94,GHA
+Tempane,GHA,0.00,386.45,0.00,GHA
+Bolga  East,GHA,0.00,71.88,0.00,GHA
+Yunyoo-nasuan,GHA,0.00,488.49,0.00,GHA
+Nanton,GHA,0.00,476.90,0.00,GHA
+Assin Fosu,GHA,42303.16,278.73,151.77,GHA
+Gomoa Central,GHA,12.53,121.75,0.10,GHA
+Pru West,GHA,0.00,1569.09,0.00,GHA
+Berekum West,GHA,3039.14,401.07,7.58,GHA
+Ahafo Ano South West,GHA,20459.14,504.29,40.57,GHA
+Amansie South,GHA,26417.92,593.08,44.54,GHA
+Atwima Nwabiagya North,GHA,7914.72,212.79,37.19,GHA
+Adansi Akrofuom,GHA,31864.70,568.38,56.06,GHA
+Adansi North,GHA,10238.20,257.78,39.72,GHA
+Obuasi East,GHA,2084.72,75.03,27.79,GHA
+Afigya Kwabre North,GHA,6625.11,186.25,35.57,GHA
+Kumasi Metropolitan,GHA,0.00,21.59,0.00,GHA
+Oforikrom Municipal,GHA,0.00,45.20,0.00,GHA
+Asokwa  Municipal,GHA,0.00,26.52,0.00,GHA
+Old Tafo Municipal,GHA,0.00,29.19,0.00,GHA
+Suame Municipal,GHA,3.02,27.54,0.11,GHA
+Juaben Municipal,GHA,5812.21,170.97,34.00,GHA
+Ablekuma Central Municipal,GHA,0.00,14.28,0.00,GHA
+Korle Klottey Municipal,GHA,0.00,9.89,0.00,GHA
+Ablekuma North Municipal,GHA,0.00,29.51,0.00,GHA
+Ayawaso North Municipal,GHA,0.00,4.84,0.00,GHA
+Ayawaso East Municipal,GHA,0.00,6.15,0.00,GHA
+Okaikwei North Municipal,GHA,0.00,22.47,0.00,GHA
+Ga North Municipal,GHA,1.08,125.04,0.01,GHA
+Weija Gbawe Municipal,GHA,0.00,164.00,0.00,GHA
+Krowor Municipal,GHA,0.00,18.21,0.00,GHA
+Tema Metropolitan,GHA,0.00,42.73,0.00,GHA
+East Gonja Municipal,GHA,0.00,2255.76,0.00,GHA
+Ablekuma West Municipal,GHA,0.00,12.94,0.00,GHA
+Ayawaso Central Municipal,GHA,0.00,1.67,0.00,GHA
+Accra Metropolis,GHA,0.00,5.69,0.00,GHA
+Anloga,GHA,0.00,236.99,0.00,GHA
+Sekondi Takoradi Metropolis,GHA,49.00,86.83,0.56,GHA
+Kwahu South,GHA,2510.91,796.90,3.15,GHA
+Asene Akroso Manso,GHA,0.00,419.45,0.00,GHA
+Upper Manya,GHA,106.19,860.62,0.12,GHA
+Achiase,GHA,13466.08,414.62,32.48,GHA
+Okere,GHA,115.83,307.52,0.38,GHA
+Yilo Krobo,GHA,492.92,484.42,1.02,GHA
+Atiwa West,GHA,21266.42,586.19,36.28,GHA
+New Juaben North Municipal,GHA,1397.81,105.45,13.26,GHA
+Fanteakwa North,GHA,2958.99,838.37,3.53,GHA
+Birim North,GHA,18965.98,566.57,33.47,GHA
+Asuogyaman,GHA,433.52,767.39,0.56,GHA
+Kwahu East,GHA,8890.38,623.37,14.26,GHA
+Kwahu West,GHA,20070.91,401.60,49.98,GHA
+Lower Manya,GHA,126.82,304.88,0.42,GHA
+Nsawam Adoagyiri,GHA,107.97,175.55,0.62,GHA
+Akwapem South,GHA,212.86,224.31,0.95,GHA
+Denkyembour,GHA,7714.68,436.97,17.65,GHA
+Kwaebibirem,GHA,22403.35,804.12,27.86,GHA
+Kwahu Afram Plains South,GHA,12.66,3100.90,0.00,GHA
+Kwahu Afram Plains North,GHA,8.69,2346.38,0.00,GHA
+Suhum Municipal,GHA,10561.91,359.76,29.36,GHA
+Ayensuano,GHA,11202.51,499.72,22.42,GHA
+Abuakwa South,GHA,14319.29,349.78,40.94,GHA
+Upper West Akim,GHA,7053.76,342.43,20.60,GHA
+West Akim,GHA,17444.69,475.72,36.67,GHA
+Akyem Mansa,GHA,33840.43,611.98,55.30,GHA
+Atiwa East,GHA,26635.40,580.22,45.91,GHA
+New Juaben South Municipal,GHA,12.12,54.33,0.22,GHA
+Birim South,GHA,13083.88,312.10,41.92,GHA
+Abuakwa North,GHA,5870.46,159.53,36.80,GHA
+Akwapem North,GHA,196.24,307.26,0.64,GHA
+Fanteakwa South,GHA,5833.33,262.37,22.23,GHA
+Birim Central Municipal,GHA,4978.44,106.79,46.62,GHA

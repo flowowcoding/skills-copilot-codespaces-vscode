@@ -42,3 +42,4 @@ satellite_poc/mine_inventory/mine_inventory.gpkg
 __pycache__/
 soy_research/benchmark/data/pit/pit_soy_brazil.csv
 satellite_poc/chile_copper/figures/pit_zones.png
+commodity_research/black_sea_wheat/data/benchmark/wasde_wheat_vintages.csv

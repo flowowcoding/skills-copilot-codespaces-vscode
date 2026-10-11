@@ -1,0 +1,91 @@
+region,country,oblast,name
+RU_South,Russia,RU-KDA,Krasnodar Krai
+RU_South,Russia,RU-ROS,Rostov
+RU_South,Russia,RU-STA,Stavropol Krai
+RU_South,Russia,RU-AD,Republic of Adygea
+RU_South,Russia,RU-KL,Republic of Kalmykia
+RU_South,Russia,RU-VGG,Volgograd
+RU_South,Russia,RU-AST,Astrakhan
+RU_South,Russia,RU-DA,Republic of Dagestan
+RU_South,Russia,RU-KB,Kabardino-Balkaria
+RU_South,Russia,RU-KC,Karachay-Cherkess Republic
+RU_South,Russia,RU-SE,Republic of North Ossetia-Alania
+RU_South,Russia,RU-IN,Republic of Ingushetia
+RU_South,Russia,RU-CE,Chechen Republic
+RU_Central,Russia,RU-BEL,Belgorod
+RU_Central,Russia,RU-VOR,Voronezh
+RU_Central,Russia,RU-KRS,Kursk
+RU_Central,Russia,RU-LIP,Lipetsk
+RU_Central,Russia,RU-TAM,Tambov
+RU_Central,Russia,RU-ORL,Oryol
+RU_Central,Russia,RU-TUL,Tula
+RU_Central,Russia,RU-RYA,Ryazan
+RU_Central,Russia,RU-BRY,Bryansk
+RU_Central,Russia,RU-KLU,Kaluga
+RU_Central,Russia,RU-SMO,Smolensk
+RU_Central,Russia,RU-MOS,Moscow
+RU_Central,Russia,RU-MOW,Moscow
+RU_Central,Russia,RU-VLA,Vladimir
+RU_Central,Russia,RU-IVA,Ivanovo
+RU_Central,Russia,RU-KOS,Kostroma
+RU_Central,Russia,RU-YAR,Yaroslavl
+RU_Central,Russia,RU-TVE,Tver
+RU_Volga,Russia,RU-SAR,Saratov
+RU_Volga,Russia,RU-SAM,Samara
+RU_Volga,Russia,RU-ULY,Ulyanovsk
+RU_Volga,Russia,RU-PNZ,Penza
+RU_Volga,Russia,RU-TA,Republic of Tatarstan
+RU_Volga,Russia,RU-BA,Bashkortostan
+RU_Volga,Russia,RU-ORE,Orenburg
+RU_Volga,Russia,RU-MO,Republic of Mordovia
+RU_Volga,Russia,RU-CU,Chuvash Republic
+RU_Volga,Russia,RU-NIZ,Nizhny Novgorod
+RU_Volga,Russia,RU-ME,Mari El Republic
+RU_Volga,Russia,RU-KIR,Kirov
+RU_Volga,Russia,RU-UD,Udmurt Republic
+RU_Volga,Russia,RU-PER,Perm Krai
+RU_UralsSiberia,Russia,RU-KGN,Kurgan
+RU_UralsSiberia,Russia,RU-CHE,Chelyabinsk
+RU_UralsSiberia,Russia,RU-TYU,Tyumen
+RU_UralsSiberia,Russia,RU-SVE,Sverdlovsk
+RU_UralsSiberia,Russia,RU-OMS,Omsk
+RU_UralsSiberia,Russia,RU-NVS,Novosibirsk
+RU_UralsSiberia,Russia,RU-ALT,Altai Republic
+RU_UralsSiberia,Russia,RU-KEM,Kemerovo
+RU_UralsSiberia,Russia,RU-KYA,Krasnoyarsk Krai
+RU_UralsSiberia,Russia,RU-TOM,Tomsk
+RU_UralsSiberia,Russia,RU-KK,Republic of Khakassia
+UA_South,Ukraine,UA-51,Odessa
+UA_South,Ukraine,UA-48,Mykolaiv
+UA_South,Ukraine,UA-65,Kherson
+UA_South,Ukraine,UA-23,Zaporizhzhia
+UA_South,Ukraine,UA-12,Dnipropetrovsk
+UA_South,Ukraine,UA-14,Donetsk
+UA_South,Ukraine,UA-09,Luhansk
+UA_CentralNorth,Ukraine,UA-35,Kirovohrad
+UA_CentralNorth,Ukraine,UA-53,Poltava
+UA_CentralNorth,Ukraine,UA-63,Kharkiv
+UA_CentralNorth,Ukraine,UA-05,Vinnytsia
+UA_CentralNorth,Ukraine,UA-71,Cherkasy
+UA_CentralNorth,Ukraine,UA-32,Kyiv
+UA_CentralNorth,Ukraine,UA-30,Kyiv
+UA_CentralNorth,Ukraine,UA-59,Sumy
+UA_CentralNorth,Ukraine,UA-74,Chernihiv
+UA_CentralNorth,Ukraine,UA-18,Zhytomyr
+UA_CentralNorth,Ukraine,UA-68,Khmelnytskyi
+UA_CentralNorth,Ukraine,UA-61,Ternopil
+UA_CentralNorth,Ukraine,UA-46,Lviv
+UA_CentralNorth,Ukraine,UA-56,Rivne
+UA_CentralNorth,Ukraine,UA-07,Volyn
+UA_CentralNorth,Ukraine,UA-26,Ivano-Frankivsk
+UA_CentralNorth,Ukraine,UA-77,Chernivtsi
+UA_CentralNorth,Ukraine,UA-21,Zakarpattia
+KZ_North,Kazakhstan,KZ-KUS,Kostanay
+KZ_North,Kazakhstan,KZ-SEV,North Kazakhstan
+KZ_North,Kazakhstan,KZ-AKM,Akmola
+KZ_North,Kazakhstan,KZ-PAV,Pavlodar
+KZ_North,Kazakhstan,KZ-AST,Nur-Sultan
+KZ_Other,Kazakhstan,KZ-AKT,Aktobe
+KZ_Other,Kazakhstan,KZ-ZAP,West Kazakhstan
+KZ_Other,Kazakhstan,KZ-KAR,Karaganda
+KZ_Other,Kazakhstan,KZ-VOS,East Kazakhstan
