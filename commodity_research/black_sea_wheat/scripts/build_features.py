@@ -21,11 +21,13 @@ Masks (no CDL equivalent exists for Russia/Ukraine/Kazakhstan):
   QA: MODIS pixel reliability 0 (good) or 1 (marginal) kept; 2 (snow), 3 (cloud) dropped.
 
 Outputs (data/features/):
-  pixel_class.csv            pixel_id, year, evi89, evi121, w89, w121, cls (w121 if known else w89)
+  pixel_class.csv.gz         pixel_id, year, evi89, evi121, w89, w121, cls (w121 if known else w89)
   modis_region.csv           region, year (harvest year), doy, comp_start, comp_end,
                              available_date (= end + 14 d), mask (winter89/winter121/spring),
                              evi_mean, n_valid, n_mask
-  weather_region_daily.csv   region, date, tmax, tmin, prcp, snow_cm (POWER, n_px-weighted)
+  weather_region_daily.csv   region, date, tmax, tmin, prcp, snow_cm (POWER, n_px-weighted means),
+                             hdd (mean over cells of max(Tmax-30,0)), fr (share of cells with
+                             Tmin <= -2 C), wk (share of cells with Tmin <= -18 C and snow < 5 cm)
 Autumn composites (DOY 281, 297 of year Y-1) are attached to harvest year Y.
 
 Usage: python build_features.py --work SCRATCH [--power SCRATCH/raw/power]
@@ -128,8 +130,13 @@ def weather(power_dir):
         for r in g.itertuples():
             rows.append(w.assign(region=r.region, wt=r.n_px)[["region", "date", "wt", "T2M_MAX", "T2M_MIN", "PRECTOTCORR", "SNODP"]])
     w = pd.concat(rows)
+    # cell-level indicators first (extremes are local; a regional mean would smooth them away)
+    w["HDD"] = np.maximum(w.T2M_MAX - 30, 0).where(w.T2M_MAX.notna())
+    w["FR"] = (w.T2M_MIN <= -2).astype(float).where(w.T2M_MIN.notna())
+    w["WK"] = ((w.T2M_MIN <= -18) & (w.SNODP < 5)).astype(float).where(w.T2M_MIN.notna())
     out = []
-    for v, n in [("T2M_MAX", "tmax"), ("T2M_MIN", "tmin"), ("PRECTOTCORR", "prcp"), ("SNODP", "snow_cm")]:
+    for v, n in [("T2M_MAX", "tmax"), ("T2M_MIN", "tmin"), ("PRECTOTCORR", "prcp"), ("SNODP", "snow_cm"),
+                 ("HDD", "hdd"), ("FR", "fr"), ("WK", "wk")]:
         ok = w[v].notna()
         s = (w[v].where(ok, 0) * w.wt).groupby([w.region, w.date]).sum() / (w.wt * ok).groupby([w.region, w.date]).sum()
         out.append(s.rename(n))
@@ -155,7 +162,7 @@ def main():
     cal.to_csv(os.path.join(RES, "mask_calibration.csv"), index=False, float_format="%.3f")
     print(cal.round(3).to_string())
     cls = classify(m, px, cal)
-    cls.to_csv(os.path.join(fdir, "pixel_class.csv"), index=False, float_format="%.4f")
+    cls.to_csv(os.path.join(fdir, "pixel_class.csv.gz"), index=False, float_format="%.3f")
     print(cls.groupby(["region"]).cls.value_counts(normalize=True).unstack().round(2))
     r = region_means(m, px, cls)
     r.to_csv(os.path.join(fdir, "modis_region.csv"), index=False, float_format="%.4f")

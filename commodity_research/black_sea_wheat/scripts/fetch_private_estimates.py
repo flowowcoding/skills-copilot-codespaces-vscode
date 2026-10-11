@@ -77,8 +77,33 @@ FORE = r"forecast|estimat|outlook|expect|harvest|crop|output|production|pegged|s
 BAD = r"export|grain crop|grain harvest|total grain|grains? (?:production|output|forecast)|barley|corn|maize|sunflower|ukrain|kazakh|world|global|stocks|carryover|import|sugar|soy|rapeseed|EU\b|European|Australia|India|China|U\.S\.|Argentin|Canada|Turkey|Egypt"
 
 
+MONTHS = {m: i + 1 for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"])}
+
+
+def dateline(body, posted):
+    """Article date from the dateline ('MOSCOW, June 17 (Reuters)', 'July 7 (Bloomberg)', a leading
+    ISO date); the archive posting date can lag the article by weeks for older items."""
+    head = body[:400]
+    m = re.search(r"\b(20\d\d)-(\d\d)-(\d\d)\b", head)
+    if m:
+        d = pd.Timestamp(int(m.group(1)), int(m.group(2)), int(m.group(3))).date()
+        return (d, "dateline") if d <= posted else (posted, "posted")
+    m = re.search(r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\.?\s+(\d{1,2})\s*\((?:Bloomberg|Reuters|Interfax|Dow Jones|AFP|RIA|TASS|Platts)", head)
+    if m:
+        mo, dd = MONTHS[m.group(1)[:3].lower()], int(m.group(2))
+        y = posted.year if mo <= posted.month else posted.year - 1
+        try:
+            d = pd.Timestamp(y, mo, dd).date()
+        except ValueError:
+            return posted, "posted"
+        if (posted - d).days <= 120:
+            return d, "dateline"
+    return posted, "posted"
+
+
 def extract(row, body):
     out = []
+    pub, dsrc = dateline(body, row.date)
     for s in re.split(r"(?<=[.!?])\s+(?=[A-Z\"'])", body):
         if not re.search(r"wheat", s, re.I) or not re.search(FORE, s, re.I):
             continue
@@ -99,8 +124,10 @@ def extract(row, body):
         if not (20 <= v <= 110):
             continue
         yrs = re.findall(r"\b(20[0-3]\d)\b", s)
-        cy = int(yrs[0]) if yrs else row.date.year
-        out.append(dict(pub_date=row.date, ikar_id=row.id, source_agency=row.agency_src, title=row.title,
+        cy = int(yrs[0]) if yrs else pub.year
+        if not yrs and re.search(r"next year|next season|coming year", s):
+            cy += 1
+        out.append(dict(pub_date=pub, posted_date=row.date, date_source=dsrc, ikar_id=row.id, source_agency=row.agency_src, title=row.title,
                         forecaster=";".join(ag) if ag else "", crop_year=cy, value_mmt=v,
                         bad_keyword=bool(re.search(BAD, s)), sentence=s[:600],
                         url=f"{BASE}/1/en/press/{row.id}/"))
@@ -127,9 +154,10 @@ def main():
             open(fn, "w").write(get(f"{BASE}/1/en/press/{r.id}/"))
             time.sleep(0.3)
         t = text_of(open(fn).read())
-        i = t.find("IKAR in Mass Media #")
-        body = t[i:] if i >= 0 else t
-        j = body.find("Source:")
+        i = t.find(f"#{r.id} IKAR in Mass Media")
+        body = t[i + len(f"#{r.id} IKAR in Mass Media"):] if i >= 0 else t
+        j = body.find(" Source: ")
+        body = body[:j] if j > 0 else body
         rows += extract(r, body)
     c = pd.DataFrame(rows).drop_duplicates(["pub_date", "forecaster", "value_mmt", "sentence"])
     c.to_csv(os.path.join(a.out, "private_estimates_candidates.csv"), index=False)

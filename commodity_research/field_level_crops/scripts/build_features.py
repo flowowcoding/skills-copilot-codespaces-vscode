@@ -200,7 +200,7 @@ def pixel_year(work, y, offs, fd):
         if f.empty:
             continue
         T = f.forecast_date.iloc[0]
-        use = (avail <= T).values & (doy >= D0)
+        use = np.asarray(avail <= T) & (doy >= D0)
         cut_doy = int(min(doy[use].max(), T.dayofyear)) if use.any() else T.dayofyear - 3
         ngrid = cut_doy - D0 + 1
         npx = len(pts)

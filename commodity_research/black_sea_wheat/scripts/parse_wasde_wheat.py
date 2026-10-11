@@ -17,9 +17,10 @@ Release time: 12:00 ET (08:30 ET before 2013-01-11; the time is recorded).
 Usage
     python parse_wasde_wheat.py --csv-dir RAW/csv --txt-dir RAW/txt --out data/benchmark
 Writes OUT/wasde_wheat_vintages.csv:
-    release_date, release_time_et, report, region, market_year, crop_year,
+    release_date, release_time_et, region, market_year, crop_year,
     attribute, value_mmt, proj_flag, src
-(crop_year = first year of the market year = harvest year for the Northern
+(src: "oce:<file>" = OCE CSV, "wasde-mm-dd-yyyy" = ESMIS text report;
+crop_year = first year of the market year = harvest year for the Northern
 Hemisphere countries used here.)
 """
 import argparse
@@ -120,7 +121,9 @@ def main():
     x["release_time_et"] = x.release_date.map(rel_time)
     x["crop_year"] = x.market_year.str[:4].astype(int)
     x = x.sort_values(["release_date", "region", "market_year", "attribute"])
-    x = x[["release_date", "release_time_et", "report", "region", "market_year", "crop_year", "attribute",
+    x["src"] = x.src.str.replace("oce-wasde-report-data-", "oce:").str.replace(".csv", "", regex=False) \
+        .str.replace(".txt", "", regex=False)
+    x = x[["release_date", "release_time_et", "region", "market_year", "crop_year", "attribute",
            "value_mmt", "proj_flag", "src"]]
     os.makedirs(a.out, exist_ok=True)
     x.to_csv(os.path.join(a.out, "wasde_wheat_vintages.csv"), index=False)

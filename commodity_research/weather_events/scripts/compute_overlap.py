@@ -162,11 +162,17 @@ def main():
     bt_all = pd.concat([hd, b26], ignore_index=True)
     bt = {k: g.sort_values("time").reset_index(drop=True) for k, g in bt_all.groupby("storm_id")}
 
-    ad = pd.read_csv(os.path.join(a.scratch, "atcf_filtered.csv.gz"), dtype={"init": str})
-    ad["init_t"] = pd.to_datetime(ad.init, format="%Y%m%d%H")
-    ad = ad[(ad.lat.abs() > 0) & (ad.lon.abs() > 0)]
-    ofcl = ad[ad.tech == "OFCL"]
-    gefs = ad[ad.tech.str.match(r"AP\d\d")]
+    ad = pd.read_csv(os.path.join(a.scratch, "atcf_filtered.csv.gz"), dtype={"init": str},
+                     usecols=["storm_id", "init", "tech", "tau", "lat", "lon", "vmax"])
+    ad = ad[(ad.lat.abs() > 0) & (ad.lon.abs() > 0) & (ad.tau <= 120) & (ad.tech != "AEMN")]
+    ofcl = ad[ad.tech == "OFCL"].copy()
+    ofcl["init_t"] = pd.to_datetime(ofcl.init, format="%Y%m%d%H")
+    gefs = ad[(ad.tech != "OFCL") & (ad.init.str[:4].astype(int) >= 2005) & (ad.tau % 6 == 0)].copy()
+    del ad
+    gefs = gefs.sort_values(["storm_id", "init", "tech", "tau"]).reset_index(drop=True)
+    gkey = (gefs.storm_id + "|" + gefs.init).values
+    brk = np.flatnonzero(np.r_[True, gkey[1:] != gkey[:-1], True])
+    gidx = {gkey[s0]: (s0, s1) for s0, s1 in zip(brk[:-1], brk[1:])}
 
     rad = cone_radii(ofcl, bt)
     rad.round(1).to_csv(os.path.join(a.out, "cone_radii_nm.csv"))
@@ -176,19 +182,29 @@ def main():
         lat0=("lat", "first"), lon0=("lon", "first"), vmax0=("vmax", "first")).reset_index()
     adv["avail_utc"] = adv.init_t + pd.Timedelta(hours=3)
     adv.to_csv(os.path.join(a.out, "advisories.csv.gz"), index=False)
-    gefs_by = {k: g for k, g in gefs[gefs.init_t.dt.year >= 2005].groupby(["storm_id", "init"])}
     rows = []
-    for (sid, init), g in ofcl[ofcl.init_t.dt.year >= 2005].groupby(["storm_id", "init"]):
+    groups = ofcl[ofcl.init_t.dt.year >= 2005].groupby(["storm_id", "init"])
+    for n_adv, ((sid, init), g) in enumerate(groups):
+        if n_adv % 1000 == 0:
+            print("advisory", n_adv, "of", groups.ngroups, flush=True)
         p120 = track_pts(g, 120)
         if p120 is None or p120[0][-1] < 12:
             continue
-        p72 = track_pts(g, 72)
-        t0 = g.init_t.iloc[0]
-        rr = rad.loc[t0.year].to_dict()
-        c72, c120 = build_cone(p72, rr, fwd), build_cone(p120, rr, fwd)
         X, Y = fwd.transform(p120[2], p120[1])
         pts = shapely.points(X, Y)
-        gm = gefs_by.get((sid, init))
+        dist = {name: shapely.distance(pts, geom) / 1000 for name, geom in R.items()}
+        near = {name: d for name, d in dist.items() if d.min() <= 2000}
+        if not near:
+            continue
+        t0 = g.init_t.iloc[0]
+        rr = rad.loc[t0.year].to_dict()
+        # the widest cone radius is < 700 km, so cones only matter when the track gets that close
+        if min(d.min() for d in near.values()) <= 750:
+            c72, c120 = build_cone(track_pts(g, 72), rr, fwd), build_cone(p120, rr, fwd)
+        else:
+            c72 = c120 = None
+        se = gidx.get(f"{sid}|{init}")
+        gm = gefs.iloc[se[0]:se[1]] if se else None
         mem = []
         if gm is not None:
             for _, m in gm.groupby("tech"):
@@ -197,10 +213,8 @@ def main():
                     mx, my = fwd.transform(mp[2], mp[1])
                     mem.append((mp[0], shapely.points(mx, my)))
         x0, y0 = fwd.transform(p120[2][0], p120[1][0])
-        for name, geom in R.items():
-            d = shapely.distance(pts, geom) / 1000
-            if d.min() > 2000:
-                continue
+        for name, d in near.items():
+            geom = R[name]
             k = int(np.argmin(d))
             m72 = p120[0] <= 72
             hit72 = hit120 = 0
@@ -208,12 +222,12 @@ def main():
                 dm = shapely.distance(mpts, geom) / 1000
                 hit72 += bool((dm[mt <= 72] <= 100).any())
                 hit120 += bool((dm <= 100).any())
-            inter72 = c72.intersects(geom)
+            inter72 = c72 is not None and c72.intersects(geom)
             rows.append(dict(
                 storm_id=sid, name=names.get(sid, ""), init=t0, avail_utc=t0 + pd.Timedelta(hours=3), region=name,
                 lat0=p120[1][0], lon0=p120[2][0], vmax0=int(g[g.tau == g.tau.min()].vmax.iloc[0]),
                 dist0_km=round(shapely.distance(Point(x0, y0), geom) / 1000, 1),
-                cone72=bool(inter72), cone120=bool(c120.intersects(geom)),
+                cone72=bool(inter72), cone120=bool(c120 is not None and c120.intersects(geom)),
                 cone72_frac=round(c72.intersection(geom).area / geom.area, 4) if inter72 else 0.0,
                 dmin72_km=round(d[m72].min(), 1), dmin120_km=round(d.min(), 1),
                 tau_near=int(p120[0][k]), vmax_near=int(p120[3][k]), vmax72=int(p120[3][m72].max()),

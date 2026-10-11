@@ -119,6 +119,8 @@ def main():
             hd_.insert(3, Line2D([], [], color=C[3], label=f"NHC published 5-day cone (adv {advno})"))
         ax.legend(handles=hd_, loc="lower left", fontsize=7.5)
         ax.tick_params(labelsize=7, colors=MUTED)
+        ax.set_xlabel("longitude", color=MUTED)
+        ax.set_ylabel("latitude", color=MUTED)
         fig.tight_layout()
         fn = os.path.join(a.out, f"cone_{names.get(sid, sid).lower()}{sid[-4:]}_{region}.png")
         fig.savefig(fn, dpi=130)

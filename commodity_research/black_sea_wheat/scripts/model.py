@@ -21,8 +21,9 @@ share of sample pixels in the winter (or spring) mask that year):
           winter-mask EVI minus a country x composite linear trend fitted on training years
   prcp_w  winter zones, Apr 1 .. min(T-5, Jun 30) precipitation / training mean - 1
   hdd_w   winter zones, May 1 .. min(T-5, Jun 30) sum max(Tmax - 30 C, 0), minus training mean
-  frost_w winter zones, days with Tmin <= -18 C and snow depth < 5 cm (Dec 1 .. Mar 31) plus
-          days with Tmin <= -2 C (Apr 20 .. May 31), up to T-5, minus training mean
+  frost_w winter zones, cell-days with Tmin <= -18 C and snow depth < 5 cm (Dec 1 .. Mar 31) plus
+          cell-days with Tmin <= -2 C (Apr 20 .. May 31), up to T-5 (computed per POWER cell, then
+          averaged), minus training mean
   evi_s   as evi_w for the spring mask, composites DOY 153..233, spring-wheat regions only
           (RU_Volga, RU_UralsSiberia, KZ_North, KZ_Other)
   prcp_s  spring regions, May 1 .. min(T-5, Jul 31) precipitation / training mean - 1
@@ -100,7 +101,7 @@ class Feats:
         r = pd.read_csv(os.path.join(D, "features", "modis_region.csv"), parse_dates=["available_date"])
         self.evi = {(x.region, x.year, x.doy, x.mask): (x.evi_mean, x.available_date.to_datetime64(), x.n_valid)
                     for x in r.itertuples()}
-        cls = pd.read_csv(os.path.join(D, "features", "pixel_class.csv"))
+        cls = pd.read_csv(os.path.join(D, "features", "pixel_class.csv.gz"))
         px = pd.read_csv(os.path.join(D, "reference", "pixels.csv"))
         cls = cls.merge(px[["pixel_id"]], on="pixel_id")
         sh = {}
@@ -113,17 +114,24 @@ class Feats:
         self.cells = cells
         self.regions = {c: list(cells.loc[c].index) for c in COUNTRIES}
         w = pd.read_csv(os.path.join(D, "features", "weather_region_daily.csv"), parse_dates=["date"])
-        w["hdd"] = np.maximum(w.tmax - 30, 0)
-        w["wk"] = ((w.tmin <= -18) & (w.snow_cm < 5)).astype(float)
-        w["fr"] = (w.tmin <= -2).astype(float)
-        self.wx = {reg: g.set_index("date").sort_index() for reg, g in w.groupby("region")}
+        self.wx, self.cum = {}, {}
+        for reg, g in w.groupby("region"):
+            g = g.sort_values("date")
+            self.wx[reg] = g.date.values.astype("datetime64[D]")
+            self.cum[reg] = {c: np.concatenate([[0.0], np.cumsum(g[c].fillna(0).values)]) for c in ["prcp", "hdd", "wk", "fr"]}
         self.cache = {}
 
     def wsum(self, reg, col, a, b):
+        """Sum of a daily weather column over [a, b] (inclusive) via cumulative sums."""
         if b < a:
             return 0.0
-        s = self.wx[reg][col].loc[a:b]
-        return float(s.sum()) if len(s) else np.nan
+        d = self.wx[reg]
+        i = np.searchsorted(d, np.datetime64(pd.Timestamp(a).date()), "left")
+        j = np.searchsorted(d, np.datetime64(pd.Timestamp(b).date()), "right")
+        if j <= i:
+            return np.nan
+        c = self.cum[reg][col]
+        return float(c[j] - c[i])
 
     def region(self, reg, y, t):
         """Raw region features at cutoff t for harvest year y."""

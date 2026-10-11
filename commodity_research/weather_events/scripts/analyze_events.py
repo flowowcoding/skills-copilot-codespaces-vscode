@@ -164,6 +164,7 @@ def build_events(data, P, R):
                 bt_vmax_within100=v.bt_vmax_within100 if v is not None else 0,
                 landfall_utc=v.landfall_utc if v is not None else pd.NaT,
                 landfall_vmax=v.landfall_vmax if v is not None else np.nan,
+                complete=bool(max(iL, iA, i0) + 20 < len(dates)),
                 i0=i0, iE1=iE1, iA=iA, iL=min(iL, len(dates) - 1)))
     ev = pd.DataFrame(rows).sort_values(["market", "trigger_avail_utc"]).reset_index(drop=True)
     return ev
@@ -311,7 +312,7 @@ def season_long(R):
         for y in range(2005, 2027):
             i0 = r.index.searchsorted(pd.Timestamp(y, 8, 15))
             i1 = r.index.searchsorted(pd.Timestamp(y, 10, 31), side="right") - 1
-            if i1 <= i0 or i1 >= len(r):
+            if i1 <= i0 or r.index[-1] < pd.Timestamp(y, 10, 31):
                 continue
             rows.append(dict(market=tk, year=y, sample="design" if y <= DESIGN_END else "holdout",
                              net=span_ret(r, i0, i1) * 100 - cost))
@@ -341,6 +342,29 @@ def overreaction(ev):
     return pd.DataFrame(rows)
 
 
+def car_summary(ev):
+    """Mean abnormal CAR (%) by window, with t-stats, per market x sample x hit/miss."""
+    rows = []
+    wins = ["car_pre", "car_day0", "car_0_L", "car_post20", "car_0_20"]
+    ev = ev.assign(lead_trig_days=(pd.to_datetime(ev.bt_t_closest) - pd.to_datetime(ev.trigger_avail_utc)).dt.total_seconds() / 86400,
+                   lead_c120_days=(pd.to_datetime(ev.bt_t_closest) - pd.to_datetime(ev.first_cone120_utc)).dt.total_seconds() / 86400)
+    for smp in ["design", "holdout", "all"]:
+        for (tk, hit), g in ev.groupby(["market", "hit_pit"]):
+            if smp != "all":
+                g = g[g["sample"] == smp]
+            if g.empty:
+                continue
+            r = dict(market=tk, sample=smp, hit=hit, n=len(g),
+                     lead_trigger_to_closest_d=g.lead_trig_days.median(),
+                     lead_5day_cone_to_closest_d=g.lead_c120_days.median())
+            for w in wins:
+                r[w] = g[w].mean() * 100
+                r[w + "_t"] = ttest_1s(g[w])[0]
+                r[w + "_abs"] = g[w].abs().mean() * 100
+            rows.append(r)
+    return pd.DataFrame(rows)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data", required=True)
@@ -360,12 +384,14 @@ def main():
     ev = add_windows(ev, R, A)
     cols = [c for c in ev.columns if c not in ("i0", "iE1", "iA", "iL")]
     ev[cols].round(5).to_csv(os.path.join(a.out, "events.csv"), index=False)
-    car_paths(ev, A).round(5).to_csv(os.path.join(a.out, "car_paths.csv"), index=False)
-    grid, res = rules(ev, R, ev)
+    car_summary(ev[ev.complete]).round(3).to_csv(os.path.join(a.out, "car_summary.csv"), index=False)
+    car_paths(ev[ev.complete], A).round(5).to_csv(os.path.join(a.out, "car_paths.csv"), index=False)
+    evc = ev[ev.complete]          # events whose +20-day window has not happened yet are excluded
+    grid, res = rules(evc, R, ev)
     grid.round(4).to_csv(os.path.join(a.out, "rule_grid.csv"), index=False)
     res.round(4).to_csv(os.path.join(a.out, "rule_results.csv"), index=False)
     season_long(R).round(3).to_csv(os.path.join(a.out, "seasonal_baseline.csv"), index=False)
-    overreaction(ev).round(4).to_csv(os.path.join(a.out, "overreaction.csv"), index=False)
+    overreaction(ev[ev.complete]).round(4).to_csv(os.path.join(a.out, "overreaction.csv"), index=False)
     print(pd.DataFrame(chk))
     print(ev.groupby(["market", "sample", "hit_pit"]).size())
 

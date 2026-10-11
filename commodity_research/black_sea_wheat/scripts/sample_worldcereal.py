@@ -28,6 +28,9 @@ import requests
 from rasterio.windows import Window
 
 REC = "https://zenodo.org/records/7875105/files/"
+# AEZs read per product (bandwidth): winter cereals where winter wheat is grown (south + north
+# calibration zones); spring cereals in the spring-wheat zones only. 43134/22195 hold <130 pixels.
+READ = {"winter": {6136, 22095, 22096, 22190, 22194}, "spring": {17135, 22194, 22095}}
 PRODUCTS = {"winter": "WorldCereal_2021_tc-wintercereals_wintercereals_classification.zip",
             "spring": "WorldCereal_2021_tc-springcereals_springcereals_classification.zip"}
 
@@ -118,14 +121,22 @@ def main():
     px["aez_id"] = j.aez_id.values
     print(px.groupby("aez_id").size())
     res = px[["pixel_id", "aez_id"]].copy()
+    if os.path.exists(a.out):  # resume
+        old = pd.read_csv(a.out)
+        res = res.merge(old.drop(columns="aez_id"), on="pixel_id", how="left")
     for prod, zname in PRODUCTS.items():
-        res[f"wc_{prod}_frac"] = np.nan
+        if f"wc_{prod}_frac" not in res:
+            res[f"wc_{prod}_frac"] = np.nan
         z = zipfile.ZipFile(HttpFile(REC + zname + "?download=1"))
         members = {int(os.path.basename(i.filename).split("_")[0]): i for i in z.infolist() if i.filename.endswith(".tif")}
         for aid, g in px.groupby("aez_id"):
             aid = int(aid)
+            if aid not in READ[prod]:
+                continue
             if aid not in members:
                 print(prod, aid, "no member")
+                continue
+            if res.loc[g.index, f"wc_{prod}_frac"].notna().any():
                 continue
             tmp = os.path.join(a.tmp, f"{prod}_{aid}.tif")
             if not os.path.exists(tmp):

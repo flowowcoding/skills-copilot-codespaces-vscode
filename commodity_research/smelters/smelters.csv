@@ -1,9 +1,35 @@
-id,name,operator,country,lat,lon,box_half_km,capacity_kt_conc,process_note,coord_source
-altonorte,Altonorte,Glencore,Chile,-23.8242,-70.3161,1.0,,,
-caletones,Caletones (El Teniente),Codelco,Chile,-34.1066,-70.4563,1.0,,,
-potrerillos,Potrerillos (Salvador),Codelco,Chile,-26.4339,-69.4772,1.0,,,
-chuquicamata,Chuquicamata,Codelco,Chile,-22.3165,-68.8817,1.0,,,
-ventanas,Ventanas,Codelco,Chile,-32.7604,-71.4773,1.0,,,
-hvl_paipote,Hernan Videla Lira (Paipote),ENAMI,Chile,-27.4167,-70.2602,1.0,,,
-chagres,Chagres,Anglo American,Chile,-32.8033,-70.9530,1.0,,,
-kansanshi,Kansanshi,First Quantum,Zambia,-12.0776,26.3968,1.0,,,
+id,name,operator,country,lat,lon,box_half_km,approx_capacity_kt_cu,process_note,coord_source
+altonorte,Altonorte,Glencore,Chile,-23.8242,-70.3161,1.0,290,Noranda reactor + Peirce-Smith converters; open slag dumping,S2 hot-pixel centroid 2019 (OSM 'Fundicion Altonorte' 2.5 km N)
+caletones,Caletones (El Teniente),Codelco,Chile,-34.1066,-70.4563,1.0,400,Teniente converters + PS converters,S2 hot-pixel centroid 2019 (OSM 'Fundicion de Caletones')
+potrerillos,Potrerillos (Salvador),Codelco,Chile,-26.4339,-69.4772,1.0,170,Teniente converter + PS converters,S2 hot-pixel centroid 2019 (OSM 'Fundicion Potrerillos')
+chuquicamata,Chuquicamata,Codelco,Chile,-22.3165,-68.8817,1.0,400,flash furnace + Teniente converter + PS converters,S2 hot-pixel centroid 2019
+ventanas,Ventanas,Codelco,Chile,-32.7604,-71.4773,1.0,110,Teniente converter + PS converters; closed 31 May 2023,S2 hot-pixel centroid 2019 (OSM 'Ex Fundicion Ventanas')
+hvl_paipote,Hernan Videla Lira (Paipote),ENAMI,Chile,-27.4167,-70.2602,1.0,90,Teniente converter + PS converters; halted 23 Feb 2024,S2 hot-pixel centroid 2019 (OSM 'Ex Fundicion Hernan Videla Lira')
+chagres,Chagres,Anglo American,Chile,-32.8033,-70.9530,1.0,140,flash furnace + PS converters,S2 hot-pixel centroid 2019 (OSM 'Fundicion Chagres')
+kansanshi,Kansanshi,First Quantum,Zambia,-12.0776,26.3968,1.0,300,Isasmelt + PS converters,S2 hot-pixel centroid 2019 (OSM 'Smelter Access Road')
+mufulira,Mufulira,Mopani (ZCCM/IRH),Zambia,-12.5398,28.2357,1.0,200,Isasmelt + electric furnace + PS converters,S2 hot-pixel centroid 2019 (bush fires nearby)
+nchanga,Nchanga,KCM (Vedanta),Zambia,-12.5300,27.8570,1.0,300,flash furnace (direct-to-blister),S2 hot cluster 2019 read off the chip
+lualaba,Lualaba Copper Smelter,LCS (China Nonferrous),DR Congo,-10.8304,25.6927,1.0,120,new 2023; blister,S2 hot-pixel centroid 2024 (OSM 'LUALABA COPPER SMELTER')
+tsumeb,Tsumeb,Dundee / Sinomine,Namibia,-19.2251,17.7237,1.0,60,Ausmelt + PS converters,S2 hot-pixel centroid 2019
+gresik,PT Smelting Gresik,Mitsubishi / PTFI,Indonesia,-7.1367,112.6371,1.0,300,Mitsubishi continuous process (enclosed),OSM 'Smelting' landuse
+manyar,Freeport Manyar,PT Freeport Indonesia,Indonesia,-7.0817,112.6277,1.0,480,flash smelting + flash converting; fire 14 Oct 2024,S2 hot-pixel centroid 2025 (OSM 'manyar smelter' 0.7 km)
+kennecott,Kennecott Garfield,Rio Tinto,USA,40.7225,-112.2017,1.0,300,flash smelting + flash converting (enclosed),S2 hot-pixel centroid 2019 (OSM 'Kennecott Smelter')
+miami,Miami,Freeport-McMoRan,USA,33.4170,-110.8624,1.0,200,Isasmelt + electric furnace + PS converters,S2 hot-pixel centroid 2019 (OSM 'Freeport McMoran Smelter')
+huelva,Atlantic Copper Huelva,Freeport-McMoRan,Spain,37.2287,-6.9482,1.0,300,flash furnace + PS converters,OSM 'Atlantic Copper' (no hot pixels found)
+hamburg,Aurubis Hamburg,Aurubis,Germany,53.5210,10.0292,1.0,450,flash furnace + PS converters,S2 hot-pixel centroid 2019 (OSM 'Aurubis')
+pirdop,Aurubis Pirdop,Aurubis,Bulgaria,42.7151,24.1721,1.0,340,flash furnace + PS converters,S2 hot-pixel centroid 2019 (OSM 'Aurubis Bulgaria')
+ronnskar,Ronnskar,Boliden,Sweden,64.6636,21.2810,1.0,220,flash + electric furnace + PS converters,S2 hot-pixel centroid 2019
+harjavalta,Harjavalta,Boliden,Finland,61.3173,22.1199,1.0,140,flash furnace (Cu and Ni),S2 hot-pixel centroid 2019
+glogow,Glogow I+II,KGHM,Poland,51.6869,15.9812,1.0,450,shaft furnace + flash furnace,S2 hot-pixel centroid 2019 (OSM 'Huta Miedzi Glogow')
+legnica,Legnica,KGHM,Poland,51.1806,16.1137,1.0,100,shaft furnace / since 2019 flash,S2 hot cluster 2019 read off the chip (OSM 'Huta Miedzi Legnica')
+sterlite,Sterlite Tuticorin,Vedanta,India,8.8210,78.0780,1.2,400,Isasmelt + PS converters; shut Mar-May 2018,S2 true-colour chip 2017 (plant with gypsum ponds)
+saganoseki,Saganoseki,Pan Pacific Copper (JX),Japan,33.2548,131.8804,1.0,450,flash furnace + PS converters,S2 hot-pixel centroid 2019 (OSM PPC Saganoseki)
+pasar,PASAR Isabel,Glencore,Philippines,10.8940,124.4325,1.0,215,flash furnace + PS converters; care and maintenance 2025,S2 hot-pixel centroid 2019 (OSM 'PASAR')
+guixi,Guixi,Jiangxi Copper,China,28.3387,117.2200,1.2,1000,flash smelting + flash converting + PS,S2 hot-pixel centroid 2019 (OSM '贵溪冶炼厂')
+fangchenggang,Guangxi Jinchuan Fangchenggang,Jinchuan Group,China,21.5621,108.4418,1.0,400,flash smelting + converting,S2 hot-pixel centroid 2019 (OSM '广西金川有色金属有限公司')
+jinchuan,Jinchuan Jinchang,Jinchuan Group,China,38.5000,102.1950,1.5,400,flash + Ausmelt (Cu and Ni),S2 hot clusters 2019 (OSM 金川集团 plants); Cu/Ni not separable
+qiqihar,Zijin Copper Qiqihar,Zijin Mining,China,47.1821,123.5752,1.0,150,bottom-blown smelting,OSM '紫金铜业' (village roof false positives nearby)
+mount_isa,Mount Isa,Glencore,Australia,-20.7337,139.4778,1.0,300,Isasmelt + PS converters,S2 hot-pixel centroid 2019 (OSM 'Copper Smelter')
+olympic_dam,Olympic Dam,BHP,Australia,-30.4451,136.8593,1.0,200,direct-to-blister flash furnace,S2 hot-pixel centroid 2019
+sarcheshmeh,Sarcheshmeh,NICICO,Iran,29.9903,55.8531,1.0,200,flash + reverberatory + PS converters,S2 hot-pixel centroid 2019
+balkhash,Balkhash,Kazakhmys,Kazakhstan,46.8281,74.9474,1.5,200,Vanyukov furnace + PS converters,S2 hot-pixel centroid 2019

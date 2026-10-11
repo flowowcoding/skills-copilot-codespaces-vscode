@@ -58,8 +58,10 @@ def load_vintages():
 
 
 def clustered(y, X, g):
+    ok = y.notna() & X.notna().all(axis=1)
+    y, X, g = y[ok], X[ok], g[ok]
     X = sm.add_constant(X)
-    m = sm.OLS(y, X, missing="drop").fit(cov_type="cluster", cov_kwds={"groups": g})
+    m = sm.OLS(y, X).fit(cov_type="cluster", cov_kwds={"groups": g})
     return m
 
 
@@ -78,7 +80,7 @@ def revision_stats(w):
                          first_abs_err_pct=first.err_pct.abs().mean(),
                          sd_rev_pct=g.rev_pct.std(), persistence_slope=m.params["prev_rev_pct"],
                          persistence_t=m.tvalues["prev_rev_pct"], persistence_n=len(d),
-                         share_rev_same_sign_as_prev=(np.sign(d.rev_pct) == np.sign(d.prev_rev_pct))[d.rev_pct != 0].mean()))
+                         share_rev_same_sign_as_prev=(np.sign(d.rev_pct) == np.sign(d.prev_rev_pct))[(d.rev_pct != 0) & (d.prev_rev_pct != 0)].mean()))
     return pd.DataFrame(rows)
 
 

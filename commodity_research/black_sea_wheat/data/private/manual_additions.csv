@@ -1,0 +1,11 @@
+pub_date,forecaster,crop_year,value_mmt,url,note
+2010-07-20,SovEcon,2010,50.0,https://www.themoscowtimes.com/archive/drought-adds-to-regions-declaring-emergency,"kept wheat at 49-51 (midpoint); date approximate (article mid/late July 2010); via web-search summary"
+2010-08-09,SovEcon,2010,43.5,https://www.themoscowtimes.com/2010/08/09/grain-export-bank-may-be-extended-a518,"wheat could fall to 43.5 (Monday Aug 9 2010); via web-search summary"
+2010-08-26,SovEcon,2010,41.5,https://www.themoscowtimes.com/2010/08/26/grain-imports-may-surge-a947,"cut to 41.5 from 43-44; via web-search summary"
+2024-05-10,SovEcon,2024,89.6,https://ikar.ru/1/en/press/3716/,"cut by 3.4 to 89.6 (frosts Apr 30-May 1, drought)"
+2024-05-13,IKAR,2024,86.0,https://www.spglobal.com/energy/en/news-research/latest-news/agriculture/052924-russias-2024-25-wheat-crop-forecast-reduced-on-greater-than-expected-frost-damage,"IKAR cut by 5 to 86 (May 13); via web-search summary"
+2024-05-16,SovEcon,2024,85.7,https://millermagazine.com/blog/sovecon-revises-russias-2024-wheat-crop-forecast-downward-5699,"cut by 7.2 to 85.7 (mid-May; exact day approximate); via web-search summary"
+2024-05-21,IKAR,2024,83.5,https://www.spglobal.com/energy/en/news-research/latest-news/agriculture/052924-russias-2024-25-wheat-crop-forecast-reduced-on-greater-than-expected-frost-damage,"third cut, to 83.5 from 86; via web-search summary"
+2024-05-28,SovEcon,2024,82.1,https://www.spglobal.com/energy/en/news-research/latest-news/agriculture/052924-russias-2024-25-wheat-crop-forecast-reduced-on-greater-than-expected-frost-damage,"cut to 82.1 on frost damage; via web-search summary"
+2018-07-11,IKAR,2018,70.8,https://ikar.ru/1/en/press/2027/,"IKAR cut wheat to 70.8 from 71.5"
+2018-08-28,IKAR,2018,69.6,https://ikar.ru/1/en/press/2076/,"IKAR cut wheat to 69.6 from 70.8"

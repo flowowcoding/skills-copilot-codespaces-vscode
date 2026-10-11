@@ -68,7 +68,7 @@ def main():
         ax.legend(loc="lower right", markerscale=12)
         fig.tight_layout()
         fig.savefig(os.path.join(F, "map_worldcereal.png"), dpi=150)
-    pc = os.path.join(D, "features", "pixel_class.csv")
+    pc = os.path.join(D, "features", "pixel_class.csv.gz")
     if os.path.exists(pc):
         k = pd.read_csv(pc)
         k = px.merge(k[k.year == a.year], on="pixel_id")

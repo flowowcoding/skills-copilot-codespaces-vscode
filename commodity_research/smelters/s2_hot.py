@@ -25,7 +25,9 @@ Sub-commands:
         Hot-pixel frequency over the period on a SWIR false-colour background; prints the
         centroid of hot pixels so the smelter box can be centred on the furnaces.
     python s2_hot.py series NAME LAT LON [--half-km 1.5] [--dates 2017-01-01/2026-10-10] --out CSV
-        One row per Sentinel-2 acquisition (all tiles and orbits covering the box).
+        One row per Sentinel-2 acquisition (all orbits; one tile per datatake), plus
+        <out>_hotpix.npz with every hot pixel (scene row, y, x, B12-B11, B8A) so that pixel
+        masks can be applied afterwards (see index.py).
 
 Reflectance: DN / 10000, minus the 0.1 BOA offset ESA added from processing baseline 04.00
 (25 Jan 2022) onward.
@@ -104,7 +106,11 @@ def scene_stats(it, bb):
     if nv == 0:
         return None
     exc = np.where(hot, r["B12"] - r["B11"], 0).sum()
-    return dict(date=it.datetime.strftime("%Y-%m-%d"), time=it.datetime.strftime("%H:%M"), item=it.id,
+    yy, xx = np.nonzero(hot)
+    pix = dict(shape=hot.shape, y=yy.astype(np.int16), x=xx.astype(np.int16),
+               exc=(r["B12"][hot] - r["B11"][hot]).astype(np.float32),
+               b8=r["B8A"][hot].astype(np.float32))
+    return pix, dict(date=it.datetime.strftime("%Y-%m-%d"), time=it.datetime.strftime("%H:%M"), item=it.id,
                 tile=it.properties.get("s2:mgrs_tile"), orbit=it.properties.get("sat:relative_orbit"),
                 baseline=it.properties.get("s2:processing_baseline"), valid_frac=round(nv / valid.size, 3),
                 cloud_frac=round(cloud.sum() / nv, 3), n_hot=int(hot.sum()), hot_excess=round(float(exc), 3),
@@ -126,11 +132,19 @@ def cmd_series(a):
     print(a.name, len(items), "items,", len(keep), "acquisitions", file=sys.stderr)
     items = keep
     with ThreadPoolExecutor(a.threads) as ex:
-        rows = [r for r in ex.map(lambda it: scene_stats(it, bb), items) if r]
-    import pandas as pd
-    df = pd.DataFrame(rows).sort_values(["date", "item"])
+        res = [r for r in ex.map(lambda it: scene_stats(it, bb), items) if r]
+    import pandas as pd, collections
+    shp = collections.Counter(p["shape"] for p, _ in res).most_common(1)[0][0]
+    res = [(p, r) for p, r in res if p["shape"] == shp]       # same grid for the pixel archive
+    res.sort(key=lambda pr: (pr[1]["date"], pr[1]["item"]))
+    df = pd.DataFrame([r for _, r in res])
     df.insert(0, "smelter", a.name)
     df.to_csv(a.out, index=False)
+    # sparse archive of every hot pixel: scene (row index in the CSV), y, x, B12-B11, B8A
+    cat = lambda k, dt: np.concatenate([p[k] for p, _ in res]).astype(dt) if res else np.zeros(0, dt)
+    sc = np.concatenate([np.full(len(p["y"]), k, np.int32) for k, (p, _) in enumerate(res)]) if res else np.zeros(0, np.int32)
+    np.savez_compressed(a.out.replace(".csv", "_hotpix.npz"), shape=np.array(shp), bbox=np.array(bb), scene=sc,
+                        y=cat("y", np.int16), x=cat("x", np.int16), exc=cat("exc", np.float32), b8=cat("b8", np.float32))
     print(a.name, len(df), "scenes,", (df.n_hot > 0).mean().round(3), "with hot pixels", file=sys.stderr)
 
 
