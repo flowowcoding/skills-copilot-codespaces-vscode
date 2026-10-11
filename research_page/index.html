@@ -1,0 +1,191 @@
+<title>Satellite Supply Signals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~68ch) for prose; a wider band for the scoreboard and figures. Lab-notebook register: verdict first, evidence after. */
+:root {
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --ink: #15191d;
+  --ink-2: #4a535c;
+  --line: #dde1e5;
+  --accent: #1f5f73;
+  --good-bg: #e3f3e6; --good-fg: #1d6a2e;
+  --warn-bg: #fdf1d8; --warn-fg: #7a5200;
+  --bad-bg:  #fbe4e2; --bad-fg:  #9b2620;
+  --fig-bg: #fcfcfb;
+  --f-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11161a; --surface: #182026; --ink: #e8ecef; --ink-2: #a9b3bb; --line: #2b353d;
+    --accent: #7cc3d6;
+    --good-bg: #17331f; --good-fg: #8fd6a0;
+    --warn-bg: #3a2e12; --warn-fg: #f0c968;
+    --bad-bg:  #3d1a18; --bad-fg:  #f2a29b;
+    --fig-bg: #fcfcfb;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11161a; --surface: #182026; --ink: #e8ecef; --ink-2: #a9b3bb; --line: #2b353d;
+  --accent: #7cc3d6;
+  --good-bg: #17331f; --good-fg: #8fd6a0;
+  --warn-bg: #3a2e12; --warn-fg: #f0c968;
+  --bad-bg:  #3d1a18; --bad-fg:  #f2a29b;
+  --fig-bg: #fcfcfb;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 1060px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 72px; display: grid; gap: 56px; }
+.prose { max-width: 68ch; }
+h1, h2 { font-family: var(--f-display); font-weight: 600; text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(2rem, 5vw, 2.9rem); letter-spacing: -0.01em; }
+h2 { font-size: 1.6rem; }
+p { margin: 0; }
+.stack { display: grid; gap: 16px; }
+.eyebrow { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: 1.15rem; color: var(--ink-2); }
+.meta { font-family: var(--f-mono); font-size: 0.8rem; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.answer { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; display: grid; gap: 8px; }
+.answer strong { font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 0.92rem; }
+th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); background: var(--bg); }
+tr:last-child td { border-bottom: none; }
+td.track { font-weight: 600; white-space: nowrap; }
+td.num { font-family: var(--f-mono); font-size: 0.82rem; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.pill { display: inline-block; font-family: var(--f-mono); font-size: 0.72rem; font-weight: 500; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.pill.good { background: var(--good-bg); color: var(--good-fg); }
+.pill.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.pill.bad  { background: var(--bad-bg);  color: var(--bad-fg); }
+ol.lessons { margin: 0; padding-left: 1.3em; display: grid; gap: 12px; }
+ol.lessons li::marker { font-family: var(--f-mono); color: var(--accent); }
+.figs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; }
+figure { margin: 0; display: grid; gap: 10px; min-width: 0; }
+figure.wide { grid-column: 1 / -1; }
+figure img { width: 100%; height: auto; display: block; background: var(--fig-bg); border: 1px solid var(--line); border-radius: 4px; }
+figcaption { font-size: 0.88rem; color: var(--ink-2); }
+figcaption b { color: var(--ink); font-weight: 600; }
+.ft { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ft-card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.ft-card .due { font-family: var(--f-mono); font-size: 0.75rem; color: var(--accent); }
+.ft-card h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+.ft-card p { font-size: 0.9rem; color: var(--ink-2); }
+ul.next { margin: 0; padding-left: 1.2em; display: grid; gap: 10px; }
+footer { border-top: 1px solid var(--line); padding-top: 20px; font-size: 0.85rem; color: var(--ink-2); display: grid; gap: 6px; }
+code { font-family: var(--f-mono); font-size: 0.85em; }
+@media (max-width: 760px) {
+  .figs, .ft { grid-template-columns: 1fr; }
+  .page { padding-block: 32px 56px; gap: 44px; }
+}
+</style>
+
+<main class="page">
+
+  <header class="stack prose">
+    <span class="eyebrow">Research log · Oct 2026</span>
+    <h1>Satellite Supply Signals</h1>
+    <p class="lede">Can free satellite data estimate changes in physical commodity supply before the market prices them in? Ten research tracks, from oil tanks and copper pits to soybean fields, each tested against what officials, companies and analysts already knew at the time.</p>
+    <div class="meta"><span>Sentinel-1 · Sentinel-2 · MODIS · Landsat · Umbra</span><span>Rules fixed before outcomes</span><span>Held-back data for scoring</span></div>
+  </header>
+
+  <section class="answer prose" aria-label="Short answer">
+    <strong>Short answer: not yet.</strong>
+    <p>Free imagery reliably shows whether something is happening: a mine halting, a plant being built, machines working a pit. It does not measure how much is produced, and none of the signals tested beat the official forecasts or the analysts' consensus on held-back data. One weak signal survives: a satellite gap that predicts the next Brazilian state crop revision 1–6 weeks early in drought years.</p>
+  </section>
+
+  <section class="stack">
+    <h2>Scoreboard</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Track</th><th>Question</th><th>Verdict</th><th>Key number</th></tr></thead>
+        <tbody>
+          <tr><td class="track">Cushing oil tanks</td><td>Does knowing the weekly Cushing stock change early make money?</td><td><span class="pill bad">No edge</span></td><td class="num">Trading after the EIA release did as well; mostly 2020</td></tr>
+          <tr><td class="track">Mine halts</td><td>Can free radar and optical imagery see a mine stop?</td><td><span class="pill good">Works</span></td><td class="num">Cobre, Çöpler pit zones: 12/12 months lower</td></tr>
+          <tr><td class="track">Mine tonnage</td><td>Does activity track reported quarterly tonnes (Karlawinda, Greenbushes)?</td><td><span class="pill bad">Fails</span></td><td class="num">Holdout r −0.19 and −0.13</td></tr>
+          <tr><td class="track">Chile copper</td><td>Does pit activity summed over 17 mines track national output?</td><td><span class="pill bad">Fails</span></td><td class="num">Spearman −0.70 (dev)</td></tr>
+          <tr><td class="track">Umbra 33 cm radar</td><td>Did Bingham pit equipment fall after Rio's 2024 wall problems?</td><td><span class="pill bad">Fails</span></td><td class="num">36.9 vs 34.4 per image, p ≈ 0.8</td></tr>
+          <tr><td class="track">Pit-wall warning</td><td>Does free InSAR warn before geotechnical disclosures?</td><td><span class="pill bad">Fails</span></td><td class="num">0 of 20 tests fired; data 4–14 months late</td></tr>
+          <tr><td class="track">Thacker Pass</td><td>Does construction seen from space lead disclosures?</td><td><span class="pill warn">Tracks, no lead</span></td><td class="num">≈1 month ahead on already-guided milestones only</td></tr>
+          <tr><td class="track">Event study</td><td>What is early warning of a mine disruption worth?</td><td><span class="pill warn">Valuable, unreachable</span></td><td class="num">≈12% per event; disclosed within 0–1 days</td></tr>
+          <tr><td class="track">Brazil soy</td><td>Does a satellite yield estimate beat Conab and IBGE?</td><td><span class="pill warn">State-level only</span></td><td class="num">Brazil holdout worse than trend; state revisions led 1–6 wks</td></tr>
+          <tr><td class="track">US corn and soy</td><td>Does satellite minus consensus predict the USDA surprise?</td><td><span class="pill bad">Fails</span></td><td class="num">Hit rate 44% vs 56% base; −3.3 ¢/bu</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="stack prose">
+    <h2>What we learned</h2>
+    <ol class="lessons">
+      <li><b>Imagery answers "is it happening?", not "how much?"</b> This held at 10 m and at 33 cm, for mines, construction and equipment.</li>
+      <li><b>For metals, earthmoving is the wrong supply measure.</b> Copper output follows ore grade and plant throughput; even Escondida's own reported tonnes mined correlate +0.01 with its copper output.</li>
+      <li><b>Company events can't be front-run with free data.</b> An early warning is worth about 12% per event for single-mine companies, but listed miners disclose within a day, and free radar archives arrive weeks to months later.</li>
+      <li><b>Crops fit imagery better, but the benchmark is strong.</b> US yield surprises against analysts move prices (about −0.9% per 1% surprise for corn), yet neither public crop ratings nor the satellite model predicted them out of sample. Brazilian revisions barely move CBOT at all.</li>
+    </ol>
+  </section>
+
+  <section class="stack">
+    <h2>Evidence</h2>
+    <div class="figs">
+      <figure class="wide">
+        <img src="figures/mines_activity.png" alt="Radar mine activity index for Cobre Panamá, Eagle and Çöpler from 2022 to 2026, with halt dates marked; Cobre drops sharply, the other two stay noisy because of cleanup earthworks." loading="lazy">
+        <figcaption><b>Halts are visible.</b> Radar activity index at three halted mines. Cobre Panamá drops within one pass; Eagle and Çöpler stay busy because cleanup earthworks continued.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/karlawinda_suspension.png" alt="North-pit activity at Karlawinda falls to near zero during the October 2022 suspension." loading="lazy">
+        <figcaption><b>Even a 3-week stop shows.</b> Karlawinda's pit index sits near zero during the Oct 2022 suspension, but the company announced it the same day.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/chile_aggregate_yoy.png" alt="Year-on-year aggregate pit activity and copper output for 17 Chilean mines; the two lines move in opposite directions for most of 2020–2024." loading="lazy">
+        <figcaption><b>Tonnage doesn't follow.</b> Summed pit activity at 17 Chilean mines vs their copper output, year on year. The lines often move in opposite directions.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/car_disclosure.png" alt="Mean cumulative abnormal return around disclosure of mine disruptions: flat before, a drop of about 15% on disclosure for single-mine companies." loading="lazy">
+        <figcaption><b>Markets move on the announcement, not before.</b> 68 mine disruptions, 2015–2026. Single-mine companies drop about 14% on disclosure day.</figcaption>
+      </figure>
+      <figure>
+        <img src="figures/corn_reaction.png" alt="Scatter of report-day corn returns against USDA yield surprise versus analyst consensus, with downward-sloping fitted lines for August and September." loading="lazy">
+        <figcaption><b>Where the money is in crops.</b> US corn report-day return vs USDA's yield surprise against the analyst consensus. The satellite model could not predict that surprise.</figcaption>
+      </figure>
+      <figure class="wide">
+        <img src="figures/soy_shock_paths.png" alt="Small multiples of Brazil soybean yield estimates through eight shock seasons, satellite versus official vintages; the satellite turns down early in 2011/12 and 2021/22 but runs high in the holdout seasons." loading="lazy">
+        <figcaption><b>Brazil soy, shock seasons.</b> Satellite estimate (blue) vs official vintages (orange). The satellite turned down early in some droughts, but ran high in the held-back seasons because of a sensor-timing drift.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="stack">
+    <h2>Forward tests</h2>
+    <p class="prose">Three signals were found after looking at the data. They are frozen with code fingerprints and scored only on data that arrives later.</p>
+    <div class="ft">
+      <div class="ft-card"><span class="due">Due late Oct 2026</span><h3>Greenbushes pit-minus-plant</h3><p>Predicts 2.4 Mbcm mined (1.4–3.4) for the Sep-2026 quarter, down from 3.44. Pass if IGO's figure falls in range and below June.</p></div>
+      <div class="ft-card"><span class="due">Due Jan 2027</span><h3>US corn and soy, 2026 crop</h3><p>Satellite Sep forecast 185.7 corn / 55.1 soy vs USDA 178.5 / 52.8. Scored on which is closer to USDA's January final.</p></div>
+      <div class="ft-card"><span class="due">From 2026/27, judged after 3 seasons</span><h3>Brazil soy v2 (no LST)</h3><p>Must beat trend and come within 1 point of Conab on Feb 1 and Mar 1, and keep a positive state-level revision lead.</p></div>
+    </div>
+  </section>
+
+  <section class="stack prose">
+    <h2>Where an edge could still be</h2>
+    <ul class="next">
+      <li><b>Markets with weaker official data</b> than the US or Brazil, such as Black Sea wheat, Indian pulses or West African cocoa, where the benchmark is easier to beat.</li>
+      <li><b>Better crop models</b> at field level with Sentinel-2 or HLS and crop-specific phenology, the gap between this work and commercial providers.</li>
+      <li><b>Metals through processing</b>, not pits: smelter heat, concentrate stockpiles and shipping, measured against the specialist services that already sell this.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Code, data and full write-ups: <a href="https://github.com/flowowcoding/skills-copilot-codespaces-vscode/tree/claude/satellite-oil-tank-trading-vgvrk2">skills-copilot-codespaces-vscode, branch claude/satellite-oil-tank-trading-vgvrk2</a>, starting from <code>RESEARCH.md</code>.</span>
+    <span>Research only, not investment advice. Data: ESA Copernicus, NASA, USGS, Umbra Open Data, ICMM, Maus et al. (CC BY-SA), Cochilco, Conab, IBGE, USDA, company filings.</span>
+  </footer>
+
+</main>
