@@ -2,13 +2,15 @@
 
 Reads signal/us_sat_signal_<tag>.csv (development years only unless the holdout has been unsealed by
 running model.py --evaluate-holdout), data/nass_yield.csv (USDA Aug/Sep state + US forecasts and finals) and,
-if present, the benchmark agent's analyst consensus (../benchmark/data/pit/ or ../benchmark/data/consensus/).
+the benchmark agent's analyst consensus and report-day returns (data/consensus_events.csv).
 
 Outputs (results/):
   accuracy_<tag>.csv      mean |error| (%) vs final by crop, report, period, level: satellite / trend / USDA /
                           consensus (US only), and RMSE
   gaps_us_<tag>.csv       per year x crop x report: satellite, trend, USDA, consensus, final, gaps (log %),
                           later USDA move, whether the final moved toward the satellite
+  trading_<tag>.csv       sign(satellite - consensus) vs sign(USDA - consensus) hit rate and report-day P&L of
+                          shorting when satellite > consensus, net of 0.6 c/bu (trading_rows_<tag>.csv per event)
   gap_test_<tag>.csv      (final - USDA) regressed on (satellite - USDA), states pooled and US, by period;
                           slope, year-clustered t, sign hit rate when |gap| > 3 %
 figures: fig_us_paths_<tag>.png, fig_accuracy_<tag>.png
@@ -22,21 +24,32 @@ sys.path.insert(0, HERE)
 
 
 def consensus(root):
-    """national yield consensus (avg of the trade poll) per year, crop, report from the benchmark agent"""
-    cands = sorted(glob.glob(os.path.join(root, "..", "benchmark", "data", "pit", "*consensus*.csv"))) + \
-        sorted(glob.glob(os.path.join(root, "..", "benchmark", "data", "consensus", "*.csv")))
-    for fn in cands:
-        c = pd.read_csv(fn)
-        cols = set(c.columns)
-        if {"report_date", "crop", "variable", "avg"} <= cols:
-            c = c[c.variable == "yield"].copy()
-            c["report_date"] = pd.to_datetime(c.report_date)
-            c = c[c.report_date.dt.month.isin([8, 9])]
-            c["year"] = c.report_date.dt.year; c["report"] = np.where(c.report_date.dt.month == 8, "aug", "sep")
-            c["crop"] = c.crop.replace({"soybeans": "soy"})
-            c = c.drop_duplicates(["year", "crop", "report"], keep="last")
-            return c[["year", "crop", "report", "avg"]].rename(columns={"avg": "consensus"}), os.path.relpath(fn, root)
-    return pd.DataFrame(columns=["year", "crop", "report", "consensus"]), None
+    """national trade-consensus yield and report-day returns per (year, crop, report), from the benchmark
+    agent's events table (data/consensus_events.csv, built by prep_benchmark.py)"""
+    fn = f"{root}/data/consensus_events.csv"
+    c = pd.read_csv(fn)
+    c = c.rename(columns={"cons_yield_eff": "consensus"})
+    return c[["year", "crop", "report", "consensus", "cons_yield_implied", "r_main", "r_main_cbu", "src_main", "price_cbu"]], "data/consensus_events.csv (benchmark results/events.csv)"
+
+
+def trading(d, cost=0.6):
+    """report-day trade on sign(satellite - consensus): short new-crop futures (ETF proxy) when the satellite
+    is above the consensus (expecting USDA above consensus), long when below; enter at the prior close, exit
+    at the report-day close, minus `cost` cents/bu round trip. Compared with knowing sign(USDA - consensus)."""
+    rows = []
+    t = d[(d.region == "US")].dropna(subset=["consensus", "r_main_cbu", "usda"]).copy()
+    t["sig"] = np.sign(t.predicted_yield - t.consensus); t["truth"] = np.sign(t.usda - t.consensus)
+    t["pnl_cbu"] = -t.sig * t.r_main_cbu - cost; t["pnl_pct"] = -t.sig * t.r_main - 100 * cost / t.price_cbu
+    t["oracle_cbu"] = -t.truth * t.r_main_cbu - cost
+    t["always_short_cbu"] = -t.r_main_cbu - cost  # 'USDA above consensus' constant rule
+    for keys, g in list(t.groupby(["period", "crop"])) + list(t.groupby(["period"])):
+        keys = keys if isinstance(keys, tuple) else (keys,)
+        per = keys[0]; crop = keys[1] if len(keys) > 1 else "both"
+        n = len(g)
+        rows.append(dict(period=per, crop=crop, n=n, hit_sat_vs_usda_surprise=(g.sig == g.truth).mean(), base_rate_usda_above_cons=(g.truth > 0).mean(),
+                         net_cbu_mean=g.pnl_cbu.mean(), net_cbu_t=g.pnl_cbu.mean() / (g.pnl_cbu.std(ddof=1) / np.sqrt(n)) if n > 2 else np.nan,
+                         net_pct_mean=g.pnl_pct.mean(), oracle_sign_cbu=g.oracle_cbu.mean(), always_short_cbu=g.always_short_cbu.mean()))
+    return pd.DataFrame(rows), t
 
 
 def cluster_ols(x, y, g):
@@ -63,6 +76,7 @@ def main():
     nxt = nxt.rename(columns={"yield_bu_ac": "usda_next"})[["crop", "year", "region", "report", "usda_next"]]
     d = s.merge(usda, on=["crop", "year", "region", "report"], how="left").merge(nxt, on=["crop", "year", "region", "report"], how="left")
     cons, csrc = consensus(root)
+    d = d.drop(columns=[c for c in ["consensus_yield"] if c in d.columns])
     d = d.merge(cons.assign(region="US"), on=["year", "crop", "report", "region"], how="left")
     d = d[d.year <= 2025]  # finals exist through 2025
     d["period"] = np.where(d.year >= a.holdout_from, "holdout", "dev")
@@ -101,7 +115,8 @@ def main():
         if len(g) < 4:
             continue
         b, t = cluster_ols(g.gap_sat_usda.values, g.final_vs_usda.values, g.year.values)
-        b2, t2 = cluster_ols(g.gap_sat_usda.values, g.next_vs_usda.values, g.year.values) if g.next_vs_usda.notna().all() else (np.nan, np.nan)
+        gn = g.dropna(subset=["next_vs_usda"])  # Oct-2013 and Oct-2025 reports were cancelled
+        b2, t2 = cluster_ols(gn.gap_sat_usda.values, gn.next_vs_usda.values, gn.year.values) if len(gn) >= 4 else (np.nan, np.nan)
         big = g[g.gap_sat_usda.abs() > 3]
         gt.append(dict(period=per, level=lev, report=rep, n=len(g), n_years=g.year.nunique(), slope_final=b, t_final=t, slope_next_report=b2, t_next=t2,
                        n_big=len(big), hit_big=(np.sign(big.gap_sat_usda) == np.sign(big.final_vs_usda)).mean() if len(big) else np.nan,
@@ -111,6 +126,11 @@ def main():
     print(gt.to_string())
     if csrc:
         print("consensus from", csrc)
+    tr, trows = trading(d)
+    tr.to_csv(f"{root}/results/trading_{a.tag}.csv", index=False, float_format="%.3f")
+    trows[["year", "crop", "report", "period", "predicted_yield", "consensus", "usda", "sig", "truth", "r_main", "r_main_cbu", "src_main", "pnl_cbu"]] \
+        .sort_values(["crop", "report", "year"]).to_csv(f"{root}/results/trading_rows_{a.tag}.csv", index=False, float_format="%.3f")
+    print(tr.to_string())
     # figures
     from plotstyle import setup, C, TEXT
     plt = setup()

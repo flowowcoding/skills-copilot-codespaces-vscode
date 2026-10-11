@@ -14,12 +14,14 @@ Method (decided before any holdout evaluation):
   * per pixel the composite is the clear observation with the highest NDVI (MODIS-like max-value
     compositing); its NDVI and EVI = 2.5 (nir - red) / (nir + 6 red - 7.5 blue + 1) are kept
   * state value = mean over the year's mask pixels (same masks as MODIS) inside the sampled tiles
-  * calibration to the MODIS state series: per crop, pooled OLS over states and slots,
-    MODIS_evi = a + b HLS_evi (same for NDVI), fitted on all years < Y where both exist
-    (point-in-time), then applied in year Y to composites MODIS lacks
+  * calibration to the MODIS state series: per crop, OLS over states and slots with state intercepts,
+    MODIS_evi = a_state + b HLS_evi (same for NDVI), fitted on all years < Y where both exist
+    (point-in-time), then applied in year Y: to composites MODIS lacks (fills), and to every composite
+    (hls_cal_state.csv, used by the drift guard in model.py)
 Outputs: <work>/hls/<year>_<doy>_<tile>.npz (pixel_id, ndvi, evi, nobs)
          features/hls_state.csv (raw HLS state values, all slots/years)
          features/hls_fill_state.csv (calibrated fills for missing MODIS composites; source = HLS-cal)
+         features/hls_cal_state.csv (calibrated HLS for every composite, with the MODIS value alongside)
          features/hls_calibration.csv
 Usage: python extract_hls.py --work <scratch>/us_sat [--per-state 4] [--threads 16]
        python extract_hls.py --work <scratch>/us_sat --calibrate   (after build_features.py)
@@ -127,29 +129,36 @@ def calibrate(a):
     m = pd.read_csv(f"{a.out}/modis_state.csv")
     m = m[m.source == "MYD"]
     j = h.merge(m[["year", "doy", "crop", "state", "evi", "ndvi", "valid_frac"]], on=["year", "doy", "crop", "state"], how="left")
-    fills, cal = [], []
+    fills, cal, allc = [], [], []
     for Y in YEARS:
         for crop in ["corn", "soy"]:
             tr = j[(j.year < Y) & (j.crop == crop) & j.evi.notna() & j.hls_evi.notna() & (j.hls_valid_frac >= 0.3) & (j.valid_frac >= 0.3)]
-            miss = j[(j.year == Y) & (j.crop == crop) & j.evi.isna() & j.hls_evi.notna()]
-            if len(miss) == 0:
+            cur = j[(j.year == Y) & (j.crop == crop) & j.hls_evi.notna()]
+            if len(cur) == 0:
                 continue
-            if len(tr) < 20:
+            if len(tr) < 20 or tr.year.nunique() < 2:
                 print("not enough overlap for", Y, crop); continue
-            c = {}
+            states = sorted(tr.state.unique())
             for v in ["evi", "ndvi"]:
-                b, a0 = np.polyfit(tr[f"hls_{v}"], tr[v], 1)
-                res = tr[v] - (a0 + b * tr[f"hls_{v}"])
-                c[v] = (a0, b); cal.append(dict(year=Y, crop=crop, var=v, a=a0, b=b, n=len(tr), r2=1 - res.var() / tr[v].var(), rmse=res.std()))
-            for r in miss.itertuples():
+                # MODIS = a_state + b * HLS  (state intercepts absorb the tile sub-sample's offset)
+                X = np.column_stack([tr[f"hls_{v}"].values] + [(tr.state == s_).values.astype(float) for s_ in states])
+                coef = np.linalg.lstsq(X, tr[v].values, rcond=None)[0]
+                res = tr[v].values - X @ coef
+                cal.append(dict(year=Y, crop=crop, var=v, b=coef[0], **{f"a_{s_}": c_ for s_, c_ in zip(states, coef[1:])}, n=len(tr),
+                                r2=1 - res.var() / tr[v].var(), rmse=res.std()))
+                aa = dict(zip(states, coef[1:]))
+                cur = cur.assign(**{f"cal_{v}": [aa.get(r.state, np.nan) + coef[0] * getattr(r, f"hls_{v}") for r in cur.itertuples()]})
+            for r in cur.itertuples():
                 s, e = window(Y, r.doy)
-                fills.append(dict(year=Y, doy=r.doy, crop=crop, state=r.state, ndvi=c["ndvi"][0] + c["ndvi"][1] * r.hls_ndvi,
-                                  evi=c["evi"][0] + c["evi"][1] * r.hls_evi, n_mask=r.n_mask, valid_frac=r.hls_valid_frac,
-                                  start=f"{s:%Y-%m-%d}", end=f"{e:%Y-%m-%d}", source="HLS-cal",
-                                  available_date=f"{e + pd.Timedelta(days=14):%Y-%m-%d}"))
+                row = dict(year=Y, doy=r.doy, crop=crop, state=r.state, ndvi=r.cal_ndvi, evi=r.cal_evi, n_mask=r.n_mask, valid_frac=r.hls_valid_frac,
+                           start=f"{s:%Y-%m-%d}", end=f"{e:%Y-%m-%d}", source="HLS-cal", available_date=f"{e + pd.Timedelta(days=14):%Y-%m-%d}")
+                allc.append(dict(row, modis_evi=r.evi))
+                if not np.isfinite(r.evi):
+                    fills.append(row)
     pd.DataFrame(cal).to_csv(f"{a.out}/hls_calibration.csv", index=False, float_format="%.4f")
     pd.DataFrame(fills).to_csv(f"{a.out}/hls_fill_state.csv", index=False, float_format="%.4f")
-    print(pd.DataFrame(cal).to_string()); print(len(fills), "fills")
+    pd.DataFrame(allc).to_csv(f"{a.out}/hls_cal_state.csv", index=False, float_format="%.4f")
+    print(pd.DataFrame(cal)[["year", "crop", "var", "b", "n", "r2", "rmse"]].to_string()); print(len(fills), "fills")
 
 
 def main():

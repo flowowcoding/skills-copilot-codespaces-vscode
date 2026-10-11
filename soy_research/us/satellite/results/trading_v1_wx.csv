@@ -1,0 +1,7 @@
+period,crop,n,hit_sat_vs_usda_surprise,base_rate_usda_above_cons,net_cbu_mean,net_cbu_t,net_pct_mean,oracle_sign_cbu,always_short_cbu
+dev,corn,18,0.722,0.833,0.017,0.007,0.092,3.793,1.158
+dev,soy,18,0.722,0.833,7.008,1.252,0.625,4.680,1.247
+holdout,corn,8,0.125,0.625,-0.865,-0.309,-0.040,0.391,-1.495
+holdout,soy,8,0.625,0.500,-4.743,-0.502,-0.328,2.903,-7.628
+dev,both,36,0.722,0.833,3.512,1.155,0.358,4.237,1.203
+holdout,both,16,0.375,0.562,-2.804,-0.585,-0.184,1.647,-4.561

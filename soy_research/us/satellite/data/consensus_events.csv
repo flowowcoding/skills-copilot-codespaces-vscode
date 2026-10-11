@@ -1,0 +1,89 @@
+year,crop,report,release_date,usda_yield,cons_yield,cons_yield_eff,cons_yield_implied,cons_source,surp_pct,r_main,r_main_cbu,src_main,price_cbu
+2005,corn,aug,2005-08-12,139.2,,138.189,True,farmdoc webinar deck (bar chart),0.7316,-3.2753,-7.3694,cont,225.0
+2005,corn,sep,2005-09-13,143.2,,,False,,,,,,198.5
+2006,corn,aug,2006-08-11,152.2,,150.1677,True,farmdoc webinar deck (bar chart),1.3534,-6.0428,-14.4272,cont,238.75
+2006,corn,sep,2006-09-12,154.7,,,False,,,-2.3218,-5.3111,cont,228.75
+2007,corn,aug,2007-08-10,152.8,,152.1766,True,farmdoc webinar deck (bar chart),0.4097,0.2255,0.7492,cont,332.25
+2007,corn,sep,2007-09-12,155.8,,,False,,,,,,324.5
+2008,corn,aug,2008-08-12,155.0,,151.165,True,farmdoc webinar deck (bar chart),2.5369,2.3355,11.6133,cont,497.25
+2008,corn,sep,2008-09-12,152.3,,,False,,,,,,522.25
+2009,corn,aug,2009-08-12,159.5,,155.8862,True,farmdoc webinar deck (bar chart),2.3182,1.2933,4.2226,cont,326.5
+2009,corn,sep,2009-09-11,161.9,,,False,,,,,,309.5
+2010,corn,aug,2010-08-12,165.0,,163.968,True,farmdoc webinar deck (bar chart),0.6294,3.0011,11.8694,etf,395.5
+2010,corn,sep,2010-09-10,162.5,,,False,,,1.0901,4.9736,etf,456.25
+2011,corn,aug,2011-08-11,153.0,,155.0349,True,farmdoc webinar deck (bar chart),-1.3125,3.8595,26.1674,etf,678.0
+2011,corn,sep,2011-09-12,148.1,,,False,,,0.9407,6.8295,etf,726.0
+2012,corn,aug,2012-08-10,123.4,,125.5824,True,world-grain/meatpoultry,-1.7378,-1.123,-9.1889,etf,818.25
+2012,corn,sep,2012-09-12,122.8,,119.0806,True,world-grain/meatpoultry,3.1234,-0.7225,-5.6518,etf,782.25
+2013,corn,aug,2013-08-12,154.4,157.7,157.7,False,WILL Agri-Newsline,-2.0926,2.66,12.3889,etf,465.75
+2013,corn,sep,2013-09-12,155.3,153.69,153.69,False,WILL Agri-Newsline,1.0476,-1.4648,-7.0274,etf,479.75
+2014,corn,aug,2014-08-12,167.4,170.2,170.2,False,WILL Agri-Newsline,-1.6451,0.2695,0.9614,etf,356.75
+2014,corn,sep,2014-09-11,171.7,170.74,170.74,False,WILL Agri-Newsline,0.5623,-1.1917,-4.0369,etf,338.75
+2015,corn,aug,2015-08-12,168.8,164.4,164.4,False,Food Business News,2.6764,-3.9101,-14.7215,etf,376.5
+2015,corn,sep,2015-09-11,167.5,166.6,166.6,False,World-Grain,0.5402,3.0227,10.9346,etf,361.75
+2016,corn,aug,2016-08-12,175.1,170.6,170.6,False,Iowa Farm Bureau,2.6377,0.429,1.3771,etf,321.0
+2016,corn,sep,2016-09-12,174.4,172.9,172.9,False,World-Grain,0.8676,-0.0527,-0.1739,etf,330.0
+2017,corn,aug,2017-08-10,169.5,166.2,166.2,False,Producer.com (Reuters),1.9856,-2.7989,-10.4189,etf,372.25
+2017,corn,sep,2017-09-12,169.9,168.2,168.2,False,Grainews (Reuters),1.0107,-1.5398,-5.32,etf,345.5
+2018,corn,aug,2018-08-10,178.4,176.2,176.2,False,farmdoc webinar deck,1.2486,-2.5851,-9.5455,etf,369.25
+2018,corn,sep,2018-09-12,181.3,177.8,177.8,False,World-Grain,1.9685,-2.8734,-10.2078,etf,355.25
+2019,corn,aug,2019-08-12,169.5,164.9,164.9,False,farmdoc webinar deck,2.7896,-5.6721,-23.2698,etf,410.25
+2019,corn,sep,2019-09-12,168.2,166.7,166.7,False,DTN,0.8998,1.776,6.1849,etf,348.25
+2020,corn,aug,2020-08-12,181.8,180.4,180.4,False,farmdoc webinar / Farm Progress,0.7761,0.4275,1.3317,etf,311.5
+2020,corn,sep,2020-09-11,178.5,178.3,178.3,False,ADMIS recap,0.1122,1.1615,4.1495,etf,357.25
+2021,corn,aug,2021-08-12,174.6,177.1,177.1,False,DTN,-1.4116,1.863,10.3629,etf,556.25
+2021,corn,sep,2021-09-10,176.3,175.8,175.8,False,ADMIS,0.2844,1.0844,5.3786,etf,496.0
+2022,corn,aug,2022-08-12,175.4,175.9,175.9,False,Farm Progress,-0.2843,1.605,10.0995,etf,629.25
+2022,corn,sep,2022-09-12,172.5,172.5,172.5,False,Pro Farmer,0.0,1.2395,8.6579,etf,698.5
+2023,corn,aug,2023-08-11,175.1,175.5,175.5,False,ADMIS / farmdoc,-0.2279,-1.4254,-6.8882,etf,483.25
+2023,corn,sep,2023-09-12,173.8,173.5,173.5,False,World-Grain,0.1729,-1.5343,-7.2304,etf,471.25
+2024,corn,aug,2024-08-12,183.1,182.2,182.2,False,BNN Bloomberg,0.494,1.1929,4.4943,etf,376.75
+2024,corn,sep,2024-09-12,183.6,182.7,182.7,False,Farmtario / DTN,0.4926,0.2789,1.0612,etf,380.5
+2025,corn,aug,2025-08-12,188.8,184.411,184.411,False,TradingView (Reuters),2.38,-2.5408,-9.7821,etf,385.0
+2025,corn,sep,2025-09-12,186.7,186.0,186.0,False,AgroLatam,0.3763,1.6902,6.7439,etf,399.0
+2026,corn,aug,2026-08-12,180.7,182.4,182.4,False,AgOptimus audit / AgWeb,-0.932,3.5229,15.3863,etf,436.75
+2026,corn,sep,2026-09-11,178.5,178.1,178.1,False,Pro Farmer,0.2246,-0.4508,-2.3171,etf,514.0
+2005,soy,aug,2005-08-12,38.7,,38.8886,True,farmdoc webinar deck (bar chart),-0.4849,,,,641.0
+2005,soy,sep,2005-09-13,39.6,,,False,,,,,,575.0
+2006,soy,aug,2006-08-11,39.6,,41.1934,True,farmdoc webinar deck (bar chart),-3.8681,,,,557.0
+2006,soy,sep,2006-09-12,41.8,,,False,,,-0.8969,-4.7715,cont,532.0
+2007,soy,aug,2007-08-10,41.5,,42.305,True,farmdoc webinar deck (bar chart),-1.9029,,,,858.0
+2007,soy,sep,2007-09-12,41.4,,,False,,,,,,905.0
+2008,soy,aug,2008-08-12,40.5,,40.9127,True,farmdoc webinar deck (bar chart),-1.0087,,,,1215.0
+2008,soy,sep,2008-09-12,40.0,,,False,,,,,,1216.0
+2009,soy,aug,2009-08-12,41.7,,41.8562,True,farmdoc webinar deck (bar chart),-0.3731,,,,1216.5
+2009,soy,sep,2009-09-11,42.3,,,False,,,,,,973.5
+2010,soy,aug,2010-08-12,44.0,,43.1663,True,farmdoc webinar deck (bar chart),1.9313,,,,1044.5
+2010,soy,sep,2010-09-10,44.7,,,False,,,,,,1037.75
+2011,soy,aug,2011-08-11,41.4,,42.9931,True,farmdoc webinar deck (bar chart),-3.7056,,,,1300.75
+2011,soy,sep,2011-09-12,41.8,,,False,,,,,,1416.5
+2012,soy,aug,2012-08-10,36.1,,37.3283,True,world-grain/meatpoultry,-3.2906,1.1544,19.5613,etf,1694.5
+2012,soy,sep,2012-09-12,35.3,,35.3453,True,world-grain/meatpoultry,-0.1283,2.7096,45.9684,etf,1696.5
+2013,soy,aug,2013-08-12,42.6,43.6,43.6,False,WILL Agri-Newsline,-2.2936,3.4532,46.2988,etf,1340.75
+2013,soy,sep,2013-09-12,41.2,41.172,41.172,False,WILL Agri-Newsline,0.068,2.1506,30.2213,etf,1405.25
+2014,soy,aug,2014-08-12,45.4,45.5,45.5,False,WILL Agri-Newsline,-0.2198,-1.1249,-14.7896,etf,1314.75
+2014,soy,sep,2014-09-11,46.6,46.29,46.29,False,WILL Agri-Newsline,0.6697,-1.4054,-15.0518,etf,1071.0
+2015,soy,aug,2015-08-12,46.9,,44.7935,True,farmdoc webinar deck (bar chart),4.7028,-5.4096,-54.8533,etf,1014.0
+2015,soy,sep,2015-09-11,47.1,46.4,46.4,False,agcanada (Reuters),1.5086,0.1137,1.0057,etf,884.5
+2016,soy,aug,2016-08-12,48.9,47.5,47.5,False,Iowa Farm Bureau,2.9474,0.0,0.0,etf,1022.25
+2016,soy,sep,2016-09-12,50.6,49.4,49.4,False,World-Grain,2.4291,-1.0147,-10.1191,etf,997.25
+2017,soy,aug,2017-08-10,49.4,47.5,47.5,False,Producer.com (Reuters),4.0,-3.1434,-30.2709,etf,963.0
+2017,soy,sep,2017-09-12,49.9,48.7,48.7,False,World-Grain,2.4641,-1.046,-9.9867,etf,954.75
+2018,soy,aug,2018-08-10,51.6,49.6,49.6,False,farmdoc webinar deck,4.0323,-4.2741,-37.9433,etf,887.75
+2018,soy,sep,2018-09-12,52.8,52.2,52.2,False,World-Grain,1.1494,1.2168,9.9808,etf,820.25
+2019,soy,aug,2019-08-12,48.5,47.6,47.6,False,farmdoc webinar deck,1.8908,-1.6432,-14.3575,etf,873.75
+2019,soy,sep,2019-09-12,47.9,47.2,47.2,False,DTN,1.4831,3.0974,26.4518,etf,854.0
+2020,soy,aug,2020-08-12,53.3,51.3,51.3,False,farmdoc webinar / Farm Progress,3.8986,1.3567,11.9118,etf,878.0
+2020,soy,sep,2020-09-11,51.9,51.8,51.8,False,ADMIS recap,0.1931,1.5524,15.2911,etf,985.0
+2021,soy,aug,2021-08-12,50.0,50.4,50.4,False,Farm Progress,-0.7937,-0.0435,-0.6114,etf,1405.5
+2021,soy,sep,2021-09-10,50.6,50.0,50.0,False,ADMIS,1.2,1.0787,13.5781,etf,1258.75
+2022,soy,aug,2022-08-12,51.9,51.1,51.1,False,DTN / Farm Progress,1.5656,-0.1104,-1.8873,etf,1709.5
+2022,soy,sep,2022-09-12,50.5,51.5,51.5,False,Pro Farmer,-1.9417,4.1872,62.3579,etf,1489.25
+2023,soy,aug,2023-08-11,50.9,51.3,51.3,False,ADMIS,-0.7797,-0.7652,-10.8046,etf,1412.0
+2023,soy,sep,2023-09-12,50.1,50.2,50.2,False,World-Grain,-0.1992,-1.5504,-20.9692,etf,1352.5
+2024,soy,aug,2024-08-12,53.2,52.5,52.5,False,BNN Bloomberg,1.3333,-1.1471,-11.7922,etf,1028.0
+2024,soy,sep,2024-09-12,53.2,53.4,53.4,False,Farmtario,-0.3745,1.1781,11.5424,etf,979.75
+2025,soy,aug,2025-08-12,53.6,52.937,52.937,False,TradingView (Reuters),1.2524,1.8374,18.1811,etf,989.5
+2025,soy,sep,2025-09-12,53.5,53.2,53.2,False,AgroLatam,0.5639,0.9453,9.5972,etf,1015.25
+2026,soy,aug,2026-08-12,52.7,52.9,52.9,False,AgOptimus audit / AgWeb,-0.3781,1.2759,14.641,etf,1147.5
+2026,soy,sep,2026-09-11,52.8,52.4,52.4,False,Pro Farmer,0.7634,-2.3006,-30.2759,etf,1316.0
