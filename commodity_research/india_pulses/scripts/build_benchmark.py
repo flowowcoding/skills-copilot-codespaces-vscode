@@ -17,6 +17,12 @@ public date is approximated as Feb 15 of (season end year + 1), the then-usual r
 2nd AE (flagged date_approx=1). Crop-level advance-estimate vintages before 2016-17 are not
 reachable (desagri.gov.in and the pre-2017 PIB archive are blocked from this environment).
 
+Seasons 1995-96 .. 2002-03 (added after the pre-registration, before any holdout evaluation, because the
+walk-forward trend needs >= 6 earlier finals and the official time-series tables start in 2003-04):
+FINAL = ICRISAT district-level production summed over its 311 districts, divided by the median ratio
+(ICRISAT sum / official final) over the overlap seasons 2003-04 .. 2008-09 (gram 1.00, tur 0.97,
+sugarcane 0.101 -- ICRISAT's cane production is in different units). date_approx = 2 (proxy).
+
 Output: ../data/ae_vintages.csv (crop, season, stage, value, unit, release_date, date_approx, prid, url, note)
 Usage:  python build_benchmark.py --out ../data
 """
@@ -84,6 +90,7 @@ UNIT = {"tur": "Mt", "gram": "Mt", "sugarcane": "Mt", "cotton": "M bales (170 kg
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--icrisat", default=None, help="district_apy_icrisat.csv (default: <out>/district_apy_icrisat.csv)")
     a = ap.parse_args()
     rows = []
     for s, st, dt, prid, *vals, note in V:
@@ -97,6 +104,15 @@ def main():
             rows.append(dict(crop=crop, season=f"{y0}-{str(y0 + 1)[2:]}", stage="FINAL", value=v, unit=UNIT[crop],
                              release_date=f"{y0 + 2}-02-15", date_approx=1, prid=1532333 if i < 9 else 1899193,
                              url=U.format(1532333 if i < 9 else 1899193), note="history column of a later time-series table"))
+    icr = pd.read_csv(a.icrisat or f"{a.out}/district_apy_icrisat.csv")
+    tot = icr.groupby(["crop", "year"]).prod_kt.sum().unstack(0) / 1000
+    for crop, k in [("gram", "chickpea"), ("tur", "pigeonpea"), ("sugarcane", "sugarcane")]:
+        off = pd.Series(HIST[crop][:6], index=range(2003, 2009))
+        ratio = float((tot[k].loc[2003:2008] / off).median())
+        for y0 in range(1995, 2003):
+            rows.append(dict(crop=crop, season=f"{y0}-{str(y0 + 1)[2:]}", stage="FINAL", value=round(tot[k].loc[y0] / ratio, 3),
+                             unit=UNIT[crop], release_date=f"{y0 + 2}-02-15", date_approx=2, prid=None, url="http://data.icrisat.org/dld/",
+                             note=f"proxy: ICRISAT district sum / {ratio:.4f} (median ratio to official finals 2003-04..2008-09)"))
     d = pd.DataFrame(rows).sort_values(["crop", "season", "release_date"])
     d.to_csv(f"{a.out}/ae_vintages.csv", index=False)
     # revision summary: first estimate -> final

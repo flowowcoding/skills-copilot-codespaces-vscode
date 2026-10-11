@@ -51,7 +51,7 @@ class Features:
     def __init__(self, data):
         dw = pd.read_csv(f"{data}/district_weights.csv")
         self.w = {c: dw[dw[f"core_{k}"] == 1].set_index("dist_code")[f"share_{k}"] for c, k in WKEY.items()}
-        e = pd.read_csv(f"{data}/evi_district_composite.csv", parse_dates=["start", "end", "available_date"])
+        e = pd.read_csv(f"{data}/evi_district_composite.csv", parse_dates=["start", "available_date"])
         self.evi = e.dropna(subset=["evi_anom"])
         ch = pd.read_csv(f"{data}/chirps_district_monthly.csv", parse_dates=["available_date"])
         ch["mstart"] = pd.to_datetime(ch.month + "-01")

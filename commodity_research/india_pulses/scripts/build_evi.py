@@ -13,7 +13,7 @@ Steps
 Point-in-time: a composite is usable from end date + 14 days (available_date).
 
 Output: ../data/evi_district_composite.csv
-        (dist_code, key YYYYDDD, start, end, available_date, evi, evi_anom, n_valid, n_crop)
+        (dist_code, key YYYYDDD, start, available_date [= end + 14 d], evi, evi_anom, n_valid, n_crop)
 Usage:  python build_evi.py --work <scratch>/india --out ../data
 """
 import argparse, glob, os
@@ -54,7 +54,8 @@ def main():
         prev = np.where((doy == doy[i]) & (yr < yr[i]) & (yr >= yr[i] - 8))[0]
         if len(prev) >= 3:
             cnt = np.sum(~np.isnan(E[prev]), axis=0)
-            mu = np.nanmean(E[prev], axis=0) if True else None
+            with np.errstate(all="ignore"):
+                mu = np.nanmean(E[prev], axis=0)
             mu[cnt < 3] = np.nan
             A[i] = E[i] - mu
     rows = []
@@ -68,7 +69,8 @@ def main():
             rows.append((d, k, starts[k], ends[k], m_e[i], m_a[i], int(nv[i]), len(idx)))
     o = pd.DataFrame(rows, columns=["dist_code", "key", "start", "end", "evi", "evi_anom", "n_valid", "n_crop"])
     o["available_date"] = (pd.to_datetime(o.end) + pd.Timedelta(days=14)).dt.date
-    o.to_csv(f"{a.out}/evi_district_composite.csv", index=False, float_format="%.4f")
+    o = o.drop(columns="end").dropna(subset=["evi"])
+    o.to_csv(f"{a.out}/evi_district_composite.csv", index=False, float_format="%.4g")
     px[["pixel_id", "dist_code", "tile", "lat", "lon", "crop"]].to_csv(f"{a.work}/pixels_crop.csv", index=False)
     print(o.shape, o.evi_anom.notna().mean().round(3))
 

@@ -1,0 +1,8 @@
+season,estimate,basis,value_mt,date_reported,date_precision,source_url,note
+2019-20,preliminary,net,28.20,2019-07,month,https://www.thequint.com/amp/story/news/hot-news/282-lakh-tonne-sugar-production-likely-in-2019-20-isma,based on late-June 2019 satellite images of cane area
+2020-21,preliminary,net,30.50,2020-06,month,https://www.chinimandi.com/sugar-production-for-2020-21-season-estimated-at-310-lakh-tonnes-isma/,first satellite survey
+2020-21,first advance,net,31.00,2020-10-19,approx,https://www.chinimandi.com/sugar-production-for-2020-21-season-estimated-at-310-lakh-tonnes-isma/,after Oct-2020 satellite images (cane area 52.68 lakh ha)
+2023-24,first advance,gross,33.70,2023-12,month,https://www.outlookbusiness.com/economy-and-policy/isma-pegs-9-pc-fall-in-gross-sugar-output-for-2023-24-says-sufficient-to-meet-local-demand,9% fall vs 2022-23; ethanol diversion not estimated
+2023-24,revised,gross,34.00,2024-01,month,https://www.outlookbusiness.com/news/isma-demands-diversion-of-additional-10-12-lakh-tonnes-sugar-for-ethanol-making,net ~32.3 after 1.7 Mt ethanol diversion
+2024-25,first advance,gross,33.30,2024-11,month,https://www.chinimandi.com/first-advance-estimates-isma-maintains-2024-25-sugar-output-estimates/,kept preliminary projection; satellite image of 3rd week Oct 2024
+2025-26,preliminary,gross,34.90,2025-07-31,day,https://www.business-standard.com/industry/news/isma-pegs-india-s-sugar-output-at-34-9-million-tonnes-for-2025-26-season-125091101326_1.html,satellite imagery late June 2025
