@@ -20,7 +20,7 @@ Aggregation: state dev = mean of county predicted devs weighted by county harves
         origin of US on IA+IL log deviations of the January finals, Y-20..Y-1.
 Uncertainty (1 sd, bu/ac): leave-one-year-out RMSE of the region's log deviation inside the training years
         (each training year predicted by a model fitted on the other training years), times the forecast.
-Usage:  python model.py [--years 2016-2026] [--models ridge,gbm,wx,vi] [--tag v1]
+Usage:  python model.py [--years 2016-2026] [--models ridge,gbm,wx,vi] [--tag v1] [--vi-file county_vi.csv] [--extra-vi ndre_jul]
         Outputs signal/field_signal_<tag>.csv (all regions) and features/county_predictions_<tag>.csv.
 """
 import argparse, os
@@ -41,11 +41,11 @@ def theil_trend(yrs, vals, Y):
     return s[1] + s[0] * Y
 
 
-def load():
+def load(vi_file="county_vi.csv"):
     fin = pd.read_csv(f"{DATA}/finals_jan.csv")
     cy = pd.read_csv(f"{DATA}/county_yield.csv", dtype={"fips": str})
     cy = cy[cy.state.isin(STATES)]
-    vi = pd.read_csv(f"{FEAT}/county_vi.csv", dtype={"fips": str})
+    vi = pd.read_csv(f"{FEAT}/{vi_file}", dtype={"fips": str})
     wx = pd.read_csv(f"{FEAT}/county_weather.csv", dtype={"fips": str})
     ha = pd.read_csv(f"{DATA}/state_harvested.csv")
     return fin, cy, vi, wx, ha
@@ -112,7 +112,7 @@ def fit_predict(kind, Xtr, ytr, gtr, Xte, alpha=None):
     if kind == "gbm":
         import lightgbm as lgb
         m = lgb.LGBMRegressor(n_estimators=300, learning_rate=0.03, num_leaves=8, min_child_samples=20, subsample=0.8, subsample_freq=1,
-                              colsample_bytree=0.8, verbose=-1, random_state=0)
+                              colsample_bytree=0.8, verbose=-1, random_state=0, n_jobs=1)
         m.fit(Xtr, ytr)
         return m.predict(Xte), None
     if alpha is None:
@@ -238,9 +238,23 @@ def main():
     ap.add_argument("--years", default="2016-2026")
     ap.add_argument("--models", default="ridge,gbm,wx,vi")
     ap.add_argument("--tag", default="v1")
+    ap.add_argument("--vi-file", default="county_vi.csv", help="county VI table (county_vi.csv = Landsat-only primary; county_vi_fused.csv = Landsat+S2)")
+    ap.add_argument("--vi-feats", default="", help="override the VI feature list")
+    ap.add_argument("--wx-aug", default="", help="override the August weather feature list")
+    ap.add_argument("--wx-sep", default="", help="override the September weather feature list")
+    ap.add_argument("--extra-vi", default="", help="comma list of extra VI features (e.g. ndre_jul)")
     a = ap.parse_args()
+    if a.vi_feats:
+        for c in VI:
+            VI[c] = a.vi_feats.split(",")
+    if a.wx_aug:
+        WX["aug"] = a.wx_aug.split(",")
+    if a.wx_sep:
+        WX["sep"] = a.wx_sep.split(",")
+    for c in VI:
+        VI[c] = VI[c] + [f for f in a.extra_vi.split(",") if f]
     from build_features import forecast_dates
-    fin, cy, vi, wx, ha = load()
+    fin, cy, vi, wx, ha = load(a.vi_file)
     fd = forecast_dates()
     y0, y1 = map(int, a.years.split("-"))
     rows, cty = [], []

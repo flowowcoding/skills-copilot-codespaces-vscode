@@ -119,6 +119,9 @@ def cmd_offsets(a):
     out.append(dict(sensor=8, n=0, years=0, a_ndvi=0, b_ndvi=1, a_nir=0, b_nir=1, bias_ndvi=0, bias_nir=0, r_ndvi=1, r_nir=1))
     out.append(dict(sensor=9, n=0, years=0, a_ndvi=0, b_ndvi=1, a_nir=0, b_nir=1, bias_ndvi=0, bias_nir=0, r_ndvi=1, r_nir=1))
     o = pd.DataFrame(out)
+    if 23 not in set(o.sensor) and {21, 22} <= set(o.sensor):  # S2C (launched 2024): mean of S2A/S2B offsets
+        s2 = o[o.sensor.isin([21, 22])].mean(numeric_only=True)
+        o = pd.concat([o, pd.DataFrame([dict(s2, sensor=23, n=0, years=0)])])
     o.to_csv(f"{FEAT}/sensor_offsets.csv", index=False, float_format="%.4f")
     print(o.to_string())
 
@@ -283,7 +286,7 @@ def cmd_classify(a):
                 common = [c for c in ccols if c in tr.columns and tr[c].notna().mean() > 0.9]
                 X = lambda df: np.column_stack([(df.c1 == CORN), (df.c1 == SOY), (df.c2 == CORN), (df.c2 == SOY)] + [df[c].values for c in common])
                 m = lgb.LGBMClassifier(n_estimators=300, learning_rate=0.05, num_leaves=31, min_child_samples=50, subsample=0.8, subsample_freq=1,
-                                       colsample_bytree=0.8, verbose=-1)
+                                       colsample_bytree=0.8, verbose=-1, n_jobs=1)
                 m.fit(X(tr), (tr.cY == CORN).astype(int))
                 d["p_corn"] = m.predict_proba(X(d))[:, 1]
                 method = "lgbm"

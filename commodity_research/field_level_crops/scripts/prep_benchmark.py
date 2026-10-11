@@ -1,7 +1,8 @@
 """Copy the point-in-time benchmark inputs this study needs (IA, IL, US) from the previous US satellite study,
 which built them from soy_research/us/benchmark/ (USDA PIT vintages, consensus) and the NASS Quick Stats bulk file.
 
-Inputs  (soy_research/us/satellite/data/): finals_jan.csv (January Annual Summary = truth), usda_forecasts.csv
+Inputs  (soy_research/us/satellite/data/): finals_jan.csv (January Annual Summary = truth; before 2004 the
+        revised Quick Stats final from nass_yield.csv, used only for trends), usda_forecasts.csv
         (USDA Aug/Sep state + US forecasts), release_dates.csv, consensus_events.csv (trade average before each
         report, US only), nass_area.csv (state harvested acres, finals), signal/us_sat_signal_v1.csv (MODIS model).
 Outputs (data/): finals_jan.csv, usda_forecasts.csv, release_dates.csv, consensus.csv, state_harvested.csv,
@@ -19,7 +20,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.parse_args()
     p = f"{PREV}/data"
-    f = pd.read_csv(f"{p}/finals_jan.csv"); f[f.region.isin(REG)].to_csv(f"{DATA}/finals_jan.csv", index=False)
+    f = pd.read_csv(f"{p}/finals_jan.csv"); f = f[f.region.isin(REG)]
+    # before 2004 (no January vintage in the benchmark) the revised Quick Stats final is used, as in the MODIS study
+    q = pd.read_csv(f"{p}/nass_yield.csv")
+    q = q[(q.period == "final") & q.region.isin(REG) & (q.year < f.year.min())]
+    q = q.assign(release_date="", final_jan=q.yield_bu_ac)[["crop", "year", "region", "release_date", "final_jan"]]
+    pd.concat([q, f]).sort_values(["crop", "region", "year"]).to_csv(f"{DATA}/finals_jan.csv", index=False)
     u = pd.read_csv(f"{p}/usda_forecasts.csv"); u[u.region.isin(REG)].to_csv(f"{DATA}/usda_forecasts.csv", index=False)
     pd.read_csv(f"{p}/release_dates.csv").to_csv(f"{DATA}/release_dates.csv", index=False)
     c = pd.read_csv(f"{p}/consensus_events.csv")
