@@ -1,0 +1,89 @@
+year,crop,report,release_date,usda_yield,consensus_yield,cons_source
+2005,corn,aug,2005-08-12,139.2,138.189,farmdoc webinar deck (bar chart)
+2005,corn,sep,2005-09-13,143.2,,
+2006,corn,aug,2006-08-11,152.2,150.1677,farmdoc webinar deck (bar chart)
+2006,corn,sep,2006-09-12,154.7,,
+2007,corn,aug,2007-08-10,152.8,152.1766,farmdoc webinar deck (bar chart)
+2007,corn,sep,2007-09-12,155.8,,
+2008,corn,aug,2008-08-12,155.0,151.165,farmdoc webinar deck (bar chart)
+2008,corn,sep,2008-09-12,152.3,,
+2009,corn,aug,2009-08-12,159.5,155.8862,farmdoc webinar deck (bar chart)
+2009,corn,sep,2009-09-11,161.9,,
+2010,corn,aug,2010-08-12,165.0,163.968,farmdoc webinar deck (bar chart)
+2010,corn,sep,2010-09-10,162.5,,
+2011,corn,aug,2011-08-11,153.0,155.0349,farmdoc webinar deck (bar chart)
+2011,corn,sep,2011-09-12,148.1,,
+2012,corn,aug,2012-08-10,123.4,125.5824,world-grain/meatpoultry
+2012,corn,sep,2012-09-12,122.8,119.0806,world-grain/meatpoultry
+2013,corn,aug,2013-08-12,154.4,157.7,WILL Agri-Newsline
+2013,corn,sep,2013-09-12,155.3,153.69,WILL Agri-Newsline
+2014,corn,aug,2014-08-12,167.4,170.2,WILL Agri-Newsline
+2014,corn,sep,2014-09-11,171.7,170.74,WILL Agri-Newsline
+2015,corn,aug,2015-08-12,168.8,164.4,Food Business News
+2015,corn,sep,2015-09-11,167.5,166.6,World-Grain
+2016,corn,aug,2016-08-12,175.1,170.6,Iowa Farm Bureau
+2016,corn,sep,2016-09-12,174.4,172.9,World-Grain
+2017,corn,aug,2017-08-10,169.5,166.2,Producer.com (Reuters)
+2017,corn,sep,2017-09-12,169.9,168.2,Grainews (Reuters)
+2018,corn,aug,2018-08-10,178.4,176.2,farmdoc webinar deck
+2018,corn,sep,2018-09-12,181.3,177.8,World-Grain
+2019,corn,aug,2019-08-12,169.5,164.9,farmdoc webinar deck
+2019,corn,sep,2019-09-12,168.2,166.7,DTN
+2020,corn,aug,2020-08-12,181.8,180.4,farmdoc webinar / Farm Progress
+2020,corn,sep,2020-09-11,178.5,178.3,ADMIS recap
+2021,corn,aug,2021-08-12,174.6,177.1,DTN
+2021,corn,sep,2021-09-10,176.3,175.8,ADMIS
+2022,corn,aug,2022-08-12,175.4,175.9,Farm Progress
+2022,corn,sep,2022-09-12,172.5,172.5,Pro Farmer
+2023,corn,aug,2023-08-11,175.1,175.5,ADMIS / farmdoc
+2023,corn,sep,2023-09-12,173.8,173.5,World-Grain
+2024,corn,aug,2024-08-12,183.1,182.2,BNN Bloomberg
+2024,corn,sep,2024-09-12,183.6,182.7,Farmtario / DTN
+2025,corn,aug,2025-08-12,188.8,184.411,TradingView (Reuters)
+2025,corn,sep,2025-09-12,186.7,186.0,AgroLatam
+2026,corn,aug,2026-08-12,180.7,182.4,AgOptimus audit / AgWeb
+2026,corn,sep,2026-09-11,178.5,178.1,Pro Farmer
+2005,soy,aug,2005-08-12,38.7,38.8886,farmdoc webinar deck (bar chart)
+2005,soy,sep,2005-09-13,39.6,,
+2006,soy,aug,2006-08-11,39.6,41.1934,farmdoc webinar deck (bar chart)
+2006,soy,sep,2006-09-12,41.8,,
+2007,soy,aug,2007-08-10,41.5,42.305,farmdoc webinar deck (bar chart)
+2007,soy,sep,2007-09-12,41.4,,
+2008,soy,aug,2008-08-12,40.5,40.9127,farmdoc webinar deck (bar chart)
+2008,soy,sep,2008-09-12,40.0,,
+2009,soy,aug,2009-08-12,41.7,41.8562,farmdoc webinar deck (bar chart)
+2009,soy,sep,2009-09-11,42.3,,
+2010,soy,aug,2010-08-12,44.0,43.1663,farmdoc webinar deck (bar chart)
+2010,soy,sep,2010-09-10,44.7,,
+2011,soy,aug,2011-08-11,41.4,42.9931,farmdoc webinar deck (bar chart)
+2011,soy,sep,2011-09-12,41.8,,
+2012,soy,aug,2012-08-10,36.1,37.3283,world-grain/meatpoultry
+2012,soy,sep,2012-09-12,35.3,35.3453,world-grain/meatpoultry
+2013,soy,aug,2013-08-12,42.6,43.6,WILL Agri-Newsline
+2013,soy,sep,2013-09-12,41.2,41.172,WILL Agri-Newsline
+2014,soy,aug,2014-08-12,45.4,45.5,WILL Agri-Newsline
+2014,soy,sep,2014-09-11,46.6,46.29,WILL Agri-Newsline
+2015,soy,aug,2015-08-12,46.9,44.7935,farmdoc webinar deck (bar chart)
+2015,soy,sep,2015-09-11,47.1,46.4,agcanada (Reuters)
+2016,soy,aug,2016-08-12,48.9,47.5,Iowa Farm Bureau
+2016,soy,sep,2016-09-12,50.6,49.4,World-Grain
+2017,soy,aug,2017-08-10,49.4,47.5,Producer.com (Reuters)
+2017,soy,sep,2017-09-12,49.9,48.7,World-Grain
+2018,soy,aug,2018-08-10,51.6,49.6,farmdoc webinar deck
+2018,soy,sep,2018-09-12,52.8,52.2,World-Grain
+2019,soy,aug,2019-08-12,48.5,47.6,farmdoc webinar deck
+2019,soy,sep,2019-09-12,47.9,47.2,DTN
+2020,soy,aug,2020-08-12,53.3,51.3,farmdoc webinar / Farm Progress
+2020,soy,sep,2020-09-11,51.9,51.8,ADMIS recap
+2021,soy,aug,2021-08-12,50.0,50.4,Farm Progress
+2021,soy,sep,2021-09-10,50.6,50.0,ADMIS
+2022,soy,aug,2022-08-12,51.9,51.1,DTN / Farm Progress
+2022,soy,sep,2022-09-12,50.5,51.5,Pro Farmer
+2023,soy,aug,2023-08-11,50.9,51.3,ADMIS
+2023,soy,sep,2023-09-12,50.1,50.2,World-Grain
+2024,soy,aug,2024-08-12,53.2,52.5,BNN Bloomberg
+2024,soy,sep,2024-09-12,53.2,53.4,Farmtario
+2025,soy,aug,2025-08-12,53.6,52.937,TradingView (Reuters)
+2025,soy,sep,2025-09-12,53.5,53.2,AgroLatam
+2026,soy,aug,2026-08-12,52.7,52.9,AgOptimus audit / AgWeb
+2026,soy,sep,2026-09-11,52.8,52.4,Pro Farmer

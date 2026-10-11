@@ -106,16 +106,24 @@ def tile_counts(item):
         except Exception:  # noqa
             if k == 4:
                 raise
-    rr, cc = np.nonzero(a > 0)
-    sub = slice(None)
-    lon = tr.c + (cc + 0.5) * tr.a * 8
-    lat = tr.f + (rr + 0.5) * tr.e * 8
-    crop = (a[rr, cc] == 40)
-    h, v, row, col = cell_index(lon[sub], lat[sub])
-    key = ((h * 100 + v).astype(np.int64) * NPIX + row) * NPIX + col
-    d = pd.DataFrame({"key": key, "crop": crop})
-    out = d.groupby("key").crop.agg(["sum", "size"])
-    return out
+    out_k, out_c, out_n = [], [], []
+    for r0 in range(0, a.shape[0], 500):  # strips keep memory small
+        blk = a[r0:r0 + 500]
+        rr, cc = np.nonzero(blk > 0)
+        if rr.size == 0:
+            continue
+        lon = tr.c + (cc + 0.5) * tr.a * 8
+        lat = tr.f + (rr + r0 + 0.5) * tr.e * 8
+        h, v, row, col = cell_index(lon, lat)
+        key = ((h * 100 + v).astype(np.int64) * NPIX + row) * NPIX + col
+        crop = (blk[rr, cc] == 40)
+        uk, inv = np.unique(key, return_inverse=True)
+        out_k.append(uk); out_n.append(np.bincount(inv)); out_c.append(np.bincount(inv, weights=crop))
+    del a
+    if not out_k:
+        return pd.DataFrame(columns=["sum", "size"])
+    d = pd.DataFrame({"key": np.concatenate(out_k), "sum": np.concatenate(out_c), "size": np.concatenate(out_n)})
+    return d.groupby("key")[["sum", "size"]].sum()
 
 
 def main():
@@ -125,7 +133,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--n", type=int, default=3000)
     ap.add_argument("--min-frac", type=float, default=0.75)
-    ap.add_argument("--threads", type=int, default=6)
+    ap.add_argument("--threads", type=int, default=3)
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     regs = load_regions(a.geo)
@@ -145,22 +153,33 @@ def main():
         parts = []
         with ThreadPoolExecutor(a.threads) as ex:
             for i, p in enumerate(ex.map(tile_counts, items)):
-                parts.append(p)
+                parts.append(p[p["sum"] > 0])  # only cells with some cropland can pass the threshold
                 if i % 10 == 0:
                     print(i, flush=True)
         cells = pd.concat(parts).groupby(level=0).sum().reset_index()
         cells.to_parquet(cache)
-    cells["frac"] = cells["sum"] / cells["size"]
-    k = cells.key.values
-    col = k % NPIX; row = (k // NPIX) % NPIX; hv = k // NPIX // NPIX; h = hv // 100; v = hv % 100
-    cells["h"], cells["v"], cells["row"], cells["col"] = h, v, row, col
-    good = cells[(cells.frac >= a.min_frac) & (cells["size"] >= 6)].copy()
+    import pyarrow.parquet as pq
+    t = pq.read_table(cache)
+    sm, sz = t.column("sum").to_numpy(), t.column("size").to_numpy()
+    ok = (sz >= 6) & (sm >= a.min_frac * sz)
+    n_good = int(ok.sum())
+    rng0 = np.random.default_rng(1)
+    idx = np.nonzero(ok)[0]
+    take = min(n_good, 800000)  # random subsample before the point-in-polygon join (memory)
+    idx = np.sort(rng0.choice(idx, take, replace=False))
+    scale = n_good / take
+    k = t.column("key").to_numpy()[idx]
+    good = pd.DataFrame({"key": k, "frac": sm[idx] / sz[idx]})
+    del t, sm, sz, ok
+    col = k % NPIX; row = (k // NPIX) % NPIX; hv = k // NPIX // NPIX
+    good["h"], good["v"], good["row"], good["col"] = hv // 100, hv % 100, row, col
+    print("cropland cells", n_good, "joined", take, flush=True)
     lon, lat = cell_center(good.h.values, good.v.values, good.row.values, good.col.values)
     good["lon"], good["lat"] = lon, lat
     pts = gpd.GeoDataFrame(good, geometry=gpd.points_from_xy(lon, lat), crs=regs.crs)
     j = gpd.sjoin(pts, regs[["region", "country", "oblast", "geometry"]], predicate="within", how="inner")
     j = j[~j.index.duplicated()]
-    counts = j.groupby(["country", "region", "oblast"]).size().rename("cropland_cells").reset_index()
+    counts = (j.groupby(["country", "region", "oblast"]).size() * scale).round().rename("cropland_cells").reset_index()
     counts.to_csv(os.path.join(a.out, "region_cropland_cells.csv"), index=False)
     rng = np.random.default_rng(42)
     samp = []

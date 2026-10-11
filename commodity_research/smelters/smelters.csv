@@ -1,0 +1,9 @@
+id,name,operator,country,lat,lon,box_half_km,capacity_kt_conc,process_note,coord_source
+altonorte,Altonorte,Glencore,Chile,-23.8242,-70.3161,1.0,,,
+caletones,Caletones (El Teniente),Codelco,Chile,-34.1066,-70.4563,1.0,,,
+potrerillos,Potrerillos (Salvador),Codelco,Chile,-26.4339,-69.4772,1.0,,,
+chuquicamata,Chuquicamata,Codelco,Chile,-22.3165,-68.8817,1.0,,,
+ventanas,Ventanas,Codelco,Chile,-32.7604,-71.4773,1.0,,,
+hvl_paipote,Hernan Videla Lira (Paipote),ENAMI,Chile,-27.4167,-70.2602,1.0,,,
+chagres,Chagres,Anglo American,Chile,-32.8033,-70.9530,1.0,,,
+kansanshi,Kansanshi,First Quantum,Zambia,-12.0776,26.3968,1.0,,,

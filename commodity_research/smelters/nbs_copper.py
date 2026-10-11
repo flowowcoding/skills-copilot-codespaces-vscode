@@ -5,23 +5,30 @@ NBS's own database (data.stats.gov.cn) refuses requests from this environment (H
 metals" and primary aluminium, not copper. Two public reposts of the NBS number are used:
 
 1. gotohui.com "全国精炼铜(电解铜)产量(当月值)" (source: NBS) - visible without login up to 2020-08.
-2. chinabaogao.com (观研天下) monthly data notes "YYYY年M月我国精炼铜（电解铜）产量约为X万吨，同比增长Y%"
-   (source: NBS), with the article's publication date. Crawled from the metallurgy data listing.
-   Each note also gives the YoY change, so a missing month can be back-filled from the next year's note.
+2. chinabaogao.com (观研天下) monthly data notes on refined copper output (source: NBS), crawled
+   from its metallurgy data listing. A note gives some of: the month's value, its YoY change, the
+   Jan-to-month cumulative value, and the same month one or two years earlier. Every one of these
+   is kept, and the series is assembled in this order of preference:
+     direct (month's value) > cum_diff (difference of two cumulative values) >
+     ref (prior-year value quoted in a later note) > yoy_backfill (value / (1 + YoY)).
 
 Usage:
-    python nbs_copper.py OUT.csv [--pages 100]
+    python nbs_copper.py OUT.csv [--pages 100] [--raw RAW.csv]
 
-Output columns: month, kt (thousand tonnes), yoy_pct (as published), published (repost date,
-an upper bound on when the number was public; NBS itself releases ~15th-17th of the next month),
-source_url, method (direct / backfill_from_yoy).
-January is usually missing: NBS publishes January and February together.
+OUT columns: month, kt (thousand tonnes), method, published (date of the repost carrying the
+figure; NBS itself publishes ~15th-17th of the following month, which is the date used in the
+lead-time tests), source_url.
+January and February are missing by construction: NBS publishes them only as a Jan-Feb total.
+yoy_published_pct is NBS's own YoY ("comparable basis", which differs from the ratio of
+published levels because the above-designated-size sample changes each year); yoy_level_pct is
+the ratio of levels; yoy_pct = published where available, else level-based.
 """
 import argparse, re, html, time, concurrent.futures as cf
 import requests
 import pandas as pd
 
 UA = {"User-Agent": "Mozilla/5.0"}
+GOTOHUI = "https://www.gotohui.com/ndata/show-985090"
 
 
 def get(url, tries=4):
@@ -42,10 +49,9 @@ def text(h):
 
 
 def gotohui():
-    t = text(get("https://www.gotohui.com/ndata/show-985090"))
+    t = text(get(GOTOHUI))
     rows = re.findall(r"\d+ (\d{4}-\d{2}) (\d+\.\d+) (-?\d+\.\d+|--)", t)
-    return [dict(month=m, kt=float(v) * 10, yoy_pct=None if y == "--" else float(y), published=None,
-                 source_url="https://www.gotohui.com/ndata/show-985090", method="direct") for m, v, y in rows]
+    return [dict(month=m, kt=float(v) * 10, kind="direct", published=None, source_url=GOTOHUI) for m, v, y in rows]
 
 
 def crawl_listing(pages):
@@ -54,30 +60,76 @@ def crawl_listing(pages):
     with cf.ThreadPoolExecutor(8) as ex:
         for h in ex.map(get, urls):
             for u, title in re.findall(r'href="([^"]+\.html)"[^>]*>([^<]{4,120})<', h):
-                if "精炼铜" in title and "产量" in title:
+                if "精炼铜" in title and "产量" in title and "年" in title and "全球" not in title and "-20" not in title:
                     found["https:" + u if u.startswith("//") else u] = title
     return found
 
 
-PAT = re.compile(r"(\d{4})年(\d{1,2})月(?:份)?我国精炼铜（电解铜）产量(?:约为|为|达|约)?\s*([\d.]+)\s*万吨[，,]\s*同比(增长|下降|减少|持平)\s*([\d.]*)\s*%?")
+NUM = r"(?:当期值|累计值|累计)?\s*(?:约为|为|约|达到|达|增至|降至)?\s*([\d.]+)\s*万吨"
+P_MONTH = re.compile(r"(\d{4})年(\d{1,2})月(?:份)?(?:我国|全国|中国)?精炼铜(?:（电解铜）)?(?:行业规模以上企业)?产量" + NUM)
+P_CUM = re.compile(r"(\d{4})年1-(\d{1,2})月(?:份)?(?:我国|全国|中国)?精炼铜(?:（电解铜）)?(?:行业规模以上企业)?产量" + NUM)
+P_REF = re.compile(r"较(\d{4})年(\d{1,2})月(?:份)?的([\d.]+)万吨")
+P_REF_PREV = re.compile(r"(\d{4})年(\d{1,2})月(?:份)?[^。]{0,60}?较上一年同期的([\d.]+)万吨")
 
 
 def parse_article(url):
-    h = get(url)
-    t = text(h)
+    t = text(get(url))
     pub = re.search(r"(20\d{2}-\d{2}-\d{2}) \d{2}:\d{2} 分享", t)
+    i = t.find(" 分享")
+    j = t.find("猜你喜欢")
+    body = t[i:j] if i > 0 and j > i else ""
+    pub = pub.group(1) if pub else None
     out = []
-    for y, m, v, d, p in PAT.findall(t[:6000]):
-        yoy = 0.0 if d == "持平" else float(p or 0) * (-1 if d in ("下降", "减少") else 1)
-        out.append(dict(month=f"{int(y)}-{int(m):02d}", kt=float(v) * 10, yoy_pct=yoy,
-                        published=pub.group(1) if pub else None, source_url=url, method="direct"))
-    return out[:1]
+    for y, m, v in P_MONTH.findall(body):
+        out.append(dict(month=f"{y}-{int(m):02d}", kt=float(v) * 10, kind="direct", published=pub, source_url=url))
+    for y, m, v in P_CUM.findall(body):
+        out.append(dict(month=f"{y}-{int(m):02d}", kt=float(v) * 10, kind="cum", published=pub, source_url=url))
+    for y, m, v in P_REF.findall(body):
+        out.append(dict(month=f"{y}-{int(m):02d}", kt=float(v) * 10, kind="ref", published=pub, source_url=url))
+    for y, m, v in P_REF_PREV.findall(body):
+        out.append(dict(month=f"{int(y) - 1}-{int(m):02d}", kt=float(v) * 10, kind="ref", published=pub, source_url=url))
+    for y, m, d, p in re.findall(r"(\d{4})年(\d{1,2})月(?:份)?(?:我国|全国|中国)?精炼铜(?:（电解铜）)?产量[^。]{0,40}?同比(增长|下降|增速为)(?:约为|约)?\s*([\d.]+)%", body):
+        out.append(dict(month=f"{y}-{int(m):02d}", kt=float(p) * (-1 if d == "下降" else 1), kind="yoy", published=pub, source_url=url))
+    return out
+
+
+def assemble(raw):
+    raw = raw.copy()
+    raw["pub_sort"] = raw.published.fillna("9999")
+    pick = lambda k: raw[raw.kind == k].sort_values("pub_sort").drop_duplicates("month").set_index("month")
+    direct, cum, ref, yoy = pick("direct"), pick("cum"), pick("ref"), pick("yoy")
+    rows = {m: dict(kt=r.kt, method="direct", published=r.published, source_url=r.source_url) for m, r in direct.iterrows()}
+    for m, r in cum.iterrows():
+        y, mm = int(m[:4]), int(m[5:])
+        if mm == 2 and m not in rows:
+            rows[m] = dict(kt=r.kt / 2, method="janfeb_half", published=r.published, source_url=r.source_url)
+        prev = f"{y}-{mm - 1:02d}"
+        if mm > 2 and m not in rows and prev in cum.index:
+            rows[m] = dict(kt=round(r.kt - cum.loc[prev, "kt"], 1), method="cum_diff", published=r.published, source_url=r.source_url)
+    for m, r in ref.iterrows():
+        if m not in rows:
+            rows[m] = dict(kt=r.kt, method="ref", published=None, source_url=r.source_url)
+    for _ in range(3):   # yoy back-fill, both directions
+        for m, r in yoy.iterrows():
+            prev = f"{int(m[:4]) - 1}{m[4:]}"
+            if m in rows and prev not in rows:
+                rows[prev] = dict(kt=round(rows[m]["kt"] / (1 + r.kt / 100), 1), method="yoy_backfill", published=None, source_url=r.source_url)
+            if prev in rows and m not in rows:
+                rows[m] = dict(kt=round(rows[prev]["kt"] * (1 + r.kt / 100), 1), method="yoy_forward", published=r.published, source_url=r.source_url)
+    out = pd.DataFrame.from_dict(rows, orient="index").rename_axis("month").reset_index().sort_values("month")
+    out = out[out.method != "janfeb_half"]          # Jan-Feb combined: not a monthly value
+    lv = out.set_index("month").kt
+    out["yoy_level_pct"] = [round(100 * (lv[m] / lv[f"{int(m[:4]) - 1}{m[4:]}"] - 1), 2) if f"{int(m[:4]) - 1}{m[4:]}" in lv.index else None for m in out.month]
+    out["yoy_published_pct"] = out.month.map(yoy.kt)   # NBS 'comparable basis' YoY as reposted
+    out["yoy_pct"] = out.yoy_published_pct.fillna(out.yoy_level_pct)
+    return out
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("out")
     ap.add_argument("--pages", type=int, default=100)
+    ap.add_argument("--raw", default=None, help="also save every parsed figure here")
     a = ap.parse_args()
     arts = crawl_listing(a.pages)
     print(len(arts), "chinabaogao notes")
@@ -85,21 +137,13 @@ def main():
     with cf.ThreadPoolExecutor(8) as ex:
         for r in ex.map(parse_article, list(arts)):
             rows += r
-    df = pd.DataFrame(rows + gotohui())
-    df = df.sort_values(["month", "method", "published"]).drop_duplicates("month", keep="first")
-    # back-fill a missing month from next year's YoY
-    have = set(df.month)
-    extra = []
-    for r in df.itertuples():
-        if r.yoy_pct is None or pd.isna(r.yoy_pct):
-            continue
-        prev = f"{int(r.month[:4]) - 1}{r.month[4:]}"
-        if prev not in have:
-            extra.append(dict(month=prev, kt=round(r.kt / (1 + r.yoy_pct / 100), 1), yoy_pct=None, published=None,
-                              source_url=r.source_url, method="backfill_from_yoy"))
-    df = pd.concat([df, pd.DataFrame(extra)]).sort_values("month")
-    df.to_csv(a.out, index=False)
-    print(df.month.min(), df.month.max(), len(df), "months;", (df.method == "backfill_from_yoy").sum(), "back-filled")
+    raw = pd.DataFrame(rows + gotohui())
+    if a.raw:
+        raw.to_csv(a.raw, index=False)
+    out = assemble(raw)
+    out.to_csv(a.out, index=False)
+    print(out.month.min(), out.month.max(), len(out), "months")
+    print(out.method.value_counts().to_string())
 
 
 if __name__ == "__main__":
