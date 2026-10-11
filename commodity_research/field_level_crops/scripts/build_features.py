@@ -2,6 +2,7 @@
 county aggregates, and county weather. Every feature for (year Y, report R) uses only data public at the
 forecast date T = NASS Crop Production release date - 5 days:
   * Sentinel-2 L2A acquisitions with date + 3 days <= T; Landsat C2 L2 with date + 8 days <= T
+    (Landsat 7 only through 2021, so every year has two Landsat satellites)
   * gridMET days d with d + 3 <= T
   * CDL year Y-1 and Y-2 (masks, field interiors); CDL labels of years < Y for the crop classifier
 
@@ -60,6 +61,12 @@ def load_obs(work, y, sources=("landsat", "s2")):
         if not os.path.exists(fn):
             continue
         z = np.load(fn)
+        z = {k: z[k] for k in ["win_id", "date", "sensor", "red", "nir", "re1"]}
+        if src == "landsat" and y >= 2022:
+            # Landsat 7 is dropped once Landsat 9 is operational (2022+: L7 in its lowered, drifting orbit), so the
+            # Landsat stack has two satellites in every year (L7+L8 2013-21, L8+L9 2022+); in 2023 it would be three
+            keep = z["sensor"] != 7
+            z = {k: (v[keep] if (v.ndim and len(v) == len(keep)) else v) for k, v in z.items()}
         n = len(z["win_id"])
         re1 = z["re1"] if z["re1"].size else np.full(z["red"].shape, -32768, np.int16)
         parts.append(dict(win_id=z["win_id"].astype(int), date=z["date"], sensor=z["sensor"].astype(int), src=np.full(n, src),

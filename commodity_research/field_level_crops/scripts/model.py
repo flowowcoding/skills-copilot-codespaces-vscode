@@ -28,10 +28,9 @@ import numpy as np, pandas as pd
 from scipy.stats import theilslopes
 from common import DATA, FEAT, SIG, STATES
 
-VI = {"corn": ["ndvi_jul", "ndvi_last", "nirv_jul", "nirv_last", "nirv_auc", "ndvi_peak", "gu_doy"],
-      "soy": ["ndvi_jul", "ndvi_last", "nirv_jul", "nirv_last", "nirv_auc", "ndvi_peak", "gu_doy"]}
-WX = {"aug": ["prcp_jun", "prcp_jul", "hdd_jul", "vpd_jja", "gdd"],
-      "sep": ["prcp_jun", "prcp_jul", "prcp_aug", "hdd_jul", "hdd_aug", "vpd_jja", "gdd"]}
+# frozen spec (chosen on 2016-2021 walk-forward only, see README): NIRv season integral, late-window NIRv, green-up
+VI = {"corn": ["nirv_auc", "nirv_last", "gu_doy"], "soy": ["nirv_auc", "nirv_last", "gu_doy"]}
+WX = {"aug": ["prcp_jul", "hdd_jul"], "sep": ["prcp_jul", "prcp_aug", "hdd_jul", "hdd_aug"]}
 ALPHAS = [1, 3, 10, 30, 100, 300]
 VERSION = "field_v1"
 
@@ -98,9 +97,12 @@ def make_X(df, feats, train_mask):
     return X
 
 
+NO_INTERCEPT = False  # post-hoc diagnostic (--no-intercept): intercept fixed at 0 (pure anomaly model)
+
+
 def ridge_fit(X, y, alpha):
     Xa = np.column_stack([np.ones(len(X)), X])
-    P = np.eye(Xa.shape[1]) * alpha; P[0, 0] = 0
+    P = np.eye(Xa.shape[1]) * alpha; P[0, 0] = 1e12 if NO_INTERCEPT else 0
     return np.linalg.solve(Xa.T @ Xa + P, Xa.T @ y)
 
 
@@ -242,8 +244,11 @@ def main():
     ap.add_argument("--vi-feats", default="", help="override the VI feature list")
     ap.add_argument("--wx-aug", default="", help="override the August weather feature list")
     ap.add_argument("--wx-sep", default="", help="override the September weather feature list")
+    ap.add_argument("--no-intercept", action="store_true", help="post-hoc diagnostic: ridge intercept fixed at 0")
     ap.add_argument("--extra-vi", default="", help="comma list of extra VI features (e.g. ndre_jul)")
     a = ap.parse_args()
+    global NO_INTERCEPT
+    NO_INTERCEPT = a.no_intercept
     if a.vi_feats:
         for c in VI:
             VI[c] = a.vi_feats.split(",")

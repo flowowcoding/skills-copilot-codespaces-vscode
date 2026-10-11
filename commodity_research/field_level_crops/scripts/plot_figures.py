@@ -56,7 +56,7 @@ def cmd_curves(a):
     w = pd.read_csv(f"{DATA}/windows.csv", dtype={"fips": str})
     offs = pd.read_csv(f"{FEAT}/sensor_offsets.csv").set_index("sensor")
     pix = pd.read_parquet(f"{a.work}/pix/pix_{y}_sep.parquet")
-    o = load_obs(a.work, y)
+    o = load_obs(a.work, y, ("landsat",))
     ndvi, _, _, _ = indices(o, offs)
     wid = int(a.window)
     p = pix[pix.win_id == wid]
@@ -70,11 +70,10 @@ def cmd_curves(a):
             v = vals[j]; v = v[np.isfinite(v)]
             if len(v):
                 ax.scatter(np.full(len(v), doy[i]) + (k - 0.5) * 0.8, v, s=1.5, color=C[k], alpha=0.08, linewidths=0)
-        med = [np.nanmedian(vals[doy[rows] == d]) if (doy[rows] == d).any() else np.nan for d in range(D0, 256)]
         ax.plot([], [], color=C[k], label=lab)
         cols = [c for c in p.columns if c.startswith("c_")]
         ax.plot([int(c[2:]) for c in cols], p[sel][cols].median().values, color=C[k], lw=2)
-    ax.set_xlabel("day of year"); ax.set_ylabel("NDVI (harmonised to OLI)")
+    ax.set_xlabel("day of year"); ax.set_ylabel("NDVI (Landsat 7/8/9, harmonised to OLI)")
     ax.set_title(f"{y}, window {wid} (county {w.fips[wid]}): raw clear observations and smoothed median curve", color=TEXT)
     ax.legend(loc="lower right"); ax.set_ylim(0, 1)
     fig.savefig(f"{FIG}/curves_{y}.png", dpi=130, bbox_inches="tight"); plt.close(fig)

@@ -114,7 +114,7 @@ def main():
             ok = p.notna() & y.notna()
             pm = p[ok].groupby(level=0).transform("mean")
             out.append(dict(crop=crop, report=rep, model=m, n=int(ok.sum()), years=len(set(y[ok].index.get_level_values(0))),
-                            r2_pooled=r2(y[ok], p[ok]), r2_within_year=r2(y[ok] - ym[ok], p[ok] - pm) if m not in ("trend", "usda_uniform") else 0.0,
+                            r2_pooled=r2(y[ok], p[ok]), r2_within_year=r2(y[ok] - ym[ok], p[ok] - pm),
                             corr_pooled=np.corrcoef(y[ok], p[ok])[0, 1] if p[ok].std() > 0 else np.nan,
                             corr_within=np.corrcoef(y[ok] - ym[ok], p[ok] - pm)[0, 1] if (p[ok] - pm).std() > 1e-9 else np.nan,
                             rmse_pct=100 * np.sqrt(np.mean((y[ok] - p[ok]) ** 2))))
